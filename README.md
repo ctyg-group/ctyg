@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #jiuju
 =======
 ThinkPHP 5.0
@@ -131,3 +132,6 @@ ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
 
 更多细节参阅 [LICENSE.txt](LICENSE.txt)
 >>>>>>> firstcommit
+=======
+#jiujuforgit
+>>>>>>> e5fc747a1b6c369c77a64d937f5a06abdbf43ad0
