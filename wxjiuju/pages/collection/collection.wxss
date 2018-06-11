@@ -1,0 +1,44 @@
+/*引入tabBar样式  */
+@import "../public/public.wxss";
+
+.collection{
+    margin-top: 0.25rem;
+}
+.collection_list{
+    width: 45%;
+    height: 174px;
+    float: left;
+    margin-bottom: 13px;
+    margin-left: 2.8%;
+    border: solid 1px rgba(0,0,0,0.16);
+}
+.collection_list .list_img{
+    width: 100%;
+    height: 118px;
+}
+
+.collection_list text{
+    font-size: 28rpx;
+    font-family: "MicrosoftYaHei";
+    color: rgb(48,48,48);
+    margin-left: 26rpx;
+}
+.collection_list .browse{
+    font-size: 24rpx;
+    color: rgb(136,136,136);
+    font-family: "PingFang-SC-Regular";
+}
+.collection_icon{
+    width: 0.75rem;
+    height: 0.75rem;
+    float: right;
+    margin-top:0.25rem;
+}
+.collection_num{
+    float: right;
+    margin-right: 0.5rem;
+    margin-top:0.25rem;
+
+}
+
+

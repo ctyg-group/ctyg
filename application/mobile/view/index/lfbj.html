@@ -1,0 +1,176 @@
+{include file="public/header" /}
+<script src="/input/index/static/js/mui.picker.min.js"></script>
+<link href="/input/index/static/css/mui.picker.min.css" rel="stylesheet"/>
+<style>
+	.free_price{
+		display: none;
+	}
+	.footer{
+		margin-bottom: 0rem;
+	}
+</style>
+		<div class='lfbj'>
+			<form action="#">
+			<div class='lf_input clearfix'>
+				<input type="text" class='i1' name='username' autocomplete="off" placeholder="您的名字"/>
+				<input type="text" class='i2' name='mobile' autocomplete="off" placeholder="您的手机"/>
+				<div class='input3'>
+					<input type="text" class='i3' name='area' autocomplete="off" placeholder="房屋面积"/>
+					<div class='input_i3'>㎡</div>
+				</div>	
+				
+				<div class='lf_nt clearfix'>
+					<span class='lf_hx'>户型</span>
+					<div class='lf_xz'>						
+						<div class='clearfix left'>
+							<div class="lf_num shi">1</div>
+							<button class='lf_bt' type="button" onclick="shi()"></button>
+						</div>
+						<span>室</span>
+						
+						<div class='clearfix left'>
+							<div class="lf_num ting">1</div>
+							<button class='lf_bt' type="button" onclick="ting()"></button>
+						</div>
+						<span>厅</span>
+						
+						<div class='clearfix left'>
+							<div class="lf_num wei">1</div>
+							<button class='lf_bt' type="button" onclick="wei()"></button>
+						</div>
+						<span>卫</span>
+					</div>					
+				</div>
+
+				<button class='lfbj_call' type="button" onclick="call_kf()">拨打客服电话</button>
+				<button class='lfbj_sub' type="button" onclick="get_price()">立即获取</button>
+			</div>
+			
+			</form>
+		</div>
+
+{include file="public/footer" /}
+<script>
+
+function call_kf(){
+	window.location.href = "tel:4008301919";
+}
+
+function shi(){
+    var picker = new mui.PopPicker();
+    picker.setData([{
+        value: "1",
+        text: "一室"
+    }, {
+        value: "2",
+        text: "二室"
+    }, {
+        value: "3",
+        text: "三室"
+    }, {
+        value: "4",
+        text: "四室"
+    }, {
+        value: "5",
+        text: "五室"
+    }, {
+        value: "6",
+        text: "六室"
+    }]);
+
+    picker.show(function(SelectedItem) {
+        $(".shi").html(SelectedItem[0].value);
+    })
+}
+
+function ting(){
+    var picker = new mui.PopPicker();
+    picker.setData([{
+        value: "1",
+        text: "一厅"
+    }, {
+        value: "2",
+        text: "二厅"
+    }]);
+
+    picker.show(function(SelectedItem) {
+        $(".ting").html(SelectedItem[0].value);
+    })
+}
+
+function wei(){
+    var picker = new mui.PopPicker();
+    picker.setData([{
+        value: "1",
+        text: "一卫"
+    }, {
+        value: "2",
+        text: "二卫"
+    }, {
+        value: "3",
+        text: "三卫"
+	}]);
+
+    picker.show(function(SelectedItem) {
+        $(".wei").html(SelectedItem[0].value);
+    })
+}
+
+function get_price(){
+    area = $("input[name = area]").val();
+    true_area=/[0-9]{2,3}/;
+    if(area == '' || !true_area.test(area)){
+        mui.alert('请输入您的房屋面积', function() {});
+        return false;
+    }
+
+    if($("input[name=username]").val() == ''){
+        mui.alert('请填写您的姓名', function() {});
+        return false;
+    }
+
+    true_mobile = /^1[34578]{1}\d{9}$/;
+    if($("input[name=mobile]").val() == '' || !true_mobile.test($("input[name=mobile]").val())){
+        mui.alert('请填写您的手机号', function() {});
+        return false;
+    }
+
+    pick_num = $(".pick_num").html();
+    shi  = $(".shi").html();
+    wei  = $(".wei").html();
+    price = 99999*1+(area*1-75)*790+(wei*1-1)*9999+(shi*1-3)*1680;
+    ajax_getprice(price);
+}
+
+function ajax_getprice(price){
+    username = $("input[name=username]").val();
+    mobile = $("input[name=mobile]").val();
+
+    $.ajax({
+        type : "POST",
+        async: false,
+        url  : "{:url('Mobile/index/getprice')}",
+        data : {'user_name':username,'mobile':mobile,'price':price},// 你的formid
+        datatype : "json",
+        error: function(request) {
+
+            alert("服务器繁忙, 请联系管理员!");
+        },
+        success: function(v) {
+
+            var v =  eval('('+v+')');
+            // 验证成功提交表单
+
+            if(v.status == 1)
+            {
+                mui.alert('获取成功,稍后将以短信形式发送到您的手机', function(){});
+            }else{
+                mui.alert(v.msg, function(){});
+            }
+
+
+        }
+    });
+
+}
+</script>

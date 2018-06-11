@@ -1,0 +1,165 @@
+{include file="public/header" /}
+<style>
+
+    .beijin{
+        height:8814px;
+    }
+
+    .beijin div{
+        width:100%;
+        float: left;
+        overflow-x:hidden;
+    }
+
+    .yhd1{  background: url(/public/static/images/9yhd1.jpg) no-repeat;height: 1050px; }
+    .yhd2{  background: url(/public/static/images/9yhd2_{$now}.jpg) no-repeat;height: 1458px;  }
+    .yhd3{  background: url(/public/static/images/9yhd3.jpg) no-repeat;height: 486px; position: relative;  }
+    .yhd4{  background: url(/public/static/images/9yhd4.jpg) no-repeat;height: 1360px;  }
+    .yhd5{  background: url(/public/static/images/9yhd5.jpg) no-repeat;height: 736px;  }
+    .yhd6{  background: url(/public/static/images/9yhd6.jpg) no-repeat;height: 1555px;  }
+    .yhd7{  background: url(/public/static/images/9yhd7.jpg) no-repeat;height: 767px;  }
+    .yhd8{  background: url(/public/static/images/9yhd8.jpg) no-repeat;height: 695px;  }
+    .yhd9{  background: url(/public/static/images/9yhd9.jpg) no-repeat;height: 707px;  }
+
+    .hdi1{
+        position: absolute;
+        left: 583px;
+        top: 159px;
+
+    }
+
+    .hdi2{
+        position: absolute;
+        left: 869px;
+        top: 159px;
+
+    }
+
+    .hdi3{
+        position: absolute;
+        left: 583px;
+        top: 223px;
+
+    }
+
+    .hdi4{
+        position: absolute;
+        left: 869px;
+        top: 223px;
+
+
+    }
+
+    .yhd3 input{
+        width: 200px;
+        height: 42px;
+        border-radius: 2px;
+        font-size: 16px;
+    }
+
+    .hd_zxyy{
+        background: url(/public/static/images/9hd_zxyy.png) no-repeat;
+        position: absolute;
+        left: 1090px;
+        top: 157px;
+        width:114px;
+        height: 113px;
+    }
+
+    .yhd_lm{
+        left: 40px;
+        z-index: 999;
+        position:fixed;
+        background: url(/public/static/images/9yhd_lm.png) no-repeat;
+        width:183px;
+        height: 483px;
+    }
+
+    .yhd_lm ul{
+        margin-top: 64px;
+        margin-left: 22px;
+        font-size: 16px;
+        color: #ffffff;
+    }
+
+    .yhd_lm ul li{
+        height: 42px;
+        width:136px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.25);
+        line-height: 42px;
+    }
+    .yhd_lm ul li:hover{
+        color: #f17f05;
+        cursor:hand;
+        cursor:pointer;
+    }
+
+    .yyuanq{
+        width: 134px;
+        height: 35px;
+        background: url(/public/static/images/1yuan.png) no-repeat;
+        margin-top: 95px;
+        margin-left: 23px;
+        cursor:hand;
+        cursor:pointer;
+    }
+
+</style>
+
+
+       <div class="yhd_lm">
+           <div class="yyuanq">
+
+           </div>
+
+           <ul>
+               <li data-tab="yhd4">全屋定制免费送</li>
+               <li data-tab="yhd5">万元主材免费送</li>
+               <li data-tab="yhd6">前30户极致服务</li>
+               <li data-tab="yhd7">送全房保洁</li>
+               <li data-tab="yhd8">先装修后付款</li>
+               <li data-tab="yhd9" style="border-bottom: none;">品牌支持</li>
+
+           </ul>
+       </div>
+
+
+       <div class="beijin">
+
+           <div class="yhd1"></div>
+           <div class="yhd2"></div>
+           <div class="yhd3">
+               <form action="#" id="adduserinfoForm">
+               <div class="hdi1"><input type="text" name="user_name" placeholder="请输入您的姓名"></div>
+               <div class="hdi2"><input type="text" name="mobile" placeholder="请输入您的电话" autocomplete="off"></div>
+               <div class="hdi3"><input type="text" name="estate" placeholder="请输入您的楼盘名称"></div>
+               <div class="hdi4"><input type="text" name="area" placeholder="请输入您的套内面积"></div>
+                   <a href="javascript:void(0);" onclick="ajax_user_form('adduserinfoForm','{:U('Index/addUserInfo')}');">
+                   <div class="hd_zxyy">
+
+                   </div>
+                   </a>
+               </form>
+           </div>
+           <div class="yhd4"></div>
+           <div class="yhd5"></div>
+           <div class="yhd6"></div>
+           <div class="yhd7"></div>
+           <div class="yhd8"></div>
+           <div class="yhd9"></div>
+
+       </div>
+<script>
+
+    $(".yyuanq").click(function(){
+        $('html,body').animate({scrollTop:$('.yhd2').offset().top}, 800);
+    });
+
+    $('.yhd_lm').on('click','li',function(e){
+        var target = e.target;
+        var id = $(target).data("tab");
+        $('html,body').animate({scrollTop:$('.'+id).offset().top}, 800);
+    });
+</script>
+{include file="public/footer" /}

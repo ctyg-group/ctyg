@@ -1,0 +1,163 @@
+{include file="public/header" /}
+<link rel="stylesheet" type="text/css" href="/public/index/style/baike.css">
+<link rel="stylesheet" href="/public/index/plugins/swiper-4.2.0/swiper.min.css">
+
+    <!-- 内容分类 -->
+    <div class="main main-new">
+        <div class="layout fix">
+            <div class="mbx">
+                <div class="layout bk_infotit">
+                    <p>
+                        <a href="/">首页</a>
+                        <em>&gt;</em>
+                        <a href="{:url('Index/Baike/index')}">久居百科</a>
+                        <em>&gt;</em>
+                        <!--<a href="">装修百科</a><em>&gt;</em>-->
+                        <a href="{:url('Index/Baike/baikecat',array('cat_id'=>$catname2.cat_id,'p'=>1))}">{$catname2.cat_name}</a>
+                        <em>&gt;</em>
+                        <span>{$enpedinfo.title} </span>
+                    </p>
+                </div>
+                <div class="bk_infotp">
+                    <div class="bktit_tp">
+                        <img src="{$enpedinfo.thumb}" width="193px" height="134px" alt="">
+                    </div>
+
+                    <div class="bktit_wz">
+                        <div class="wz1">
+                            {$enpedinfo.title} </div>
+                        <div class="wz2">
+                            <span class="fl">作者：{$enpedinfo.author} | {$enpedinfo.add_time|date="Y-m-d H:i:s",###} </span>
+                            <span class="fr">
+                                <span class="eye">{$enpedinfo.radio_num}</span>
+                                <span class="love">{$enpedinfo.comment}</span>
+                            </span>
+                        </div>
+                        <div class="wz3">
+                            {$enpedinfo.explain}</div>
+                    </div>
+
+                </div>
+
+                <div class="bk_xtk">目录</div>
+
+                <div class="bk_infoml">
+                    {volist name="preg" id="v" key="k"}
+                    <div data-tab="enped_nr{$k}">{$k}.{$v}</div>
+                    {/volist}
+
+                </div>
+            </div>
+            <div class="newl fl">
+                <div class="news">
+                    <p class="sp fix">
+                    </p>
+                    <div class="newscon">
+                       {$enpedinfo.content}
+                    </div>
+                </div>
+                <!-- 相关百科 -->
+                <div class="nb">
+                    <h3 style="border: none;">相关百科</h3>
+
+                    <div style="width: 86px;height: 4px;background-color: #f99c32;margin-bottom: 41px;"></div>
+                    {volist name="odbaike" id="baike"}
+                    <div class="bk_xg">
+                        <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$baike.enped_id))}">
+                            <div class="tp">
+                                <img src="{$baike.thumb}" width="158px" height="108px" alt="">
+                            </div>
+                            <div class="tit">{$baike.title} </div>
+                            <div class="info"> {$baike.explain}</div>
+                        </a>
+                    </div>
+                    {/volist}
+
+                </div>
+            </div>
+            <!-- 预约表格 -->
+            <div class="zxr qnr fr" style="margin-top: -326px;">
+                {include file="public/baojia" /}
+                <!-- 百科热门词条 -->
+                {include file="public/hotbai" /}
+                <!-- 热门设计师 -->
+                {include file="public/hotdes" /}
+                <!-- 热门文章 -->
+                {include file="public/hotnews" /}
+            </div>
+        </div>
+    </div>
+<style>
+    .enped_nr{
+        font-size: 18px!important;
+        font-weight: 600;
+    }
+</style>
+    <!-- 底部 -->
+{include file="public/footer" /}
+<script src="/public/index/plugins/swiper-4.2.0/swiper.min.js"></script>
+<script>
+    // swiper 初始化
+    var mySwiper = new Swiper('.banner1', {
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 45,
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.banner-next',
+            prevEl: '.banner-prev',
+        },
+    })
+
+    // 热门设计师滚动
+    var hotBanner = new Swiper('.hotBanner');
+    var hotBanner2 = new Swiper('.hotBanner2', {
+        slidesPerView: 4,
+        spaceBetween: 5,
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.bannerhot-next',
+            prevEl: '.bannerhot-prev',
+        },
+    });
+
+    $('.bk_infoml').on('click','div',function(e){
+        var target = e.target;
+        var id = $(target).data("tab");
+        $('html,body').animate({scrollTop:$('#'+id).offset().top}, 800);
+    });
+    // 点击滚动tab
+    $(".enped_banner-process .wz").on("click", function() {
+        var index = $(this).index();
+        $(this).addClass("on").siblings().removeClass("on");
+        $(".enped_banner-wrapper swiper-container").hide().eq(index).show();
+        mySwiper = new Swiper('.banner' + (index + 1), {
+            loop: true,
+            slidesPerView: 3,
+            spaceBetween: 45,
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.banner-next',
+                prevEl: '.banner-prev',
+            },
+        })
+    })
+
+    // 点击热点
+    $(".hotdes_s .swiper-slide").on("click", function(){
+        $(this).addClass("on").siblings().removeClass("on");
+        var index = $(this).index();
+        hotBanner.slideTo(index);           
+    })
+
+</script>

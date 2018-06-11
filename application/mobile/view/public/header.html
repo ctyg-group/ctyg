@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>久居整装</title>
+    <script src="/public/index/static/js/mui.min.js"></script>
+    <script src="/public/index/static/js/jquery.js"></script>
+
+    <link href="/public/index/static/css/mui.min.css" rel="stylesheet"/>
+    <link href="/public/index/static/css/mobile.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+        mui.init();
+        (function(){
+            var html=document.documentElement;
+            var width=html.getBoundingClientRect().width;
+            html.style.fontSize = width/15+'px';
+        })();
+    </script>
+
+</head>
+<body>
+<header class="mui-bar mui-bar-nav header">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style='width: 22px;height: 24px;'></a>
+    <div class='m_menu category-trigger'></div>
+    <a href="#" style="display: none;"><div class='m_user'></div></a>
+</header>
+
+<div class="layer-nav" style=" height: calc(100% + 50px);">
+    <ul>
+        <li><a href="{:url('mobile/index/index')}"><img src="/public/index/static/mobile/menu1.png" alt="" /><span>首页</span></a></li>
+        <li><a href="{:url('mobile/brand/index')}"><img src="/public/index/static/mobile/menu2.png" alt="" /><span>臻品之选</span></a></li>
+        <li><a href="{:url('mobile/designer/index')}"><img src="/public/index/static/mobile/menu3.png" alt="" /><span>服务之星</span></a></li>
+
+        <li><a href="{:url('mobile/worklive/index')}"><img src="/public/index/static/mobile/menu4.png" alt="" /><span>工地直播</span></a></li>
+        <li><a href="{:url('mobile/goods/index')}"><img src="/public/index/static/mobile/menu5.png" alt="" /><span>整装案例</span></a></li>
+        <li><a href="{:url('mobile/school/index')}"><img src="/public/index/static/mobile/menu6.png" alt="" /><span>装修学堂</span></a></li>
+
+       <!-- <li><a hrenpedlist.htmlhtml"><img src="/public/index/static/mobile/menu7.png" alt="" /><span>装修实景</span></a></li>-->
+        <li><a href="{:url('mobile/enped/index')}"><img src="/public/index/static/mobile/menu8.png" alt="" /><span>装修百科</span></a></li>
+      <!--  <li><a href=""><img src="/public/index/static/mobile/menu9.png" alt="" /><span>装修问答</span></a></li>
+
+        <li><a href=""><img src="/public/index/static/mobile/menu10.png" alt="" /><span>体验馆</span></a></li>
+        <li><a href=""><img src="/public/index/static/mobile/menu11.png" alt="" /><span>新闻中心</span></a></li>-->
+        <li><a href="{:url("mobile/index/lfbj")}"><img src="/public/index/static/mobile/menu12.png" alt="" /><span>量房报价</span></a></li>
+    </ul>
+</div>

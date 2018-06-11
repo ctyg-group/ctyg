@@ -1,0 +1,367 @@
+{include file="public/header" /}
+
+<link rel="stylesheet" type="text/css" href="/public/index/style/gongdi.css">
+
+<link href="/public/index/static/css/zoom.css" type="text/css" rel="stylesheet" />
+
+    <!-- 中间大图 -->
+   <div class="banner4">
+        <div class="banner4_box">
+            <div class="blayout fix">
+
+                <div class="tit">{$work.live_name}</div>
+
+                <div class="info">
+
+                    <div style="float: left;">
+
+                        <span class="span1">户型：</span>
+
+                        <span class="span2"> {$work.apart}</span>
+
+                    </div>
+
+                    <div class="shux"></div>
+
+                    <div style="float: left;">
+
+                        <span class="span1">面积：</span>
+
+                        <span class="span2"> {$work.area}㎡</span>
+
+                    </div>
+
+                    <div class="shux"></div>
+
+                    <div style="float: left;">
+
+                        <span class="span1">户型：</span>
+
+                        <span class="span2"> {$work.style}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="hengx"></div>
+
+                <div class="tup">
+
+                    <div class="tit2">服务团队：</div>
+
+
+
+                    <div style="float: left;margin-left: 8px;">
+
+                        <img style="float: left;" src="<?php echo $work['des_img']??'/u.png';?>" width="64px"
+
+                            height="64px" alt="">
+
+                        <div style="float: left;">
+                          
+                          	<p class="des_info" style="margin-top: 12px;">设计师</p>
+
+                            <p class="des_info" style="margin-top: 6px;">{$work.des_name}</p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div style="float: left;margin-left: 23px;">
+
+                        <img style="float: left;" src="<?php echo $work['worker1_img']??'/u.png';?>" width="64px"
+
+                            height="64px" alt="">
+
+                        <div style="float: left;">
+                          
+                            <p class="des_info" style="margin-top: 12px;">项目管家</p>
+
+                            <p class="des_info" style="margin-top: 6px;">{$work.worker1_name}</p>                            
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                    <div style="float: left;margin-left: 23px;">
+
+                        <img style="float: left;" src="<?php echo $work['worker2_img']??'/u.png';?>" width="64px"
+
+                            height="64px" alt="">
+
+                        <div style="float: left;">
+                          
+                          	<p class="des_info" style="margin-top: 12px;">质检专员</p>
+
+                            <p class="des_info" style="margin-top: 6px;">{$work.worker2_name}</p>                           
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="wkbutton">
+
+                    <span class="time"></span>
+
+                    <span class="look">预约参观工地</span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="right_ban">
+
+
+
+                <div style="width: 574px;height: 345px;">
+
+                    <img src="{$work.workimg}" width="574px" height="345px"
+
+                        alt="">
+
+                    <div class="pdesc" style="position: relative;">
+
+                        <a href="Javascript:;">{$work.live_name}</a>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+	<!-- 面包屑 -->
+	 <div class="mbx">
+
+        <div class="layout">
+
+            <p>
+
+                <a href="/">首页</a>
+
+                <em>&gt;</em>
+
+                <a href="/gdzb">工地直播</a>
+
+                <em>&gt;</em>
+
+                <span>{$work.live_name}</span>
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- 装修阶段 -->
+
+    <div class="gongdi">
+
+        <div class="layout">
+
+            <div class="gdti">
+
+                <p>装修阶段</p>
+
+            </div>
+
+            <div class="gdx">
+
+                <img src="/public/index/static/images/bstage{$work.stage_id}.png" alt="">
+
+            </div>
+
+            <style>
+
+                .gdshow li a{
+
+                    display:block;
+
+                    position: relative;
+
+                    float: left;
+
+                    overflow: hidden;
+
+                    min-width: 260px;
+
+                    max-width: 260px;
+
+                    height: 182px;
+
+                    width: 260px;
+
+                    text-align: center;
+
+                    cursor: pointer;
+
+                }
+
+                .gdshow li a img{
+
+                    opacity: 1;
+
+                    position: relative;
+
+                    display: block;
+
+                    vertical-align: middle!important;
+
+                    min-width:100%;
+
+
+
+                    min-height:100%;
+
+                }
+
+
+
+
+
+            </style>
+
+            <div class="gdshow">
+
+                <ul class="fix gallery">
+
+                    {volist name="stage" id="stage"}
+
+                    {if condition="!empty($stage.imgs)"}
+
+                    <li>
+
+                        <div class="gddesc">
+
+                            <div style="width: 100%;overflow: hidden;">
+
+                                <span class="title">
+
+                                    {if condition="$stage.level eq 1"}开工大吉{/if}
+
+                                    {if condition="$stage.level eq 2"}拆改阶段{/if}
+
+                                    {if condition="$stage.level eq 3"}水电阶段{/if}
+
+                                    {if condition="$stage.level eq 4"}泥瓦阶段{/if}
+
+                                    {if condition="$stage.level eq 5"}木工阶段{/if}
+
+                                    {if condition="$stage.level eq 6"}油漆阶段{/if}
+
+                                    {if condition="$stage.level eq 7"}竣工阶段{/if}
+
+                                </span>
+
+                                <font>{$stage.add_time|date="Y-m-d",###}</font>
+
+                            </div>
+
+                            <p>{$stage.stage}</p>
+
+                            <ul class="fix">
+
+                                {volist name="stage.imgs" id="imgs" key="key"}
+
+                                <li {if condition="$key >4"}class="hidd" style="display: none;"{/if}>
+
+                                    <a href="{$imgs.image_url}">
+
+                                        <img src="{$imgs.image_url}" alt="">
+
+                                    </a>
+
+                                </li>
+
+                                {/volist}
+
+                                {if condition=" count($stage.imgs)>4 "}
+
+                                <li class="last zhank" hidd="0"><span class="zk">展 开</span></li>
+
+                                {/if}
+
+
+
+                            </ul>
+
+                        </div>
+
+                    </li>
+
+                    {/if}
+
+                    {/volist}
+
+                </ul>
+
+                <div class="clear"></div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+     <!-- 底部 -->
+
+
+
+{include file="public/footer" /}
+
+<script type="text/javascript" src="/public/index/static/js/zoom.min.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+
+        //navLineInit('.gdx li','.dot',47,4);
+
+    });
+
+    $('.gddesc .zhank span').click(function(){
+
+        /*$(this).parent().parent().after().append('<li><img src="images/gd1.jpg"></li>')*/
+
+        if($(this).parent().attr("hidd") == 0){
+
+            $(this).parent().parent().children().fadeIn();
+
+            $(this).parent().attr("hidd","1");
+
+            $(this).parent().children("span:eq(0)").html("收 起");
+
+            $(this).parent().children("span:eq(0)").removeClass("zk").addClass("zk2");
+
+        }else{
+
+            $(this).parent().children("span:eq(0)").html("展 开");
+
+            $(this).parent().parent().children("li .hidd").fadeOut();
+
+            $(this).parent().attr("hidd","0");
+
+            $(this).parent().children("span:eq(0)").removeClass("zk2").addClass("zk");
+
+        }
+
+    });
+
+</script>

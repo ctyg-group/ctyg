@@ -1,0 +1,250 @@
+{include file="public/header" /}
+<script src="/public/index//static/js/mui.picker.min.js"></script>
+<link href="/public/index//static/css/mui.picker.min.css" rel="stylesheet"/>
+<style>
+	.mui-slider .mui-slider-group .mui-slider-item img{
+		height: 7.82rem;
+		width:100%;
+	}
+	.pick_house{
+		width: 12.84rem;
+		height: 1.78rem;
+		font-size:0.56rem;
+		margin-left: 0.48rem;
+		margin-top: 0.5rem;
+		margin-bottom: 0;
+		color: #9a9a9a;
+	}
+</style>
+		<div class="di_header clearfix">
+			<div class="tx ">
+				<div class='ztx left'><img src="{$info['sm_img']}" style="width: 3.06rem;height: 3.06rem;" alt=""></div>
+				<div class='info left'>
+					<div class="info1">{$info['designer_name']}<span>HOT</span></div>
+					<div class="info2">经典案例：{$info['case_name']|mb_substr=###,0,12,'utf-8'}...</div>
+					<div class="info3">
+						经 验<span>{$info['designer_ex']}年</span>&nbsp;&nbsp;&nbsp;
+						作 品<span>{$info['designer_num']}</span>&nbsp;&nbsp;&nbsp;
+						签 单<span style='border: none;'>{$info['order_num']}</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class='fg'>
+				<div class="left">设计风格</div>
+				<div class='bq'>
+					<span>{$info['style']}</span>
+				</div>
+			</div>
+		</div>
+
+		<div class='di_num'>
+			<div class='num1'>{$info['pop_num']}人气</div>
+			<div class='num2'>关注</div>
+			<div class='num3 design-button'>找我设计</div>
+		</div>
+		
+		<div class='di_zp'>
+			<div class='tit'>作品</div>
+			
+			<div class='al clearfix'>
+				{foreach name='goods_list' item='gv' key='gk'}
+				<div class='xal'>
+					<a href="{:url('Mobile/goods/goodsinfo',array('goods_id'=>$gv.case_id)),'.html'}"><div class='img'><img src="{$gv['img']}" style="width: 7.04rem;height: 4.92rem;" alt=""></div></a>
+					<a href="{:url('Mobile/goods/goodsinfo',array('goods_id'=>$gv.case_id)),'.html'}"><div class='name'>{$gv['case_name']}</div></a>
+				</div>
+			    {/foreach}
+			</div>
+		</div>
+
+		<div class="mask-box">
+			<div class="designer_x"></div>
+			<div class="tit">
+				<div class="img"><img src="{$info['sm_img']}" style="width: 2.62rem;height: 2.62rem;" alt=""></div>
+				<div class="name">{$info['designer_name']}<span>{$info['level']}</span></div>
+				<div class="style">擅长风格：{$info['style']}</div>
+			</div>
+
+			<div class="listen" id="scrollDiv">
+				<ul>
+					<li>李**已于15分钟前预约成功</li>
+					<li>王**已于18分钟前预约成功</li>
+					<li>张**已于26分钟前预约成功</li>
+					<li>刘**已于8分钟前预约成功</li>
+				</ul>
+			</div>
+
+			<form action="" class="yy_designer">
+				<input type="hidden" name="des_id" value="{$info['id']}">
+				<input type="text" name="username" autocomplete="off" placeholder="您的姓名">
+				<input type="text" name="area" autocomplete="off" placeholder="房屋面积">
+				<button type="button" class="btn mui-btn mui-btn-block pick_house" onclick="pick_house()" >
+					<span>房型</span>
+					<span class="pick_num">1室1厅1厨1卫</span>
+				</button>
+				<input type="text" name="mobile" autocomplete="off" placeholder="您的手机">
+
+				<textarea name="remarks" placeholder="备注信息（选填）" id="remarks" cols="30" rows="10"></textarea>
+
+				<button type="button"  onclick="get_price()" class="des_submit">立即预约</button>
+			</form>
+
+			<div class="tishi">
+				<p>温馨提示：</p>
+				<p>为了您的利益，您的隐私将被严格保密，请放心填写</p>
+			</div>
+
+		</div>
+<script>
+
+	/*文字滚动*/
+    function AutoScroll(obj){
+        $(obj).find("ul:first").animate({
+            marginTop:"-25px"
+        },500,function(){
+            $(this).css({marginTop:"0px"}).find("li:first").appendTo(this);
+        });
+    }
+    $(document).ready(function(){
+        setInterval('AutoScroll("#scrollDiv")',2000)
+    });
+
+    $(".design-button,.discount-bar").click(function() {
+        maskDisplay(true);
+        $(".mask-box").show();
+        var mTop = $(".mask-box").height();
+        var bodyHeight = $(window).height();
+        mTop = (bodyHeight - mTop) / 2;
+        $(".mask-box").css("top", mTop);
+        return false;
+    });
+
+    $(".designer_x").click(function() {
+        maskHide();
+        $(".mask-box").hide();
+
+    });
+
+    // 蒙版显示
+    function maskDisplay(callback) {
+        var maskBox = $("<div/>", {
+            id: "mask-borad"
+        });
+        maskBox.appendTo("body");
+        if (typeof callback === "function") {
+            callback();
+        }
+    }
+
+    // 蒙版隐藏
+    function maskHide(boolean){
+
+        if (typeof boolean == "boolean") {
+            setTimeout(function () {
+                $("#mask-borad").remove();
+            }, 400)
+        } else {
+            $("#mask-borad").remove();
+        }
+
+    }
+
+    function pick_house(){
+        var dtpicker = new mui.DtPicker({
+            "type": "hour",
+            "customData": {
+                "y": [
+                    { value: "1", text: "一室" },
+                    { value: "2", text: "二室" },
+                    { value: "3", text: "三室" },
+                    { value: "4", text: "四室" },
+                    { value: "5", text: "五室" },
+                    { value: "6", text: "六室" },
+                ],
+                'm': [
+                    { value: "1", text: "一厅" },
+                    { value: "2", text: "二厅" },
+                ],
+                'd': [
+                    { value: "1", text: "一厨" },
+                ],
+                'h': [
+                    { value: "1", text: "一卫" },
+                    { value: "2", text: "二卫" },
+                    { value: "3", text: "三卫" },
+                ]
+            },
+            "labels":["室", "厅", "厨", "卫"]
+        })
+        dtpicker.show(function(e) {
+            show_text = e.y.value+'室'+e.m.value+'厅'+e.d.value+'厨'+e.h.value+'卫';
+            $(".pick_num").html(show_text);
+        })
+    }
+
+
+    function get_price(){
+
+        area = $("input[name = area]").val();
+        true_area=/[0-9]{2,3}/;
+        if(area == '' || !true_area.test(area)){
+            mui.alert('请输入您的房屋面积', function() {});
+            return false;
+        }
+
+        if($("input[name=username]").val() == ''){
+            mui.alert('请填写您的姓名', function() {});
+            return false;
+        }
+
+        true_mobile = /^1[34578]{1}\d{9}$/;
+        if($("input[name=mobile]").val() == '' || !true_mobile.test($("input[name=mobile]").val())){
+            mui.alert('请填写您的手机号', function() {});
+            return false;
+        }
+
+        pick_num = $(".pick_num").html();
+        shi  = pick_num.substr(0,1);
+        wei  = pick_num.substr(6,1);
+        price = 99999*1+(area*1-75)*790+(wei*1-1)*9999+(shi*1-3)*1680;
+        ajax_getprice(price);
+
+    }
+
+    function ajax_getprice(price){
+        username = $("input[name=username]").val();
+        mobile = $("input[name=mobile]").val();
+        area = $("input[name=area]").val();
+        remarks = $("#remarks").val();
+        des_id = $("input[name=des_id]").val();
+
+        $.ajax({
+            type : "POST",
+            async: false,
+            url  : "{:url('Mobile/index/getprice')}",
+            data : {'user_name':username,'mobile':mobile,'price':price,'area':area,'remarks':remarks,'des_id':des_id},// 你的formid
+            datatype : "json",
+            error: function(request) {
+
+                alert("服务器繁忙, 请联系管理员!");
+            },
+            success: function(v) {
+
+                var v =  eval('('+v+')');
+                // 验证成功提交表单
+
+                if(v.status == 1)
+                {
+                    mui.alert('获取成功,稍后将以短信形式发送到您的手机', function(){});
+                }else{
+                    mui.alert(v.msg, function(){});
+                }
+
+
+            }
+        });
+
+    }
+
+</script>
+{include file="public/footer" /}

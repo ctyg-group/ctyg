@@ -1,0 +1,47 @@
+{include file="public/header" /}
+
+	<div class="enin_nav"><p><a href="{:url('mobile/index/index')}">首页</a><em>></em><a href="{:url('mobile/enped/index')}">久居百科</a><em>></em><a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>$cat['cat_id'],'p'=>'1'))}">{$cat['cat_name']}</a><em>></em>正文</p></div>
+
+	<div class='enin_tit'>
+		<div class='tit'>{$enpedinfo['title']}</div>
+		<div class='info'>
+			<div class='author'>作者：{$enpedinfo['author']}</div>
+			<div class='time'>{$enpedinfo['add_time']|date="Y-m-d H:i:s",###}</div>
+			<div class='eye'>{$enpedinfo['radio_num']*1+$enpedinfo['comment']*1}</div>
+			<div class='love'>{$enpedinfo['comment']}</div>
+		</div>
+	</div>
+	
+	<div class='enin_mulu'>
+		<div class='tit'>目录</div>
+		<div class='neir bk_infoml'>
+
+			{foreach  name='preg' item='pv' key='pk'}
+			<div data-tab="enped_nr{$pk*1+1}">{$pk*1+1}.{$pv}</div>
+			{/foreach}
+		</div>
+	</div>
+
+    <div class="art_con">
+		{$enpedinfo['content']}
+	</div>
+
+	<div class="enin_about">
+		<div class='enin_hr'></div>
+		<div class='tit'>相关百科</div>
+		<div class='neir'>
+			{foreach name='newEn' item='nv'}
+			<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$nv['enped_id'])),'.html'}"><div>{$nv['title']}</div></a>
+			{/foreach}
+		</div>
+	</div>
+<script>
+    $('.bk_infoml').on('click','div',function(e){
+        var target = e.target;
+        var id = $(target).data("tab");
+        var html=document.documentElement;
+        var topwz = html.style.fontSize.substring(0,html.style.fontSize.length*1-2);
+        $('html,body').animate({scrollTop:$('#'+id).offset().top*1-1.8*topwz}, 800);
+    });
+</script>
+{include file="public/footer" /}

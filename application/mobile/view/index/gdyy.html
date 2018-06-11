@@ -1,0 +1,162 @@
+{include file="public/header" /}
+<script src="/input/index/static/js/mui.picker.min.js"></script>
+<script src="/input/index/js/myFormValidate.js"></script>
+<link href="/input/index/static/css/mui.picker.min.css" rel="stylesheet"/>
+<style>
+    .gdyy{
+        background: url(/public/static/mobile/gdyy.jpg) no-repeat;
+        background-size: 15rem 29.52rem;
+        width: 100%;
+        height: 29.52rem;
+        position: relative;
+    }
+    .gdyy_input{
+        position: absolute;
+        top:12rem;
+
+    }
+    .gdyy_input input{
+        width: 9.6rem;
+        height: 1.9rem;
+        background-color: #F2F2F2;
+        border: none;
+
+    }
+    .gdyy_input .i1{
+        margin-left: 4rem;
+        margin-top: -0.3rem;
+    }
+    .gdyy_input .i2{
+        margin-left: 4rem;
+        margin-top: 0rem;
+    }
+    .gdyy_input .i3{
+        margin-left: 4rem;
+        margin-top: 0rem;
+    }
+    .gdyy_input .ann{margin-top: 0.2rem;}
+    .gdyy_input .ann .call{
+        width: 5.9rem;
+        height: 1.9rem;
+        border-radius: 0.3rem;
+        border: 0.02rem solid #5AB968;
+        background-color: #ffffff;
+        margin-left: 0.8rem;
+        font-size: 0.6rem;
+        text-align: center;
+        line-height: 1.9rem;
+        color: #5AB968;
+        float: left;
+    }
+    .gdyy_input .ann .gdyy_submit{
+        width: 7rem;
+        height: 1.9rem;
+        border-radius: 0.3rem;
+        border: 0.02rem solid #5AB968;
+        background-color: #5AB968;
+        margin-left: 0.5rem;
+        font-size: 0.6rem;
+        text-align: center;
+        line-height: 1.9rem;
+        color: #ffffff;
+        float: left;
+    }
+    .gdyy .listen{
+        float: left;
+        width: 100%;
+        height: 1rem;
+        margin-top: 10rem;
+        text-align: left;
+        line-height: 1.05rem;
+        padding-left: 6.2rem;
+        font-size: 0.48rem;
+        color: #FC7F00;
+        position: absolute;
+        overflow:hidden
+    }
+    .gdyy .listen ul{height: 1rem;}
+    .free_price{
+        display: none;
+    }
+    .backtop{
+        display: none;
+    }
+    .footer{
+        margin-bottom: 0rem;
+    }
+</style>
+<div class='gdyy'>
+    <div class="listen" id="scrollDiv">
+        <ul>
+            <li>李**已于15分钟前预约成功</li>
+            <li>王**已于18分钟前预约成功</li>
+            <li>张**已于26分钟前预约成功</li>
+            <li>刘**已于8分钟前预约成功</li>
+        </ul>
+    </div>
+    <form action="#" class="mfyy_form" >
+        <div class='gdyy_input clearfix'>
+            <input type="text" class='i1' name='user_name2' autocomplete="off" />
+            <input type="text" class='i2' name='estate' autocomplete="off"/>
+            <input type="text" class='i3' name='mobile2' autocomplete="off"/>
+
+            <div class="ann">
+                <a href="tel:4008351919"><div class="call">拨打客服电话</div></a>
+                <div class="gdyy_submit" onclick="ajax_user_form_mob('mfyy_form','{:url('Home/Index/addUserInfo')}');">立即预约</div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+{include file="public/footer" /}
+<script>
+
+    /*文字滚动*/
+    function AutoScroll(obj){
+        $(obj).find("ul:first").animate({
+            marginTop:"-25px"
+        },500,function(){
+            $(this).css({marginTop:"0px"}).find("li:first").appendTo(this);
+        });
+    }
+
+
+    $(document).ready(function(){
+        setInterval('AutoScroll("#scrollDiv")',2000)
+    });
+
+    /**
+     * 前台预约功能 (class版)
+     * @param form_id
+     * @param submit_url
+     * @returns {boolean}
+     */
+    function ajax_user_form_mob(form_id,submit_url){
+
+        $.ajax({
+            type : "POST",
+            url  : submit_url,
+            data : $('.'+form_id).serialize(),// 你的formid
+            datatype : "json",
+            error: function(request) {
+
+                alert("服务器繁忙, 请联系管理员!");
+            },
+            success: function(v) {
+
+                var v =  eval('('+v+')');
+                // 验证成功提交表单
+
+                if(v.status == 1)
+                {
+                    mui.alert(v.msg, function(){});
+                }else{
+                    mui.alert(v.msg, function(){});
+                }
+
+            }
+        });
+
+    }
+</script>

@@ -1,0 +1,162 @@
+<!-- 臻品之选 -->
+<!-- 轮播 -->
+<swiper class="lunbo" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- 五大空间 -->
+<view class="space">
+    <view class="space_title">
+        五大空间配置
+    </view>
+    <view class="space_box" wx:for="{{spaceImg}}">
+        <navigator url="{{item.pageurl}}">
+            <image class="space_img" src="{{item.url}}"></image>
+            <image class="space_bgimg" src="{{item.bgurl}}"></image>
+            <text class="space_text">{{item.spaceText}}</text>
+        </navigator>
+    </view>
+
+</view>
+ 
+<!-- 问题 -->
+<view class="upset">
+    <view class="upset_title">
+        你是否有以下烦恼<text class="fs48 orange">?</text>
+    </view>
+    <view class="upset_box" wx:for="{{upsetImg}}">
+        <image class="upset_img" src="{{item.url}}"></image>
+    </view>
+    <view class="cl"></view>
+</view>
+
+<!-- 解决问题 -->
+<view class="solve">
+    <view class="solve_title">
+        <text class="orange">一站式</text> 完整品质<text class="orange">整装</text> 解决您的家居烦恼
+        <view class="subtitle">从毛坯到整装，包施工、报辅材、包主材</view>
+    </view>
+    <view class="solve_box" wx:for="{{solveImg}}">
+        <image class="solve_img" src="{{item.url}}"></image>
+        <text class="solve_text">{{item.solveText}}</text>
+    </view>
+    <view class="cl"></view>
+</view>
+
+<!-- 全屋人性化定制 -->
+<view class="custom">
+    <view class="custom_title">
+        全屋<text class="orange">人性化</text> 定制
+        <view class="subtitle">实现您对家的所有幻想</view>
+    </view>
+    <view class="custom_box">
+        <image class="custom_img" src="../../images/boutique/wanzhuanshenghuo2.png"></image>
+        <view class="custom_pro">
+            <view class="custom_outbox" wx:for="{{customarr}}">
+                <text class="custom_text">{{item.text}}</text>
+            </view>
+        </view>
+        <view class="cl"></view>
+    </view>
+    <view class="custom_pro">
+        <view class="orange pro_text border_bottom">让工具人性化 让空间适应你</view>
+    <view class="sub_pro">围绕人体动作尺度进行空间布局和工具设计让生活更
+            方便、省力、省心、舒服</view>
+    </view>
+</view>
+
+<!-- 科技新生活 -->
+<view class="common keji">
+    <view class="custom_title">
+        <text class="orange">科技</text>新生活
+        <view class="subtitle">将传统家居产品迭代升级为跨界科技艺术品</view>
+    </view>
+    <view class="keji_nav {{_num == 1?'bggreen':''}}" data-current="1"  bindtap="changetab">
+            <text class="keji_text">
+                智能家居\n智慧生活
+            </text>
+        </view>
+         <view class="keji_nav {{_num == 2?'bggreen':''}}" data-current="2" bindtap="changetab">
+            <text class="keji_text">
+                多重场景\n一键搞定
+            </text>
+        </view>
+         <view class="keji_nav {{_num == 3?'bggreen':''}}" data-current="3" bindtap="changetab">
+            <text class="keji_text">
+                家庭\n秒变KTV
+            </text>
+        </view>
+    <view class="cl"></view>
+    <!-- 产品 -->
+    <view num="{{_num}}">
+        <!--第一个 -->
+            <scroll-view  hidden="{{_num!='1'}}" class="product scroll-view_H" scroll-x="true" style="width: 100%"      bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"  scroll-left="{{scrollLeft}}">
+                <view wx:for="{{kejiPro1}}" class="scroll-view-item_H">
+                    <image class="product_img" src="{{item.src}}"></image>
+                    <text class="product_text">{{item.productText}}</text>
+                </view>
+        </scroll-view>
+        <!--第二个  -->
+            <scroll-view hidden="{{_num!='2'}}" class="product scroll-view_H" scroll-x="true" style="width: 100%"      bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"  scroll-left="{{scrollLeft}}">
+                <view wx:for="{{kejiPro2}}" class="scroll-view-item_H">
+                    <image class="product_img" src="{{item.src}}"></image>
+                    <text class="product_text">{{item.productText}}</text>
+                </view>
+        </scroll-view>
+        <!--第三个  -->
+            <scroll-view hidden="{{_num!='3'}}" class="product scroll-view_H" scroll-x="true" style="width: 100%"      bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"  scroll-left="{{scrollLeft}}">
+                <view wx:for="{{kejiPro3}}" class="scroll-view-item_H">
+                    <image class="product_img" src="{{item.src}}"></image>
+                    <text class="product_text">{{item.productText}}</text>
+                </view>
+        </scroll-view>       
+    </view>
+</view>
+
+
+<!-- 尖端工艺 -->
+<view class="common technics">
+    <view class="custom_title">
+            尖端<text class="orange">工艺</text>
+        <view class="subtitle">268项品质管控  7大节点验收</view>
+    </view>
+    <!-- 产品 -->
+    <view class="technics_box" wx:for="{{technicsPro}}">
+        <image class="technics_img" src="{{item.src}}"></image>
+        <view class="mask">
+            <text class="technics_text">{{item.productText}}</text>
+        </view>       
+    </view>
+</view>
+
+<!-- 售后 -->
+<view class="common sale bottom_h">
+    <view class="custom_title">
+        <text class="orange">贴心</text>的售后服务
+        <view class="subtitle">责任一包到底</view>
+    </view>
+    <!-- 详情 -->
+     <!-- <view class="sale_content">  -->
+        <view class="sale_box" wx:for="{{salePro}}">
+            <view>
+                <image class="sale_img" src="{{item.src}}"></image>
+            </view>
+            <text class="sale_text">{{item.saleText}}</text>   
+        </view>
+        <view class='cl'></view>
+    <!-- </view> -->
+    <view class="foot_text">24小时出解决方案，让你体验6S家居服务</view>    
+</view>
+<!--引入tabBar  -->
+<include src="../public/public.wxml"/>
+
+
+
+
+
+

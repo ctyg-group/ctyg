@@ -1,0 +1,40 @@
+<!-- 装修百科——详情页 -->
+<view class="bk_details bottom_h">
+    <!-- 标题 -->
+    <view class="title">
+        <text class="title_text">艺术涂料\n</text>        
+        <text class="time">2018-12-15 <text decode="{{true}}" space="{{true}}">&nbsp;</text> 13:30:25 <text class="author"><text decode="{{true}}" space="{{true}}">&nbsp;</text>Benny</text> </text>
+    </view>
+    <!-- 简介 -->   
+    <view class="introduction">
+        <text class="in_title">艺术涂料简介\n</text>
+        <text>艺术涂料是一种新型的装饰材料，多涂抹于墙体表面。经过现代高科技的处理，艺术涂料已经越来越安全、无毒、绿色、环保，与此同时，也能够保证防水、防尘、阻燃等优点。市面上优质艺术涂料在经过洗刷后，仍然能够保持鲜艳的色彩。</text>
+    </view>
+    <image src="../../images/details/wanzhuanshenghuo4.png"></image>
+    <view class="introduction">
+        <text class="in_title">艺术涂料施工工具\n</text>
+        <text class="h4">滚筒\n</text>
+        <text>
+            光身塑料滚筒：适用于弹性墙艺涂料及浮雕漆施工，牢固耐用。\n
+            棉布艺术滚筒系列：采用优质布料、海绵制造，适用于艺术涂料，水性金属漆施工。\n 　            
+            橡胶光身滚筒：适用于弹性涂料及浮雕漆施工，牢固耐用，适用于墙纸施工。\n           
+            斜纹小橡胶滚筒：采用优质橡胶制造，适用于艺术涂料、墙艺漆、质感涂料压花图案。\n
+        </text>
+        <text class="h4">刷子\n</text>
+        <text>
+            万用刷：适用于墙艺漆、艺术涂料施工，可涂刷出不同的艺术纹理效果。\n
+            幻彩皮革滚筒刷：适用于平面墙艺漆，艺术涂料、平面幻彩涂料内墙施工，具有变化多端的图案效果，满足不同装饰需求。\n
+        </text>
+        <text class="h4">刮板\n</text>
+        <text>
+                木纹器、木纹片：是采用优质橡胶制造，可涂刷出各种逼真的木纹效果，有“S”形和“M”形纹理。适用于厚浆墙艺漆、厚浆质感涂料\n
+        </text>
+        <text class="h4">海藻棉\n</text>
+        <text>
+                天然海藻棉：是以优质纯天然海藻制造，极强的伸缩性和吸附力，可涂刷出天然艺术花纹效果。
+        </text>
+    </view>
+</view>
+
+<!--引入tabBar  -->
+<include src="../public/public.wxml"/>

@@ -1,0 +1,975 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="/public/index/static/js/mui.min.js"></script>
+    <script src="/public/index/static/js/jquery.js"></script>
+    <script src="/public/index/static/js/swiper-3.4.2.jquery.min.js"></script>
+
+    <link href="/public/index/static/css/mui.min.css" rel="stylesheet"/>
+    <link href="/public/index/static/css/mobile.css" rel="stylesheet"/>
+    <link href="/public/index/static/css/swiper-3.4.2.min.css" rel="stylesheet"/>
+
+    <script type="text/javascript" charset="utf-8">
+        mui.init();
+        (function(){
+            var html=document.documentElement;
+            var width=html.getBoundingClientRect().width;
+            html.style.fontSize = width/15+'px';
+        })();
+    </script>
+    <style>
+        .swiper-pagination-bullet {background-color: #979999;width: 0.46rem;height: 0.46rem;}
+        .swiper-pagination-bullet-active{    opacity: 1;background: #26b550;}
+
+
+        .swiper-pagination1{
+            position: absolute;
+            text-align: center;
+            -webkit-transition: .3s;
+            -moz-transition: .3s;
+            -o-transition: .3s;
+            transition: .3s;
+            -webkit-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            z-index: 10;
+        }
+
+        .swiper-pagination2{
+            position: absolute;
+            text-align: center;
+            -webkit-transition: .3s;
+            -moz-transition: .3s;
+            -o-transition: .3s;
+            transition: .3s;
+            -webkit-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            z-index: 10;
+        }
+
+        .swiper-pagination3{
+            position: absolute;
+            text-align: center;
+            -webkit-transition: .3s;
+            -moz-transition: .3s;
+            -o-transition: .3s;
+            transition: .3s;
+            -webkit-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            z-index: 10;
+        }
+
+
+        .swiper-container1{
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .swiper-container2{
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .swiper-container3{
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+
+        .houseWyattBanner{
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.26rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+
+    </style>
+
+    <style>
+        .mbr_banner{background: url(/public/index/static/brand/mbr_banner.png) no-repeat;background-size:15rem 8.9rem;width: 15rem;height: 8.9rem;margin-top: 2rem;background-color: #FFFFFF;}
+        .tit_text{width: 100%;font-size: 0.52rem;text-align: center;color: #545454;margin-top: 0.4rem;}
+        .huise{height: 0.64rem;width: 100%;background-color: #F2F5F5;}
+
+        .mbwdkj .tit{background: url(/public/index/static/brand/mbt2.png) no-repeat;background-size:6.86rem 2.14rem;width: 6.86rem;height: 2.14rem;margin: 0 auto;margin-top: 1rem;}
+        .mbwdkj .con{width: 100%;height:auto;margin-top: 0.8rem;}
+        .mbwdkj .con .win .tub{background: url(/public/index/static/brand/w_kct.png) no-repeat 40% center;width: 100%;height: 1.28rem;font-size: 0.6rem;color: #333333;text-align: center;line-height: 1.28rem;text-indent: 1rem;background-color: #f2f5f5;}
+        .mbwdkj .con .win .neir{width: 100%;height: 18.16rem;position: relative;}
+        .mbwdkj .con .win .neir .info{position: absolute;height: 6rem;bottom: -0.4rem;}
+        .mbwdkj .con .win .neir .info p{font-size: 0.4rem;color: #333333;text-indent: 0.4rem;margin-bottom: 0.3rem;}
+        .mbwdkj .ann{position:absolute;bottom:2.2rem;right:1.6rem;width: 3.12rem;height: 0.74rem;border: 0.02rem solid #ffffff;border-radius: 0.4rem;line-height: 0.74rem;font-size: 0.48rem;color: #ffffff;text-align: center;background-color: #27B551;}
+
+        .mbyxpp .tit{background: url(/public/index/static/brand/mbyxpp.png) no-repeat;background-size:3.3rem 1.2rem;width: 3.3rem;height: 1.2rem;margin: 0 auto;margin-top: 1rem;}
+        .mbyxpp .ann{width: 100%;height: 1.2rem;overflow: hidden;margin-top: 0.6rem;}
+        .mbyxpp .ann>div{border: 0.02rem solid #000000;width: 3.2rem;height: 1.12rem;float: left;border-radius: 0.2rem;margin-left: 2.88rem;margin-left: 2.88rem;font-size: 0.6rem;color: #333333;text-align: center;line-height: 1.12rem;}
+        .mbyxpp .ann .on{background-color: #26B550;color: #fff;border:0.02rem solid #26B550;}
+        .mbyxpp .neir{width: 100%;height: 11.84rem;background: url(/public/index/static/brand/yxpp.jpg) no-repeat center center;background-size: 15rem 11.84rem;}
+
+        .mbqwhb .tit{background: url(/public/index/static/brand/mbqwhb.png) no-repeat;background-size:5.7rem 2.14rem;width: 5.7rem;height: 2.14rem;margin: 0 auto;margin-top: 1rem;}
+        .mbqwhb .neir1{background: url(/public/index/static/brand/qwhb.jpg) no-repeat;background-size:100% 16.38rem;width: 100%;height: 16.38rem;margin-top: 0.8rem;}
+
+        .mbqwdz .tit{background: url(/public/index/static/brand/mbqwdz.png) no-repeat;background-size:5.18rem 2.14rem;width: 5.18rem;height: 2.14rem;margin: 0 auto;margin-top: 1rem;}
+        .mbqwdz .con{width: 100%;overflow: hidden;padding-bottom: 0.6rem}
+        .mbqwdz .con .tup{width: 100%;margin-top: 0.76rem;float: left;}
+        .mbqwdz .con .tup .p1{font-size: 0.6rem;color: #F99C32;text-align: center;font-weight: 600;margin-top: 0.8rem;}
+        .mbqwdz .con .tup .p2{font-size: 0.56rem;font-weight: 600;color: #000000;text-align: center;margin-top: 0.36rem;}
+        .mbqwdz .con .tup .p3{width: 6.08rem;height: 0.02rem;background-color: #9C9F9F;margin-left: 4.6rem;margin-top: 0.3rem;}
+        .mbqwdz .con .tup .p4{font-size: 0.48rem;color: #333333;text-align: center;margin-top: 0.2rem;}
+        .mbqwdz .ann{width: 100%;overflow: hidden;height: 4.1rem;padding-top: 1.24rem;padding-left: 0.2rem;margin-top: 1rem;}
+        .mbqwdz .ann>div{height: 1rem;line-height:1rem;text-align:center;width: 3.6rem;font-size: 0.48rem;color: #333333;border: 0.04rem solid #000000;border-radius: 0.2rem;float: left;margin-right: 0.65rem;margin-left:0.65rem;margin-bottom: 0.82rem;}
+        .mbqwdz .ann .on{border: 0.04rem solid #26B550;background-color: #26B550;color: #FFFFFF;}
+
+        .mbjdgy .tit{background: url(/public/index/static/brand/mbjdgy.png) no-repeat;background-size:9.9rem 2.12rem;width: 9.9rem;height: 2.12rem;margin: 0 auto;margin-top: 1rem;}
+        .mbjdgy .con{width: 100%;margin-top: 0.7rem;padding-top: 0.6rem;}
+        .mbjdgy .con .neir{background-color: #FFFFFF;}
+        .mbjdgy .con .neir .anli{width: 95%;height: 5.86rem;margin:0 auto;margin-bottom: 0.6rem;}
+        .mbjdgy .con .neir .anli .info{width: 7.1rem;height: 5.86rem;float: left;position: relative;}
+        .mbjdgy .con .neir .anli .info img{width: 7.1rem;height: 5.86rem;}
+        .mbjdgy .con .neir .anli .info .text{width: 5.16rem;height: 1.16rem;position: absolute;background-color: rgba(39,181,81,0.8);bottom: 0rem;left: 0rem;text-align: center;line-height: 1.16rem;color: #ffffff;font-size: 0.52rem;}
+
+        .mbtxsh .tit{background: url(/public/index/static/brand/mbtxsh.png) no-repeat;background-size:5.08rem 2.12rem;width: 5.08rem;height: 2.12rem;margin: 0 auto;margin-top: 1rem;}
+        .mbtxsh .con{width: 100%;height: 13.8rem;margin-top: 0.72rem;padding-left: 0.72rem;padding-top: 0.6rem;}
+        .mbtxsh .con img{width: 5.42rem;height: 5.02rem;margin-left: 0.68rem;margin-right: 0.68rem;margin-bottom: 0.92rem;}
+        .mbtxsh .con p{font-size: 0.56rem;color: #333333;text-align: center;margin-top: -0.3rem;}
+
+        .mbkjsh .tit{background: url(/public/index/static/brand/mbkjsh.png) no-repeat;background-size:9.88rem 2.14rem;width: 9.88rem;height: 2.14rem;margin: 0 auto;margin-top: 1rem;}
+        .mbkjsh .con{margin-top: 0.76rem;width: 15rem;}
+        .mbkjsh .con .info{height: 8.02rem;width: 5.58rem;background-color: #F7F7F7;}
+        .mbkjsh .con .info .img{width: 5.26rem;height: 6.52rem;margin: 0 auto;position: relative;}
+        .mbkjsh .con .info .img img{width: 5.26rem;height: 6.52rem;}
+        .houseWyattBanner .swiper-wrapper .swiper-slide-active  .img .on{display: block;}
+        .mbkjsh .con .info p{font-size: 0.56rem;color: #3b3b3b;text-align: center;line-height: 1.34rem;margin-top: 0.1rem;}
+
+        .mbkjsh .xiaolk{width: 4.48rem;height: 2.42rem;border-radius: 0.2rem;background-color: #f2f5f5;float: left;}
+        .mbkjsh .xiaolk.on{background-color: #27B551;}
+        .mbkjsh .xiaolk.on p{color: #ffffff;}
+        .mbkjsh .xiaolk p{font-size: 0.56rem;color: #333333;text-align: center;margin-top: 0.48rem;}
+        .mbkjsh .henx{width: 0.4rem;height: 0.04rem;background-color: #27b551;float: left;margin-top: 1.1rem;}
+
+
+        .houseSpacePop{
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            z-index: 12;
+            top: 0;
+            left: 0;
+            right: 0;
+            position: fixed;
+        }
+        .houseSpacePop .houseSpacePopbanner{width: 100%;height: 100%;}
+        .houseSpaceEsc{
+            position: absolute;
+            display: block;
+            right: 1.1rem;
+            top: 1.79rem;
+            width: 0.92rem;
+            height: 0.92rem;
+            vertical-align: top;
+            z-index: 3;
+            background: url(/public/index/static/brand/wdkj_x.png) no-repeat;
+            background-size: 0.92rem 0.92rem;
+
+        }
+        .houseSpacePop .swiper-slide{height: 100%;background: url(/public/index/static/brand/wdkj_i1.jpg) no-repeat;background-size: 100% 100%;}
+        .houseSpacePop .swiper-slide .tit{width: 100%;height: 1.6rem;margin-top: 1.6rem;font-size: 0.68rem;color: #FFFFFF;line-height: 1.6rem;text-align: center;text-indent: 1.2rem;}
+        .table1{    height: auto;margin: 0 auto;width: 100%;color: #ffffff;margin-top: 1rem;font-size: 0.56rem;}
+        .table2{    height: auto;margin: 0 auto;width: 100%;color: #ffffff;margin-top: 1rem;font-size: 0.56rem;}
+        .table2 th{height: 1.2rem;}
+        .houseSpacePop .green{color: #2cb750;}
+        .houseSpacePop .henx{height: 0.04rem;width: 95%;margin: 0 auto;background-color: #FFFFFF;margin-top: 0.4rem;}
+
+    </style>
+</head>
+<body style="background-color: #FFFFFF;">
+<header class="mui-bar mui-bar-nav header">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style='width: 22px;height: 24px;'></a>
+    <div class='m_menu category-trigger'></div>
+    <a href="#" style="display: none;"><div class='m_user'></div></a>
+</header>
+
+<div class="layer-nav" style=" height: calc(100% + 50px);">
+    <ul>
+        <li><a href="{:url('mobile/index/index')}"><img src="/public/index/static/mobile/menu1.png" alt="" /><span>首页</span></a></li>
+        <li><a href="{:url('mobile/brand/index')}"><img src="/public/index/static/mobile/menu2.png" alt="" /><span>臻品之选</span></a></li>
+        <li><a href="{:url('mobile/designer/index')}"><img src="/public/index/static/mobile/menu3.png" alt="" /><span>服务之星</span></a></li>
+
+        <li><a href="{:url('mobile/worklive/index')}"><img src="/public/index/static/mobile/menu4.png" alt="" /><span>工地直播</span></a></li>
+        <li><a href="{:url('mobile/goods/index')}"><img src="/public/index/static/mobile/menu5.png" alt="" /><span>整装案例</span></a></li>
+        <li><a href="{:url('mobile/school/index')}"><img src="/public/index/static/mobile/menu6.png" alt="" /><span>装修学堂</span></a></li>
+
+        <!-- <li><a hrenpedlist.htmlhtml"><img src="/public/index/static/mobile/menu7.png" alt="" /><span>装修实景</span></a></li>-->
+        <li><a href="{:url('mobile/enped/index')}"><img src="/public/index/static/mobile/menu8.png" alt="" /><span>装修百科</span></a></li>
+        <!--  <li><a href=""><img src="/public/index/static/mobile/menu9.png" alt="" /><span>装修问答</span></a></li>
+
+          <li><a href=""><img src="/public/index/static/mobile/menu10.png" alt="" /><span>体验馆</span></a></li>
+          <li><a href=""><img src="/public/index/static/mobile/menu11.png" alt="" /><span>新闻中心</span></a></li>-->
+        <li><a href="{:url("mobile/index/lfbj")}"><img src="/public/index/static/mobile/menu12.png" alt="" /><span>量房报价</span></a></li>
+    </ul>
+</div>
+
+<div class="mbr_banner"></div>
+
+<div class="huise"></div>
+
+<div class="mbwdkj swiper-container1">
+    <div class="tit"></div>
+    <div class="swiper-wrapper">
+        <div class="con swiper-slide">
+            <div class='win'>
+                <div class="neir" style="background: url(/public/index/static/brand/dwdkj1.jpg) no-repeat;background-size: 100% 18.16rem;">
+                    <div class="info">
+                        <p>①华鹏：进口釉料，量足耐磨</p>
+                        <p>②芬琳漆：全球环保最高认证彩漆</p>
+                        <p>③卓邦：天然环保、低碳、无毒</p>
+                        <p>④西门子：阻燃、耐冲击，配备USB接口</p>
+                    </div>
+                    <div class="ann open_w">查看全部</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="con swiper-slide">
+            <div class='win'>
+                <div class="neir" style="background: url(/public/index/static/brand/dwdkj2.jpg) no-repeat;background-size: 100% 18.16rem;">
+                    <div class="info">
+                        <p>①大自然地板：防潮性好，持久耐用</p>
+                        <p>②芬琳漆：全球环保最高认证彩漆</p>
+                        <p>③名风木门：不变形、耐腐蚀、隔热保温</p>
+                        <p>④西门子：阻燃、耐冲击，配备USB接口</p>
+                    </div>
+                    <div class="ann open_w">查看全部</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="con swiper-slide">
+            <div class='win'>
+                <div class="neir" style="background: url(/public/index/static/brand/dwdkj3.jpg) no-repeat;background-size: 100% 18.16rem;">
+                    <div class="info">
+                        <p>①欧派：高环保，人性化设计</p>
+                        <p>②东方雨虹：中国防水行业唯一上市品牌</p>
+                        <p>③华鹏：进口釉料，量足耐磨</p>
+                        <p>④西门子：阻燃、耐冲击，配备USB接口</p>
+                    </div>
+                    <div class="ann open_w">查看全部</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="con swiper-slide">
+            <div class='win'>
+                <div class="neir" style="background: url(/public/index/static/brand/dwdkj4.jpg) no-repeat;background-size: 100% 18.16rem;">
+                    <div class="info">
+                        <p>①华鹏：进口釉料，量足耐磨</p>
+                        <p>②东方雨虹：中国防水行业唯一上市品牌</p>
+                        <p>③贝朗：全球顶尖卫浴生产商</p>
+                        <p>④西门子：阻燃、耐冲击，配备USB接口</p>
+                    </div>
+                    <div class="ann open_w">查看全部</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="con swiper-slide">
+            <div class='win'>
+                <div class="neir" style="background: url(/public/index/static/brand/dwdkj5.jpg) no-repeat;background-size: 100% 18.16rem;">
+                    <div class="info">
+                        <p>①华鹏：进口釉料，量足耐磨</p>
+                        <p>②东方雨虹：中国防水行业唯一上市品牌</p>
+                        <p>③芬琳漆：全球环保最高认证彩漆</p>
+                        <p>④西门子：阻燃、耐冲击，配备USB接口</p>
+                    </div>
+                    <div class="ann open_w">查看全部</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-pagination1" ></div>
+
+</div>
+
+<div class="huise"></div>
+
+<div class="mbyxpp">
+    <div class="tit"></div>
+    <div class="tit_text">四大国际品牌 六大上市品牌</div>
+    <div style="margin-top: 0.84rem;">
+        <div class="neir"></div>
+    </div>
+</div>
+
+<div class="huise"></div>
+
+<div class="mbqwhb">
+    <div class="tit"></div>
+    <div class="neir1"></div>
+</div>
+
+<div class="huise"></div>
+
+
+<div class="mbqwdz">
+    <div class="tit"></div>
+    <div class="ann">
+        <div class="on">人体工程学设计</div>
+        <div>家居收纳设计</div>
+        <div>家居动线设计</div>
+        <div>软装搭配设计</div>
+        <div>风水学设计</div>
+        <div>人性化工程服务</div>
+    </div>
+    <div class="neir">
+        <div class="con">
+            <div class="tup">
+                <img src="/public/index/static/brand/qwdz1.png" style="width: 100%;height: 6.6rem;" alt="" />
+                <p class="p1">人体工程学设计</p>
+                <p class="p2">让工具人性化&nbsp;&nbsp;&nbsp;让空间适应你</p>
+                <div class="p3"></div>
+                <p class="p4">围绕人体动作尺度进行空间布局和工具设计<br/>让生活更方便、省力、省心、舒适</p>
+            </div>
+        </div>
+
+        <div class="con" style="display: none;">
+            <div class="tup">
+                <img src="/public/index/static/brand/qwdz2.png" style="width: 100%;height: 6.6rem;" alt="" />
+                <p class="p1">家居收纳设计</p>
+                <p class="p2">懒和整齐的平衡&nbsp;&nbsp;&nbsp;每个人都不一样</p>
+                <div class="p3"></div>
+                <p class="p4">东西按空间和使用习惯、收放动作进行分类<br/>收纳不止体积，还有长度和面积</p>
+            </div>
+        </div>
+
+        <div class="con" style="display: none;">
+            <div class="tup">
+                <img src="/public/index/static/brand/qwdz3.png" style="width: 100%;height: 6.6rem;" alt="" />
+                <p class="p1">家居动线设计</p>
+                <p class="p2">动静分明&nbsp;&nbsp;&nbsp;居住品质UP UP</p>
+                <div class="p3"></div>
+                <p class="p4">来客动线：从入门到客厅，功能区合理划分</p>
+                <p class="p4">家务动线：从入门到厨房，洗衣机到晾晒阳台，家务处理小能手</p>
+                <p class="p4">居住动线：私密区域活动，如卧室、卫生间、书房，我的秘密花园</p>
+            </div>
+        </div>
+
+        <div class="con" style="display: none;">
+            <div class="tup">
+                <img src="/public/index/static/brand/qwdz4.jpg" style="width: 100%;height: 6.6rem;" alt="" />
+                <p class="p1">软装搭配设计</p>
+                <p class="p2">空间一体化&nbsp;&nbsp;&nbsp;每个角落皆是景致</p>
+                <div class="p3"></div>
+                <p class="p4">客厅：一般以白色、黄色为主</p>
+                <p class="p4">卧室：以暖色为主</p>
+                <p class="p4">书房：一般以浅蓝、嫩绿、白色等冷色调为主</p>
+            </div>
+        </div>
+
+        <div class="con" style="display: none;">
+            <div class="tup">
+                <img src="/public/index/static/brand/qwdz5.jpg" style="width: 6.6rem;height: 6.46rem;margin-left: 4.2rem;" alt="" />
+                <p class="p1">风水学设计</p>
+                <p class="p2">关注家居风水&nbsp;&nbsp;&nbsp;生活顺风顺水</p>
+                <div class="p3"></div>
+                <p class="p4">客厅：宽敞明亮，空气流通，光线充足</p>
+                <p class="p4">卧室：一生中1/3的休憩场所，摄气养神，皆在于此</p>
+                <p class="p4">厨房：不宜面向南方，不宜位处家宅中央</p>
+            </div>
+        </div>
+
+        <div class="con" style="display: none;">
+            <div class="tup">
+                <img src="/public/index/static/brand/qwdz6.jpg" style="width: 7.48rem;height: 6.68rem;margin-left: 3.76rem;" alt="" />
+                <p class="p1">人性化工程服务</p>
+                <p class="p2">小细节&nbsp;&nbsp;&nbsp;凝聚大智慧</p>
+                <div class="p3"></div>
+                <p class="p4">空调开孔：装修过程中提前进行空调开孔</p>
+                <p class="p4">入墙式踢脚线：美观实用，减少后期家庭卫生死角</p>
+                <p class="p4">栏杆地梁沿边铺贴：方便清洁排水挡雨</p>
+                <p class="p4">瓷砖胶薄贴法：安全牢固、不脱落</p>
+                <p class="p4">阳台瓷砖修补：阳台墙面瓷砖修补，保持统一美观</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="huise"></div>
+
+<div class="mbkjsh houseWyattBanner" >
+    <div class="tit"></div>
+
+    <div style="overflow: hidden;margin-left: 0.38rem;margin-top: 0.92rem;">
+        <div class="xiaolk">
+            <p>自动调节<br/>绿色节能</p>
+        </div>
+        <div class="henx"></div>
+        <div class="xiaolk on">
+            <p>智能家居<br/>智慧生活</p>
+        </div>
+        <div class="henx"></div>
+        <div class="xiaolk">
+            <p>极致人性<br/>精致人生</p>
+        </div>
+    </div>
+
+
+    <div class="con swiper-wrapper" >
+        <div class="info swiper-slide" date="多重场景<br/>一键搞定">
+            <div class="img">
+                <img src="/public/index/static/brand/kjsh1.png" alt="" />
+            </div>
+            <p>智能灯光</p>
+        </div>
+
+        <div class="info swiper-slide" date="360°<br/>安全防护">
+            <div class="img">
+                <img src="/public/index/static/brand/kjsh2.png" alt="" />
+            </div>
+            <p>安防报警</p>
+        </div>
+
+        <div class="info swiper-slide" date="还你舒适<br/>好睡眠">
+            <div class="img">
+                <img src="/public/index/static/brand/kjsh3.png" alt="" />
+            </div>
+            <p>智能窗帘</p>
+        </div>
+
+        <div class="info swiper-slide" date="家庭影院<br/>秒变ktv">
+            <div class="img">
+                <img src="/public/index/static/brand/kjsh4.png" alt="" />
+            </div>
+            <p>智能影音</p>
+        </div>
+    </div>
+</div>
+
+<div class="huise"></div>
+
+<div class="mbjdgy swiper-container2">
+    <div class="tit"></div>
+    <div class="con swiper-wrapper">
+        <div class="neir swiper-slide">
+            <div class="anli">
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh1.jpg" alt="">
+                    <div class="text">砌墙工艺</div>
+                </div>
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh2.jpg" alt="">
+                    <div class="text">砌墙加固、防裂工艺</div>
+                </div>
+            </div>
+
+            <div class="anli">
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh3.jpg" alt="">
+                    <div class="text">包管排污工艺</div>
+                </div>
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh4.jpg" alt="">
+                    <div class="text">电线管铺设工艺</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="neir swiper-slide">
+            <div class="anli">
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh5.jpg" alt="">
+                    <div class="text">冷热水管铺设工艺</div>
+                </div>
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh6.jpg" alt="">
+                    <div class="text">排污管铺设工艺</div>
+                </div>
+            </div>
+
+            <div class="anli">
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh7.jpg" alt="">
+                    <div class="text">沉降池回填工艺</div>
+                </div>
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh8.jpg" alt="">
+                    <div class="text">斜坡工艺</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="neir swiper-slide">
+            <div class="anli">
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh9.jpg" alt="">
+                    <div class="text">瓷砖胶薄贴工艺</div>
+                </div>
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh10.jpg" alt="">
+                    <div class="text">吊顶工艺</div>
+                </div>
+            </div>
+
+            <div class="anli">
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh11.jpg" alt="">
+                    <div class="text">吊顶防裂工艺</div>
+                </div>
+                <div class="info">
+                    <img src="/public/index/static/brand/rxh12.jpg" alt="">
+                    <div class="text">墙漆分色工艺</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;height: 1rem;background-color: #ffffff;"></div>
+    <div class="swiper-pagination2"></div>
+
+</div>
+
+<div class="huise"></div>
+
+<div class="mbtxsh">
+    <div class="tit"></div>
+    <div class="con">
+        <img src="/public/index/static/brand/txsh1.png" alt="" />
+        <img src="/public/index/static/brand/txsh2.png" alt="" />
+        <img src="/public/index/static/brand/txsh3.png" alt="" />
+        <img src="/public/index/static/brand/txsh4.png" alt="" />
+        <p>24小时出解决方案，让你体验6s家居</p>
+    </div>
+</div>
+
+
+
+<div class='footer' style="margin-bottom: 0rem;background-color: #F2F5F5;">
+    <div>关于我们&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;电脑端&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;常见问题</div>
+    <div>@2017久居整装&nbsp;&nbsp;粤ICP备17065962号</div>
+</div>
+
+
+
+<div class="houseSpacePop ">
+    <div class="houseSpaceEsc"></div>
+    <div class="swiper-container3 houseSpacePopbanner">
+        <div class="swiper-wrapper" style="height: 100%;">
+            <div class="swiper-slide" >
+                <div class="tit" style="background: url(/public/index/static/brand/b_kct.png) no-repeat 40% center;background-size: 1.6rem 1.6rem;">客餐厅</div>
+                <table class="table1" cellspacing="0" border="0" cellpadding="0" >
+                    <tbody>
+                    <tr>
+                        <th style="width: 50%;">项目</th>
+                        <th style="width: 50%;">品牌</th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class='henx'></div>
+                <table class="table2" cellspacing="0" border="0" cellpadding="0" >
+                    <tbody>
+                    <tr>
+                        <th style="width: 50%;">地砖</th>
+                        <th style="width: 50%;">华鹏</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">墙面乳胶漆</th>
+                        <th style="width: 50%;" class="green">芬兰芬琳漆</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">顶面乳胶漆</th>
+                        <th style="width: 50%;" class="green">芬兰芬琳漆</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">批灰</th>
+                        <th style="width: 50%;">卓邦腻子</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">墙面批灰满刮纤维网</th>
+                        <th style="width: 50%;">包工包料</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;" class="green">踢脚线（暗藏）</th>
+                        <th style="width: 50%;">包工包料</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">门槛大理石</th>
+                        <th style="width: 50%;">优质石材</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">普通灯具安装</th>
+                        <th style="width: 50%;">包含</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">开关插座</th>
+                        <th style="width: 50%;">西门子</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="swiper-slide" >
+                <div class="tit" style="background: url(/public/index/static/brand/b_ws.png) no-repeat 40% center;background-size: 1.6rem 1.6rem;">卧室</div>
+                <table class="table1" cellspacing="0" border="0" cellpadding="0" >
+                    <tbody>
+                    <tr>
+                        <th style="width: 50%;">项目</th>
+                        <th style="width: 50%;">品牌</th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class='henx'></div>
+                <table class="table2" cellspacing="0" border="0" cellpadding="0" >
+                    <tbody>
+                    <tr>
+                        <th style="width: 50%;">铺地砖</th>
+                        <th style="width: 50%;">华鹏</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">铺地板</th>
+                        <th style="width: 50%;" class="green">大自然/myfloor（进口）</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">门槛大理石</th>
+                        <th style="width: 50%;" >优质石材</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">墙面乳胶漆</th>
+                        <th style="width: 50%;" class="green">芬兰芬琳漆</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">顶面乳胶漆</th>
+                        <th style="width: 50%;" class="green">芬兰芬琳漆</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">批灰</th>
+                        <th style="width: 50%;">卓邦腻子</th>
+                    <tr>
+                        <th style="width: 50%;">墙面批灰满刮纤维网</th>
+                        <th style="width: 50%;">包工包料</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">窗台大理石（非飘窗）</th>
+                        <th style="width: 50%;">优质石材</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">踢脚线</th>
+                        <th style="width: 50%;">包工包料</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">石膏角线</th>
+                        <th style="width: 50%;">穗华牌</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">普通灯具安装</th>
+                        <th style="width: 50%;">包含</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">平开门（木门）</th>
+                        <th style="width: 50%;">名风木门</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">门锁及五金件</th>
+                        <th style="width: 50%;">厂家标配</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">开关插座</th>
+                        <th style="width: 50%;">西门子</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="swiper-slide" >
+                <div class="tit" style="background: url(/public/index/static/brand/b_cf.png) no-repeat 40% center;background-size: 1.6rem 1.6rem;">厨房</div>
+                <table class="table1" cellspacing="0" border="0" cellpadding="0" >
+                    <tbody>
+                    <tr>
+                        <th style="width: 50%;">项目</th>
+                        <th style="width: 50%;">品牌</th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class='henx'></div>
+                <table class="table2" cellspacing="0" border="0" cellpadding="0" >
+                    <tbody>
+                    <tr>
+                        <th style="width: 50%;">地砖</th>
+                        <th style="width: 50%;">华鹏</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">墙砖</th>
+                        <th style="width: 50%;" >华鹏</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">门槛大理石</th>
+                        <th style="width: 50%;" >优质石材</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">防水处理</th>
+                        <th style="width: 50%;" >东方雨虹</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;" class="green">橱柜</th>
+                        <th style="width: 50%;"class="green">欧派</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">铝扣板吊顶</th>
+                        <th style="width: 50%;">西飞吊顶</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">配套LED灯</th>
+                        <th style="width: 50%;">西飞</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">铝合金推拉门及平开门</th>
+                        <th style="width: 50%;">安居铝业一套</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">门锁及五金件</th>
+                        <th style="width: 50%;">厂家标配</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">地漏</th>
+                        <th style="width: 50%;">贝朗</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">开关插座</th>
+                        <th style="width: 50%;">西门子</th>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="swiper-slide" >
+                <div class="tit" style="background: url(/public/index/static/brand/b_wsj.png) no-repeat 40% center;background-size: 1.6rem 1.6rem;">卫生间</div>
+                <table class="table1" cellspacing="0" border="0" cellpadding="0" >
+                    <tbody>
+                    <tr>
+                        <th style="width: 50%;">项目</th>
+                        <th style="width: 50%;">品牌</th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class='henx'></div>
+                <table class="table2" cellspacing="0" border="0" cellpadding="0" >
+                    <tbody>
+                    <tr>
+                        <th style="width: 50%;">地砖</th>
+                        <th style="width: 50%;">华鹏</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">墙砖</th>
+                        <th style="width: 50%;" class="green">华鹏</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">门槛大理石</th>
+                        <th style="width: 50%;" >优质石材</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">铝扣板吊顶</th>
+                        <th style="width: 50%;" class="green">西飞吊顶</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">防水处理</th>
+                        <th style="width: 50%;" class="green">东方雨虹</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">配套LED灯</th>
+                        <th style="width: 50%;">西飞</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">配套排气扇</th>
+                        <th style="width: 50%;">正野</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">洁具</th>
+                        <th style="width: 50%;">贝朗、安华</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">铝合金平开门</th>
+                        <th style="width: 50%;">安居铝业</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">门锁及五金件</th>
+                        <th style="width: 50%;">厂家标配</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">地漏</th>
+                        <th style="width: 50%;">贝朗</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">开关插座</th>
+                        <th style="width: 50%;">西门子</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">卫浴五金（6件套）</th>
+                        <th style="width: 50%;">贝朗</th>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="swiper-slide" >
+                <div class="tit" style="background: url(/public/index/static/brand/b_yt.png) no-repeat 40% center;background-size: 1.6rem 1.6rem;">阳台</div>
+                <table class="table1" cellspacing="0" border="0" cellpadding="0" >
+                    <tbody>
+                    <tr>
+                        <th style="width: 50%;">项目</th>
+                        <th style="width: 50%;">品牌</th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class='henx'></div>
+                <table class="table2" cellspacing="0" border="0" cellpadding="0" >
+                    <tbody>
+                    <tr>
+                        <th style="width: 50%;">地砖</th>
+                        <th style="width: 50%;">华鹏</th>
+                    </tr>
+
+                    <tr>
+                        <th style="width: 50%;">门槛大理石</th>
+                        <th style="width: 50%;" >优质石材</th>
+                    </tr>
+
+                    <tr>
+                        <th style="width: 50%;">防水处理</th>
+                        <th style="width: 50%;" >东方雨虹</th>
+                    </tr>
+
+                    <tr>
+                        <th style="width: 50%;">普通灯具安装</th>
+                        <th style="width: 50%;">包含</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">顶面乳胶漆</th>
+                        <th style="width: 50%;" class="green">芬兰芬琳漆</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">开关插座</th>
+                        <th style="width: 50%;">西门子</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">地漏</th>
+                        <th style="width: 50%;">贝朗</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50%;">栏杆沿边铺贴</th>
+                        <th style="width: 50%;">包工包料</th>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="swiper-pagination3"></div>
+    </div>
+
+</div>
+
+</body>
+<script>
+
+    $(function(){
+        var swiper = new Swiper('.swiper-container1', {
+            pagination: '.swiper-pagination1',
+            loop: true
+        });
+
+        var swiper2 = new Swiper('.swiper-container2', {
+            pagination: '.swiper-pagination2',
+            loop: true
+        });
+
+        var swiper3 = new Swiper('.swiper-container3', {
+            pagination: '.swiper-pagination3',
+            loop: true,
+            paginationClickable: true,
+        });
+
+        var swiper4 = new Swiper('.houseWyattBanner', {
+            loop: true,
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 26,
+            nextButton: '.houseWyattNext',
+            prevButton: '.houseWyattPrev',
+            onSlideChangeStart: function(swiper4){
+                num = $(".houseWyattBanner .swiper-slide-active").attr("date");
+                $(".xiaolk.on p").html(num);
+            }
+        });
+
+        $('.houseSpacePop').hide();
+
+        $(".ann.open_w").click(function(){
+            num = $(this).parent().parent().parent().index()*1-1;
+            $('.houseSpacePop .swiper-pagination3 span').eq(num).click();
+            $('.houseSpacePop').show();
+
+        });
+
+
+        $(".houseSpaceEsc").click(function(){
+            $('.houseSpacePop').hide();
+        });
+
+
+
+        var lockScroll = function(lock){
+            $('html')[lock ? 'addClass' : 'removeClass']('lock-scroll');
+        };
+
+        //导航弹层
+        $(".category-trigger").click(function () {
+            $(".layer-nav").fadeIn(50).css({"height": "calc(100% + 50px)"});
+            lockScroll(true);
+        });
+
+        $(".layer-nav").click(function () {
+            $(this).fadeOut(50);
+            lockScroll(false);
+        });
+
+        $(".backtop").click(function(){
+            $('html,body').animate({ scrollTop: 0 }, 500 ,function(){});
+        });
+
+
+        function tab(a,b){
+            $(a).click(
+                function(){
+                    var i = $(this).index();
+                    $(this).addClass('on').siblings().removeClass('on');
+                    $(b).hide();
+                    $(b).eq(i).fadeIn();
+                }
+            )
+        }
+
+
+        tab(".mbyxpp .ann>div",".mbyxpp .neir");
+        tab(".mbqwdz .ann>div",".mbqwdz .neir>div");
+    });
+
+</script>
+</html>

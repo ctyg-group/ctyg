@@ -1,0 +1,73 @@
+{include file="public/header" /}
+<script src="/public/index/static/js/mui.picker.min.js"></script>
+<link href="/public/index/static/css/mui.picker.min.css" rel="stylesheet"/>
+	
+	<div class="eni_list top_head" a="{$paid}">
+		<div class='tit'>
+			<div {if condition="$paid == 18"}class='enl_tit on'{else /}class='enl_tit'{/if}>装修百科</div>
+			<div {if condition="$paid == 1"}class='enl_tit on'{else /}class='enl_tit'{/if}>设计百科</div>
+			<div {if condition="$paid == 12"}class='enl_tit on'{else /}class='enl_tit'{/if}>生活百科</div>
+			<div {if condition="$paid == 5"}class='enl_tit on'{else /}class='enl_tit'{/if}>家居百科</div>
+		</div>
+
+		{foreach name='cat_list' item='clv' key='clk'}
+
+		<div class='enl_lcate' {if condition="$paid != $clk "}style="display:none;"{/if}>
+			{if condition="$cat_id == $clk "}<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>$clk,'p'=>'1'))}"><div class='lcate on' >全部</div></a>{else /}<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>$clk,'p'=>'1'))}"><div class='lcate' >全部</div></a>{/if}
+			{foreach: name="$clv" item='clvv'}
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>$clvv['cat_id'],'p'=>'1'))}"><div {if condition="$child_id == $clvv['cat_id']"}class='lcate on'{else /}class='lcate'{/if}>{$clvv['cat_name']}</div></a>
+			{/foreach}
+		</div>
+		{/foreach}
+
+		
+		<div class='list1'>
+			{foreach name='list' item='lv' key='lk'}
+			<div class='eni_list1'>
+				<div class='eni1_img'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$lv['enped_id'])),'.html'}"><img src="{$lv['thumb']}" style="width:4.26rem;height: 2.98rem;" alt=""></a></div>
+				
+				<div class='eni1_info'>
+					<div class='eni1_info1'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$lv['enped_id'])),'.html'}">{$lv['title']}</a></div>
+					<div class='eni1_info2'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$lv['enped_id'])),'.html'}">{$lv['explain']|mb_substr=###,0,28,'utf-8'}...</a></div>
+				</div>	
+			</div>
+			{/foreach}
+					
+		</div>
+	</div>
+
+	<div class="mobpage">
+		{if condition="$p == 1"}
+		<a href="{:url('Mobile/enped/enpedlist',array('cat_id'=>$cat_id,'p'=>1))}"><div class="upp">上一页</div></a>
+		{else}
+		<a href="{:url('Mobile/enped/enpedlist',array('cat_id'=>$cat_id,'p'=>$p*1-1))}"><div class="upp">上一页</div></a>
+		{/if}
+		<div class="chosep" data-options='{$page}' onclick="chose_page()">{$p} / {$count}</div>
+		{if condition="$p == $count"}
+		<a href="{:url('Mobile/enped/enpedlist',array('cat_id'=>$cat_id,'p'=>$p))}"><div class="downp">下一页</div></a>
+		{else}
+		<a href="{:url('Mobile/enped/enpedlist',array('cat_id'=>$cat_id,'p'=>$p*1+1))}"><div class="downp">下一页</div></a>
+		{/if}
+	</div>
+<script>
+	$('.eni_list .tit>div').click(function(){
+		var i = $(this).index();
+		$(this).addClass('on').siblings().removeClass('on');
+		$(this).parent().parent().find('.enl_lcate').hide();
+		$(this).parent().parent().find('.enl_lcate').eq(i).fadeIn();
+	});
+
+    function chose_page(){
+        var picker = new mui.PopPicker();
+        var optionsJson = $(".chosep").attr('data-options');
+        var options = JSON.parse(optionsJson);
+        picker.setData(options);
+        picker.show(function(SelectedItem) {
+            url = "{:url('Mobile/enped/enpedlist',array('cat_id'=>catid,'p'=>pid))}";
+            url = url.replace('catid',{$cat_id});
+            url = url.replace('pid',SelectedItem[0].value);
+            location.href = url;
+        })
+    }
+</script>
+{include file="public/footer" /}

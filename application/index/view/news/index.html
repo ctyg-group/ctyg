@@ -1,0 +1,245 @@
+{include file="public/header" /}
+<link rel="stylesheet" href="/public/index/style/zxxt.css">
+<script type="text/javascript" src="/public/index/static/js/jquery.js"></script>
+<script type="text/javascript" src="/public/index/static/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/public/index/static/js/layer/layer.js"></script>
+<!-- 弹窗js 参考文档 http://layer.layui.com/-->
+<script type="text/javascript" src="/public/index/static/js/ie6orie7.js"></script>
+<script type="text/javascript" src="/public/index/static/js/slick.js"></script>
+<script type="text/javascript" src="/public/index/static/js/js.js"></script>
+
+<!-- <link href="css/slick.css" type="text/css" rel="stylesheet" /> -->
+<!--<link rel="stylesheet" type="text/css" href="/public/static/css/selectordie.css">-->
+<link href="/public/index/static/css/style.css" type="text/css" rel="stylesheet" />
+<link href="/public/index/static/css/reset.css" type="text/css" rel="stylesheet" />
+<!--[if IE 8]>
+<script type="text/javascript" src="/public/static/js/html5shiv.js"></script>
+<![endif]-->
+<script src="/public/index/js/myFormValidate.js"></script>
+    <div class="main main-zxs">
+        <div class="layout fix">
+            <div class="zxsl fl">
+                <div class="bigad">
+                    {volist name="artnew" id="artnew"}
+                    <div>
+                        <a target="_blank" href="{:url('Index/News/newsinfo',array('article_id'=>$artnew.article_id))}">
+                            <div class="adimg">
+                                <img src="{$artnew.thumb}" width="865" height="400" alt="">
+                                <div class="adcover">
+                                    <p>{$artnew.title}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {/volist}
+
+                </div>
+                <div class="zxslb">
+                    <ul class="fix">
+                        <li class="fix">
+                            <div class="zlit1l fl">
+                                <div class="zlits">
+                                    <h4>
+                                        <a href="{:url('Index/News/typelist',array('cat_id'=>23,'p'=>1))}">装修流程</a>
+                                    </h4>
+                                    <small>DECORATION PROCESS</small>
+                                    <div class="img">
+                                        <a href="{:url('Index/News/typelist',array('cat_id'=>23,'p'=>1))}">
+                                            <img src="/public/index/static/images/zxlit1.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="zxlitd">
+                                        <h5>栏目介绍：</h5>
+                                        <p>全面介绍装修流程及装修注意事项，让装修更加清晰透明。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="zlit1r fr">
+                                <div class="qiet">
+                                    <ul class="fix">
+                                        <?php $num1=0;?>
+                                        {foreach name="art1" item="art_1" key="k"}
+                                        <li {if condition="$num1 eq 0"}class="on"{/if}>
+                                            <a href="javascript:;">{$k}</a>
+                                        </li>
+                                        <?php $num1++;?>
+                                        {/foreach}
+
+                                    </ul>
+                                </div>
+
+                                <div class="qieb">
+                                    <?php $num2=0; foreach($art1 as $k=>$v){?>
+                                    <ul {if condition="$num2 eq 0"}style="display: block;"{else /}style="display: none;"{/if}>
+                                        <?php foreach($art1[$k] as $key=>$value){ ?>
+                                        <li {if condition="$key eq 0 or $key eq 3"}class="mal0"{/if}>
+                                            <a target="_blank" href="{:url('Index/News/newsinfo',array('article_id'=>$value.article_id))}">
+                                                <div class="img">
+                                                    <img src="{$value.thumb}" width="202" height="130" alt="">
+                                                    <div class="zxdesc">
+                                                        <p>{$value.title}</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                         <?php }?>
+                                    </ul>
+                                    <?php $num2++;}?>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="fix">
+                            <div class="zlit1l zlit2l fl">
+                                <div class="zlits">
+                                    <h4>
+                                        <a href="{:url('Index/News/typelist',array('cat_id'=>27,'p'=>1))}">装饰搭配</a>
+                                    </h4>
+                                    <small>DECORATION COLLOCATION</small>
+                                    <div class="img">
+                                        <a href="{:url('Index/News/typelist',array('cat_id'=>17,'p'=>1))}">
+                                            <img src="/public/index/static/images/zxlit2.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="zxlitd">
+                                        <h5>栏目介绍：</h5>
+                                        <p>最全的装修风格和装饰搭配法则介绍，用创意凸显家居个性。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="zlit1r fr">
+                                <div class="qiet">
+                                    <ul class="fix">
+                                        <?php $num1=0;?>
+                                        {foreach name="art2" item="art_2" key="k"}
+                                        <li {if condition="$num1 eq 0"}class="on"{/if}>
+                                        <a href="javascript:;">{$k}</a>
+                                        </li>
+                                        <?php $num1++;?>
+                                        {/foreach}
+
+                                    </ul>
+                                </div>
+
+                                <div class="qieb">
+                                    <?php $num2=0; foreach($art2 as $k=>$v){?>
+                                    <ul {if condition="$num2 eq 0"}style="display: block;"{else /}style="display: none;"{/if}>
+                                    <?php foreach($art2[$k] as $key=>$value){ ?>
+                                    <li {if condition="$key eq 0 or $key eq 3"}class="mal0"{/if}>
+                                    <a target="_blank" href="{:url('Index/News/newsinfo',array('article_id'=>$value.article_id))}">
+                                        <div class="img">
+                                            <img src="{$value.thumb}" width="202" height="130" alt="">
+                                            <div class="zxdesc">
+                                                <p>{$value.title}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    </li>
+                                    <?php }?>
+                                    </ul>
+                                    <?php $num2++;}?>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="fix">
+                            <div class="zlit1l zlit3l fl">
+                                <div class="zlits">
+                                    <h4>
+                                        <a href="{:url('Index/News/typelist',array('cat_id'=>31,'p'=>1))}">风水知识</a>
+                                    </h4>
+                                    <small>FENG SHUI KNOWLEDGE</small>
+                                    <div class="img">
+                                        <a href="{:url('Index/News/typelist',array('cat_id'=>31,'p'=>1))}">
+                                            <img src="/public/index/static/images/zxlit3.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="zxlitd">
+                                        <h5>栏目介绍：</h5>
+                                        <p>最全家居风水知识介绍，装修宜忌及装饰布局注意事项。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="zlit1r fr">
+                                <div class="qiet">
+                                    <ul class="fix">
+                                        <?php $num1=0;?>
+                                        {foreach name="art3" item="art_3" key="k"}
+                                        <li {if condition="$num1 eq 0"}class="on"{/if}>
+                                        <a href="javascript:;">{$k}</a>
+                                        </li>
+                                        <?php $num1++;?>
+                                        {/foreach}
+                                    </ul>
+                                </div>
+
+                                <div class="qieb">
+                                    <?php $num2=0; foreach($art3 as $k=>$v){?>
+                                    <ul {if condition="$num2 eq 0"}style="display: block;"{else /}style="display: none;"{/if}>
+                                    <?php foreach($art3[$k] as $key=>$value){ ?>
+                                    <li {if condition="$key eq 0 or $key eq 3"}class="mal0"{/if}>
+                                    <a target="_blank" href="{:url('Index/News/newsinfo',array('article_id'=>$value.article_id))}">
+                                        <div class="img">
+                                            <img src="{$value.thumb}" width="202" height="130" alt="">
+                                            <div class="zxdesc">
+                                                <p>{$value.title}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    </li>
+                                    <?php }?>
+                                    </ul>
+                                    <?php $num2++;}?>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="zxr qnr fr" style="margin-top: 10px;">
+                {include file="public/baojia" /}
+                <!-- 热门文章 -->
+                {include file="public/hotnews" /}
+
+                {include file="public/hotcase" /}
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        //页面单独使用的js
+        $('.qiet li').click(function () {
+            var i = $(this).index();
+            $(this).addClass('on').siblings().removeClass('on');
+            $(this).parent().parent().parent().find('.qieb>ul').hide();
+            $(this).parent().parent().parent().find('.qieb>ul').eq(i).fadeIn();
+        })
+
+        $('.huoshow').slick({
+            slidesToShow: 1,
+            arrows: false,
+            infinite: false,
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 5000
+        })
+
+        $('.bigad').slick({
+            autoplay: true,
+            autoplaySpeed: 5000,
+            slidesToShow: 1,
+            arrows: false,
+            infinite: true,
+        });
+
+        tab('.huoq a', '.huoa>ul')
+
+        $('select').selectOrDie();
+    </script>
+    <!-- 底部 -->
+{include file="public/footer" /}

@@ -1,0 +1,71 @@
+.foot{
+width:100%;
+height: 98rpx;
+position: fixed;
+bottom:0;
+left:0;
+background: rgb(247,247,250);
+}
+
+.foot .tab{
+
+width:25%;
+
+float: left;
+
+height:100%;
+
+font-size:24rpx;
+
+text-align:center;
+
+}
+
+.foot .tab image{
+
+width:50rpx;
+
+height:50rpx;
+
+}
+.foot text{
+  display:inline-block;
+  width:100%;
+}
+
+
+
+.foot .tab .tab-sele{
+
+color: #BBDEF8;
+
+}
+
+input {
+
+display:block;
+
+height:1.4rem;
+
+text-overflow:clip;
+
+overflow:hidden;
+
+white-space:nowrap;
+
+font-family:UICTFontTextStyleBody;
+
+min-height:1.4rem;
+
+}
+.foot text{
+  color: #a9b7b7;
+  position: absolute;
+  top:26rpx;
+  left: 0;
+}
+.foot navigator{
+height:100rpx;
+line-height: 100rpx;
+position: relative;
+}

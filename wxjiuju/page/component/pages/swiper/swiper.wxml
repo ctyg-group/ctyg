@@ -1,0 +1,20 @@
+<view class="swiper-container">  
+  <swiper
+    autoplay="{{autoplay}}" 
+    interval="{{interval}}" 
+    duration="{{duration}}" 
+    height="{{height}}" 
+    bindchange="swiperChange"
+    style="height:{{height}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="355" height="{{height}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+   <view class="dots" style="display:{{indicatorDot ==false ? 'none':'flex'}}">  
+      <block wx:for="{{imgUrls}}" wx:key="unique">  
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>  
+      </block>  
+  </view> 
+</view>

@@ -1,0 +1,48 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+page{
+  padding: 0;
+  margin: 0;
+  font-family: "﻿AdobeHeitiStd-Regular";
+  background: rgb(239,239,244);
+  letter-spacing:1px;
+}
+.cl{
+  clear: both;
+}
+
+.green{
+  color: rgb(46,174,71);
+}
+.gray{
+  color: rgb(169,169,169);
+}
+.orange{
+  color: rgb(255,155,9);
+}
+
+.fs48{
+  font-size: 48rpx;   
+}
+
+/* 距离底部高度 */
+.bottom_h{
+  margin-bottom: 127rpx;
+}
+
+/* 底部边框 */
+.border_bottom{
+  border-bottom: solid 1px rgb(238,238,238);
+}
+
+.mart38{
+  margin-top: 38rpx;
+}

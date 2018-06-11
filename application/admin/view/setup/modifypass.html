@@ -1,0 +1,102 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <!-- 内容页面 -->
+    <div class="left-aside" >
+        {include file="common/leftnav" /}
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title" >
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">系统设置 <i class="fa fa-angle-double-right"></i> 修改密码</h4>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <ul class="nav nav-tabs" role="tablist">
+
+                                <li class="active">
+                                    <a href="JavaScript:;">
+                                        <span class="visible-xs">修改密码</span>
+                                        <span class="hidden-xs">修改密码</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="cus-row">
+                                <div class="table-responsive">
+                                    <br>
+                                    <form action="" method="post" class="form-horizontal col-sm-6">
+                                        <div class="form-group">
+                                            <label  class="control-label col-sm-3">原密码:</label>
+                                            <div class="col-sm-9">
+                                                <input type="password" class="form-control" id="passold" name="passold" placeholder="请输入原密码">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label  class="control-label col-sm-3">新密码:</label>
+                                            <div class="col-sm-9">
+                                                <input type="password" class="form-control" id="passnew" name="passnew" placeholder="请输入新密码">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label  class="control-label col-sm-3">确认密码:</label>
+                                            <div class="col-sm-9">
+                                                <input type="password" class="form-control" id="onepass" name="onepass" placeholder="请确认密码">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3"></label>
+                                            <div class="col-sm-9">
+                                                <button type="button" id="modifypass" class="btn btn-outline cus-btn" >提 交</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+
+<script>
+$("#modifypass").click(function(){
+    passold = $("#passold").val();
+    passnew = $("#passnew").val();
+    onepass = $("#onepass").val();
+    if(passold==''){return layer.msg("请输入原密码", {time: 2000, icon:2,shade: 0.2});}
+    if(passnew==''){return layer.msg("请输入新密码", {time: 2000, icon:2,shade: 0.2});}
+    if(onepass==''){return layer.msg("请确认密码", {time: 2000, icon:2,shade: 0.2});}
+    if(passnew.length<6){return layer.msg("新密码需要大于等于6位数", {time: 2000, icon:2,shade: 0.2});}
+    if(passnew!=onepass){return layer.msg("确认密码不一致", {time: 2000, icon:2,shade: 0.2});}
+    $.ajax({
+        url: "{:url('Setup/modifypass')}",
+        data: {passold:passold,passnew:passnew},
+        type: 'POST',
+        dataType: "json",
+        cache: false,
+        success: function(data,state){
+            if(state == 'success' && data.code == '0'){
+                layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                setTimeout(function () {
+                    window.location.reload()
+                }, 1000);
+            }else{
+                layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+            }
+        }
+    });
+})
+</script>

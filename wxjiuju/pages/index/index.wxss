@@ -1,0 +1,61 @@
+/**index.wxss**/
+.banner{
+  height: 370rpx;
+}
+
+.banner-image{
+  width: 750rpx;
+  height: 370rpx;
+} 
+
+/* 导航 */
+.nav {
+  padding:46rpx 12rpx 0px 28rpx;
+
+}
+
+.nav .flex-wrp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.nav .flex-item {
+  width: 339rpx;
+  height: 224rpx;
+  padding-top: 16rpx;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  margin-right: 16rpx;
+  box-shadow: rgba(202,202,202,0.53) 1px 1px 5px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.nav .flex-wrp .black{
+  color: black;
+  font-weight: bold;
+  font-size: 34rpx;
+  line-height: 20px;
+  text-align: center;
+}
+
+.nav .flex-wrp .gray{
+  font-family: "﻿PingFang-SC-Regular";
+  font-weight: normal;
+  color: rgb(170, 170, 170);
+  font-size: 28rpx;
+}
+.nav .flex-wrp .flex-item image{
+  width: 82rpx;
+  height: 80rpx;
+  margin-top: 16rpx;
+  text-align: center;
+}
+
+.nav .banner-item{
+  width: 18.8rem;
+  height: 98px;
+}
+
+

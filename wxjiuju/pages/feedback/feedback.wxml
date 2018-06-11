@@ -1,0 +1,17 @@
+<!-- 意见反馈 -->
+    <view class="feedback">
+        <view class="text_box">
+            <form bindsubmit="bindFormSubmit">
+                <textarea bindinput='solveprogram' placeholder="您好，请详细说明您遇到的问题，以便我们更好的为您解决~" placeholder-class="placeholder_text" name="textarea" value="{{searchinput}}"/>
+                <button form-type="submit" bindtap="showDialogBtn"> 提交意见 </button>
+            </form>
+        </view>
+    </view>
+    <include src="../public/public.wxml"/>
+ <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="modal-title">{{text}}</view>
+    <view class="modal-footer">
+      <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+    </view>
+  </view>

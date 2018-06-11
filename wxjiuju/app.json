@@ -1,0 +1,61 @@
+{
+  "pages":[
+    "pages/case_column/case_column",
+    "pages/boutique/boutique",
+    "pages/bk_list/bk_list",
+    "pages/free_quote/free_quote",
+    "pages/case_details/case_details",
+    "pages/collection/collection",
+    "pages/bk_details/bk_details",
+    "pages/index/index",
+    "pages/bk_column/bk_column",
+
+    "pages/personal_center/personal_center",
+    "pages/feedback/feedback",
+    "pages/chufang/chufang",
+    "pages/kecanting/kecanting",
+    "pages/yangtai/yangtai",
+    "pages/woshi/woshi",
+    "pages/weishengjian/weishengjian",
+    "pages/public/public",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "久居整装",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabBar/11.png",
+        "selectedIconPath": "images/tabBar/11_click.png"
+      },
+      {
+        "pagePath": "pages/bk_column/bk_column",
+        "text": "图库",
+        "iconPath": "images/tabBar/22.png",
+        "selectedIconPath": "images/tabBar/22_click.png"
+      },
+      {
+        "pagePath": "pages/case_details/case_details",
+        "text": "在线客服",
+        "iconPath": "images/tabBar/33.png",
+        "selectedIconPath": "images/tabBar/33_click.png"
+      },
+      {
+        "pagePath": "pages/personal_center/personal_center",
+        "text": "我的",
+        "iconPath": "images/tabBar/44.png",
+        "selectedIconPath": "images/tabBar/44_click.png"
+      }
+    ]
+  },
+  "debug":true  
+}

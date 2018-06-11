@@ -1,0 +1,236 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+    </div>
+    <link rel="stylesheet" href="__ROOT__/public/up-img/dist/css/dropify.min.css">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">修改设计师</h4>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="scrollable">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation">
+                                    <a href="{:url('Designer/index')}">
+                                        <span class="visible-xs">设计师列表</span>
+                                        <span class="hidden-xs"> 设计师列表</span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="JavaScript:;" >
+                                        <span class="visible-xs">修改设计师</span>
+                                        <span class="hidden-xs">修改设计师</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <div  class="table-responsive" style="min-width: 1350px!important;">
+                                <br>
+                                <style>
+                                    .form-group input{
+                                        max-width:300px!important;
+                                    }
+                                    .form-group select{
+                                        font-weight: 500;
+                                        max-width: 300px!important;
+                                        float:left;
+                                        margin-right: 4px;
+                                    }
+
+                                </style>
+                                <form action="{:url('Designer/modifydesigner')}" method="post" class="form-horizontal col-sm-6" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">设计师名称:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="请输入设计师名称" required value="{$des.designer_name}">
+                                            <input type="hidden" name="id" value="{$des.id}">
+                                        </div>
+                                    </div>
+
+                                    {volist name="cat" id="c"}
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">{$c.cat_name}:</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" data-style="form-control" name="cat_name{$c.cat_id}" id="onetype" >
+                                                <option value="">选择{$c.cat_name}</option>
+                                                {volist name="c.nextcat" id="n"}
+                                                <option value="{$n.cat_id}"
+                                                        {if condition="$n.cat_id eq $des.ex_id"}selected{/if}
+                                                        {if condition="$n.cat_id eq $des.level_id"}selected{/if}
+                                                        {if condition="$n.cat_id eq $des.style_id"}selected{/if}
+                                                >{$n.cat_name}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {/volist}
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">设计经验:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="ex" name="ex" placeholder="请输入设计经验" required value="{$des.designer_ex}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">作品数量:</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="works" name="works" placeholder="请输入作品数量" required value="{$des.designer_num}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">签单数量:</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="order" name="order" placeholder="请输入签单数量" required value="{$des.order_num}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">人气数量:</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="pop" name="pop" placeholder="请输入人气数量" required value="{$des.pop_num}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">口碑值:</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="score" name="score" placeholder="请输入口碑值" required value="{$des.score}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">手机号:</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="phone" name="phone" placeholder="请输入手机号" required value="{$des.mobile}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">经典案例:</label>
+                                        <div class="col-sm-7">
+                                            <textarea class="form-control" name="cases" id="cases" style="height:50px;">{$des.designer_case}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">个人介绍:</label>
+                                        <div class="col-sm-7">
+                                            <textarea class="form-control" name="intro" id="intro" style="height:150px;">{$des.designer_prize}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">微信二维码:</label>
+                                        <div class="col-sm-7">
+                                            <div style="width:165px;">
+                                                <input type="file" name="eqcode" id="eqcode" class="dropify-fr" data-default-file="__ROOT__{$des.wx_img}" data-max-file-size="30M" data-height="150" accept=".png,.jpg,.gif,.jpeg,.bmp" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">设计师头像:</label>
+                                        <div class="col-sm-7">
+                                            <div style="width:165px;">
+                                                <input type="file" name="imghead" id="imghead" class="dropify-fr" data-default-file="__ROOT__{$des.sm_img}" data-max-file-size="30M" data-height="150" accept=".png,.jpg,.gif,.jpeg,.bmp" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">设计师照片:</label>
+                                        <div class="col-sm-7">
+                                            <div style="width:300px;">
+                                                <input type="file" name="image" id="image" class="dropify-fr" data-default-file="__ROOT__{$des.img}" data-max-file-size="30M" data-height="200" accept=".png,.jpg,.gif,.jpeg,.bmp" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">状 态:</label>
+                                        <div class="col-sm-7">
+                                            <div class="zhuangts">
+
+                                                <div class="box-zt">
+                                                    <h4>是否热门</h4>
+                                                    <div class="radio" >
+                                                        <input type="radio" name="hot" id="hot1" value="1" {if condition="$des.is_hot eq 1"}checked{/if}>
+                                                        <label for="hot1"> 是 </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="hot" id="hot2" value="2" {if condition="$des.is_hot neq 1"}checked{/if}>
+                                                        <label for="hot2"> 否 </label>
+                                                    </div>
+                                                </div>
+                                                <div class="box-zt">
+                                                    <h4>是否最新</h4>
+                                                    <div class="radio" >
+                                                        <input type="radio" name="news" id="news1" value="1" {if condition="$des.is_new eq 1"}checked{/if}>
+                                                        <label for="news1"> 是 </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="news" id="news2" value="2" {if condition="$des.is_new neq 1"}checked{/if}>
+                                                        <label for="news2"> 否 </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5"></label>
+                                        <div class="col-sm-7">
+                                            <button type="submit" class="btn btn-outline cus-btn" >提 交</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script src="__ROOT__/public/up-img/dist/js/dropify.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Basic
+        $('.dropify').dropify();
+
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: '选择图片',
+                replace: '',
+                remove:  '删除',
+                error:   '抱歉，该图片太大'
+            }
+        });
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+        drEvent.on('dropify.beforeClear', function(event, element){
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+        drEvent.on('dropify.afterClear', function(event, element){
+            alert('File deleted');
+        });
+        drEvent.on('dropify.errors', function(event, element){
+            console.log('Has Errors');
+        });
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e){
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+
+</script>

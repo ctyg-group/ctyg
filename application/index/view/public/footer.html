@@ -1,0 +1,314 @@
+<div class="footer">
+    {if condition="$conact eq 'Index/index'"}
+    <div class="layout">
+        <div style="width: 830px;float: left;">
+            <div class="ft" style="width: 754px;">
+                <div class="titin" style="margin-top: 22px;">
+                    <span class="sp1">关于我们</span>
+                    <a href="{:url('Index/About/index')}" class="sp2">关于久居</a>
+                    <a href="{:url('Index/About/callme')}" class="sp2">联系我们</a>
+                    <a href="{:url('Index/About/joinme')}" class="sp2">加入我们</a>
+                </div>
+                <div class="titin">
+                    <span class="sp1">网站帮助</span>
+                    <a href="{:url('Index/News/newsinfo',array('article_id'=>104))}" class="sp2">法律说明</a>
+                    <a href="{:url('Index/News/newsinfo',array('article_id'=>103))}" class="sp2">常见问题</a>
+                </div>
+                <div class="titin">
+                    <span class="sp1">新闻中心</span>
+                    <a href="{:url('Index/News/newslist',array('cat_id'=>40,'p'=>1))}" class="sp2">久居新闻</a>
+                </div>
+            </div>
+            <div class="fb" style="width: 830px;">
+                <div class="layout1 fix" style="width: 830px;">
+                    <div class="titin">
+                        <span class="sp1">友情链接</span>
+                        <div class="ljsj">
+                            {volist name="frlink" id="frlink"}                              
+                                <a href="{$frlink.url}" target="_blank" class="sp2">{$frlink.name}</a>                           
+                            {/volist}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fgx fl"></div>
+        <div class="fbr fl fix" style="float: left;width: 336px;margin-top: 20px;">
+            <p class="aboutus"></p>
+            <div class="ewm fl" style="margin-left: 155px;">
+                <img src="/public/index/static/images/index2.0/weixin.png" alt="">
+                <p>微信</p>
+            </div>
+            <div class="ewm fl in_fsx">
+                <img src="/public/index/static/images/index2.0/weibo.png" alt="">
+                <p>微博</p>
+            </div>  
+            <p class="beian">粤ICP备17065962号</p>
+               
+        </div>
+        <!-- 二维码 -->
+        <div class="wxewm smgz">
+            <img src="/public/index/static/images/index2.0/ewm1.jpg" alt="">
+            <p>扫码关注微信</p>
+        </div>
+        <div class="wbewm smgz">
+            <img src="/public/index/static/images/index2.0/ewm2.png" alt="">
+            <p>扫码关注微博</p>
+        </div>
+        
+    </div>
+    {else /}
+    <div class="layout">
+        <div class="other">
+            <a href="{:url('Index/About/index')}" class="sp2">关于久居</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{:url('Index/About/callme')}" class="sp2">联系我们</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{:url('Index/About/joinme')}" class="sp2">加入我们</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{:url('Index/News/newsinfo',array('article_id'=>104))}" class="sp2">法律说明</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{:url('Index/News/newsinfo',array('article_id'=>103))}" class="sp2">常见问题</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{:url('Index/News/newslist',array('cat_id'=>40,'p'=>1))}" class="sp2">久居新闻</a>
+            <span style="margin-left: 102px;">
+                    copyright@2017深圳久居整装设计工程有限公司&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="http://www.miitbeian.gov.cn">粤ICP备17065962号</a>
+                </span>
+        </div>
+    </div>
+    {/if}
+    <div class="box02" style="left: 0px;">
+        <img src="/public/index/zi.png">
+    </div>
+    <div class="box01" style="left: -8000px;">
+      <div class="zhuolu_box">
+      	<div class="zhuolu">
+            <img src="/public/index/2.gif" alt="">
+        </div>
+        <div class="close_zl close_z">
+            <img src="/public/index/static/images/zhuolu_x.png" alt="">
+        </div>
+        <div class="submit_zl submit_z" onclick="addform_userinfo('adduserinfoForm');">
+            <img src="/public/index/static/images/zhuolu_sub1.png" alt="">
+        </div>
+        <form action="#" class="adduserinfoForm">
+            <div class="name_zl name_z">
+                <input type="text" id="username"  name="user_name"  placeholder="请输入您的姓名">
+            </div>
+            <div class="mobile_zl mobile_z">
+                <input type="text"  id="phone"  name="mobile" placeholder="请输入您的手机号" autocomplete="off">
+            </div>
+          <div style="clear:both;"></div>
+        </form>
+        <div style="clear:both;"></div>
+      </div>
+    </div>
+</div>
+
+<!-- 侧边栏 -->
+<div class='toolbar' id="toolbar">
+    <a class='guanzhu tool' href="Javascript:;"><div onmouseover="showwx()" onmouseout="layer.closeAll();"><p>扫码关注</p></div></a>
+    <a class='zaixian tool' target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1510345449&site=qq&menu=yes"><div><p>在线客服</p></div></a>
+    <a class='baojia tool ann wkbutton' href="Javascript:;"><div><p>免费报价</p></div></a>
+    <a class='fankui tool' target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1510345449&site=qq&menu=yes"><div><p>意见反馈</p></div></a>
+    <a class='ding tool'  id="tool"><div></div></a>
+</div>
+
+<!-- 底部弹窗 -->
+<div class="pubup" id="up">
+    <div class="X" id="close"></div>
+    <form action="#" id="form_userinfoForm">
+        <div class="hd12_input3"><input type="text" id="username1"  name="user_name" placeholder="请输入您的姓名"></div>
+        <div class="hd12_input4"><input type="text" id="phone1" name="mobile" placeholder="请输入您的电话" autocomplete="off"></div>
+    </form>
+    <div class="tan_submit" onclick="form_userinfo('form_userinfoForm')"></div>
+</div>
+<script src="/public/index/static/js/jquery-2.2.4.min.js"></script>
+<script src="/public/index/static/js/selectordie.min.js"></script>
+<script src="/public/index/bootstarp/js/bootstrap.min.js"></script>
+<script src="/public/index/style/carousel.js"></script>
+<script src="/public/index/style/index.js"></script>
+<script type="text/javascript" charset="utf-8" src="__ROOT__/public/layer/layer.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?dae324ed658ef99e08c6219b1f530c39";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>
+<!--弹窗样式-->
+<style>
+  	 /* .box01{background: url('/public/index/zhuolu.png') no-repeat -304px 0px !important;margin-left: auto;margin-right: auto;width: 1600px;right:0;} */
+    .pubmask{  background:#000;  opacity: 0.3;  position: absolute;  top:0;  left: 0;  z-index: 9998;  display:none;  }
+    .pubup{  width:611px;  height: 443px;  position: fixed;  display: none;  z-index: 9999;  background:url('/public/index/static/images/pubtan.png') no-repeat;  }
+    .pubup .X{  background-color: #f2f2f2;  text-align: center;  position: relative;  width: 42px;  height: 71px;  top:-70px;  right: 16px;  float: right;  cursor: pointer;  background:url('/public/index/static/images/hd12_x.png') no-repeat;  }
+    .pubup input{  width: 319px;  height: 47px;  font-size: 16px; background-color: #F2F2F2;border-radius: 10px;text-indent: 16px; }
+    .pubup .hd12_input3{position: absolute;top:167px;left: 198px;}
+    .pubup .hd12_input4{position: absolute;top:246px;left: 198px;}
+    .pubup .tan_submit{cursor: pointer;width: 342px;height: 71px;background:url('/public/index/static/images/pubsub.png') no-repeat;position: absolute;top:318px;left: 188px;}
+</style>
+<script>
+	 //弹框表单验证
+  function form_userinfo(id){
+        username = $("#username1").val();
+         console.log("获取的用户名",username);
+         mobile = $("#phone1").val();
+         console.log("获取的电话",mobile);
+      
+        if(username==''){return layer.msg('请输入姓名', {time: 700, icon:2,shade: 0.2});}
+        if(mobile==''){return layer.msg('请输入手机号', {time: 700, icon:2,shade: 0.2});}
+        var mobReg=/^1[34578]\d{9}$/;  //手机号
+        if (!mobReg.test(mobile)) {
+            return layer.msg('请填写正确手机号', {time: 2000, icon:2,shade: 0.2});
+        };
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:url('Index/Ajax/user_info')}",
+            data: {username:username,mobile:mobile},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                }
+            }
+        });
+    }
+
+    function addform_userinfo(id){
+        username = $("#username").val();
+        // console.log("获取的用户名",username);
+         mobile = $("#phone").val();
+         //console.log("获取的电话",mobile);
+      
+        if(username==''){return layer.msg('请输入姓名', {time: 700, icon:2,shade: 0.2});}
+        if(mobile==''){return layer.msg('请输入手机号', {time: 700, icon:2,shade: 0.2});}
+        var mobReg=/^1[34578]\d{9}$/;  //手机号
+        if (!mobReg.test(mobile)) {
+            return layer.msg('请填写正确手机号', {time: 2000, icon:2,shade: 0.2});
+        };
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:url('Index/Ajax/user_info')}",
+            data: {username:username,mobile:mobile},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                }
+            }
+        });
+    }
+  
+ 
+  
+  
+    //弹框
+    window.onload=function(){
+        //将div的位置封装在一个函数内部，直接调用
+        function myDiv(){
+            var mTop=(document.documentElement.clientHeight-422)/2;
+            var mleft=(document.documentElement.clientWidth-620)/2;
+            $("#up").css("top",mTop+"px");
+            $("#up").css("left",mleft+"px");
+        }
+        myDiv();
+        //创建一个DIV
+        var mask=document.createElement("div");
+        // //给这个DIV一个id和class属性
+        // mask.id="mask";
+        mask.className="pubmask";
+        //将这个DIV放置到body里面--》一般是：父节点.appendChild(子节点)
+        //这里注意的是absolute，要设置top和left；
+        document.body.appendChild(mask);
+        //屏幕改变大小的时候，div不会自动的改变，需要添加窗口改变事件
+        window.onresize=function(){
+            myDiv();
+            $(".pubmask").css("width",document.documentElement.clientWidth);
+            $(".pubmask").css("height",$(document.body).outerHeight(true));
+        };
+        $(".wkbutton").click(function(){
+            $(".pubmask").css("width",document.documentElement.clientWidth);
+            $(".pubmask").css("height",$(document.body).outerHeight(true));
+            $("#up").css("display",'block');
+            $(".pubmask").css("display",'block');
+        });
+        $("#close").click(function(){
+            $("#up").css("display",'none');
+            $(".pubmask").css("display",'none');
+        });
+    }
+    //下拉框
+
+    $('select').selectOrDie();
+    $(".carousels").attr("data-setting", '{ "width":1200,"height":425,"postWidth":850,"postHeight":425}');
+    Carousel.init($(".carousels"));
+    // 装修案例
+    $(".teb").click(function () {
+        $(this).addClass("on").siblings("span").removeClass("on");
+        var index = $(this).index();
+        $(".in_goods").eq(index).addClass("active").siblings("div").removeClass("active");
+    });
+    //扫码关注
+    $('.toolbar a').hover(
+        function(){
+            if($(this).hasClass('hover')){
+
+            }else{
+                $(this).addClass('hover').siblings().removeClass('hover');
+                $(this).siblings().find('.i5brcon').stop().slideUp();
+                $(this).find('.i5brcon').stop().slideDown();
+            }
+        }
+    );
+    function showwx(){
+        content = '<div style="width: 120px;">';
+        content+= '<div><img style="width:120px;" src="/public/index/fuwuwx.png"></div>';
+        content+= '<div style="text-align: center;color:#222222;">服务号</div>';
+        content+= '<div><img style="width:120px;" src="/public/index/dingyuewx.jpg"></div>';
+        content+= '<div style="text-align: center;color:#222222;">订阅号</div>';
+        content+= '</div>';
+        layer.tips(content, '.guanzhu', {
+            tips: [3, '#fff'] //还可配置颜色
+        });
+    }
+  	 // 导航栏滚动消失
+    // $(function(){
+    //     var documentheight =parseFloat( $("body,html").scrollTop());
+    //     if (documentheight <= 300) {
+    //             $('.toolbar').hide();
+    //         }
+    //     $(window).scroll(function () {
+    //         var tops =parseFloat( $("body,html").scrollTop());
+    //          if (tops <= 300) {
+    //             $('.toolbar').hide();
+    //         } else {         
+    //             $('.toolbar').show();
+    //         }
+    //     });
+    // });
+    //顶部锚点
+    $('#tool').click(function () {
+        $('html, body').animate({
+            scrollTop: $("#oldtop").offset().top
+        }, 500);
+        return false;
+    });
+
+</script>
+<?php if (substr_count($_SERVER[‘HTTP_ACCEPT_ENCODING’], ‘gzip’)) ob_start(“ob_gzhandler”); else ob_start(); ?>

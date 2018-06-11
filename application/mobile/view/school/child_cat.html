@@ -1,0 +1,68 @@
+{include file="public/header" /}
+<script src="/public/index/static/js/mui.picker.min.js"></script>
+<link href="/public/index/static/css/mui.picker.min.css" rel="stylesheet"/>
+	
+	<div class='artin_ban'></div>
+	
+	<div class='height38'></div>
+
+
+	
+	<div class="artl_list eni_list ">
+	
+		<div class='artl_lcate'>
+			{foreach  name='child_list' item='cv'}
+			{if condition="$cv[cat_id] == $list_id"}
+			<div class='artcate on'><a href="{:url('Mobile/school/child_cat',array('cat_id'=>$cv['cat_id'],'p'=>'1'))}">{$cv['cat_name']}</a></div>
+			{else}
+			<div class='artcate'><a href="{:url('Mobile/school/child_cat',array('cat_id'=>$cv['cat_id'],'p'=>'1'))}">{$cv['cat_name']}</a></div>
+			{/if}
+			{/foreach}
+		</div>
+		
+		<div class='list1'>
+			{foreach name='list' item='lv'}
+			<div class='eni_list1'>
+				<div class='eni1_img'><a href="{:url("Mobile/school/artinfo",array('article_id'=>$lv['article_id'])),'.html'}"><img src="{$lv['thumb']}" style="width: 4.26rem;height: 2.98rem;"alt=""></a></div>
+				
+				<div class='eni1_info'>
+					<div class='eni1_info1'><a href="{:url("Mobile/school/artinfo",array('article_id'=>$lv['article_id'])),'.html'}">{$lv['title']|mb_substr=###,0,10,'utf-8'}...</a></div>
+					<div class='eni1_info2'><a href="{:url("Mobile/school/artinfo",array('article_id'=>$lv['article_id'])),'.html'}">{$lv['explain']|mb_substr=###,0,30,'utf-8'}...</a></div>
+					<div class='artl_info3'>
+						<span>{$lv['add_time']|date="Y-m-d",###}</span>
+						<span>{$lv['radio_num']*1+$lv['comment']*1}</span>
+					</div>
+				</div>	
+			</div>
+			{/foreach}
+		</div>
+	</div>
+
+	<div class="mobpage">
+		{if condition="$p == 1"}
+		<a href="{:url('Mobile/school/child_cat',array('cat_id'=>$cat_id,'p'=>1))}"><div class="upp">上一页</div></a>
+		{else}
+		<a href="{:url('Mobile/school/child_cat',array('cat_id'=>$cat_id,'p'=>$p*1-1))}"><div class="upp">上一页</div></a>
+		{/if}
+		<div class="chosep" data-options='{$page}' onclick="chose_page()">{$p} / {$count}</div>
+		{if condition="$p == $count"}
+		<a href="{:url('Mobile/school/child_cat',array('cat_id'=>$cat_id,'p'=>$p))}"><div class="downp">下一页</div></a>
+		{else}
+		<a href="{:url('Mobile/school/child_cat',array('cat_id'=>$cat_id,'p'=>$p*1+1))}"><div class="downp">下一页</div></a>
+		{/if}
+	</div>
+<script>
+	function chose_page(){
+        var picker = new mui.PopPicker();
+        var optionsJson = $(".chosep").attr('data-options');
+        var options = JSON.parse(optionsJson);
+        picker.setData(options);
+        picker.show(function(SelectedItem) {
+            url = "{:url('Mobile/school/child_cat',array('cat_id'=>catid,'p'=>pid))}";
+            url = url.replace('catid',{$cat_id});
+            url = url.replace('pid',SelectedItem[0].value);
+            location.href = url;
+        })
+	}
+</script>
+{include file="public/footer" /}

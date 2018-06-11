@@ -1,0 +1,41 @@
+<!-- 免费报价 -->
+<view class='bottom_h'>
+    <image  src='../../images/free_quote/free_quote_bg.jpg' class="free_quote" mode="widthFix"></image>
+    <view class='offer'>
+      <view class='offer_body'>
+        <text class='offter_size'>信息越详细 报价越精准!</text>
+        <view class='offter_view'>
+          <input placeholder='建筑面积' bindinput ="volumeInput" name="volume" class='offter_input'></input>
+          <text class='offter_text'>㎡</text>
+        </view>
+        <view class='offter_view'>
+          <view class="section">
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker offter_input offter_model">
+        {{multiArray[0][multiIndex[0]]}}  {{multiArray[1][multiIndex[1]]}} {{multiArray[2][multiIndex[2]]}} {{multiArray[3][multiIndex[3]]}}
+      </view>
+    </picker>
+  </view> 
+        </view>
+        <view class='offter_view'>
+          <input placeholder='请输入您的称呼' name="myname" bindinput ="mynameInput" class='offter_input'></input>
+        </view>
+        <view class='offter_view'>
+          <input placeholder='输入号码，报价结果将发到您的手机' class='offter_input' bindinput ="telephoneInput" name="telephone" style='width:15rem;'></input>
+        </view>
+        <view class='offter_view_button'>
+          <button type="primary" bindtap="showDialogBtn" class='offter_view_button_primary'>立即计算</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="modal-title">{{text}}</view>
+    <view class="modal-footer">
+      <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+    </view>
+  </view>
+  
+<!--  引入tabBar  -->
+<include src="../public/public.wxml"/>

@@ -1,0 +1,48 @@
+<!--pages/woshi/woshi.wxml-->
+<view class="classify">
+    <image class="bgimg"  src="../../images/kecanting/wdkj_i1.jpg"></image>
+    <view class="place">
+        <view class="title">
+            <image class="title_img" src="../../images/kecanting/b_ws.png"></image>
+            <text class="title_text">卧室</text>
+        </view>
+        <view class="nav">
+            <ul>
+                <li>项目</li>
+                <li>品牌</li>
+            </ul>
+        </view>
+        <view class="navbar">
+            <ul class="nav1">
+                <li>铺地砖</li>
+                <li>华鹏</li> 
+                <li>铺地板</li>
+                <li class="colorgreen">大自然/myfloor（进口）</li> 
+                <li>门槛大理石</li>
+                <li>优质石材</li> 
+                <li>墙面乳胶漆</li>
+                <li class="colorgreen">芬兰芬琳漆</li> 
+                <li>顶面乳胶漆</li>
+                <li class="colorgreen">芬兰芬琳漆</li> 
+                <li>批灰</li>
+                <li>卓邦腻子</li> 
+                <li>墙面批灰满刮纤维网</li>
+                <li>包工包料</li> 
+                <li>窗台大理石（非飘窗）</li>
+                <li>优质石材</li> 
+                <li>踢脚线</li>
+                <li>包工包料</li> 
+                <li>石膏角线</li>
+                <li>穗华牌</li> 
+                <li>普通灯具安装</li>
+                <li>包含</li> 
+                <li>平开门（木门）</li>
+                <li>名风木门</li> 
+                <li>门锁及五金件</li>
+                <li>厂家标配</li> 
+                <li>开关插座</li>
+                <li>西门子</li> 
+            </ul>
+        </view>
+    </view>
+</view>

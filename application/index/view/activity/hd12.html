@@ -1,0 +1,142 @@
+{include file="public/header" /}
+<style>
+    *{
+        padding:0px;
+        margin:0px;
+    }
+
+
+    .up{
+        width:520px;
+        height: 553px;
+        position: fixed;
+        display: none;
+        z-index: 9999;
+        background:url(/public/static/images/hd01_tan.png) no-repeat;
+    }
+    .up .X{
+        background-color: #f2f2f2;
+        text-align: center;
+        position: relative;
+        width: 42px;
+        height: 71px;
+        top:99px;
+        right: 16px;
+        float: right;
+        cursor: pointer;
+        background:url(/public/static/images/hd12_x.png) no-repeat;
+    }
+    .hd12_input3{position: absolute;top:277px;left: 123px;}
+    .hd12_input4{position: absolute;top:353px;left: 124px;}
+    .tan_submit{cursor: pointer;width: 311px;height: 52px;background-color: #FFD038;position: absolute;top:428px;left: 104px;border-radius: 4px;letter-spacing:3px;font-size: 24px;color: #ffffff;text-align: center;line-height: 52px;font-weight: 600;}
+    .con span{
+        width:20px;
+        height:30px;
+        text-align: center;
+        line-height: 30px;
+        background-color:red;
+        cursor: pointer;
+    }
+    .mask{
+
+        background:#000;
+        opacity: 0.3;
+        position: absolute;
+        top:0;
+        left: 0;
+        z-index: 9998;
+        display:none;
+    }
+
+    .layui-layer-molv .layui-layer-title {
+        background: #1da838;
+        color: #fff;
+        border: none;
+        text-align: right;
+    }
+    .bagr{height: 5895px;width: 100%;background: url(/public/static/images/hdall01.jpg) no-repeat;position: relative;}
+    input{  width: 280px;  height: 50px;  border-radius: 2px;  font-size: 16px;  }
+    .hd12_input1{position: absolute;top:2159px;left: 429px;}
+    .hd12_input2{position: absolute;top:2159px;left: 753px;}
+    .hd12_submit{background: url(/public/static/images/hd01_submit.png) no-repeat;cursor: pointer; width: 207px;height: 53px;position: absolute;top:2157px;left: 1056px;}
+    .hd12_zixun{position: absolute;top:3266px;left: 1068px;cursor: pointer;background: url(/public/static/images/hd01_zixun.png) no-repeat;width: 225px;height: 55px;}
+    .daojs{position: absolute;top:2853px;left: 395px;width: 330px;height: 54px;font-size: 36px;color: #333333;}
+    .daojs span:nth-child(1){letter-spacing:20px;}
+    .daojs span:nth-child(2){margin-left: 11px;}
+    .daojs span:nth-child(3){letter-spacing:20px;margin-left: 35px;}
+    .daojs span:nth-child(4){letter-spacing:20px;margin-left: 12px;}
+</style>
+<div class="bagr">
+    <form action="#" id="adduserinfoForm">
+        <div class="hd12_input1"><input type="text"  name="user_name" placeholder="请输入您的姓名"></div>
+        <div class="hd12_input2"><input type="text"  name="mobile" placeholder="请输入您的电话" autocomplete="off"></div>
+    </form>
+    <div class="hd12_submit"></div>
+
+    <div class="hd12_zixun"></div>
+
+    <div class="daojs"><span>{$tian}</span><span>天</span><span>{$shi}</span><span>时</span></div>
+
+    <div class="up" id="up">
+        <div class="X" id="close"></div>
+        <form action="#" id="adduserinfoForm2">
+            <div class="hd12_input3"><input type="text"  name="user_name" placeholder="请输入您的姓名"></div>
+            <div class="hd12_input4"><input type="text"  name="mobile" placeholder="请输入您的电话" autocomplete="off"></div>
+        </form>
+        <div class="tan_submit">在线报名</div>
+    </div>
+</div>
+
+<script>
+    $(".hd12_submit").click(function(){
+        ajax_user_form('adduserinfoForm','{:U('Index/addUserInfo')}');
+    });
+
+    $(".tan_submit").click(function(){
+        ajax_user_form('adduserinfoForm2','{:U('Index/addUserInfo')}');
+    });
+
+    window.onload=function(){
+
+        //将div的位置封装在一个函数内部，直接调用
+        function myDiv(){
+            var mTop=(document.documentElement.clientHeight-800)/2;
+            var mleft=(document.documentElement.clientWidth-400)/2;
+            $("#up").css("top",mTop+"px");
+            $("#up").css("left",mleft+"px");
+        }
+        myDiv();
+
+        //创建一个DIV
+        var mask=document.createElement("div");
+        // //给这个DIV一个id和class属性
+        // mask.id="mask";
+        mask.className="mask";
+        console.log(document.documentElement.clientWidth);
+
+
+        //将这个DIV放置到body里面--》一般是：父节点.appendChild(子节点)
+        //这里注意的是absolute，要设置top和left；
+        document.body.appendChild(mask);
+
+        //屏幕改变大小的时候，div不会自动的改变，需要添加窗口改变事件
+        window.onresize=function(){
+            myDiv();
+            $(".mask").css("width",document.documentElement.clientWidth);
+            $(".mask").css("height",$(document.body).outerHeight(true));
+        };
+        $(".hd12_zixun").click(function(){
+            $(".mask").css("width",document.documentElement.clientWidth);
+            $(".mask").css("height",$(document.body).outerHeight(true));
+            $("#up").css("display",'block');
+            $(".mask").css("display",'block');
+        });
+        $("#close").click(function(){
+            $("#up").css("display",'none');
+            $(".mask").css("display",'none');
+        });
+    }
+
+
+</script>
+{include file="public/footer" /}

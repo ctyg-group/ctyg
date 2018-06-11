@@ -1,0 +1,32 @@
+
+{include file="public/header" /}
+
+	<div class="enin_nav"><p><a href="{:url("mobile/index/index")}">首页</a><em>></em><a href="{:url("mobile/school/index")}">学装修</a><em>></em><a href="{:url('mobile/school/child_cat',array('cat_id'=>$artinfo['cat_id_2'],'p'=>'1'))}">{$cat_name}</a><em>></em>正文</p></div>
+
+	<div class='artin_tit'>
+		<div class='tit'>{$artinfo['title']}</div>
+		<div class='info'>
+			<div class='autime'>作者：{$artinfo['author']} | {$artinfo['add_time']|date="Y-m-d",###}</div>
+			<div class='eye'>{$artinfo['radio_num']*1+$artinfo['comment']*1}</div>
+			<div class='love'>{$artinfo['comment']}</div>
+		</div>
+	</div>
+
+    <div class="art_con" style="">
+		{$artinfo['content']}
+
+	</div>
+
+	<div class="enin_about artin_about">
+		<div class='up_art'><span>上一篇：</span><span><a href="{:url("mobile/school/artinfo",array('article_id'=>$about['max']['article_id']))}">{$about['max']['title']|mb_substr=###,0,20,'utf-8'}...</a></span></div>
+		<div class='down_art'><span>下一篇：</span><span><a href="{:url("mobile/school/artinfo",array('article_id'=>$about['min']['article_id']))}">{$about['min']['title']|mb_substr=###,0,20,'utf-8'}...</a></span></div>
+
+		<div class='artin_abtit'>相关文章</div>
+		<div class='neir'>
+			{foreach name='about.about' item='av' key='ak'}
+			<div><a href="{:url("mobile/school/artinfo",array('article_id'=>$av['article_id'])),'.html'}">{$av['title']|mb_substr=###,0,15,'utf-8'}...</a></div>
+			{/foreach}
+		</div>
+	</div>
+
+{include file="public/footer" /}

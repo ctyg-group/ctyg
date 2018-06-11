@@ -1,0 +1,133 @@
+{include file="public/header" /}
+    <link rel="stylesheet" type="text/css" href="/public/index/style/zzal.css">
+    <!-- 中间大图 -->
+    <div class="banner5">
+        <div class="layout">
+
+        </div>
+    </div>
+    <!-- 设计分类 -->
+    <div class="als">
+        <div class="layout">
+            <div class="als1">
+                <div class="fw2" style="margin-top: 52px;">
+                    <div class="layout">
+                        <div class="fw2x">
+                            <p class="cat1">
+                                <span>风格</span>
+                                <a href="javascript:;" cat="0" style="display: none;" {if condition="$style_id== 0"}class="on"{/if}>不限</a>
+                                {volist name="cat1" id="cat1"}
+                                <a href="javascript:;" cat="{$cat1.cat_id}" {if condition="$cat1.cat_id==$style_id "}class="on"{/if}>{$cat1.cat_name}</a>
+                                {/volist}
+
+                            </p>
+
+                            <p class="cat2">
+                                <span>户型</span>
+                                <a href="javascript:;" cat="0" style="display: none;" {if condition="$apart_id== 0"}class="on"{/if}>不限</a>
+                                {volist name="cat2" id="cat2"}
+                                <a href="javascript:;" cat="{$cat2.cat_id}" {if condition="$cat2.cat_id==$apart_id "}class="on"{/if}>{$cat2.cat_name}</a>
+                                {/volist}
+                            </p>
+
+                            <p class="cat3 bt">
+                                <span>面积</span>
+                                <a href="javascript:;" cat="0" style="display: none;" {if condition="$measure_id== 0"}class="on"{/if}>不限</a>
+                                {volist name="cat3" id="cat3"}
+                                <a href="javascript:;" cat="{$cat3.cat_id}" {if condition="$cat3.cat_id==$measure_id "}class="on"{/if}>{$cat3.cat_name}</a>
+                                {/volist}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {if condition="$style_name || $apart_name || $measure_name"}
+                <div class="jj_chose">
+                    <span>已选择：</span>
+                    {if condition="$style_name"}
+                    <div class="x" date_cat="cat1">{$style_name}<span></span></div>
+                    {/if}
+                    {if condition="$apart_name"}
+                    <div class="x" date_cat="cat2">{$apart_name}<span></span></div>
+                    {/if}
+                    {if condition="$measure_name"}
+                    <div class="x" date_cat="cat3">{$measure_name}<span></span></div>
+                    {/if}
+
+                    <div class="a">撤销全部<span></span></div>
+                </div>
+                {/if}
+                <!-- 效果图渲染到页面  -->
+                <div class="alsb" style="margin-top: 38px;">
+                    <ul class="fix">
+                        {volist name="list" id="list" key="key"}
+                        <li class="mal0">
+                            <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$list.case_id))}" target="_blank">
+                                <div class="imgs" style="width:285px;height:205px;">
+                                    <img src="{$list.img}" width="285" height="205" alt="">
+                                </div>
+                                <div class="alscon">
+                                    <h4 style="font-size: 16px;">{$list.case_name}</h4>
+                                </div>
+                            </a>
+                        </li>
+                        {/volist}
+
+
+                    </ul>
+                   {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 底部 -->
+{include file="public/footer" /}
+<script>
+    $(".cat1 a").click(function(){
+        $(this).addClass('on').siblings().removeClass('on');
+        chose_cat();
+    });
+
+    $(".cat2 a").click(function(){
+        $(this).addClass('on').siblings().removeClass('on');
+        chose_cat();
+    });
+
+    $(".cat3 a").click(function(){
+        $(this).addClass('on').siblings().removeClass('on');
+        chose_cat();
+    });
+
+    $(".jj_chose .x").click(function(){
+        num = $(this).attr('date_cat');
+        $("."+num).find(".on").attr("cat",0);
+        chose_cat();
+    });
+
+    $(".jj_chose .a").click(function(){
+        $(".cat1").find(".on").attr("cat",0);
+        $(".cat2").find(".on").attr("cat",0);
+        $(".cat3").find(".on").attr("cat",0);
+        chose_cat();
+    });
+
+    function chose_cat(){
+        style_id = $(".cat1").find(".on").attr("cat");
+        apart_id = $(".cat2").find(".on").attr("cat");
+        measure_id = $(".cat3").find(".on").attr("cat");
+
+        var p = arguments[0] ? arguments[0] : 1;
+
+        url = "{:url('Index/Cases/index',array('style_id'=>styleid,'apart_id'=>apartid,'measure_id'=>measureid,'p'=>pid))}";
+        url = url.replace('styleid',style_id);
+        url = url.replace('apartid',apart_id);
+        url = url.replace('measureid',measure_id);
+        url = url.replace('pid',p);
+
+        location.href = url;
+    }
+
+    function jump_p(p){
+        chose_cat(p);
+    }
+
+</script>

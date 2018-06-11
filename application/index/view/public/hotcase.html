@@ -1,0 +1,18 @@
+<div class="huo1 mab50" style="width: 302px;float: right;">
+    <div class="huoc">
+        <h3>整装案例</h3>
+
+        <div class="huoshow">
+            {volist name="case" id="case"}
+            <div style="position: relative;">
+                <a target="_blank" href="{:url('Index/Cases/caseinfo',array('case_id'=>$case.case_id))}">
+                    <img src="{$case.img}" width="291" height="241" alt="">
+                </a>
+                <div class="pdesc">
+                    <a style=" color: #ffffff;" target="_blank" href="{:url('Index/Cases/caseinfo',array('case_id'=>$case.case_id))}">{$case.img_info|mb_substr=###,0,20,'utf-8'}...</a>
+                </div>
+            </div>
+            {/volist}
+        </div>
+    </div>
+</div>

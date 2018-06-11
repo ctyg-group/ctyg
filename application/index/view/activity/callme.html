@@ -1,0 +1,66 @@
+{include file="public/header" /}
+	<div class="banner">
+		<div><a href="#"><img src="__PUBLIC__/static/images/banner2.jpg" alt=""></a></div>
+	</div>
+
+	<div class="jump">
+		<div class="layout">
+			<ul class="fix">
+				<li ><a href="{:U('Home/aboutme/index','','')}">公司简介</a></li>
+				<li class="on"><a href="{:U('Home/aboutme/callme','','')}">联系我们</a></li>
+				<li><a href="{:U('Home/aboutme/joinme','','')}">加入我们</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="main main-ab">
+		<div class="layout">
+			<div class="ab">
+				<img src="__PUBLIC__/static/images/ab1.jpg" alt="">
+
+				<div class="abcon">
+					<h4>深圳市久居整装设计工程有限公司</h4>
+					<small>Shenzhen JIUJU Design&decoration Engineering Co ., Ltd.</small>
+
+					<p>龙岗旗舰店：深圳市龙岗区龙城大道29号花样年龙年广场13A层</p>
+					<p>惠州分公司：惠州市惠城区江北文昌一路</p>
+					<p>华侨城设计公司：深圳南山华侨城创意园园区北区C3栋</p>
+					<p>华侨城施工公司：深圳南山华侨城创意园园区北区C3</p>
+					<p>热线电话：<font>400-835-1919</font></p>
+				</div>
+
+				<div class="map" style="width: 1200px;height: 600px;" id="allmap">
+
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=X1qMKkhEpq0pPr51xVGbniMaK9gUyh8v"></script>
+<script>
+    //页面单独使用的js
+    var map1 = new BMap.Map("allmap");            // 创建Map实例
+    var point1 = new BMap.Point(114.25885,22.72007);
+    map1.centerAndZoom(point1,50);
+    map1.enableScrollWheelZoom(true);
+
+    var marker1 = new BMap.Marker(point1);        // 创建标注
+    map1.addOverlay(marker1);
+    //marker1.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+    var opts1 = {
+        width: 270,     // 信息窗口宽度
+        height: 100
+    };
+    var info1 = '<div>' +
+        '<h3 style="line-height: 26px;font-size: 20px;font-weight: bold;">久居整装</h3>' +
+        '<p style="padding-top:8px;line-height: 21px;font-size: 14px;">地址：深圳市龙岗区龙城大道29号花样年龙年广场13A</p>' +
+        '<p style="line-height: 24px;font-size: 14px;">服务电话：400-835-1919</p>' +
+        '</div>';
+    var infoWindow1 = new BMap.InfoWindow(info1, opts1);  // 创建信息窗口对象
+    map1.openInfoWindow(infoWindow1, marker1.getPosition());      // 打开信息窗口
+    marker1.addEventListener("click", function(){
+        map1.openInfoWindow(infoWindow1,point1); //开启信息窗口
+    });
+</script>
+{include file="public/footer" /}
+

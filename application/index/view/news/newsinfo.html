@@ -1,0 +1,154 @@
+{include file="public/header" /}
+<link rel="stylesheet" type="text/css" href="/public/index/style/xuetang.css">
+	<!--  -->
+	<div class="mbx">
+		<div class="layout">
+			<p>
+				<a href="/">首页</a>
+				<em>&gt;</em>
+				<a href="{:url('Index/News/typelist',array('cat_id'=>$catname1.cat_id,'p'=>1))}">{$catname1.cat_name}</a>
+				<em>&gt;</em>
+				<a href="{:url('Index/News/typelist',array('cat_id'=>$catname2.cat_id,'p'=>1))}">{$catname2.cat_name}</a>
+				<em>&gt;</em>
+				<span>{$artinfo.title}</span>
+			</p>
+		</div>
+	</div>
+	<!-- 详情介绍 -->
+	<div class="main main-new">
+		<div class="layout fix">
+			<div class="newl fl">
+				<div class="news">
+					<h1>{$artinfo.title}</h1>
+					<p class="sp fix">
+						<span class="fl">作者：{$artinfo.author} | {$artinfo.add_time|date="Y-m-d H:i:s",###} </span>
+
+						<span class="fr">
+							<span class="eye">{$artinfo.radio_num}</span>
+							<span class="love">{$artinfo.comment}</span>
+						</span>
+					</p>
+					<style>
+						.newscon{
+							padding-top: 20px;
+						}
+					</style>
+					<div class="newscon">
+						{$artinfo.content}
+					</div>
+					<div class="nback">
+						<p>
+							<a href="{if condition='$next.prev.article_id neq 0'}{:url('Index/News/newsinfo',array('article_id'=>$next.prev.article_id))}{else /}Javascript:;{/if}">上一篇：
+								<font>{$next.prev.title}</font>
+							</a>
+						</p>
+						<p>
+							<a href="{if condition='$next.next.article_id neq 0'}{:url('Index/News/newsinfo',array('article_id'=>$next.next.article_id))}{else /}Javascript:;{/if}">下一篇：
+								<font>{$next.next.title}</font>
+							</a>
+						</p>
+					</div>
+
+				</div>
+
+				<div class="nb">
+					<h3>相关文章
+						<small>RELATED ARTICLES</small>
+					</h3>
+					<ul class="fix">
+						{volist name="arthot" id="arthot" key="key"}
+						<li {if condition="$key eq 1"}class="mal0"{/if}>
+							<a target="_blank" href="{:url('Index/News/newsinfo',array('article_id'=>$arthot.article_id))}">
+								<div class="img">
+									<img src="{$arthot.thumb}" width="280" height="200" alt="">
+									<div class="cover" title="{$arthot.title}">
+										<p>{$arthot.title|mb_substr=###,0,20,'utf-8'}..</p>
+									</div>
+								</div>
+								<div class="hot">
+									<img src="/public/index/static/images/hot.png" alt="">
+								</div>
+							</a>
+						</li>
+						{/volist}
+
+
+					</ul>
+				</div>
+			</div>
+			<div class="newr qnr  fr">
+				<div class="nrt0">
+					<div class="nrt0con">
+						<div class="nrt0t fix">
+							<div class="fl">
+								<img src="/public/index/static/images/ewm1.png" alt="">
+							</div>
+
+							<div class="fr">
+								<h4>{$artinfo.author}</h4>
+								<p>迟暮依旧美人，陌路仍是贵族。但这又有何意。</p>
+							</div>
+						</div>
+
+						<div class="nrt0b">
+							<p>
+								<span>561篇文章</span>
+								<span class="two">212次好评</span>
+								<span>1956人浏览</span>
+							</p>
+							<a href="javascript:;">装修有疑问，请扫我聊聊</a>
+
+						</div>
+
+					</div>
+				</div>
+              <!-- 预约表格 -->
+				{include file="public/baojia" /}
+				<!--最新课文-->
+				<div class="huo1 mab50">
+					<div class="huoc">
+						<h3 style="background-image: none;font-size: 16px;">最新课文</h3>
+						<ul class="fix">
+							{volist name="artnew" id="artnew" key="k"}
+							<li>
+								<a target="_blank" href="{:url('Index/News/newsinfo',array('article_id'=>$artnew.article_id))}">
+									{if condition="$k == 1"}
+									<div class="img i5brcon" style="padding-top: -5px;">
+									{else:}
+									<div class="img i5brcon"  style="display: none;padding-top: -5px;" >
+									{/if}
+										<img src="{$artnew.thumb}" width="262" height="120" alt="">
+									</div>
+									<p class="artinfo_h3" title="{$artnew.title}">{$artnew.title|mb_substr=###,0,20,'utf-8'}...</p>
+								</a>
+							</li>
+							{/volist}
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	 <!-- 底部 -->
+<script type="text/javascript" src="/punlic/index/static/js/jquery.qqFace.js"></script>
+{include file="public/footer" /}
+
+<script type="text/javascript">
+    $('.huoc li').hover(
+        function(){
+            if($(this).hasClass('on')){
+
+            }else{
+                $(this).addClass('on').siblings().removeClass('on');
+                $(this).siblings().find('.i5brcon').stop().slideUp();
+                $(this).find('.i5brcon').stop().slideDown();
+            }
+        }
+    );
+	window.onload=function(){
+		$(".parentWrap .groupTitle").mouseenter(function () {
+                $(this).next("div").show().parent("li").siblings("li").children("div").hide();
+            });
+	}
+</script>

@@ -1,0 +1,38 @@
+<!-- 装修案例——详情页 -->
+<!-- 轮播 -->
+<view class="details">
+    <swiper class="details_box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imgUrls}}">
+            <swiper-item>
+                <image src="{{item}}" class="details_img"/>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view>
+        <text class="details_text">72平米两室两厅精装装修效果图\n</text>
+        <text class="style gray">风格：<text class="green">美式</text></text>
+    </view>
+</view>
+
+<!-- 设计 -->
+<view class="design">
+    <view class="designer">
+        <view class="head_image">
+           <view class="yuan">
+                <image src="../../images/collection/wanzhuanshenghuo2.png"></image>
+           </view>
+        </view>
+        <view class="design_text">
+            <text class="gray">设计师：<text class="green">王丽</text></text>
+        </view>
+       
+    </view>
+    <view class="order">
+        <navigator url='../free_quote/free_quote'>
+           <text>预约设计师</text>
+        </navigator>
+       
+    </view>
+    <view class="cl"></view>
+</view>
+

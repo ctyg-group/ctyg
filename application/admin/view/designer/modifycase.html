@@ -1,0 +1,298 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+    </div>
+    <link rel="stylesheet" href="__ROOT__/public/up-img/dist/css/dropify.min.css">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">修改案例
+
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="scrollable">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation">
+                                    <a href="{:url('Designer/caselist')}">
+                                        <span class="visible-xs">案例列表</span>
+                                        <span class="hidden-xs">案例列表</span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="JavaScript:;" >
+                                        <span class="visible-xs">修改案例</span>
+                                        <span class="hidden-xs">修改案例</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div  class="table-responsive" style="min-width: 1350px!important;">
+                                <br>
+                                <style>
+                                    .form-group input{
+                                        max-width:300px!important;
+                                    }
+                                    .bootstrap-select{
+                                        max-width:300px!important;
+                                    }
+                                    .select2{
+                                        max-width:300px!important;
+                                    }
+                                    .form-group select{
+                                        font-weight: 500;
+                                        max-width: 300px!important;
+                                        float:left;
+                                        margin-right: 4px;
+                                    }
+
+                                </style>
+                                <form action="{:url('Designer/modifycase')}" method="post" class="form-horizontal col-sm-6" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">案例名称:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="请输入案例名称" required value="{$case.case_name}">
+                                            <input type="hidden" name="case_id" value="{$case.case_id}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">选择设计师:</label>
+                                        <div class="col-sm-7">
+                                            <select  class="form-control select2"  name="desid" id="desid" required>
+                                                <option value="">请选择设计师</option>
+                                                {volist name="des" id="d"}
+                                                <option value="{$d.id}" {if condition="$case.designer_id eq $d.id"}selected{/if}>{$d.designer_name}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {volist name="cat" id="c"}
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">{$c.cat_name}类型:</label>
+                                        <div class="col-sm-7">
+                                            <select class="selectpicker" data-style="form-control" name="cat_name{$c.cat_id}" required>
+                                                <option value="">请选择{$c.cat_name}</option>
+                                                {volist name="c.nextcat" id="n"}
+                                                <option value="{$n.cat_id}"
+                                                {if condition="$case.style_id eq $n.cat_id"}selected{/if}
+                                                {if condition="$case.apart_id eq $n.cat_id"}selected{/if}
+                                                {if condition="$case.measure_id eq $n.cat_id"}selected{/if}
+                                                >{$n.cat_name}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {/volist}
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">实际面积:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="area" name="area" placeholder="请输入实际面积" required value="{$case.area}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">排序:</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="sort" name="sort" placeholder="请输入排序" required value="{$case.sort}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">案例简介:</label>
+                                        <div style="width:465px;float:left;padding-left: 15px;">
+                                            <textarea class="form-control" name="intro" id="intro" style="height:150px;">{$case.introduce}</textarea>
+                                        </div>
+                                    </div>
+                                    <textarea name="delimgid" id="delimgid" style="display:none;"></textarea>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">图文描述:</label>
+                                        <div style="width:465px;float:left;padding-left: 15px;">
+                                            <div id="caseimg0">
+                                                {volist name="caseimg" id="c"}
+                                                <div class="casimglist" id="caseimgtext{$c.img_id}">
+                                                    <div class="casimg">
+                                                        <input type="file" name="caseimg_save{$c.img_id}" class="dropify-fr" data-default-file="__ROOT__{$c.image_url}" data-max-file-size="30M" data-height="88" accept=".png,.jpg,.gif,.jpeg,.bmp"/>
+                                                        <input type="hidden" name="img_id[]" value="{$c.img_id}">
+                                                    </div>
+                                                    <div class="castext">
+                                                        <textarea name="casetext_save{$c.img_id}" placeholder="请输入照片描述" >{$c.img_info}</textarea>
+                                                    </div>
+                                                    <div class="cascz" onclick="delcaseimg_save('{$c.img_id}')">
+                                                        删除
+                                                    </div>
+                                                </div>
+                                                {/volist}
+                                                <div id="caseimg10000001"></div>
+                                            </div>
+                                            <div class="addcaseimg">
+                                                <a style="padding-top:3px!important;padding-bottom:2px!important;" class="fcbtn btn btn-success btn-outline btn-xs btn-1e" id="addimg" onclick="addcaseimg('10000001')">
+                                                    <i class="fa fa-plus"></i>
+                                                    新增图文说明
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">状 态:</label>
+                                        <div class="col-sm-7">
+                                            <div class="zhuangts">
+                                                <div class="box-zt">
+                                                    <h4>是否显示</h4>
+                                                    <div class="radio" >
+                                                        <input type="radio" name="show" id="show1" value="1" {if condition="$case.is_show eq 1"}checked{/if}>
+                                                        <label for="show1"> 是 </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="show" id="show2" value="2" {if condition="$case.is_show neq 1"}checked{/if}>
+                                                        <label for="show2"> 否 </label>
+                                                    </div>
+                                                </div>
+                                                <div class="box-zt">
+                                                    <h4>是否热门</h4>
+                                                    <div class="radio" >
+                                                        <input type="radio" name="hot" id="hot1" value="1" {if condition="$case.is_hot eq 1"}checked{/if}>
+                                                        <label for="hot1"> 是 </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="hot" id="hot2" value="2" {if condition="$case.is_hot neq 1"}checked{/if}>
+                                                        <label for="hot2"> 否 </label>
+                                                    </div>
+                                                </div>
+                                                <div class="box-zt">
+                                                    <h4>是否最新</h4>
+                                                    <div class="radio" >
+                                                        <input type="radio" name="news" id="news1" value="1" {if condition="$case.is_new eq 1"}checked{/if}>
+                                                        <label for="news1"> 是 </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="news" id="news2" value="2" {if condition="$case.is_new neq 1"}checked{/if}>
+                                                        <label for="news2"> 否 </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5"></label>
+                                        <div class="col-sm-7">
+                                            <button type="submit" class="btn btn-outline cus-btn" >提 交</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script src="__ROOT__/public/up-img/dist/js/dropify.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Basic
+        $('.dropify').dropify();
+
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: '选择图片',
+                replace: '',
+                remove:  '删除',
+                error:   '抱歉，该图片太大'
+            }
+        });
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+        drEvent.on('dropify.beforeClear', function(event, element){
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+        drEvent.on('dropify.afterClear', function(event, element){
+            alert('File deleted');
+        });
+        drEvent.on('dropify.errors', function(event, element){
+            console.log('Has Errors');
+        });
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e){
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+    function addcaseimg(id){
+        ids = id*1+1*1;
+        html =  '<div class="casimglist"  id="caseimgtext'+id+'"><div class="casimg">'+
+            '<input type="file" name="caseimg[]" class="dropify-fr" data-default-file="" data-max-file-size="30M" data-height="88" accept=".png,.jpg,.gif,.jpeg,.bmp" required/>'+
+            '</div>'+
+            '<div class="castext">'+
+            '<textarea name="casetext[]" placeholder="请输入照片描述"></textarea>'+
+            '</div>'+
+            '<div class="cascz" onclick="delcaseimg('+id+')">'+
+            '删除'+
+            '</div></div><div id="caseimg'+ids+'"></div>';
+        $("#addimg").attr("onclick","addcaseimg('"+ids+"')");
+        $("#caseimg"+id).html(html);
+        $(document).ready(function(){
+            // Basic
+            $('.dropify').dropify();
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: '选择图片',
+                    replace: '',
+                    remove:  '删除',
+                    error:   '抱歉，该图片太大'
+                }
+            });
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+            drEvent.on('dropify.beforeClear', function(event, element){
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+            drEvent.on('dropify.afterClear', function(event, element){
+                alert('File deleted');
+            });
+            drEvent.on('dropify.errors', function(event, element){
+                console.log('Has Errors');
+            });
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function(e){
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+    }
+    function delcaseimg(id){
+        $("#caseimgtext"+id).remove();
+    }
+
+    function delcaseimg_save(id){
+        delimgid = $("#delimgid").html();
+        if(delimgid==''){
+            html = id;
+        }else{
+            html = delimgid+","+id;
+        }
+        $("#delimgid").html(html);
+        $("#caseimgtext"+id).remove();
+    }
+</script>

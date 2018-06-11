@@ -1,0 +1,99 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <!-- 内容页面 -->
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">权限控制 <i class="fa fa-angle-double-right"></i> 修改管理员</h4>
+                            </div>
+                        </div>
+                        <div class="panel">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation">
+                                <a href="{:url('Setup/user')}">
+                                    <span class="visible-xs">管理员列表</span>
+                                    <span class="hidden-xs"> 管理员列表</span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="JavaScript:;">
+                                    <span class="visible-xs">修改管理员</span>
+                                    <span class="hidden-xs">修改管理员</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="cus-row">
+                            <div class="table-responsive">
+                                <br>
+                                <form action="{:url('Setup/modifyuser')}" method="post" class="form-horizontal col-sm-6">
+                                    <div class="form-group">
+                                        <label for="account" class="control-label col-sm-3">账 号:</label>
+                                        <div class="col-sm-9">
+                                            <input type="hidden" name="id" value="{$admin.id}">
+                                            <input type="text" class="form-control" id="account" name="account" placeholder="请输入账号" value="{$admin.account}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name" class="control-label col-sm-3">备 注:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="请输入备注" value="{$admin.name}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="control-label col-sm-3">初始密码:</label>
+                                        <div class="col-sm-9">
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="请输入初始密码">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">状 态:</label>
+                                        <div class="col-sm-9">
+                                            <div class="radio" style="float:left;margin-right: 20px;">
+                                                <input type="radio" name="state" id="test1" value="1" {if condition="$admin.state eq 1"}checked{/if}>
+                                                <label for="test1"> 允许登录 </label>
+                                            </div>
+                                            <div class="radio" style="float:left;margin-right: 20px;">
+                                                <input type="radio" name="state" id="test2" value="2" {if condition="$admin.state eq 2"}checked{/if}>
+                                                <label for="test2"> 禁止登陆 </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">用户组:</label>
+                                        <div class="col-sm-9">
+                                            {volist name="group" id="v"}
+                                            <div class="radio" style="float:left;margin-right: 20px;">
+                                                <input type="radio" name="group" id="auth{$v.id}" value="{$v.id}" {if condition="$aga['group_id'] eq $v['id']"}checked{/if}>
+                                                <label for="auth{$v.id}"> {$v.title} </label>
+                                            </div>
+                                            {/volist}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3"></label>
+                                        <div class="col-sm-9">
+                                            <button type="submit" class="btn btn-outline cus-btn" >提 交</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}

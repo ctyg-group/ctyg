@@ -1,0 +1,133 @@
+{include file="public/header" /}
+    <link rel="stylesheet" type="text/css" href="/public/index/style/sjs.css">
+    <!-- 中间大图 -->
+    <div class="desinba">
+        <div class="tup">
+            <img src="{$des.sm_img}" style="width: 157px;height: 157px;"
+                alt="">
+            <span></span>
+        </div>
+        <p class="name">{$des.designer_name}</p>
+        <div class="level">{$des.level}</div>
+        <div class="info">
+
+            <span>设计经验：{$des.designer_ex}年</span>
+            <span class="shux"></span>
+            <span>设计作品：{$des.designer_num}个</span>
+            <span class="shux"></span>
+            <span>签单数量：{$des.order_num}个</span>
+        </div>
+    </div>
+    <!--  -->
+    <div class="desinin">
+        <div class="neir">
+            <div class="info">
+                <p style="margin-top: 28px;">
+                    <span class="green">设计风格：</span>{$des.style}</p>
+                <p style="margin-top: 28px;">
+                    <span class="green">个人介绍：</span>{$des.designer_prize}</p>
+                <p style="margin-top: 28px;">
+                    <span class="green">经典案例：</span>{$des.designer_case}</p>
+            </div>
+            <div class="ewm">
+                <div class="img">
+                    <img src="{$des.wx_img}" style="width: 86px;height: 86px;"
+                        alt="">
+                </div>
+                <div class="ann wkbutton"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 列表展示 -->
+    <div class="sjt">
+        <div class="layout">
+            <div class="gdti">
+                <p>经典案例</p>
+            </div>
+
+            <div class="des_goods">
+                {volist name="list_x" id="list_x" key="key"}
+                <div class="des_g {if condition='$key eq 1'}ml0{/if}">
+                    <div class="img">
+                       <a href="/zzal/anli/104.html" target="_blank"> <img src="{$list_x.img}" style="width:274px;height: 192px;" alt=""></a>
+                    </div>
+                    <div class="info">
+                        <p>{$list_x.case_name}</p>
+                        <p>{$list_x.apart}&nbsp;&nbsp;
+                            <span class="green">|</span>&nbsp;&nbsp;{$list_x.area}㎡&nbsp;&nbsp;
+                            <span class="green">|</span>&nbsp;&nbsp;{$list_x.style}</p>
+                        <a href="/zzal/anli/{$list_x.case_id}.html" target="_blank">查看详情</a>
+                    </div>
+                </div>
+                {/volist}
+
+            </div>
+
+
+        </div>
+    </div>
+    <!-- 全部案例 -->
+    <div class="sjt" style="margin-top: -55px;">
+        <div class="layout">
+            <div class="gdti">
+                <p>全部案例</p>
+            </div>
+
+            <div class="des_goods">
+                {volist name="list" id="list" key="key"}
+                <div class="des_g {if condition='$key eq 1'}ml0{/if}">
+                    <div class="img">
+                        <a href="/zzal/anli/104.html" target="_blank"><img src="{$list.img}" style="width:274px;height: 192px;" alt=""></a>
+                    </div>
+                    <div class="info">
+                        <p>{$list.case_name}</p>
+                        <p>{$list.apart}&nbsp;&nbsp;
+                            <span class="green">|</span>&nbsp;&nbsp;{$list.area}㎡&nbsp;&nbsp;
+                            <span class="green">|</span>&nbsp;&nbsp;{$list.style}</p>
+                        <a href="/zzal/anli/{$list.case_id}.html" target="_blank">查看详情</a>
+                    </div>
+                </div>
+                {/volist}
+
+
+            </div>
+            {$page}
+        </div>
+    </div>
+    <!-- sjs介绍 -->
+    <div class="sjb" style="margin-top: -55px;">
+        <div class="fwti">
+            <div class="layout">
+                <div class="gdti">
+                    <p>热门设计师</p>
+                </div>
+            </div>
+        </div>
+        <div class="fwshow">
+            <div class="layout">
+                <div class="fwk">
+                    <div class="fws slick-initialized slick-slider">
+                        <div aria-live="polite" class="slick-list">
+                            <div class="slick-track" role="listbox" style="opacity: 1; width: 1002px; transform: translate3d(0px, 0px, 0px);">
+                                {volist name="hotdes" id="hotdes" key="key"}
+                                <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option"
+                                    aria-describedby="slick-slide0{$key}" style="width: 167px;">
+                                    <a href="{:url('Index/Designer/desdata',array('id'=>$hotdes['id'],'p'=>1))}" tabindex="0">
+                                        <img src="{$hotdes.sm_img}" alt="">
+                                    </a>
+                                </div>
+                                {/volist}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 底部 -->
+{include file="public/footer" /}
+<script>
+    function chose_cat(){
+        p = arguments[0] ? arguments[0] : 1;
+        url = "{:url('Index/designer/desdata',array('id'=>$id,'p'=>'pid'))}"

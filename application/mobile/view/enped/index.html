@@ -1,0 +1,178 @@
+{include file="public/header" /}
+	
+	<div class='eni_first'>
+		<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$firen['enped_id'])),'.html'}"><img src="{$firen['thumb']}" style="width: 100%;height: 9.14rem;" alt=""></a>
+		<div class='eni_ex'>
+			<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$firen['enped_id'])),'.html'}"><p>{$firen['title']}</p></a>
+		</div>
+	</div>
+	
+	<div class='eni_hot'>
+		<div class='hot_tit'>
+			<span class='tit1'>热门</span>
+			<span class='tit2'>词条</span>
+			<span class='tit3'><?php echo (date("Y.m.d",time())); ?></span>
+		</div>
+		
+		<div class='eni_cit'>
+			{foreach name='hot' item='hv' key='hk'}
+			<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$hv['enped_id'])),'.html'}"><div class='citiao'>{$hv['title']}</div></a>
+			{/foreach}
+			<!--<div class='eni_more'>更多词条  ></div>-->
+		</div>
+	</div>
+	
+	<div class="eni_list">
+		<div class='tit'>
+			<div class='tit1'><a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>18,'p'=>'1'))}">装修百科</a></div>
+			<div class='tit2'>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>19,'p'=>'1'))}"><span>建材</span></a>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>20,'p'=>'1'))}"><span>工艺</span></a>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>21,'p'=>'1'))}"><span>预算合同</span></a>
+			</div>
+		</div>
+		
+		<div class='list1'>
+			{foreach name='en18' item='ev18' key='ek18'}
+			{between name="$ek18" value="0,2"}
+			<div class='eni_list1'>
+				<div class='eni1_img'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev18['enped_id'])),'.html'}"><img src="{$ev18['thumb']}" style="width: 4.26rem;height: 2.98rem;" alt=""></a></div>
+				
+				<div class='eni1_info'>
+					<div class='eni1_info1'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev18['enped_id'])),'.html'}">{$ev18['title']}</a></div>
+					<div class='eni1_info2'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev18['enped_id'])),'.html'}">{$ev18['explain']|mb_substr=###,0,28,'utf-8'}...</a></div>
+				</div>	
+			</div>
+			{/between}
+			{/foreach}
+		</div>
+		
+		<div class='list2'>
+			{foreach name='en18' item='ev18' key='ek18'}
+			{between name="$ek18" value="3,4"}
+			<div>
+				<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev18['enped_id'])),'.html'}"><img src="{$ev18['thumb']}" style="width: 7rem;height: 4.9rem;" alt=""></a>
+				<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev18['enped_id'])),'.html'}"><span>{$ev18['title']}</span></a>
+			</div>
+			{/between}
+			{/foreach}
+		</div>
+		
+	</div>
+	
+	<div class="eni_list">
+		<div class='tit'>
+			<div class='tit1'><a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>1,'p'=>'1'))}">设计百科</a></div>
+			<div class='tit2'>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>8,'p'=>'1'))}"><span>风格</span></a>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>16,'p'=>'1'))}"><span>空间</span></a>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>17,'p'=>'1'))}"><span>户型</span></a>
+			</div>
+		</div>
+		
+		<div class='list1'>
+			{foreach name='en1' item='ev1' key='ek1'}
+			{between name="$ek1" value="0,2"}
+			<div class='eni_list1'>
+				<div class='eni1_img'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev1['enped_id'])),'.html'}"><img src="{$ev1['thumb']}" style="width: 4.26rem;height: 2.98rem;" alt=""></a></div>
+
+				<div class='eni1_info'>
+					<div class='eni1_info1'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev1['enped_id'])),'.html'}">{$ev1['title']}</a></div>
+					<div class='eni1_info2'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev1['enped_id'])),'.html'}">{$ev1['explain']|mb_substr=###,0,28,'utf-8'}...</a></div>
+				</div>
+			</div>
+			{/between}
+			{/foreach}
+		</div>
+		
+		<div class='list2'>
+			{foreach name='en1' item='ev1' key='ek1'}
+			{between name="$ek1" value="3,4"}
+			<div>
+				<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev1['enped_id'])),'.html'}"><img src="{$ev1['thumb']}" style="width: 7rem;height: 4.9rem;" alt=""></a>
+				<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev1['enped_id'])),'.html'}"><span>{$ev1['title']}</span></a>
+			</div>
+			{/between}
+			{/foreach}
+		</div>
+		
+	</div>
+	
+	<div class="eni_list">
+		<div class='tit'>
+			<div class='tit1'><a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>5,'p'=>'1'))}">家居百科</a></div>
+			<div class='tit2'>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>22,'p'=>'1'))}"><span>软装</span></a>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>23,'p'=>'1'))}"><span>家具</span></a>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>24,'p'=>'1'))}"><span>装饰</span></a>
+			</div>
+		</div>
+		
+		<div class='list1'>
+			{foreach name='en5' item='ev5' key='ek5'}
+			{between name="$ek5" value="0,2"}
+			<div class='eni_list1'>
+				<div class='eni1_img'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev5['enped_id'])),'.html'}"><img src="{$ev5['thumb']}" style="width: 4.26rem;height: 2.98rem;" alt=""></a></div>
+
+				<div class='eni1_info'>
+					<div class='eni1_info1'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev5['enped_id'])),'.html'}">{$ev5['title']}</a></div>
+					<div class='eni1_info2'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev5['enped_id'])),'.html'}">{$ev5['explain']|mb_substr=###,0,28,'utf-8'}...</a></div>
+				</div>
+			</div>
+			{/between}
+			{/foreach}
+					
+		</div>
+		
+		<div class='list2'>
+			{foreach name='en5' item='ev5' key='ek5'}
+			{between name="$ek5" value="3,4"}
+			<div>
+				<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev5['enped_id'])),'.html'}"><img src="{$ev5['thumb']}" style="width: 7rem;height: 4.9rem;" alt=""></a>
+				<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev5['enped_id'])),'.html'}"><span>{$ev5['title']}</span></a>
+			</div>
+			{/between}
+			{/foreach}
+		</div>
+		
+	</div>
+	
+	<div class="eni_list">
+		<div class='tit'>
+			<div class='tit1'><a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>12,'p'=>'1'))}">生活百科</a></div>
+			<div class='tit2'>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>13,'p'=>'1'))}"><span>风水</span></a>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>14,'p'=>'1'))}"><span>动植物</span></a>
+				<a href="{:url("Mobile/enped/enpedlist",array('cat_id'=>15,'p'=>'1'))}"><span>生活常识</span></a>
+			</div>
+		</div>
+		
+		<div class='list1'>
+			{foreach name='en12' item='ev12' key='ek12'}
+			{between name="$ek12" value="0,2"}
+			<div class='eni_list1'>
+				<div class='eni1_img'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev12['enped_id'])),'.html'}"><img src="{$ev12['thumb']}" style="width: 4.26rem;height: 2.98rem;" alt=""></a></div>
+
+				<div class='eni1_info'>
+					<div class='eni1_info1'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev12['enped_id'])),'.html'}">{$ev12['title']}</a></div>
+					<div class='eni1_info2'><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev12['enped_id'])),'.html'}">{$ev12['explain']|mb_substr=###,0,28,'utf-8'}...</a></div>
+				</div>
+			</div>
+			{/between}
+			{/foreach}
+					
+		</div>
+		
+		<div class='list2'>
+			{foreach name='en12' item='ev12' key='ek12'}
+			{between name="$ek12" value="3,4"}
+			<div>
+				<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev12['enped_id'])),'.html'}"><img src="{$ev12['thumb']}" style="width: 7rem;height: 4.9rem;" alt=""></a>
+				<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev12['enped_id'])),'.html'}"><span>{$ev12['title']}</span></a>
+			</div>
+			{/between}
+			{/foreach}
+		</div>
+		
+	</div>
+{include file="public/footer" /}

@@ -1,0 +1,325 @@
+<include file="Public:header" />
+<div id="wrapper">
+    <include file="Public:nav" />
+    <!-- 内容页面 -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">系统设置 <i class="fa fa-angle-double-right"></i> 菜单管理</h4>
+                </div>
+            </div>
+            <div class="row casket">
+                <div class="page-aside">
+                    <div class="panel">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="Javascript:;">
+                                    <span class="visible-xs">菜单列表</span>
+                                    <span class="hidden-xs"> 菜单列表</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Javascript:;" alt="default" data-toggle="modal" data-target="#modal1">
+                                    <span class="visible-xs">添加菜单</span>
+                                    <span class="hidden-xs">添加菜单</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="cus-row">
+                            <div class="table-responsive">
+                                <form class="" action="{:U('Setup/navorder')}" method="post">
+                                <table class="table table-hover manage-u-table cus-tab">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:50px;">排序</th>
+                                        <th>菜单名</th>
+                                        <th>图标</th>
+                                        <th>链接</th>
+                                        <th style="width:250px;">操 作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <foreach name="nav" item="v">
+                                    <tr>
+                                        <td>
+                                            <input style="margin:0px;height:24px;width:30px;" type="text" name="{$v['id']}" value="{$v['order_number']}">
+                                        </td>
+                                        <td>{$v._name}</td>
+                                        <td><i class="{$v.ico}"></i></td>
+                                        <td>{$v.mca}</td>
+                                        <td>
+                                            <a class="btn btn-outline btn-xs cus-btn" onclick="openmodal('{$v.id}')">
+                                                <i class="fa fa-plus"></i> 添加子菜单
+                                            </a>
+                                            <a class="btn btn-outline btn-xs cus-btn" navId="{$v['id']}" navName="{$v['name']}" navMca="{$v['mca']}"
+                                               navIco="{$v['ico']}" navLevel="{$v._level}" onclick="modifydata(this)">
+                                                <i class="fa fa-pencil-square-o"></i> 修改
+                                            </a>
+                                            <a class="btn btn-outline btn-xs cus-btn" onclick="del('{$v.id}')">
+                                                <i class="fa fa-trash-o"></i> 删除
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </foreach>
+                                    <tr>
+                                        <th colspan="5">
+                                            <input class="btn btn-outline cus-btn" type="submit" value="排序">
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .form-group{
+        margin-bottom:10px;
+    }
+</style>
+<div id="modal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">添加菜单</h4> </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="nav_title" class="col-sm-3 control-label">菜单名称:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nav_title" placeholder="请输入菜单名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nav_name" class="col-sm-3 control-label">菜单路径:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nav_name" placeholder="请输入菜单路径">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nav_ico" class="col-sm-3 control-label">菜单图标:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nav_ico" placeholder="请输入菜单图标">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline cus-btn" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-info waves-effect cus-btn" onclick="add()">添 加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">添加子菜单</h4> </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="navs_title" class="col-sm-3 control-label">菜单名称:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="navs_title" placeholder="请输入菜单名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="navs_name" class="col-sm-3 control-label">菜单路径:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="navs_name" placeholder="请输入菜单路径">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="navs_ico" class="col-sm-3 control-label">菜单图标:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="navs_ico" placeholder="请输入菜单图标">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline cus-btn" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-info waves-effect cus-btn"  id="add_level">添 加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">修改菜单</h4> </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="navtitle" class="col-sm-3 control-label">菜单名称:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="navtitle" placeholder="请输入菜单名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="navname" class="col-sm-3 control-label">菜单路径:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="navname" placeholder="请输入菜单路径">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="navico" class="col-sm-3 control-label">菜单图标:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="navico" placeholder="请输入菜单图标">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline cus-btn" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-info waves-effect cus-btn"  id="modifyauth">修 改</button>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+
+<script>
+    function add(){
+        name = $("#nav_title").val();
+        mca = $("#nav_name").val();
+        ico = $("#nav_ico").val();
+        $.ajax({
+            url: "{:U('Setup/addnav')}",
+            data: {name:name,mca:mca,ico:ico},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+    function add_level(id){
+        name = $("#navs_title").val();
+        mca = $("#navs_name").val();
+        ico = $("#navs_ico").val();
+        $.ajax({
+            url: "{:U('Setup/navadd_level')}",
+            data: {pid:id,name:name,mca:mca,ico:ico},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+//                    $("#modal2").closeModal();
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+    function openmodal(id){
+        $("#add_level").attr("onclick","add_level("+id+")");
+        $("#modal2").modal('show');
+    }
+
+    function modifydata(obj){
+        var navId=$(obj).attr('navId');
+        var navName=$(obj).attr('navName');
+        var navMca=$(obj).attr('navMca');
+        var navIco=$(obj).attr('navIco');
+        var navLevel=$(obj).attr('navLevel');
+        $("#navtitle").val(navName);
+        $("#navname").val(navMca);
+        $("#navico").val(navIco);
+        $("#modifyauth").attr("onclick","modify("+navId+")");
+        $("#modal3").modal('show');
+
+    }
+
+    function modify(id){
+        name = $("#navtitle").val();
+        mca = $("#navname").val();
+        ico = $("#navico").val();
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:U('Setup/modifynav')}",
+            data: {id:id,name:name,mca:mca,ico:ico},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    $("#modal3").modal('hide');
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+
+    function del(id){
+        layer.msg('確定刪除?', {
+            icon: 3,
+            time: 0 //不自动关闭
+            ,shade: 0.2
+            ,btn: ['確定', '取消']
+            ,yes: function(index){
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: "{:U('Setup/navdel')}",
+                    data: {id:id},
+                    type: 'POST',
+                    dataType: "json",
+                    cache: false,
+                    success: function(data,state){
+                        if(state == 'success' && data.code == '0'){
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1000);
+                        }else{
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                        }
+                    }
+                });
+            }
+        });
+    }
+</script>

@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="/public/index/static/css/swiper-4.1.6.min.css">
+<div class="huo1 mab50" style="width: 302px;float: right;">
+    <div class="huoc">
+        <h3 class="baike_h3">热门设计师</h3>
+    </div>
+    <div>
+        <div class="hotdes_b  slick-initialized slick-slider" style="">
+            <div aria-live="polite" class="slick-list draggable">
+                <div class="slick-track" role="listbox">
+                    <div class="swiper-container hotBanner">
+                        <div class="swiper-wrapper">
+                            {volist name="hotdes" id="hotd" key="k"}
+                            <div class="swiper-slide">
+                                <a target="_blank" href="{:url('Index/Designer/desdata',array('id'=>$hotd.id,'p'=>1))}" tabindex="-1">
+                                    <div class="desmn_hot"></div>
+                                    <img src="{$hotd.img}" width="291" alt="">
+                                </a>
+                            </div>
+                            {/volist}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hotdes_s slick-initialized slick-slider">
+            <div aria-live="polite" class="slick-list">
+                <div class="slick-tracks" style="width:100%">
+                    <div class="swiper-container hotBanner2">
+                        <div class="swiper-wrapper">
+                            {volist name="hotdes" id="hotd" key="key"}
+                            <div class="swiper-slide {if condition='$key eq 1'}on{/if}">
+                                <div class="slick-slide">
+                                    <img src="{$hotd.sm_img}">
+                                </div>
+                            </div>
+                            {/volist}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 如果需要导航按钮 -->
+            <!-- <div class="swiper-button-prev bannerhot-prev"></div>
+            <div class="swiper-button-next bannerhot-next"></div> -->
+        </div>
+    </div>
+</div>
+<script src="/public/index/static/js/jquery-2.2.4.min.js"></script>
+<script src="/public/index/static/js/swiper-4.1.6.min.js"></script>
+<script src="/public/index/static/js/slick.js"></script>
+<script>
+    // swiper 初始化
+    var mySwiper = new Swiper('.banner1', {
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 45,
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.banner-next',
+            prevEl: '.banner-prev',
+        },
+    })
+    // 热门设计师滚动
+    var hotBanner = new Swiper('.hotBanner');
+    var hotBanner2 = new Swiper('.hotBanner2', {
+        slidesPerView: 4,
+        spaceBetween: 5,
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.bannerhot-next',
+            prevEl: '.bannerhot-prev',
+        },
+    });
+    // 点击热点
+    $(".hotdes_s .swiper-slide").on("click", function(){
+        $(this).addClass("on").siblings().removeClass("on");
+        var index = $(this).index();
+        hotBanner.slideTo(index);
+    })
+</script>

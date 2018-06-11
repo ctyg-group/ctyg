@@ -1,0 +1,149 @@
+{include file="public/header" /}
+    <style>
+        .beijin{
+            background: url(/public/static/images/hdall11.jpg) no-repeat;
+            height:9886px;
+        }
+
+        .hd11_p{
+            font-size: 88px;
+            color: #ffffff;
+            float: left;
+            margin-top: 3075px;
+            margin-left: 973px;
+            letter-spacing:44px;
+        }
+
+        input{
+            width: 200px;
+            height: 42px;
+            border-radius: 2px;
+            font-size: 16px;
+        }
+
+        .hd11_input1{
+            float: left;
+            margin-top: 3713px;
+            margin-left: 700px;
+        }
+
+        .hd11_input2{
+            float: left;
+            margin-top: 3713px;
+            margin-left: 86px;
+        }
+
+        .hd11_input3{
+            float: left;
+            margin-top: 22px;
+            margin-left: 700px;
+        }
+
+        .hd11_input4{
+            float: left;
+            margin-top: 22px;
+            margin-left: 86px;
+        }
+
+        .hd11_submit{
+            background: url(/public/static/images/hd11_submit.png) no-repeat;
+            width: 112px;
+            height: 111px;
+            float: left;
+            margin-top: -44px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .hd11_back{
+            background: url(/public/static/images/hd11_back.png) no-repeat;
+            width: 187px;
+            height: 64px;
+            float: left;
+            margin-top: 2450px;
+            margin-left: 860px;
+            cursor: pointer;
+        }
+
+        .hd11_banner {
+            width: 1112px;
+            height: 695px;
+            float: left;
+            margin-top: -1470px;
+            margin-left: 398px;
+        }
+
+        .hd11_banner div{
+            width: 1112px;
+            height: 695px;
+
+        }
+
+        .hd11_banner .slick-dots{
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            margin-left: -36px;
+        }
+
+        .hd11_banner .slick-dots li{
+            width: 18px;
+            height: 19px;
+            float: left;
+            margin-right: 15px;
+            font-size: 0px;
+            cursor: pointer;
+            background: url(/public/static/images/hd11_button_t.png) no-repeat;
+        }
+
+        .hd11_banner .slick-dots li.slick-active{
+            background: url(/public/static/images/hd11_button.png) no-repeat;
+        }
+
+    </style>
+
+<div class="beijin">
+
+        <div class="hd11_p">{$end}</div>
+
+        <form action="#" id="adduserinfoForm">
+            <div class="hd11_input1"><input type="text"  name="user_name" placeholder="姓名"></div>
+            <div class="hd11_input2"><input type="text"  name="mobile" placeholder="电话"></div>
+            <div class="hd11_input3"><input type="text"  name="estate" placeholder="楼盘名称"></div>
+            <div class="hd11_input4"><input type="text"  name="area" placeholder="套内面积"></div>
+        </form>
+
+        <div class="hd11_submit"></div>
+
+        <div class="hd11_banner">
+            <div><img src="/public/static/images/hd11_banner1.jpg" alt=""></div>
+            <div><img src="/public/static/images/hd11_banner2.jpg" alt=""></div>
+            <div><img src="/public/static/images/hd11_banner3.jpg" alt=""></div>
+
+        </div>
+
+        <div class="hd11_back"></div>
+
+</div>
+
+<script>
+    $(".hd11_submit").click(function(){
+        ajax_user_form('adduserinfoForm','{:U('Index/addUserInfo')}');
+    });
+
+    $(".hd11_back").click(function(){
+        $('html,body').animate({ scrollTop: 0 }, 500 ,function(){});
+    });
+
+    $('.hd11_banner').slick({
+        autoplay:true,
+        autoplaySpeed:5000,
+        pauseOnHover:false,
+        infinite:true,
+        arrows:false,
+        draggable:false,
+        dots:true,
+    });
+</script>
+
+{include file="public/footer" /}

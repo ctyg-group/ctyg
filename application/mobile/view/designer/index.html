@@ -1,0 +1,126 @@
+{include file="public/header" /}
+<script src="/public/index/static/js/mui.picker.min.js"></script>
+<link href="/public/index/static/css/mui.picker.min.css" rel="stylesheet"/>
+	 
+	<div class="shaixuan">
+		<div style="background: #000000 url(/public/static/mobile/lfbj_jt.png) no-repeat 3.9rem 0.5rem;background-size: 0.4rem 0.24rem;">设计经验</div>
+		<div>级别</div>
+		<div style="background: #000000 url(/public/static/mobile/lfbj_jt.png) no-repeat 3.9rem 0.5rem;background-size: 0.4rem 0.24rem;">擅长风格</div>
+	</div>
+
+	<div class='xuanx cat1' style="display: none;">
+		<a href="javascript:;" ><div cat="0" {if condition="$ex_id==0"}class="on"{/if}>不限</div></a>
+	{foreach name="cat1" item='cv1' key='ck1'}
+	<a href="javascript:void(0);"><div cat="{$cv1['cat_id']}" {if condition="$cv1['cat_id']==$ex_id"}class="on"{/if} >{$cv1['cat_name']}</div></a>
+	{/foreach}
+	</div>
+	<div class='xuanx cat2' style="display: none;">
+		<a href="javascript:;" ><div cat="0" {if condition="$level_id==0"}class="on"{/if}>不限</div></a>
+	{foreach name="cat2" item='cv2' key='ck2'}
+	<a href="javascript:void(0);"><div cat="{$cv2['cat_id']}" {if condition="$cv2['cat_id']==$level_id"}class="on"{/if}>{$cv2['cat_name']}</div></a>
+	{/foreach}
+	</div>
+
+	<div class='xuanx cat3' style="display: none;">
+		<a href="javascript:;" ><div cat="0" {if condition="$style_id==0"}class="on"{/if}>不限</div></a>
+	{foreach name="cat3" item='cv3' key='ck3'}
+	<a href="javascript:void(0);"><div cat="{$cv3['cat_id']}" {if condition="$cv3['cat_id']==$style_id"}class="on"{/if}>{$cv3['cat_name']}</div></a>
+	{/foreach}
+	</div>
+	
+	{foreach name='list' item='lv' key='lk'}
+	<div class='deslist'>
+		<a href="{:url('Mobile/designer/desinfo',array('id'=>$lv.id)),'.html'}"><div class='zp'><img src="{$lv['sm_img']}" style="width: 3.08rem;height: 3.08rem;" alt=""></div></a>
+		<div class='wz'>
+			<div> 
+			    <div class='name'><a href="{:url('Mobile/designer/desinfo',array('id'=>$lv.id)),'.html'}">{$lv['designer_name']}</a></div>
+			    <div class='xhk'><a href="{:url('Mobile/designer/desinfo',array('id'=>$lv.id)),'.html'}">{$lv['level']}</a></div>
+			</div>
+			<div><a href="{:url('Mobile/designer/desinfo',array('id'=>$lv.id)),'.html'}">设计风格：{$lv['style']}</a></div>
+			<div><a href="{:url('Mobile/designer/desinfo',array('id'=>$lv.id)),'.html'}">经典案例：{$lv['case']|mb_substr=###,0,8,'utf-8'}...</a></div>
+		
+		</div>
+		<div class='sj'>
+			<a href="index.html">
+			<p class='sj1'>设计经验  <span>{$lv['designer_ex']}年</span></p>
+			<p class='sj2'>设计作品  <span>{$lv['designer_num']}</span></p>
+			<p class='sj3'>签单数量  <span>{$lv['order_num']}</span></p>
+			</a>
+		</div>
+	</div>
+    {/foreach}
+
+
+	<div class="mobpage">
+		{if condition="$p == 1"}
+		<a href="{:url('Mobile/designer/index',array('ex_id'=>$ex_id,'level_id'=>$level_id,'style_id'=>$style_id,'p'=>1))}"><div class="upp">上一页</div></a>
+		{else}
+		<a href="{:url('Mobile/designer/index',array('ex_id'=>$ex_id,'level_id'=>$level_id,'style_id'=>$style_id,'p'=>$p*1-1))}"><div class="upp">上一页</div></a>
+		{/if}
+		<div class="chosep" data-options='{$page}' onclick="chose_page()">{$p} / {$count}</div>
+		{if condition="$p == $count"}
+		<a href="{:url('Mobile/designer/index',array('ex_id'=>$ex_id,'level_id'=>$level_id,'style_id'=>$style_id,'p'=>$p))}"><div class="downp">下一页</div></a>
+		{else}
+		<a href="{:url('Mobile/designer/index',array('ex_id'=>$ex_id,'level_id'=>$level_id,'style_id'=>$style_id,'p'=>$p*1+1))}"><div class="downp">下一页</div></a>
+        {/if}
+	</div>
+
+<script>
+    $('.shaixuan>div').click(function(){
+        if($(this).hasClass('on')){
+            $(this).removeClass('on');
+            $(this).parent().parent().find('.xuanx').hide();
+        }else{
+            var i = $(this).index();
+            $(this).addClass('on').siblings().removeClass('on');
+            $(this).parent().parent().find('.xuanx').hide();
+            $(this).parent().parent().find('.xuanx').eq(i).fadeIn();
+        }
+
+    });
+
+    $(".cat1 a").click(function(){
+        $(this).children().addClass('on').parent().siblings().children().removeClass('on');
+        chose_cat();
+    })
+
+    $(".cat2 a").click(function(){
+        $(this).children().addClass('on').parent().siblings().children().removeClass('on');
+        chose_cat();
+    })
+
+    $(".cat3 a").click(function(){
+        $(this).children().addClass('on').parent().siblings().children().removeClass('on');
+        chose_cat();
+    })
+
+    function chose_cat(){
+        ex_id = $(".cat1").find(".on").attr("cat");
+        level_id = $(".cat2").find(".on").attr("cat");
+        style_id = $(".cat3").find(".on").attr("cat");
+
+        var p = arguments[0] ? arguments[0] : 1;
+
+        url = "{:url("Mobile/designer/index",array('ex_id'=>exid,'level_id'=>levelid,'style_id'=>styleid,'p'=>pid))}";
+        url = url.replace('exid',ex_id);
+        url = url.replace('levelid',level_id);
+        url = url.replace('styleid',style_id);
+        url = url.replace('pid',p);
+
+        location.href = url;
+
+    }
+
+    function chose_page(){
+        var picker = new mui.PopPicker();
+        var optionsJson = $(".chosep").attr('data-options');
+        var options = JSON.parse(optionsJson);
+        picker.setData(options);
+        picker.show(function(SelectedItem) {
+            url = "{:url('Mobile/goods/index',array('style_id'=>$style_id,'apart_id'=>$apart_id,'measure_id'=>$measure_id,'p'=>pid))}";
+            url = url.replace('pid',SelectedItem[0].value);
+            location.href = url;
+        })
+    }
+</script>
+{include file="public/footer" /}

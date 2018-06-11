@@ -1,0 +1,203 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <link rel="stylesheet" type="text/css" href="__ROOT__/public/tree/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="__ROOT__/public/tree/css/style.css" />
+    
+    <script type="text/javascript">
+
+
+    </script>
+    <!-- 内容页面 -->
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">权限控制 <i class="fa fa-angle-double-right"></i> 权限分配</h4>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation">
+                                    <a href="{:url('Setup/auth')}">
+                                        <span class="visible-xs">用户组列表</span>
+                                        <span class="hidden-xs"> 用户组列表</span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="Javascript:;">
+                                        <span class="visible-xs">权限分配</span>
+                                        <span class="hidden-xs">权限分配</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <style>
+                                .checkbox label::before{
+                                    border: 1px solid rgb(120,130,140);
+                                }
+                                .well{
+                                    border:0;
+                                }
+                            </style>
+                            <div class="cus-row">
+                                <div class="table-responsive">
+                                    <div class="soso-content tree well">
+                                        <ul>
+                                            {volist name="auth" id="v"}
+                                            <li>
+                                                <div style="float:left;margin:5px 0 0 0;" class="checkbox" onclick="oneall('{$v.id}')">
+                                                    <input type="checkbox" class="filled-in" name="auth" id="mail-checkbox{$v.id}" value="{$v.id}" {if condition="$v.rules eq 1"}checked{/if} />
+                                                    <label for="mail-checkbox{$v.id}"></label>
+                                                </div>
+                                                <span>
+                                            {if condition="$v.children neq ''"}
+                                                <i class="icon-minus-sign"></i>
+                                            {/if}
+                                            {$v.title}
+                                        </span>
+
+                                                <ul>
+                                                    {volist name="v.children" id="vi"}
+                                                    <li>
+                                                        <div style="float:left;margin:5px 0 0 0;" onclick="twoall('{$vi.id}','{$v.id}')" class="oneid{$v.id} checkbox">
+                                                            <input type="checkbox" class="filled-in" name="auth" id="mail-checkbox{$vi.id}" value="{$vi.id}" {if condition="$vi.rules eq 1"}checked{/if} />
+                                                            <label for="mail-checkbox{$vi.id}"></label>
+                                                        </div>
+                                                        <span>
+                                                        {if condition="$vi.children neq ''"}
+                                                        <i class="icon-minus-sign"></i>
+                                                        {/if}
+                                                        {$vi.title}
+                                                        </span>
+                                                        {if condition="!empty($vi.children)"}
+                                                        <ul class="lithree">
+                                                            {volist name="vi.children" id="vii"}
+                                                            <li>
+                                                                <div style="float:left;margin:5px 0 0 0;" onclick="three('{$vi.id}','{$v.id}')" class="oneid{$v.id} twoid{$vi.id} checkbox">
+                                                                    <input type="checkbox" class="filled-in" name="auth" id="mail-checkbox{$vii.id}"  value="{$vii.id}" {if condition="$vii.rules eq 1"}checked{/if} />
+                                                                    <label for="mail-checkbox{$vii.id}"></label>
+                                                                </div>
+                                                                <span>
+                                                                {if condition="$vii.children neq ''"}
+                                                                <i class="icon-minus-sign"></i>
+                                                                {/if}
+                                                                {$vii.title}
+                                                            </span>
+                                                            </li>
+                                                            {/volist}
+                                                        </ul>
+                                                        {/if}
+                                                    </li>
+                                                    {/volist}
+                                                </ul>
+
+                                            </li>
+                                            {/volist}
+                                        </ul>
+                                        <div style="padding:30px 50px 0;">
+                                            <a href="JavaScript:;" class="btn btn-outline cus-btn" onclick="modify('{$ad_id}')" >修改权限</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .lithree:after{content:".";display:block;height:0;clear:both;visibility:hidden;zoom: 1;}
+
+    .lithree li{
+        float:left;
+    }
+    .lithree li span i{
+        display: none;
+    }
+    .tree li span{
+        border:0;
+    }
+    .lithree li::before{
+        border:0;
+    }
+    .lithree li::after{
+        border:0;
+    }
+</style>
+
+{include file="common/footer" /}
+
+<script>
+    $(function(){
+        $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+        $('.tree li.parent_li > span').on('click', function (e) {
+            var children = $(this).parent('li.parent_li').find(' > ul > li');
+            if (children.is(":visible")) {
+                children.hide('fast');
+                $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+            } else {
+                children.show('fast');
+                $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+            }
+            e.stopPropagation();
+        });
+    });
+    function oneall(id){
+        if($('#mail-checkbox'+id).is(':checked')) {
+            $(".oneid"+id+" input").prop("checked",true);
+        }else{
+            $(".oneid"+id+" input").prop("checked",false);
+        }
+    }
+    function twoall(id,ids){
+        if($('#mail-checkbox'+id).is(':checked')) {
+            $(".twoid"+id+" input").prop("checked",true);
+        }else{
+            $("#mail-checkbox"+ids).prop("checked",true);
+            $(".twoid"+id+" input").prop("checked",false);
+        }
+    }
+    function three(id,ids){
+        $("#mail-checkbox"+id).prop("checked",true);
+        $("#mail-checkbox"+ids).prop("checked",true);
+    }
+
+    function modify(id){
+        auth = "";
+        $('input[name="auth"]:checked').each(function(){
+            auth += $(this).val()+",";
+        });
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:url('Setup/auth_allot')}",
+            data: {id:id,auth:auth},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                layer.close(index);
+                if(state == 'success' && data.code == '0'){
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout("window.location.reload()",1000);
+                }else{
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                }
+            }
+        });
+    }
+</script>

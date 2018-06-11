@@ -1,0 +1,397 @@
+{include file="common/header" /}
+<div id="wrapper" style="min-width: 1600px!important;overflow: hidden">
+    {include file="common/nav" /}
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+        <link rel="stylesheet" href="__ROOT__/public/up-img/dist/css/dropify.min.css">
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">广告图管理
+                                    <a href="Javascript:;" class="tooltip-success" data-toggle="tooltip" data-placement="right" title="" data-original-title="添加到快捷菜单"
+                                       onclick="addmenu('{$navurls}','广告图管理')"
+                                    ><i class="fa fa-tag"></i></a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="scrollable">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="Javascript:;">
+                                        <span class="visible-xs">广告图列表</span>
+                                        <span class="hidden-xs"> 广告图列表</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="JavaScript:;"  alt="default" data-toggle="modal" data-target="#modal1">
+                                        <span class="visible-xs">添加广告图</span>
+                                        <span class="hidden-xs">添加广告图</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="table-responsive">
+                                <div class="col-sm-6" style="padding:0;border-right: 1px solid #ddd">
+                                    <h3 style="padding-left: 20px;">PC端banner：</h3>
+                                    <form action="{:url('Order/banner')}" method="post">
+                                        <table class="table table-hover manage-u-table" >
+                                            <thead>
+                                            <tr>
+                                                <th style="width:50px;">排序</th>
+                                                <th style="width:200px;">图片</th>
+                                                <th style="width:200px;">备注</th>
+                                                <th style="width:200px;">链接</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {if condition="empty($slide)"}
+                                            <tr>
+                                                <td colspan="5" class="center middle" style="color:#ccc;">查询无数据</td>
+                                            </tr>
+                                            {/if}
+                                            {volist name="slide" id="v"}
+                                            <tr>
+                                                <td class="middle">
+                                                    <input style="width:50px;" type="text" name="{$v.id}" value="{$v.sort}">
+                                                </td>
+                                                <td style="padding:2px;margin:0;">
+                                                    <img style="width:193.7px;" src="__ROOT__{$v.image}" alt="">
+                                                </td>
+                                                <td class="middle">
+                                                    {$v.title}
+                                                </td>
+                                                <td class="middle">
+                                                    {$v.url}
+                                                </td>
+                                                <td class="middle">
+                                                    <div>
+
+                                                        <a class="btn btn-outline btn-xs cus-btn" iId="{$v.id}" Title="{$v.title}" Type="0" Image="{$v.image}" Url="{$v.url}" Sort="{$v.sort}" onclick="modifydata(this)">
+                                                            <i class="fa fa-pencil-square-o"></i> 修改
+                                                        </a>
+                                                        <a class="btn btn-outline btn-xs cus-btn" onclick="delbanner('{$v.id}')"><i class="fa fa-trash-o"></i> 删除</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {/volist}
+                                            <tr>
+                                                <td colspan="5" class="middle">
+                                                    <input class="btn btn-outline cus-btn" type="submit" value="排序">
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </form>
+                                </div>
+                                <div class="col-sm-6" style="padding:0;">
+                                    <h3 style="padding-left: 20px;">移动端banner：</h3>
+                                    <form action="{:url('Order/banner')}" method="post">
+                                        <table class="table table-hover manage-u-table" >
+                                            <thead>
+                                            <tr>
+                                                <th style="width:50px;">排序</th>
+                                                <th style="width:100px;">图片</th>
+                                                <th style="width:200px;">备注</th>
+                                                <th style="width:200px;">链接</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {if condition="empty($slide1)"}
+                                            <tr>
+                                                <td colspan="5" class="center middle" style="color:#ccc;">查询无数据</td>
+                                            </tr>
+                                            {/if}
+                                            {volist name="slide1" id="v"}
+                                            <tr>
+                                                <td class="middle">
+                                                    <input style="width:50px;" type="text" name="{$v.id}" value="{$v.sort}">
+                                                </td>
+                                                <td style="padding:2px;margin:0;">
+                                                    <img style="width:95px;" src="__ROOT__{$v.image}" alt="">
+                                                </td>
+                                                <td class="middle">
+                                                    {$v.title}
+                                                </td>
+                                                <td class="middle">
+                                                    {$v.url}
+                                                </td>
+                                                <td class="middle">
+                                                    <div>
+                                                        <a class="btn btn-outline btn-xs cus-btn" iId="{$v.id}" Title="{$v.title}" Type="{$v.is_mobile}" Image="{$v.image}" Url="{$v.url}" Sort="{$v.sort}" onclick="modifydata(this)">
+                                                            <i class="fa fa-pencil-square-o"></i> 修改
+                                                        </a>
+                                                        <a class="btn btn-outline btn-xs cus-btn" onclick="delbanner('{$v.id}')"><i class="fa fa-trash-o"></i> 删除</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {/volist}
+                                            <tr>
+                                                <td colspan="5" class="middle">
+                                                    <input class="btn btn-outline cus-btn" type="submit" value="排序">
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">添加Banner</h4> </div>
+            <form action="{:url('Order/addbanner')}" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="headimg" class="col-sm-3 control-label">图片:</label>
+                    <div class="col-sm-9">
+                        <input type="file" name="image" id="headimg" class="dropify-fr" data-default-file="" data-max-file-size="30M" data-height="120" accept=".png,.jpg,.gif,.jpeg,.bmp" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="type" class="col-sm-3 control-label">选择类型:</label>
+                    <div class="col-sm-9">
+                        <select class="selectpicker" data-style="form-control" name="type" id="type" required>
+                            <option value="0">PC端banner</option>
+                            <option value="1">移动端banner</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="col-sm-3 control-label">备注:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="title" id="title" placeholder="请输入备注">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="url" class="col-sm-3 control-label">链接:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="url" id="url" placeholder="请输入链接">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="url" class="col-sm-3 control-label">排序:</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" name="sort" id="sort" placeholder="请输入链接">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a  class="btn btn-outline cus-btn" data-dismiss="modal">取 消</a>
+                <button type="submit" class="btn btn-info waves-effect cus-btn" >添 加</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="modal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">修改Banner</h4> </div>
+            <form action="{:url('Order/modifybanner')}" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="image" class="col-sm-3 control-label">图片:</label>
+                        <div class="col-sm-9" id="image">
+                            <input type="file" name="image"  class="dropify-fr" data-default-file="" data-max-file-size="30M" data-height="120" accept=".png,.jpg,.gif,.jpeg,.bmp" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="type" class="col-sm-3 control-label">选择类型:</label>
+                        <div class="col-sm-9" id="types">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="title" class="col-sm-3 control-label">备注:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="title" id="titles" placeholder="请输入备注">
+                            <input type="hidden" name="id" id="iid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="url" class="col-sm-3 control-label">链接:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="url" id="urls" placeholder="请输入链接">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="url" class="col-sm-3 control-label">排序:</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" name="sort" id="sorts" placeholder="请输入链接">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a  class="btn btn-outline cus-btn" data-dismiss="modal">取 消</a>
+                    <button type="submit" class="btn btn-info waves-effect cus-btn" >修 改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script src="__ROOT__/public/up-img/dist/js/dropify.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Basic
+        $('.dropify').dropify();
+
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: '选择图片',
+                replace: '',
+                remove:  '删除',
+                error:   '抱歉，该图片太大'
+            }
+        });
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+        drEvent.on('dropify.beforeClear', function(event, element){
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+        drEvent.on('dropify.afterClear', function(event, element){
+            alert('File deleted');
+        });
+        drEvent.on('dropify.errors', function(event, element){
+            console.log('Has Errors');
+        });
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e){
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+    function modifydata(obj){
+        var iId     =$(obj).attr('iId');
+        var Title   =$(obj).attr('Title');
+        var Type    =$(obj).attr('Type');
+        var Image   =$(obj).attr('Image');
+        var Url     =$(obj).attr('Url');
+        var Sort    =$(obj).attr('Sort');
+
+        $("#iid").val(iId);
+        $("#titles").val(Title);
+        $("#urls").val(Url);
+        $("#sorts").val(Sort);
+        var s1='';
+        var s2='';
+        if(Type==0){
+             s1 = "selected='selected'";
+        }
+        if(Type==1){
+             s2 = "selected='selected'";
+        }
+        html = '<select class="selectpicker" data-style="form-control" name="type">'+
+               '<option value="0" '+s1+'>PC端banner</option>'+
+               '<option value="1" '+s2+'>移动端banner</option></select>';
+        $("#types").html(html);
+        $("#image").html('<input type="file" name="image" class="dropify-fr" data-default-file="'+Image+'" data-max-file-size="30M" data-height="120" accept=".png,.jpg,.gif,.jpeg,.bmp" />');
+        $("#modal3").modal('show');
+        $(document).ready(function(){
+            // Basic
+            $('.dropify').dropify();
+
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: '选择图片',
+                    replace: '',
+                    remove:  '删除',
+                    error:   '抱歉，该图片太大'
+                }
+            });
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+            drEvent.on('dropify.beforeClear', function(event, element){
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+            drEvent.on('dropify.afterClear', function(event, element){
+                alert('File deleted');
+            });
+            drEvent.on('dropify.errors', function(event, element){
+                console.log('Has Errors');
+            });
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function(e){
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+        jQuery(document).ready(function() {
+            $('.selectpicker').selectpicker();
+
+        });
+    }
+
+    function delbanner(id){
+        layer.msg('確定刪除?', {
+            icon: 3,
+            time: 0 //不自动关闭
+            ,shade: 0.2
+            ,btn: ['確定', '取消']
+            ,yes: function(index){
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: "{:url('Order/delbanner')}",
+                    data: {id:id},
+                    type: 'POST',
+                    dataType: "json",
+                    cache: false,
+                    success: function(data,state){
+                        if(state == 'success' && data.code == '0'){
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1000);
+                        }else{
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                        }
+                    }
+                });
+            }
+        });
+    }
+    jQuery(document).ready(function() {
+        // Switchery
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        $('.js-switch').each(function() {
+            new Switchery($(this)[0], $(this).data());
+        });
+    });
+
+</script>

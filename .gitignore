@@ -1,0 +1,12 @@
+.idea
+composer.lock
+*.log
+thinkphp
+.idea
+composer.lock
+*.log
+thinkphp
+/jiuju/
+/public/
+/runtime/
+/test/

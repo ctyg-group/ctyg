@@ -1,0 +1,42 @@
+<!--pages/kecanting/kecanting.wxml-->
+<view class="classify">
+    <image class="bgimg"  src="../../images/kecanting/wdkj_i1.jpg"></image>
+    <view class="place">
+        <view class="title">
+            <image class="title_img" src="../../images/kecanting/b_cf.png"></image>
+            <text class="title_text">厨房</text>
+        </view>
+        <view class="nav">
+            <ul>
+                <li>项目</li>
+                <li>品牌</li>
+            </ul>
+        </view>
+        <view class="navbar">
+            <ul class="nav1">
+                <li>地砖</li>
+                <li>华鹏</li> 
+                <li>墙砖</li>
+                <li>华鹏</li> 
+                <li>门槛大理石</li>
+                <li>优质石材</li> 
+                <li>防水处理</li>
+                <li>东方雨虹</li> 
+                <li class="colorgreen">橱柜</li>
+                <li class="colorgreen">欧派</li> 
+                <li>铝扣板吊顶</li>
+                <li>西飞吊顶</li> 
+                <li>配套LED灯</li>
+                <li>西飞</li> 
+                <li>铝合金推拉门及平开门</li>
+                <li>安居铝业一套</li> 
+                <li>门锁及五金件</li>
+                <li>厂家标配</li> 
+                <li>地漏</li>
+                <li>贝朗</li> 
+                <li>开关插座</li>
+                <li>西门子</li> 
+            </ul>
+        </view>
+    </view>
+</view>

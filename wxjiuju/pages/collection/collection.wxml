@@ -1,0 +1,41 @@
+<!-- 我的收藏 -->
+<view class="collection">
+    <navigator url="../case_details/case_details" open-type="switchTab">
+        <view class="collection_list">
+            <image class="list_img" src="../../images/collection/wanzhuanshenghuo2.png"></image>
+            <text>美式72平米\n</text>
+            <text class="browse">678  浏览</text>
+            <text class="collection_num browse">686</text>
+            <image class="collection_icon" src="../../images/collection/my_collection_03.png"></image> 
+        </view>
+    </navigator>
+    <navigator url="../case_details/case_details">
+        <view class="collection_list">
+            <image class="list_img" src="../../images/collection/wanzhuanshenghuo2.png"></image>
+            <text>美式72平米\n</text>
+            <text class="browse">678  浏览</text>
+            <text class="collection_num browse">686</text>
+            <image class="collection_icon" src="../../images/collection/my_collection_03.png"></image> 
+        </view>
+    </navigator>
+    <navigator url="#">
+        <view class="collection_list">
+            <image class="list_img" src="../../images/collection/wanzhuanshenghuo2.png"></image>
+            <text>美式72平米\n</text>
+            <text class="browse">678  浏览</text>
+            <text class="collection_num browse">686</text>
+            <image class="collection_icon" src="../../images/collection/my_collection_03.png"></image> 
+        </view>
+    </navigator>
+    <navigator url="#">
+        <view class="collection_list">
+            <image class="list_img" src="../../images/collection/wanzhuanshenghuo2.png"></image>
+            <text>美式72平米\n</text>
+            <text class="browse">678  浏览</text>
+            <text class="collection_num browse">686</text>
+            <image class="collection_icon" src="../../images/collection/my_collection_03.png"></image> 
+        </view>
+    </navigator>
+</view>
+<!-- 引入tabBar  -->
+ <include src="../public/public.wxml"/>

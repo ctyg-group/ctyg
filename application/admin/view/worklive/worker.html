@@ -1,0 +1,343 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+        <link rel="stylesheet" href="__ROOT__/public/up-img/dist/css/dropify.min.css">
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">项目管家&工程监理管理
+                                    <a href="Javascript:;" class="tooltip-success" data-toggle="tooltip" data-placement="right" title="" data-original-title="添加到快捷菜单"
+                                       onclick="addmenu('{$navurls}','项目管家&工程监理管理')"
+                                    ><i class="fa fa-tag"></i></a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="scrollable">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="Javascript:;">
+                                        <span class="visible-xs">管家监理列表</span>
+                                        <span class="hidden-xs"> 管家监理列表</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="JavaScript:;"  alt="default" data-toggle="modal" data-target="#modal1">
+                                        <span class="visible-xs">添加管家监理</span>
+                                        <span class="hidden-xs">添加管家监理</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="table-responsive">
+                                <table class="table table-hover manage-u-table" >
+                                    <thead>
+                                    <tr>
+                                        <th style="width:100px;">照片</th>
+                                        <th style="width:200px;">姓名</th>
+                                        <th style="width:200px;">职务</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {if condition="empty($worker)"}
+                                        <tr>
+                                            <td colspan="3" class="center middle" style="color:#ccc;">查询无数据</td>
+                                        </tr>
+                                    {/if}
+                                    {volist name="worker" id="v"}
+                                    <tr>
+                                        <td>
+                                            <div style="width:60px;height:60px;border-radius: 70px;overflow: hidden;text-align: center;">
+                                                <img style="width:60px;" src="__ROOT__{$v.image}" alt="">
+                                            </div>
+                                        </td>
+                                        <td class="middle">
+                                            {$v.worker_name}
+                                        </td>
+                                        <td class="middle">
+                                            {if condition="$v.type eq 1"}项目管家{/if}
+                                            {if condition="$v.type eq 2"}工程监理{/if}
+                                        </td>
+                                        <td class="middle">
+                                           <div>
+
+                                               <a class="btn btn-outline btn-xs cus-btn" wId="{$v.id}" wName="{$v.worker_name}" wType="{$v.type}" wImg="{$v.image}" onclick="modifydata(this)">
+                                                   <i class="fa fa-pencil-square-o"></i> 修改
+                                               </a>
+                                               <a class="btn btn-outline btn-xs cus-btn" onclick="delworker('{$v.id}')"><i class="fa fa-trash-o"></i> 删除</a>
+                                           </div>
+                                        </td>
+                                    </tr>
+
+                                    {/volist}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="page">
+                                {$worker->render()}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">添加项目管家or工程监理</h4> </div>
+            <form action="{:url('Worklive/addworker')}" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="worker_name" class="col-sm-3 control-label">姓名:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="worker_name" id="worker_name" placeholder="请输入姓名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="type" class="col-sm-3 control-label">选择岗位:</label>
+                    <div class="col-sm-9">
+                        <select class="selectpicker" data-style="form-control" name="type" id="type" required>
+                            <option value="">请选择岗位</option>
+                            <option value="1">项目管家</option>
+                            <option value="2">工程监理</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="headimg" class="col-sm-3 control-label">照片:</label>
+                    <div class="col-sm-9">
+                        <input type="file" name="headimg" id="headimg" class="dropify-fr" data-default-file="" data-max-file-size="30M" data-height="150" accept=".png,.jpg,.gif,.jpeg,.bmp" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a  class="btn btn-outline cus-btn" data-dismiss="modal">取 消</a>
+                <button type="submit" class="btn btn-info waves-effect cus-btn" >添 加</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="modal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">修改项目管家&工程监理</h4> </div>
+            <form action="{:url('Worklive/modifyworker')}" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="workername" class="col-sm-3 control-label">姓名:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="workername" id="workername" placeholder="请输入姓名">
+                        <input type="hidden" name="wid" id="wid">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="types" class="col-sm-3 control-label">选择岗位:</label>
+                    <div class="col-sm-9" id="types">
+                        <select class="selectpicker" data-style="form-control" name="types" required>
+                            <option value="">请选择岗位</option>
+                            <option value="1">项目管家</option>
+                            <option value="2">工程监理</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="headimg" class="col-sm-3 control-label">照片:</label>
+                    <div class="col-sm-9" id="imghead">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-outline cus-btn" data-dismiss="modal">取 消</a>
+                <button type="submit" class="btn btn-info waves-effect cus-btn" >修 改</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script src="__ROOT__/public/up-img/dist/js/dropify.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Basic
+        $('.dropify').dropify();
+
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: '选择图片',
+                replace: '',
+                remove:  '删除',
+                error:   '抱歉，该图片太大'
+            }
+        });
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+        drEvent.on('dropify.beforeClear', function(event, element){
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+        drEvent.on('dropify.afterClear', function(event, element){
+            alert('File deleted');
+        });
+        drEvent.on('dropify.errors', function(event, element){
+            console.log('Has Errors');
+        });
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e){
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+
+    function add_level(parent_id){
+        cat_name = $("#cat_name_two").val();
+        sort_order = $("#sort_order_two").val();
+        $.ajax({
+            url: "{:url('Designer/addcasetype')}",
+            data: {cat_name:cat_name,sort_order:sort_order,parent_id:parent_id},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+
+    function modifydata(obj){
+        var wId     =$(obj).attr('wId');
+        var wName   =$(obj).attr('wName');
+        var wType   =$(obj).attr('wType');
+        var wImg    =$(obj).attr('wImg');
+
+        $("#wid").val(wId);
+        $("#workername").val(wName);
+        var s1='';
+        var s2='';
+        if(wType==1){
+             s1 = "selected";
+        }
+        if(wType==2){
+             s2 = "selected";
+        }
+        html = '<select class="selectpicker" data-style="form-control" name="types" required><option value="">请选择岗位</option>'+
+               '<option value="1" '+s1+'>项目管家</option>'+
+               '<option value="2" '+s2+'>工程监理</option></select>';
+        $("#types").html(html);
+        $("#imghead").html('<input type="file" name="imghead" class="dropify-fr" data-default-file="'+wImg+'" data-max-file-size="30M" data-height="150" accept=".png,.jpg,.gif,.jpeg,.bmp" />');
+        $("#modal3").modal('show');
+        $(document).ready(function(){
+            // Basic
+            $('.dropify').dropify();
+
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: '选择图片',
+                    replace: '',
+                    remove:  '删除',
+                    error:   '抱歉，该图片太大'
+                }
+            });
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+            drEvent.on('dropify.beforeClear', function(event, element){
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+            drEvent.on('dropify.afterClear', function(event, element){
+                alert('File deleted');
+            });
+            drEvent.on('dropify.errors', function(event, element){
+                console.log('Has Errors');
+            });
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function(e){
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+        jQuery(document).ready(function() {
+            $('.selectpicker').selectpicker();
+
+        });
+    }
+
+    function delworker(id){
+        layer.msg('確定刪除?', {
+            icon: 3,
+            time: 0 //不自动关闭
+            ,shade: 0.2
+            ,btn: ['確定', '取消']
+            ,yes: function(index){
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: "{:url('Worklive/delworker')}",
+                    data: {id:id},
+                    type: 'POST',
+                    dataType: "json",
+                    cache: false,
+                    success: function(data,state){
+                        if(state == 'success' && data.code == '0'){
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1000);
+                        }else{
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                        }
+                    }
+                });
+            }
+        });
+    }
+    jQuery(document).ready(function() {
+        // Switchery
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        $('.js-switch').each(function() {
+            new Switchery($(this)[0], $(this).data());
+        });
+    });
+
+</script>

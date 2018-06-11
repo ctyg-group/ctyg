@@ -1,0 +1,156 @@
+{include file="public/header" /}
+    <style>
+        .beijin{
+            background: url(/public/static/images/kaiye.jpg) no-repeat;
+            height:9880px;
+        }
+        .yuyue{
+            height:404px;
+            width: 978px;
+            background-color: #fff;
+            border-radius:10px;
+            margin:0 auto;
+            position:relative;
+            clear: both;
+            top:2500px;
+            left:7px;
+        }
+
+        .hongqi{
+            width: 121px;
+            height: 134px;
+            background: url(/public/static/images/huodong1.png) no-repeat;
+            margin-left: 25px;
+            float: left;
+        }
+
+        .input{
+            width:280px;
+            height:50px;
+            float: left;
+            position:absolute;
+
+        }
+
+        .input-1{
+            left:200px;
+            top:110px;
+        }
+
+        .input-2{
+            left:530px;
+            top:110px;
+        }
+
+        .input-3{
+            left:200px;
+            top:200px;
+        }
+
+        .input-4{
+            left:530px;
+            top:200px;
+        }
+
+        .input-p{
+            line-height: 50px;
+            float: left;
+            width: 80px;
+            text-align: right;
+            font-size: 18px;
+            color: #222e65;
+            font-weight:bolder;
+        }
+
+        .input-text{
+            float: left;
+            line-height: 50px;
+            margin-left: 15px;
+        }
+
+        .input-text input{
+            border:1px solid #222e65;
+        }
+
+        .hd_title{
+            position:absolute;
+            top:30px;
+            left:325px;
+            font-size: 22px;
+            font-weight:bolder;
+            color: #f62660;
+        }
+
+        .dan{
+            width:246px;
+            height: 203px;
+            float: left;
+            position:absolute;
+            top:214px;
+            left:771px;
+            background: url(/public/static/images/huodong_d.png) no-repeat;
+        }
+
+        .tijiao{
+            width:207px;
+            height: 52px;
+            background: url(/public/static/images/huodong_tj.png) no-repeat;
+            position:absolute;
+            top:300px;
+            left:383px;
+        }
+    </style>
+
+<div class="beijin">
+    <div class='yuyue' >
+        <div class='hongqi' >
+
+        </div>
+        <div class="hd_title">
+            到店即可领取久居整装定制纪念品一份
+        </div>
+        <form action="#" id="adduserinfoForm">
+
+            <div class="input input-1">
+                <div class="input-p">姓名:</div>
+                <div class="input-text"><input type="text" style="width: 176px;height: 30px;" name="user_name"></div>
+            </div>
+
+            <div class="input input-2">
+                <div class="input-p">电话:</div>
+                <div class="input-text"><input type="text" style="width: 176px;height: 30px;" name="mobile"></div>
+            </div>
+
+            <div class="input input-3">
+                <div class="input-p">楼盘名称:</div>
+                <div class="input-text"><input type="text" style="width: 176px;height: 30px;" name="estate"></div>
+            </div>
+
+            <div class="input input-4">
+                <div class="input-p">套内面积:</div>
+                <div class="input-text"><input type="text" style="width: 176px;height: 30px;" name="area"></div>
+            </div>
+
+            <a href="javascript:void(0);" onclick="ajax_user_form('adduserinfoForm','{:U('Index/addUserInfo')}');">
+            <div class="tijiao">
+
+            </div>
+            </a>
+
+        </form>
+        <div class="dan">
+
+        </div>
+
+    </div>
+</div>
+<script>
+    $(function(){
+        layer.msg('hahaha', {
+            icon: 1,   // 成功图标
+            time: 90000 //2秒关闭（如果不配置，默认是3秒）
+        });
+    });
+
+</script>
+{include file="public/footer" /}

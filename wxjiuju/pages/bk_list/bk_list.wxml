@@ -1,0 +1,68 @@
+<!-- 装修百科——列表页 -->
+ <!-- <include src ="../public_tabBar/public_tabBar.wxml"/>  -->
+<!-- 头部导航 -->
+<view>
+    <dl class='menu'>
+         <dt data-index="{{item.num}}" data-num = "{{item.index}}" bindtap="tapMainMenu" class="{{_num == item.index ?'addmenucolor':'removemenucolor'}}" wx:for="{{Head}}" wx:if="{{item.num == 0}}" style="border-left:none">{{item.text}}</dt> 
+          <dt data-index="{{item.num}}" data-num = "{{item.index}}" bindtap="tapMainMenu" class="{{_num == item.index ?'addmenucolor':'removemenucolor'}}" wx:for="{{Head}}" wx:if="{{item.num != 0}}">{{item.text}}</dt>  
+    </dl>
+    <dl class='menu_b'>
+            <dd class="{{subMenuDisplay[0]}}">
+                <ul>
+                    <li class="{{subMenuHighLight[item.num][item.index]}}" data-index="{{item.num}}-{{item.index}}" bindtap="tapSubMenu" wx:for="{{submenu1}}"><span>{{item.text}}</span></li>
+                </ul>
+            </dd>
+            <dd class="{{subMenuDisplay[1]}}">
+                <ul>
+                    <li class="{{subMenuHighLight[item.num][item.index]}}" data-index="{{item.num}}-{{item.index}}" bindtap="tapSubMenu" wx:for="{{submenu2}}"><span>{{item.text}}</span></li>
+                </ul>
+            </dd>
+            <dd class="{{subMenuDisplay[2]}}">
+                <ul>
+                    <li class="{{subMenuHighLight[item.num][item.index]}}" data-index="{{item.num}}-{{item.index}}" bindtap="tapSubMenu" wx:for="{{submenu3}}"><span>{{item.text}}</span></li>
+                </ul>
+            </dd>
+            <dd class="{{subMenuDisplay[3]}}">
+                <ul>
+                    <li class="{{subMenuHighLight[item.num][item.index]}}" data-index="{{item.num}}-{{item.index}}" bindtap="tapSubMenu" wx:for="{{submenu4}}"><span>{{item.text}}</span></li>
+                </ul>
+            </dd>
+          
+    </dl>
+</view>
+
+<!-- 装修列表 -->
+<view class="column_list">
+    <view class="title border_bottom">热门百科</view>
+    <view wx:for="{{list}}">
+        <view class="column_one border_bottom">
+           <navigator url='../bk_details/bk_details'>
+                <image class="column_img" src="{{item.src}}"/>
+                <view class="column_text">
+                    <text class="column_title">{{item.title}}</text>
+                    <text class="column_content">{{item.content}}</text>
+                </view>
+           </navigator>
+        </view>
+    </view>
+</view>
+<!-- 查看更多 -->
+<view class="check_more bottom_h" >
+    <navigator url="../bk_list/bk_list" class="see">
+       <view class="morefontsize">查看更多<image class="more" src="../../images/bk_column/bk_column_03.png" /></view> 
+    </navigator>        
+</view>
+
+<!--引入tabBar  -->
+<include src="../public/public.wxml"/>
+
+
+
+
+
+
+
+
+
+
+

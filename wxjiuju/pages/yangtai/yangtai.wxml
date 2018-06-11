@@ -1,0 +1,32 @@
+<!--pages/yangtai/yangtai.wxml-->
+<view class="classify">
+    <image class="bgimg"  src="../../images/kecanting/wdkj_i1.jpg"></image>
+    <view class="place">
+        <view class="title">
+            <image class="title_img" src="../../images/kecanting/b_yt.png"></image>
+            <text class="title_text">阳台</text>
+        </view>
+        <view class="nav">
+            <ul>
+                <li>项目</li>
+                <li>品牌</li>
+            </ul>
+        </view>
+        <view class="navbar">
+            <ul class="nav1">
+                <li>地砖</li>
+                <li>华鹏</li> 
+                <li>门槛大理石</li>
+                <li>优质石材</li> 
+                <li>防水处理</li>
+                <li>东方雨虹</li> 
+                <li>普通灯具安装</li>
+                <li>包含</li> 
+                <li>顶面乳胶漆</li>
+                <li  class="colorgreen">芬兰芬琳漆</li> 
+                <li>开关插座</li>
+                <li>西门子</li> 
+            </ul>
+        </view>
+    </view>
+</view>

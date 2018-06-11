@@ -1,0 +1,205 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+    </div>
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="page-aside">
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">工地直播管理
+                                    <a href="Javascript:;" class="tooltip-success" data-toggle="tooltip" data-placement="right" title="" data-original-title="添加到快捷菜单"
+                                       onclick="addmenu('{$navurls}','工地直播管理')"
+                                    ><i class="fa fa-tag"></i></a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="scrollable">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="Javascript:;">
+                                        <span class="visible-xs">工地直播列表</span>
+                                        <span class="hidden-xs">工地直播列表</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{:url('Worklive/addwork')}"  >
+                                        <span class="visible-xs">添加工地直播</span>
+                                        <span class="hidden-xs">添加工地直播</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="table-responsive">
+                                <table class="table table-hover manage-u-table" >
+                                    <thead>
+                                    <tr>
+                                        <th style="width:50px;">排序</th>
+                                        <th>名称</th>
+                                        <th>设计师</th>
+                                        <th style="width:110px;">工程阶段</th>
+                                        <th style="width:110px;">所属小区</th>
+                                        <th style="width:110px;">户型</th>
+                                        <th style="width:110px;">风格</th>
+                                        <th style="width:110px;">项目管家</th>
+                                        <th style="width:110px;">工程监理</th>
+                                        <th style="width:50px;">显示</th>
+                                        <th style="width:50px;">最热</th>
+                                        <th style="width:50px;">最新</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {if condition="empty($work)"}
+                                        <tr>
+                                            <td colspan="13" class="center middle" style="color:#ccc;">查询无数据</td>
+                                        </tr>
+                                    {/if}
+                                    <form action="{:url('Worklive/index')}" method="post">
+                                    {volist name="work" id="v"}
+                                    <tr>
+                                        <td class="middle">
+                                            <input style="width:50px;" type="text" name="{$v.id}" value="{$v.sort}">
+                                        </td>
+                                        <td class="middle">{$v.live_name}</td>
+                                        <td class="middle">{$v.designer_name}</td>
+                                        <td class="middle">
+                                            {volist name="cat" id="c"}
+                                                {if condition="$v.stage_id eq $c.cat_id"}{$c.cat_name}{/if}
+                                            {/volist}
+                                        </td>
+                                        <td class="middle">
+                                            {volist name="cat" id="c"}
+                                            {if condition="$v.hot_id eq $c.cat_id"}{$c.cat_name}{/if}
+                                            {/volist}
+                                        </td>
+                                        <td class="middle">
+                                            {$v.apart}
+
+                                        </td>
+                                        <td class="middle">{$v.style}</td>
+                                        <td class="middle">
+                                            {volist name="worker" id="w"}
+                                            {if condition="$v.worker1_id eq $w.id"}{$w.worker_name}{/if}
+                                            {/volist}
+                                        </td>
+                                        <td class="middle">
+                                            {volist name="worker" id="w"}
+                                            {if condition="$v.worker2_id eq $w.id"}{$w.worker_name}{/if}
+                                            {/volist}
+                                        </td>
+                                        <td class="middle">
+                                            <div onclick="state('{$v.id}','is_show','show{$v.id}')">
+                                                <input id="show{$v.id}" type="checkbox" {if condition='$v.is_show eq 1'}checked{/if} class="js-switch" data-color="#26b550" data-size="small" />
+                                            </div>
+                                        </td>
+                                        <td class="middle">
+                                            <div onclick="state('{$v.id}','is_hot','hot{$v.id}')">
+                                                <input id="hot{$v.id}" type="checkbox" {if condition='$v.is_hot eq 1'}checked{/if} class="js-switch" data-color="#26b550" data-size="small" />
+                                            </div>
+                                        </td>
+                                        <td class="middle">
+                                            <div onclick="state('{$v.id}','is_new','new{$v.id}')">
+                                                <input id="new{$v.id}" type="checkbox" {if condition='$v.is_new eq 1'}checked{/if} class="js-switch" data-color="#26b550" data-size="small" />
+                                            </div>
+                                        </td>
+                                        <td class="middle">
+                                           <div>
+                                               <a href="{:url('Worklive/modifywork',array('id'=>$v.id))}" class="btn btn-outline btn-xs cus-btn" >
+                                                   <i class="fa fa-pencil-square-o"></i> 修改
+                                               </a>
+                                               <a class="btn btn-outline btn-xs cus-btn" onclick="deldesigner('{$v.id}')">
+                                                   <i class="fa fa-trash-o"></i> 删除
+                                               </a>
+                                           </div>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+                                    <tr>
+                                        <td colspan="13" class="middle">
+                                            <input class="btn btn-outline cus-btn" type="submit" value="排序">
+                                        </td>
+                                    </tr>
+                                    </form>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="page">
+                                {$work->render()}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script>
+    function state(id,type,isid){
+        $.ajax({
+            url: "{:url('Worklive/workstates')}",
+            data: {id:id,type:type},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    if(data.state==1){
+                        $("#"+isid).prop('checked', true);
+                    }else{
+                        $("#"+isid).prop('checked', false);
+                    }
+//                    layer.msg(data.msg, {time: 500, icon:1,shade: 0.2});
+                }else{
+
+                    layer.msg(data.msg, {time: 500, icon:2,shade: 0.2});
+                }
+            }
+        });
+    }
+    function deldesigner(id){
+        layer.msg('確定刪除?', {
+            icon: 3,
+            time: 0 //不自动关闭
+            ,shade: 0.2
+            ,btn: ['確定', '取消']
+            ,yes: function(index){
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: "{:url('Worklive/delwork')}",
+                    data: {id:id},
+                    type: 'POST',
+                    dataType: "json",
+                    cache: false,
+                    success: function(data,state){
+                        if(state == 'success' && data.code == '0'){
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1000);
+                        }else{
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                        }
+                    }
+                });
+            }
+        });
+    }
+    jQuery(document).ready(function() {
+        // Switchery
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        $('.js-switch').each(function() {
+            new Switchery($(this)[0], $(this).data());
+        });
+    });
+</script>

@@ -1,0 +1,127 @@
+.bk_column{
+    width: 100%;
+    margin: 0 auto;
+
+    background: #fff;
+    position: relative;
+}
+
+
+
+.title{
+    margin-left: 0.6rem;
+    padding-top: 1.12rem;
+    font-size: 34rpx;
+    color: rgb(249,156,50);
+    font-weight: bold;
+    padding-bottom: 0.62rem;
+    letter-spacing: 2px;
+}
+
+.bk_column image{
+    width: 94%;
+    height: 8.38rem;
+    margin: 0 auto;
+    text-align: center;
+    margin-left: 0.6rem;
+}
+
+.bk_column .shade{
+    width: 94%;
+    height: 34px;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 34px;
+    text-indent: 10px;
+    background: rgba(39,39,43,0.73);
+    position: absolute;
+    left: 0.6rem;
+    top: 9.79rem;
+    font-weight: normal;
+}
+.see{
+    padding-left: 0.6rem;
+    font-family: "PingFangSC-Regular";
+    font-size: 0.87rem;
+    padding-top: 0.87rem;
+    font-weight: normal;
+    padding-bottom:0.87rem;
+    color: rgb(106,127,165);
+}
+.bk_column .more{
+    width: 0.5rem;
+    height: 0.81rem;
+    margin-right: 0.6rem;
+    float: right;
+    margin-top: 0.12rem;
+}
+
+/* 栏目列表 */
+
+.column_list{
+    width: 100%;
+    margin-top: 11px;
+    background: #fff;
+}
+
+.column_list .more{
+    width: 0.5rem;
+    height: 0.81rem;
+    margin-right: 0.6rem;
+    float: right;
+    margin-top: 0.12rem;
+}
+
+.column_one{
+    width:18.4rem;
+    height:4rem;
+    padding:0.8rem;   
+}
+
+
+.column_one .column_text{
+    width:12.4rem;
+    float: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    color: rgb(169,169,169);
+}
+
+.column_one .column_img{
+    width: 5.37rem;
+    height: 3.75rem;
+    border-radius: 3px;
+    float: left;
+    margin-right: 0.6rem;
+}
+
+.column_one .column_title{
+    font-size: 34rpx;
+    color: black;   
+}
+.column_one .column_content{
+    font-size: 26rpx;
+    color: rgb(169,169,169);
+    line-height: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

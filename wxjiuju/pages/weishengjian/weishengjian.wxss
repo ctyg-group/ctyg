@@ -1,0 +1,84 @@
+/* pages/weishengjian/weishengjian.wxss */
+.classify{
+    width: 750rpx;
+    height: 1334rpx;
+    position: relative;
+}
+
+.bgimg{
+    width: 750rpx;
+    height: 1334rpx; 
+}
+
+.place{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.place .title .title_img{
+    display: block;
+    width: 2.6rem;
+    height: 2.6rem;
+    margin: 0 auto;
+    float: left;
+    margin-left: 260rpx;
+}
+.place .title{
+    width: 100%;
+    height: 2.6rem;
+    margin-top: 1.6rem;
+    font-size: 0.88rem;
+    color: #FFFFFF;
+    text-indent: 1.2rem;
+    line-height:2.6rem;
+}
+
+.place .title .title_text{
+    float: left;
+    text-align: center;
+}
+/* 导航 */
+.nav{
+    /* height: auto; */
+    margin: 0 auto;
+    width: 94%;
+    height: 1.6rem;
+    color: #ffffff;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.76rem;
+    border-bottom: solid 1px #FFFFFF;
+}
+.nav li{
+    width: 50%;
+    float: left;
+    
+}
+
+/* 子导航 */
+.navbar{
+    color: white;
+}
+
+.navbar{
+    width: 94%;
+    padding-top: 1rem;
+    margin: 0 auto;
+    
+}
+
+.navbar .nav1 li{
+    width: 50%;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    border-bottom: none;
+    margin: 0 auto;
+    font-size: 0.76rem;
+    float: left;
+}
+
+.colorgreen{
+    color: #2cb750;
+}

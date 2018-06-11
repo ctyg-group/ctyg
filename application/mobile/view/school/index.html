@@ -1,0 +1,60 @@
+{include file="public/header" /}
+	
+	<div class='eni_first'>
+        <a href="{:url("mobile/school/artinfo",array('article_id'=>$firart['article_id']))}"><img src="{$firart['thumb']}" style="width: 15rem;height: 9.14rem;" alt=""></a>
+		<div class='eni_ex'>
+            <a href="{:url("mobile/school/artinfo",array('article_id'=>$firart['article_id']))}"><p>{$firart['title']}</p></a>
+		</div>
+	</div>
+	
+	<div class='height49'></div>
+	
+	<div class="arti_list">
+		<div class='tit'>装修流程</div>
+		<div class='cate'>
+			<div class='on'><a href="{:url('Mobile/school/child_cat',array('cat_id'=>24,'p'=>'1'))}">装修前</a></div>
+			<div><a href="{:url('Mobile/school/child_cat',array('cat_id'=>25,'p'=>'1'))}">装修中</a></div>
+			<div><a href="{:url('Mobile/school/child_cat',array('cat_id'=>26,'p'=>'1'))}">装修后</a></div>
+		</div>
+		<div class='list2 '>
+			{foreach: name='art24' item='av24'}
+			<div>
+				<a href="{:url("mobile/school/artinfo",array('article_id'=>$av24['article_id']))}"><img src="{$av24['thumb']}" style="width: 7rem;height: 4.9rem;" alt=""></a>
+				<a href="{:url("mobile/school/artinfo",array('article_id'=>$av24['article_id']))}"><span>{$av24['title']}</span></a>
+			</div>
+			{/foreach}
+		</div>
+	</div>
+	
+	<div class="arti_list">
+		<div class='tit'>装饰搭配</div>
+		<div class='cate'>
+			<div class='on'><a href="{:url('Mobile/school/child_cat',array('cat_id'=>28,'p'=>'1'))}">软装搭配</a></div>
+		</div>
+		<div class='list2 '>
+			{foreach: name='art28' item='av28'}
+			<div>
+				<a href="{:url("mobile/school/artinfo",array('article_id'=>$av28['article_id']))}"><img src="{$av28['thumb']}" style="width: 7rem;height: 4.9rem;" alt=""></a>
+				<a href="{:url("mobile/school/artinfo",array('article_id'=>$av28['article_id']))}"><span>{$av28['title']}</span></a>
+			</div>
+			{/foreach}
+		</div>
+	</div>
+
+	<div class="arti_list">
+		<div class='tit'>风水知识</div>
+		<div class='cate'>
+			<div class='on'><a href="{:url('Mobile/school/child_cat',array('cat_id'=>32,'p'=>'1'))}">家居风水</a></div>
+
+		</div>
+		<div class='list2 '>
+			{foreach: name='art32' item='av32'}
+			<div>
+				<a href="{:url("mobile/school/artinfo",array('article_id'=>$av32['article_id']))}"><img src="{$av32['thumb']}" style="width: 7rem;height: 4.9rem;" alt=""></a>
+				<a href="{:url("mobile/school/artinfo",array('article_id'=>$av32['article_id']))}"><span>{$av32['title']}</span></a>
+			</div>
+			{/foreach}
+		</div>
+
+	</div>
+{include file="public/footer" /}

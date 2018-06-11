@@ -1,0 +1,118 @@
+{include file="public/header" /}
+<script src="/input/index/static/js/mui.picker.min.js"></script>
+<script src="/input/index/js/myFormValidate.js"></script>
+<link href="/input/index/static/css/mui.picker.min.css" rel="stylesheet"/>
+<style>
+    .free_price{
+        display: none;
+    }
+    .footer{
+        margin-bottom: 0rem;
+    }
+</style>
+<div class='mfyy'>
+    <form action="#" class="mfyy_form">
+        <div class='mfyy_input clearfix'>
+            <input type="text" class='i1' name='user_name2' autocomplete="off" placeholder="您的名字"/>
+            <input type="text" class='i2' name='mobile2' autocomplete="off" placeholder="您的手机"/>
+
+            <div class="mfyy_submit" onclick="ajax_user_form_mob('mfyy_form','{:url('Home/Index/addUserInfo')}');""></div>
+
+        </div>
+
+    </form>
+</div>
+
+{include file="public/footer" /}
+<script>
+
+    function get_price(){
+        area = $("input[name = area]").val();
+        true_area=/[0-9]{2,3}/;
+        if(area == '' || !true_area.test(area)){
+            mui.alert('请输入您的房屋面积', function() {});
+            return false;
+        }
+
+        if($("input[name=username]").val() == ''){
+            mui.alert('请填写您的姓名', function() {});
+            return false;
+        }
+
+        true_mobile = /^1[34578]{1}\d{9}$/;
+        if($("input[name=mobile]").val() == '' || !true_mobile.test($("input[name=mobile]").val())){
+            mui.alert('请填写您的手机号', function() {});
+            return false;
+        }
+
+        pick_num = $(".pick_num").html();
+        shi  = $(".shi").html();
+        wei  = $(".wei").html();
+        price = 99999*1+(area*1-75)*790+(wei*1-1)*9999+(shi*1-3)*1680;
+        ajax_getprice(price);
+    }
+
+    function ajax_getprice(price){
+        username = $("input[name=username]").val();
+        mobile = $("input[name=mobile]").val();
+
+        $.ajax({
+            type : "POST",
+            async: false,
+            url  : "{:url('Mobile/index/getprice')}",
+            data : {'user_name':username,'mobile':mobile,'price':price},// 你的formid
+            datatype : "json",
+            error: function(request) {
+
+                alert("服务器繁忙, 请联系管理员!");
+            },
+            success: function(v) {
+
+                var v =  eval('('+v+')');
+                // 验证成功提交表单
+
+                if(v.status == 1)
+                {
+                    mui.alert('获取成功,稍后将以短信形式发送到您的手机', function(){});
+                }else{
+                    mui.alert(v.msg, function(){});
+                }
+            }
+        });
+    }
+
+
+    /**
+     * 前台预约功能 (class版)
+     * @param form_id
+     * @param submit_url
+     * @returns {boolean}
+     */
+    function ajax_user_form_mob(form_id,submit_url){
+
+        $.ajax({
+            type : "POST",
+            url  : submit_url,
+            data : $('.'+form_id).serialize(),// 你的formid
+            datatype : "json",
+            error: function(request) {
+
+                alert("服务器繁忙, 请联系管理员!");
+            },
+            success: function(v) {
+
+                var v =  eval('('+v+')');
+                // 验证成功提交表单
+
+                if(v.status == 1)
+                {
+                    mui.alert(v.msg, function(){});
+                }else{
+                    mui.alert(v.msg, function(){});
+                }
+
+            }
+        });
+
+    }
+</script>

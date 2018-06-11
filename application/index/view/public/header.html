@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>{$web_title}</title>
+
+    <meta name="keywords" content="{$keywords}">
+
+    <meta name="description" content="{$description}">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/public/index/static/images/favicon.ico" media="screen"/>
+
+    <link rel="stylesheet" href="/public/index/bootstarp/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/public/index/static/css/selectordie.css">
+
+    <link rel="stylesheet" href="/public/index/style/base.css">
+
+    <link rel="stylesheet" href="/public/index/style/common.css">
+
+</head>
+
+
+
+<body id="oldtop">
+
+<div class="toplist">
+
+    <div class="layout fix">
+
+        <div class="headCity">
+            <img src="/public/index/static/images/index2.0/shouye-icon (2).png" alt="位置">
+            <span>深圳<i><img src="/public/index/static/images/index2.0/shouye-icon (1).jpg" alt=""></i></span>
+        </div>
+
+
+
+        <div class="topr fr fix">
+
+            <span class="tr1 fl">
+
+                <a href="#">关注微信<i><img src="/public/index/static/images/index2.0/shouye-icon (1).jpg" alt=""></i></a>
+
+                <div class="navApp1">
+                    <img class="navMa1" src="/public/index/static/images/index2.0/ewm1.jpg" alt="久居"><br>
+                </div>
+            </span>
+            
+            <span class="tr2 fl">
+
+                    <a href="#">登录</a>
+
+                    <em>|</em>
+
+                    <a href="#">注册</a>
+
+                </span>
+
+            <span class="tr3 fr">久居热线：
+
+                    <font>400-835-1919</font>
+
+                </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- 头部 -->
+
+<div class="header">
+
+    <div class="layout fix">
+
+        <div class="logo fl">
+
+            <a href="/">
+
+                <img src="/public/index/static/images/logo.png" alt="">
+
+            </a>
+
+        </div>
+
+        <div class="nav fr">
+
+            <ul class="fix f1">
+
+                <li>
+
+                    <a {if condition="$conact eq 'Index/index'"}class="on"{/if} href="/">首页</a>
+
+                </li>
+
+                <li>
+
+                    <a {if condition="$conact eq 'Index/zpzx'"}class="on"{/if} href="{:url('Index/index/zpzx')}/">臻品之选
+
+                        <span>NEW</span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a {if condition="$controller eq 'Designer'"}class="on"{/if} href="{:url('Index/Designer/fwzx')}/">服务之星</a>
+
+                </li>
+
+                <li>
+
+                    <a {if condition="$controller eq 'Cases'"}class="on"{/if} href="{:url('Index/Cases/index')}/">整装案例</a>
+
+                </li>
+
+                <li>
+
+                    <a {if condition="$controller eq 'Worklive'"}class="on"{/if} href="{:url('Index/Worklive/index')}/">工地直播</a>
+
+                </li>
+
+                <li class="school">
+
+                    <a {if condition="$controller eq 'News'"}class="on"{/if} {if condition="$controller eq 'Baike'"}class="on"{/if} href="{:url('Index/News/index')}/">装修学堂</a>
+
+                </li>
+
+                <li>
+
+                    <a {if condition="$controller eq 'About'"}class="on"{/if} href="{:url('Index/About/index')}/">关于我们</a>
+
+                </li>
+
+                <li>
+
+                    <a class="navCode" href="http://www.jiujusz.com/zxxt/">
+                        <img src="/public/index/static/images/index2.0/shouye-icon (4).png" alt="">
+                        <div class="navApp">
+                            <img class="navMa" src="/public/index/static/images/index2.0/ewm2.png" alt="久居"><br>
+                        </div>
+                    </a>
+    
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+<!-- 百科 -->
+
+<div class="select">
+
+    <div class="layout">
+
+        <div class="study">
+
+            <img src="/public/index/static/images/study.png" alt="">
+
+            <em>|</em>
+
+            <a href="{:url('Index/News/index')}/">学装修</a>
+
+        </div>
+
+        <div class="encyclopedia">
+
+            <img src="/public/index/static/images/baik.png" alt="">
+
+            <em>|</em>
+
+            <a href="{:url('Index/Baike/index')}/">装修百科</a>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="/public/index/js/jquery-1.10.2.min.js"></script>
+<script>
+    $(function(){
+        $(".navCode").mouseover(function (){  
+            $(".navApp").show();  
+        }).mouseout(function (){  
+            $(".navApp").hide();  
+        });  
+
+         $(".tr1").mouseover(function (){  
+            $(".navApp1").show();  
+        }).mouseout(function (){  
+            $(".navApp1").hide();  
+        });  
+    })
+</script>

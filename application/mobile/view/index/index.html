@@ -1,0 +1,428 @@
+{include file="public/header" /}
+<script src="/public/index/static/js/mui.picker.min.js"></script>
+<link href="/public/index/static/css/mui.picker.min.css" rel="stylesheet"/>
+<style>
+	.mui-slider .mui-slider-group .mui-slider-item img{
+		height: 7.82rem;
+		width:100%;
+	}
+
+
+</style>
+	<div class="mui-content">
+		
+		<div id="slider" class="mui-slider" >
+			<div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="{$banner[$last_b]['url']}">
+						<img src="{$banner[$last_b]['image']}" style="width: 15rem;height: 7.82rem;">
+					</a>
+				</div>
+				{foreach name='banner' item='bv' key='bk'}
+				<div class="mui-slider-item">
+					<a href="{$bv['url']}">
+						<img src="{$bv['image']}" style="width: 15rem;height: 7.82rem;">
+					</a>
+				</div>
+				{/foreach}
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="{$banner[0]['url']}">
+						<img src="{$banner[0]['image']}" style="width: 15rem;height: 7.82rem;">
+					</a>
+				</div>
+			</div>
+			<div class="mui-slider-indicator">
+				{foreach name='banner' item='bv' key='bk'}
+				{if condition="$bk == 0"}
+				<div class="mui-indicator mui-active"></div>
+				{else /}
+				<div class="mui-indicator"></div>
+				{/if}
+				{/foreach}
+			</div>
+		</div>
+		<div class='tubiao'>
+			<ul>
+				<li><a href="{:url('mobile/enped/index')}"><img src="/public/index/static/mobile/m_tb6.png" alt="" /><span>装修百科</span></a></li>
+				<!--<li><a href=""><img src="/public/index/static/mobile/m_tb2.png" alt="" /><span>工地直播</span></a></li>-->
+				<li><a href="{:url('mobile/designer/index')}"><img src="/public/index/static/mobile/m_tb3.png" alt="" /><span>服务之星</span></a></li>
+				<li><a href="{:url('mobile/goods/index')}"><img src="/public/index/static/mobile/m_tb4.png" alt="" /><span>整装案例</span></a></li>
+				<li><a href="{:url('mobile/school/index')}"><img src="/public/index/static/mobile/m_tb5.png" alt="" /><span>装修学堂</span></a></li>
+			</ul>
+		</div>
+		
+		<div class='daohang'>
+			<div class='m_title'>
+				装修流程
+			</div>
+			
+			<div class='lanmu'>
+				<ul class='top_ul'>
+					<li class='right_li'><div class='lanmu1'>在线咨询</div></li>
+					<li class='right_li'><a href="{:url("mobile/index/lfbj")}"><div class='lanmu2'>量房报价</div></a></li>
+					<li><div class='lanmu3'>签订合约</div></li>
+					
+				</ul>
+				
+				<ul class='div_b'>
+					<li class='right_li'><div class='lanmu4'>施工阶段</div></li>
+					<li class='right_li'><div class='lanmu5'>竣工完成</div></li>
+					<li><div class='lanmu6'>售后维护</div></li>
+				</ul>
+			</div>						
+		</div>
+		
+		<div class='zpzx'>
+			<div class='m_title'>
+				臻品之选
+			</div>
+			<div class='m_title_wz'>五大空间完整品质整装配置</div>
+			
+			<div class='wdkj1'>
+				<div><img src="/public/index/static/mobile/wdkji1.png" class="wdkj_img"  alt=""></div>
+				<div><img src="/public/index/static/mobile/wdkji2.png" class="wdkj_img"  alt=""></div>
+				<div><img src="/public/index/static/mobile/wdkji3.png" class="wdkj_img"  alt=""></div>
+				<div><img src="/public/index/static/mobile/wdkji4.png" class="wdkj_img"  alt=""></div>
+				<div><img src="/public/index/static/mobile/wdkji5.png" class="wdkj_img"  alt=""></div>
+			</div>
+			
+			<div class='zpzx_img zpzx_img1'>
+				<a href="{:url('mobile/brand/index')}"><div class='zpzx_an'>查看详情</div></a>
+			</div>
+
+			<div class='zpzx_img zpzx_img2' style="display: none;">
+				<a href="{:url('mobile/brand/index')}"><div class='zpzx_an'>查看详情</div></a>
+			</div>
+
+			<div class='zpzx_img zpzx_img3' style="display: none;">
+				<a href="{:url('mobile/brand/index')}"><div class='zpzx_an'>查看详情</div></a>
+			</div>
+
+			<div class='zpzx_img zpzx_img4' style="display: none;">
+				<a href="{:url('mobile/brand/index')}"><div class='zpzx_an'>查看详情</div></a>
+			</div>
+
+			<div class='zpzx_img zpzx_img5' style="display: none;">
+				<a href="{:url('mobile/brand/index')}"><div class='zpzx_an'>查看详情</div></a>
+			</div>
+
+		</div>
+		
+		<div class='baojiao'>
+			<div class='bj_title'></div>
+			<div class='bj_num'>
+				<span>累计已经有</span>
+				<span class='bj_nmui'>8</span>
+				<span class='bj_nmui'>8</span>
+				<span class='bj_nmui'>8</span>
+				<span>人获取成功</span>
+			</div>
+			
+			<div class='bj_form'>
+				<input type="text" name="username" class='bj_input' placeholder="您的姓名"/>
+				<input type="text" name="area" class='bj_input' placeholder="房屋面积"/>
+				<!--<input type="text" class='bj_input' placeholder="房型"/>-->
+                <button type="button" class="btn mui-btn mui-btn-block pick_house" onclick="pick_house()" >
+                    <span>房型</span>
+                    <span class="pick_num">1室1厅1厨1卫</span>
+
+                </button>
+				<input type="text" name="mobile" class='bj_input' placeholder="您的手机"/>
+				<button class="mui-btn mui-btn-outlined bj_anniu1" onclick="call_kf()">拨打客服电话</button>
+				<button onclick="get_price()" class="mui-btn mui-btn-outlined bj_anniu2">立即获取</button>
+			</div>
+		</div>
+		
+		<div class='fwzx'>
+			<div class='m_title'>
+				服务之星
+			</div>
+			<div class='m_title_wz'>家装魔术师  给你的爱巢更多可能</div>
+			
+			<div class='fl' style="display: none;">
+				<div><div  class='on'>设计师</div></div>
+				<div><div>项目管家</div></div>
+			</div>	
+			
+			<div class="ren">
+				<div class='renl'>
+					<a href="{:url('Mobile/designer/desinfo',array('id'=>$des[0][id])),'.html'}">
+					<img src="{$des[0]['img']}" style="width: 7.36rem;height: 5.9rem;" alt="">
+					<div class="ren_wz">
+					    <div class='sjs'>{$des[0]['designer_name']}</div>
+						<div class='yysj'></div>
+					</div>
+					</a>
+				</div>
+				<div class='renr'>
+					<div>
+						<a href="{:url('Mobile/designer/desinfo',array('id'=>$des[1][id])),'.html'}">
+						<div class='rl'><img src="{$des[1]['img']}" style="width: 3.72rem;" alt=""></div>
+						<div class='rr'>
+							<span>{$des[1]['designer_name']}</span>
+							<div class='yysj'></div>
+						</div>
+						</a>
+					</div>
+					
+					<div>
+						<a href="{:url('Mobile/designer/desinfo',array('id'=>$des[2][id])),'.html'}">
+						<div class='rl'><img src="{$des[2]['img']}" style="width: 3.72rem;" alt=""></div>
+						<div class='rr'>
+							<span>{$des[2]['designer_name']}</span>
+							<div class='yysj'></div>
+						</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class='ckgd'>
+				<a href="{:url('mobile/designer/index')}"><button>查看更多</button></a>
+			</div>
+		</div>
+		<div class='worklive'>
+			<div class='m_title'>
+				工地直播
+			</div>
+			<div class='m_title_wz '>了解工地进展 跟踪施工情况</div>
+			<div class="workl"><img src="{$worklive['thumb']}" style="width:14.48rem;height: 8.52rem;" alt=""></div>
+			<div class="text"><span class="tit">{$worklive['live_name']}</span><span class="info">{$worklive['style']}&nbsp;|&nbsp;{$worklive['area']}㎡</span><span class="more"><a href="{:url('mobile/worklive/index')}">更多>></a></span></div>
+		</div>
+		<div class='zzal'>
+			<div class='m_title'>
+				整装案例
+			</div>
+			<div class='m_title_wz '>不一样的设计风格  不一样的精彩生活</div>
+			{foreach name='goods' item='gv' key='gk'}
+			<div class='xal clearborder'>
+				<a href="{:url('Mobile/goods/goodsinfo',array('goods_id'=>$gv.goods_id)),'.html'}">
+				<div class='img'><img src="{$gv['img']}" style="width: 7.04rem;height: 4.92rem;" alt=""></div>
+				<div class='gdinfo'>
+					<div class='gdinfo1'>{$gv['case_name']}</div>
+					<div class='gdinfo2'></div>
+					<div class='gdinfo3'>{$gv['style']}  |  {$gv['apart']}  |  {$gv['measure']}</div>
+				</div>
+				</a>
+			</div>
+			{/foreach}
+			<div class='ckgd'>
+				<a href="{:url('mobile/goods/index')}"><button>查看更多</button></a>
+			</div>
+		</div>
+		<div class='zxzs'>
+			<div class='m_title'>
+				装修知识
+			</div>
+			<div class='m_title_wz'>家装小窍门  生活大智慧</div>
+			<div class='fl'>
+				<div><div class='on'>学装修</div></div>
+				<div><div>装修百科</div></div>
+			</div>
+			<div class='zh'>
+				<div class='first_a'>
+					<div class="bug_t"><a href="{:url("Mobile/school/artinfo",array('article_id'=>$article[0]['article_id'])),'.html'}"><img src="{$article[0]['thumb']}" style="width: 4.1rem;height: 3.2rem;" alt=""></a></div>
+					<div>
+						<a href="{:url("Mobile/school/artinfo",array('article_id'=>$article[0]['article_id'])),'.html'}">
+						<p class='title'>{$article[0]['title']|mb_substr=###,0,16,'utf-8'}...</p>
+						<span class='acon'>{$article[0]['explain']|mb_substr=###,0,24,'utf-8'}...</span><span class='ckxq'>&nbsp;&nbsp;[查看详情]</span>
+						<div class='tb'>
+							 <span class='eye'>{$article[0]['radio_num']*1+$article[0]['comment']*1}</span>
+						     <span class='heart'>{$article[0]['comment']}</span>
+						</div>
+						</a>
+					</div>
+				</div>
+				<div class="art">
+                    {foreach name='article' item='av' key='ak'}
+                    {if condition="$ak != 0"}
+					<a href="{:url("Mobile/school/artinfo",array('article_id'=>$av['article_id'])),'.html'}">{$av['title']}</a>
+                    {/if}
+					{/foreach}
+				</div>
+				<div class='ckgd'>
+					<a href="{:url('mobile/school/index')}"><button>查看更多</button></a>
+				</div>
+			</div>
+			<div class='zh' style="display: none;">
+				<div class='first_a'>
+					<div class="bug_t"><a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$enped[0]['enped_id'])),'.html'}"><img src="{$article[0]['thumb']}" style="width: 4.1rem;height: 3.2rem;" alt=""></a></div>
+					<div>
+						<a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$enped[0]['enped_id'])),'.html'}">
+						<p class='title'>{$enped[0]['title']}</p>
+						<span class='acon'>{$enped[0]['explain']|mb_substr=###,0,24,'utf-8'}...</span><span class='ckxq'>&nbsp;&nbsp;[查看详情]</span>
+						<div class='tb'>
+							 <span class='eye'>{$enped[0]['radio_num']*1+$enped[0]['comment']*1}</span>
+						     <span class='heart'>{$enped[0]['comment']}</span>
+						</div>
+						</a>
+					</div>
+				</div>
+				<div class="art">
+                    {foreach name='enped' item='ev' key='ek'}
+                    {if condition="$ek != 0"}
+                    <a href="{:url("mobile/enped/enpedinfo",array('enped_id'=>$ev['enped_id'])),'.html'}">{$ev['title']}</a>
+                    {/if}
+                    {/foreach}
+				</div>
+				<div class='ckgd'>
+					<a href="{:url('mobile/enped/index')}"><button>查看更多</button></a>
+				</div>
+			</div>
+		</div>
+
+		<div class='gsdt'>
+			<div class='m_title'>
+				公司动态
+			</div>
+			<div class='m_title_wz'>家装大新闻  久居小动态</div>
+
+            {foreach name='news' item='nv' key='nk'}
+			<div class='neir'>
+				<div><a href="{:url("Mobile/school/artinfo",array('article_id'=>$nv['article_id'])),'.html'}"><img src="{$nv['thumb']}" style="width: 3.24rem;height: 2.3rem;" alt=""></a></div>
+				<div>
+					<a href="{:url("Mobile/school/artinfo",array('article_id'=>$nv['article_id'])),'.html'}"><p class='title'>{$nv['title']|mb_substr=###,0,16,'utf-8'}</p></a>
+					<a href="{:url("Mobile/school/artinfo",array('article_id'=>$nv['article_id'])),'.html'}"><span class='acon'>{$nv['explain']|mb_substr=###,0,28,'utf-8'}...</span></a>
+				</div>
+			</div>
+            {/foreach}
+			<div style="width: 100%;height: 1rem;float:left;background-color: #ffffff;"></div>
+			<!--<div class='ckgd'>
+				<button>查看更多</button>
+			</div>-->
+		</div>
+			
+	</div>
+{include file="public/footer" /}
+<script>
+	mui.init({
+		swipeBack:true //启用右滑关闭功能
+	});
+	 //页面单独使用的js
+    $('.fwzx .fl>div>div').click(function(){
+    	var i = $(this).parent().index();
+		$(this).addClass('on').parent().siblings().children().removeClass('on');
+		$(this).parent().parent().parent().find('.ren').hide();
+		$(this).parent().parent().parent().find('.ren').eq(i).fadeIn();
+    });
+    $('.zxzs .fl>div>div').click(function(){
+    	var i = $(this).parent().index();
+		$(this).addClass('on').parent().siblings().children().removeClass('on');
+		$(this).parent().parent().parent().find('.zh').hide();
+		$(this).parent().parent().parent().find('.zh').eq(i).fadeIn();
+    });
+
+    function call_kf(){
+        window.location.href = "tel:4008301919";
+	}
+
+    function pick_house(){
+        var dtpicker = new mui.DtPicker({
+            "type": "hour",
+            "customData": {
+                "y": [
+                    { value: "1", text: "一室" },
+                    { value: "2", text: "二室" },
+                    { value: "3", text: "三室" },
+                    { value: "4", text: "四室" },
+                    { value: "5", text: "五室" },
+                    { value: "6", text: "六室" },
+                ],
+                'm': [
+                    { value: "1", text: "一厅" },
+                    { value: "2", text: "二厅" },
+                ],
+                'd': [
+                    { value: "1", text: "一厨" },
+                ],
+                'h': [
+                    { value: "1", text: "一卫" },
+                    { value: "2", text: "二卫" },
+                    { value: "3", text: "三卫" },
+                ]
+            },
+            "labels":["室", "厅", "厨", "卫"]
+        })
+        dtpicker.show(function(e) {
+            show_text = e.y.value+'室'+e.m.value+'厅'+e.d.value+'厨'+e.h.value+'卫';
+            $(".pick_num").html(show_text);
+        })
+    }
+
+    function get_price(){
+        area = $("input[name = area]").val();
+        true_area=/[0-9]{2,3}/;
+        if(area == '' || !true_area.test(area)){
+            mui.alert('请输入您的房屋面积', function() {});
+            return false;
+        }
+
+        if($("input[name=username]").val() == ''){
+            mui.alert('请填写您的姓名', function() {});
+            return false;
+        }
+
+        true_mobile = /^1[34578]{1}\d{9}$/;
+        if($("input[name=mobile]").val() == '' || !true_mobile.test($("input[name=mobile]").val())){
+            mui.alert('请填写您的手机号', function() {});
+            return false;
+        }
+
+        pick_num = $(".pick_num").html();
+        shi  = pick_num.substr(0,1);
+        wei  = pick_num.substr(6,1);
+        price = 99999*1+(area*1-75)*790+(wei*1-1)*9999+(shi*1-3)*1680;
+        ajax_getprice(price);
+
+    }
+
+    function ajax_getprice(price){
+        username = $("input[name=username]").val();
+        mobile = $("input[name=mobile]").val();
+        area = $("input[name=area]").val();
+
+        $.ajax({
+            type : "POST",
+            async: false,
+            url  : "{:url('Mobile/index/getprice')}",
+            data : {'user_name':username,'mobile':mobile,'price':price,'area':area},// 你的formid
+            datatype : "json",
+            error: function(request) {
+
+                alert("服务器繁忙, 请联系管理员!");
+            },
+            success: function(v) {
+
+                var v =  eval('('+v+')');
+                // 验证成功提交表单
+
+                if(v.status == 1)
+                {
+                    mui.alert('获取成功,稍后将以短信形式发送到您的手机', function(){});
+                }else{
+                    mui.alert(v.msg, function(){});
+                }
+
+
+            }
+        });
+
+    }
+
+    function tab(a,b){
+        $(a).click(
+            function(){
+                var i = $(this).index();
+                $(this).addClass('on').siblings().removeClass('on');
+                $(b).hide();
+                $(b).eq(i).fadeIn();
+            }
+        )
+    }
+
+
+    tab(".wdkj1 >div",".zpzx .zpzx_img");
+
+</script>

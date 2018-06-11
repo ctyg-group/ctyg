@@ -1,0 +1,36 @@
+/* page/component/pages/swiper/swiper.wxss */
+.slide-image{
+  width:100%;
+  height: 100%;
+}
+
+.swiper-container{  
+  position: relative;  
+}  
+.swiper-container .swiper{  
+  height: 300rpx;  
+}  
+.swiper-container .swiper .img{  
+  width: 100%;  
+  height: 100%;  
+}  
+.swiper-container .dots{  
+  position: absolute;  
+  left: 0;  
+  right: 0;  
+  bottom: 20rpx;  
+  display: flex;  
+  justify-content: center;  
+}  
+.swiper-container .dots .dot{  
+  margin: 0 30rpx;  
+  width: 20rpx;  
+  height: 20rpx;  
+  background: #fff;  
+  border-radius: 20rpx;  
+  transition: all .6s;  
+}  
+.swiper-container .dots .dot.active{  
+  width: 20rpx;  
+  background: #049f20;  
+}  

@@ -1,0 +1,130 @@
+{include file="public/header" /}
+<script src="/public/index/static/js/swiper.min.js"></script>
+<link href="/public/index/static/css/swiper.min.css" rel="stylesheet"/>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .datel-main {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+    }
+
+    .bot-datel {
+        position: absolute;
+        width: 100%;
+        bottom: 5rem;
+        left: 0.8rem;
+        background-color: #000000;
+        color: #ffffff;
+        z-index: 2;
+        -webkit-transition: bottom .5s;
+        transition: bottom .5s;
+        font-size: 0.6rem;
+    }
+
+    .bot-datel2{
+        position: absolute;
+        width: 100%;
+        height: 2.22rem;
+        bottom: 0;
+        left: 0;
+        color: #ffffff;
+        z-index: 2;
+        background-color: #a3a3a3;
+        -webkit-transition: bottom .5s;
+        transition: bottom .5s;
+        font-size: 0.6rem;
+    }
+
+    .bot-datel2 .an1{
+        width:8.26rem;
+        height: 2.22rem;
+        float: left;
+    }
+
+    .bot-datel2 .an1 .toux{
+        height: 1.82rem;
+        width: 1.82rem;
+        margin-top: 0.2rem;
+        margin-left: 1rem;
+        float: left;
+    }
+
+    .bot-datel2 .an1 .toun{
+        height: 2.22rem;
+        color: #ffffff;
+        float: left;
+        margin-left: 0.6rem;
+        line-height: 2.22rem;
+    }
+
+    .bot-datel2 .an2{
+        background-color: #E28D2D;
+        width:6.74rem;
+        height: 2.22rem;
+        float: left;
+        font-size: 0.76rem;
+        line-height: 2.22rem;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    .swiper-container{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #000000;
+        z-index: 1;
+    }
+
+    .bot-datel p{
+        
+        color: #fa9a33;
+    }
+
+
+</style>
+
+<div class="datel-main">
+    <div class="swiper-container" >
+        <div class="swiper-wrapper" style="margin-top: 3.32rem;">
+            {foreach name='img' item='iv' key='ik'}
+            <div class="swiper-slide"><img src="{$iv['image_url']}" style="width: 15rem;height: 10.5rem;" alt=""></div>
+            {/foreach}
+        </div>
+    </div>
+
+    <div class="bot-datel">
+        <span>{$name}</span>
+        <p>{$style}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$apart}</p>
+
+    </div>
+
+    <div class="bot-datel2">
+           <div class="an1">
+               <div class="toux"><img src="{$des_img}" style="width: 1.82rem;height: 1.82rem;" alt=""></div>
+               <div class="toun">设计师：&nbsp;{$des_name}</div>
+           </div>
+           <a href="{:url("mobile/index/mfyy")}"><div class="an2">预约设计</div></a>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var mySwiper = new Swiper('.swiper-container',{
+        loop: true,
+        autoplay: 0,
+    });
+</script>
+{include file="public/footer" /}

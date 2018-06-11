@@ -1,0 +1,942 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <link rel="stylesheet" type="text/css" href="__ROOT__/public/demoup/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="__ROOT__/public/demoup/css/style.css" />
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+    </div>
+    <link rel="stylesheet" href="__ROOT__/public/up-img/dist/css/dropify.min.css">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">添加工地直播
+                                    <a href="Javascript:;" class="tooltip-success" data-toggle="tooltip" data-placement="right" title="" data-original-title="添加到快捷菜单"
+                                       onclick="addmenu('{$navurls}','添加工地直播')"
+                                    ><i class="fa fa-tag"></i></a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="scrollable">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation">
+                                    <a href="{:url('Worklive/index')}">
+                                        <span class="visible-xs">工地直播列表</span>
+                                        <span class="hidden-xs">工地直播列表</span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="JavaScript:;" >
+                                        <span class="visible-xs">添加工地直播</span>
+                                        <span class="hidden-xs">添加工地直播</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div  class="table-responsive" style="min-width: 1350px!important;">
+                                <br>
+                                <style>
+                                    .form-group input{
+                                        max-width:300px!important;
+                                    }
+                                    .bootstrap-select{
+                                        max-width:300px!important;
+                                    }
+                                    .select2{
+                                        max-width:300px!important;
+                                    }
+                                    .form-group select{
+                                        font-weight: 500;
+                                        max-width: 300px!important;
+                                        float:left;
+                                        margin-right: 4px;
+                                    }
+                                    .col-sm-5{
+                                        width:150px!important;
+                                    }
+
+                                    .col-sm-6{
+                                        width:500px!important;
+                                    }
+                                    .col-sm-1{
+                                        width:1100px!important;
+                                        min-width: 1100px!important;
+                                        padding:0!important;
+                                    }
+                                    .right-aside{
+                                        width:1650px!important;
+                                    }
+                                    body{
+                                        overflow-x: auto;
+                                    }
+                                    .container{
+                                        padding:0;
+                                        margin:0;
+                                        min-height:105px;
+                                        width:1068px;
+                                    }
+                                    ul{
+                                        margin:0;
+                                        padding:0!important;
+                                    }
+
+                                </style>
+                                <form action="{:url('Worklive/addwork')}" method="post" class="form-horizontal" method="post" enctype="multipart/form-data">
+                                    <div class="col-sm-6">
+                                        <h2>基本信息：</h2>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">直播名称:</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" id="work_name" name="work_name" placeholder="请输入案例名称" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">户型:</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" id="hu" name="hu" placeholder="请输入案例名称" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">面积:</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" id="measure" name="measure" placeholder="请输入案例名称" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">风格:</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" id="touch" name="touch" placeholder="请输入案例名称" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">选择设计师:</label>
+                                            <div class="col-sm-7">
+                                                <select  class="form-control select2"  name="desid" id="desid" required>
+                                                    <option value="">请选择设计师</option>
+                                                    {volist name="des" id="d"}
+                                                    <option value="{$d.id}">{$d.designer_name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">选择项目管家:</label>
+                                            <div class="col-sm-7">
+                                                <select  class="form-control select2"  name="butler" id="butler" required>
+                                                    <option value="">选择项目管家</option>
+                                                    {volist name="butler" id="b"}
+                                                    <option value="{$b.id}">{$b.worker_name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">选择工程监理:</label>
+                                            <div class="col-sm-7">
+                                                <select  class="form-control select2"  name="surveyor" id="surveyor" required>
+                                                    <option value="">选择工程监理</option>
+                                                    {volist name="surveyor" id="s"}
+                                                    <option value="{$s.id}">{$s.worker_name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">施工阶段:</label>
+                                            <div class="col-sm-7">
+                                                <select class="selectpicker" data-style="form-control" name="cat_1" id="cat_1" required>
+                                                    <option value="">请选择施工阶段</option>
+                                                    {volist name="cat1" id="c1"}
+                                                    <option value="{$c1.cat_id}">{$c1.cat_name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">所属小区:</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control select2" name="cat_2" id="cat_2" required>
+                                                    <option value="">请选择所属小区</option>
+                                                    {volist name="cat2" id="c2"}
+                                                    <option value="{$c2.cat_id}">{$c2.cat_name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">户型:</label>
+                                            <div class="col-sm-7">
+                                                <select class="selectpicker" data-style="form-control" name="cat_3" id="cat_3" required>
+                                                    <option value="">请选择户型</option>
+                                                    {volist name="cat3" id="c3"}
+                                                    <option value="{$c3.cat_id}">{$c3.cat_name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">排序:</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="sort" name="sort" placeholder="请输入排序" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">状 态:</label>
+                                            <div class="col-sm-7">
+                                                <div class="zhuangts">
+                                                    <div class="box-zt">
+                                                        <h4>是否显示</h4>
+                                                        <div class="radio" >
+                                                            <input type="radio" name="show" id="show1" value="1" checked>
+                                                            <label for="show1"> 是 </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <input type="radio" name="show" id="show2" value="2" >
+                                                            <label for="show2"> 否 </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-zt">
+                                                        <h4>是否热门</h4>
+                                                        <div class="radio" >
+                                                            <input type="radio" name="hot" id="hot1" value="1" >
+                                                            <label for="hot1"> 是 </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <input type="radio" name="hot" id="hot2" value="2" checked>
+                                                            <label for="hot2"> 否 </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-zt">
+                                                        <h4>是否最新</h4>
+                                                        <div class="radio" >
+                                                            <input type="radio" name="news" id="news1" value="1" checked>
+                                                            <label for="news1"> 是 </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <input type="radio" name="news" id="news2" value="2" >
+                                                            <label for="news2"> 否 </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-5">封面图片:</label>
+                                            <div style="width:280px;float:left;padding-left: 15px;">
+                                                <input type="file" name="workimg" class="dropify-fr" data-default-file="" data-max-file-size="30M" data-height="150" accept=".png,.jpg,.gif,.jpeg,.bmp" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h2>阶段信息：</h2>
+                                        <div class="stage">
+                                            <div class="stage_box" id="stage_1" style="display: none">
+                                                <div class="stage_name">
+                                                    开<br>工<br>大<br>吉
+                                                </div>
+                                                <div class="stage_right">
+                                                    <div class="stage_text">
+                                                        <input type="text"  id="time1" name="stage_time_1" placeholder="选择开始时间">
+                                                        <textarea name="stage_text_1" id="stage_text_1" placeholder="请描述阶段信息"></textarea>
+                                                    </div>
+                                                    <div class="stage_imgs">
+                                                        <div class="container">
+                                                            <div class="demo">
+                                                                <a class="btnup" id="btnup">上传图片</a>
+                                                                <ul id="ul_pics" class="ul_pics clearfix"></ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="stage_box" id="stage_2" style="display: none">
+                                                <div class="stage_name">
+                                                    拆<br>改<br>阶<br>段
+                                                </div>
+                                                <div class="stage_right">
+                                                    <div class="stage_text">
+                                                        <input type="text"  id="time2" name="stage_time_2" placeholder="选择开始时间">
+                                                        <textarea name="stage_text_2" id="stage_text_2" placeholder="请描述阶段信息"></textarea>
+                                                    </div>
+                                                    <div class="stage_imgs">
+                                                        <div class="container">
+                                                            <div class="demo">
+                                                                <a class="btnup" id="btnup2">上传图片</a>
+                                                                <ul id="ul_pics2" class="ul_pics clearfix">
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="stage_box" id="stage_3" style="display: none">
+                                                <div class="stage_name">
+                                                    水<br>电<br>阶<br>段
+                                                </div>
+                                                <div class="stage_right">
+                                                    <div class="stage_text">
+                                                        <input type="text"  id="time3" name="stage_time_3" placeholder="选择开始时间">
+                                                        <textarea name="stage_text_3" id="stage_text_3" placeholder="请描述阶段信息"></textarea>
+                                                    </div>
+                                                    <div class="stage_imgs">
+                                                        <div class="container">
+                                                            <div class="demo">
+                                                                <a class="btnup" id="btnup3">上传图片</a>
+                                                                <ul id="ul_pics3" class="ul_pics clearfix">
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="stage_box" id="stage_4" style="display: none">
+                                                <div class="stage_name">
+                                                    泥<br>瓦<br>阶<br>段
+                                                </div>
+                                                <div class="stage_right">
+                                                    <div class="stage_text">
+                                                        <input type="text"  id="time4" name="stage_time_4" placeholder="选择开始时间">
+                                                        <textarea name="stage_text_4" id="stage_text_4" placeholder="请描述阶段信息"></textarea>
+                                                    </div>
+                                                    <div class="stage_imgs">
+                                                        <div class="container">
+                                                            <div class="demo">
+                                                                <a class="btnup" id="btnup4">上传图片</a>
+                                                                <ul id="ul_pics4" class="ul_pics clearfix">
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="stage_box" id="stage_5" style="display: none">
+                                                <div class="stage_name">
+                                                    木<br>工<br>阶<br>段
+                                                </div>
+                                                <div class="stage_right">
+                                                    <div class="stage_text">
+                                                        <input type="text"  id="time5" name="stage_time_5" placeholder="选择开始时间">
+                                                        <textarea name="stage_text_5" id="stage_text_5" placeholder="请描述阶段信息"></textarea>
+                                                    </div>
+                                                    <div class="stage_imgs">
+                                                        <div class="container">
+                                                            <div class="demo">
+                                                                <a class="btnup" id="btnup5">上传图片</a>
+                                                                <ul id="ul_pics5" class="ul_pics clearfix">
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="stage_box" id="stage_6" style="display: none">
+                                                <div class="stage_name">
+                                                    油<br>漆<br>阶<br>段
+                                                </div>
+                                                <div class="stage_right">
+                                                    <div class="stage_text">
+                                                        <input type="text"  id="time6" name="stage_time_6" placeholder="选择开始时间">
+                                                        <textarea name="stage_text_6" id="stage_text_6" placeholder="请描述阶段信息"></textarea>
+                                                    </div>
+                                                    <div class="stage_imgs">
+                                                        <div class="container">
+                                                            <div class="demo">
+                                                                <a class="btnup" id="btnup6">上传图片</a>
+                                                                <ul id="ul_pics6" class="ul_pics clearfix">
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="stage_box" id="stage_7" style="display: none">
+                                                <div class="stage_name">
+                                                    竣<br>工<br>阶<br>段
+                                                </div>
+                                                <div class="stage_right">
+                                                    <div class="stage_text">
+                                                        <input type="text"  id="time7" name="stage_time_7" placeholder="选择开始时间">
+                                                        <textarea name="stage_text_7" id="stage_text_7" placeholder="请描述阶段信息"></textarea>
+                                                    </div>
+                                                    <div class="stage_imgs">
+                                                        <div class="container">
+                                                            <div class="demo">
+                                                                <a class="btnup" id="btnup7">上传图片</a>
+                                                                <ul id="ul_pics7" class="ul_pics clearfix">
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <hr>
+                                        <div class="form-group" style="text-align: center">
+                                            <button type="submit" class="btn btn-outline cus-btn" >提 交</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script src="__ROOT__/public/up-img/dist/js/dropify.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/demoup/js/plupload.full.min.js"></script>
+<script>
+    lay('#version').html('-v'+ laydate.v);
+    //执行一个laydate实例
+    laydate.render({elem: '#time1' ,type:'datetime'});
+    laydate.render({elem: '#time2',type:'datetime'});
+    laydate.render({elem: '#time3',type:'datetime'});
+    laydate.render({elem: '#time4',type:'datetime'});
+    laydate.render({elem: '#time5',type:'datetime'});
+    laydate.render({elem: '#time6',type:'datetime'});
+    laydate.render({elem: '#time7',type:'datetime'});
+    $(document).ready(function(){
+        // Basic
+        $('.dropify').dropify();
+
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: '选择图片',
+                replace: '',
+                remove:  '删除',
+                error:   '抱歉，该图片太大'
+            }
+        });
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+        drEvent.on('dropify.beforeClear', function(event, element){
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+        drEvent.on('dropify.afterClear', function(event, element){
+            alert('File deleted');
+        });
+        drEvent.on('dropify.errors', function(event, element){
+            console.log('Has Errors');
+        });
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e){
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+    function addcaseimg(id){
+        ids = id*1+1*1;
+        html =  '<div class="casimglist"  id="caseimgtext'+id+'"><div class="casimg">'+
+            '<input type="file" name="caseimg[]" class="dropify-fr" data-default-file="" data-max-file-size="30M" data-height="88" accept=".png,.jpg,.gif,.jpeg,.bmp" required/>'+
+            '</div>'+
+            '<div class="castext">'+
+            '<textarea name="casetext[]" placeholder="请输入照片描述"></textarea>'+
+            '</div>'+
+            '<div class="cascz" onclick="delcaseimg('+id+')">'+
+            '删除'+
+            '</div></div><div id="caseimg'+ids+'"></div>';
+        $("#addimg").attr("onclick","addcaseimg('"+ids+"')");
+        $("#caseimg"+id).html(html);
+        $(document).ready(function(){
+            // Basic
+            $('.dropify').dropify();
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: '选择图片',
+                    replace: '',
+                    remove:  '删除',
+                    error:   '抱歉，该图片太大'
+                }
+            });
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+            drEvent.on('dropify.beforeClear', function(event, element){
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+            drEvent.on('dropify.afterClear', function(event, element){
+                alert('File deleted');
+            });
+            drEvent.on('dropify.errors', function(event, element){
+                console.log('Has Errors');
+            });
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function(e){
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+    }
+    function delcaseimg(id){
+        $("#caseimgtext"+id).remove();
+    }
+    $("#cat_1").change(function(){
+        var id = $(this).val();
+        if(!id){
+            $("#stage_1").attr("style","display:none;");
+            $("#stage_2").attr("style","display:none;");
+            $("#stage_3").attr("style","display:none;");
+            $("#stage_4").attr("style","display:none;");
+            $("#stage_5").attr("style","display:none;");
+            $("#stage_6").attr("style","display:none;");
+            $("#stage_7").attr("style","display:none;");
+        }
+        if(id==1){
+            $("#stage_1").removeAttr("style");
+            $("#stage_2").attr("style","display:none;");
+            $("#stage_3").attr("style","display:none;");
+            $("#stage_4").attr("style","display:none;");
+            $("#stage_5").attr("style","display:none;");
+            $("#stage_6").attr("style","display:none;");
+            $("#stage_7").attr("style","display:none;");
+        }
+        if(id==2){
+            $("#stage_1").removeAttr("style");
+            $("#stage_2").removeAttr("style");
+            $("#stage_3").attr("style","display:none;");
+            $("#stage_4").attr("style","display:none;");
+            $("#stage_5").attr("style","display:none;");
+            $("#stage_6").attr("style","display:none;");
+            $("#stage_7").attr("style","display:none;");
+        }
+        if(id==3){
+            $("#stage_1").removeAttr("style");
+            $("#stage_2").removeAttr("style");
+            $("#stage_3").removeAttr("style");
+            $("#stage_4").attr("style","display:none;");
+            $("#stage_5").attr("style","display:none;");
+            $("#stage_6").attr("style","display:none;");
+            $("#stage_7").attr("style","display:none;");
+        }
+        if(id==4){
+            $("#stage_1").removeAttr("style");
+            $("#stage_2").removeAttr("style");
+            $("#stage_3").removeAttr("style");
+            $("#stage_4").removeAttr("style");
+            $("#stage_5").attr("style","display:none;");
+            $("#stage_6").attr("style","display:none;");
+            $("#stage_7").attr("style","display:none;");
+        }
+        if(id==5){
+            $("#stage_1").removeAttr("style");
+            $("#stage_2").removeAttr("style");
+            $("#stage_3").removeAttr("style");
+            $("#stage_4").removeAttr("style");
+            $("#stage_5").removeAttr("style");
+            $("#stage_6").attr("style","display:none;");
+            $("#stage_7").attr("style","display:none;");
+        }
+        if(id==6){
+            $("#stage_1").removeAttr("style");
+            $("#stage_2").removeAttr("style");
+            $("#stage_3").removeAttr("style");
+            $("#stage_4").removeAttr("style");
+            $("#stage_5").removeAttr("style");
+            $("#stage_6").removeAttr("style");
+            $("#stage_7").attr("style","display:none;");
+        }
+        if(id==7){
+            $("#stage_1").removeAttr("style");
+            $("#stage_2").removeAttr("style");
+            $("#stage_3").removeAttr("style");
+            $("#stage_4").removeAttr("style");
+            $("#stage_5").removeAttr("style");
+            $("#stage_6").removeAttr("style");
+            $("#stage_7").removeAttr("style");
+        }
+    });
+</script>
+
+<script>
+
+    var uploader = new plupload.Uploader({ //创建实例的构造方法
+        runtimes: 'html5,flash,silverlight,html4', //上传插件初始化选用那种方式的优先级顺序
+        browse_button: 'btnup', // 上传按钮
+        url: "{:url('Ajax/upflie')}", //远程上传地址
+        flash_swf_url: '/public/demoup/plupload/Moxie.swf', //flash文件地址
+        silverlight_xap_url: '/public/demoup/plupload/Moxie.xap', //silverlight文件地址
+        filters: {
+            max_file_size: '30mb', //最大上传文件大小（格式100b, 10kb, 10mb, 1gb）
+            mime_types: [ //允许文件上传类型
+                {
+                    title: "files",
+                    extensions: "jpg,png,gif,ico,jpeg"
+                }
+            ]
+        },
+        multi_selection: true, //true:ctrl多文件上传, false 单文件上传
+        init: {
+            FilesAdded: function(up, files) { //文件上传前
+                if ($("#ul_pics").children("li").length > 100) {
+                    alert("您上传的图片太多了！");
+                    uploader.destroy();
+                } else {
+                    var li = '';
+                    plupload.each(files, function(file) { //遍历文件
+                        li += "<li id='" + file['id'] + "' onmouseover='menus(\""+file['id']+"\")' onmouseout='menusout(\""+file['id']+"\")'><div class='progress'><span class='bar'></span><span class='percent'>0%</span></div></li>";
+                    });
+                    $("#ul_pics").append(li);
+                    uploader.start();
+                }
+            },
+            UploadProgress: function(up, file) { //上传中，显示进度条
+                var percent = file.percent;
+                $("#" + file.id).find('.bar').css({
+                    "width": percent + "%"
+                });
+                $("#" + file.id).find(".percent").text(percent + "%");
+            },
+            FileUploaded: function(up, file, info) { //文件上传成功的时候触发
+                var data = eval("(" + info.response + ")");
+                $("#" + file.id).html("<div class='img'><img src='" + data.pic + "'/><input type='hidden' name='stage_img_1[]' value='" +data.pic+"'><p style='display: none;' onclick='delstageimg(\""+file['id']+"\",\""+ data.pic +"\")'><i class='fa fa-times-circle'></i></p></div>");
+            },
+            Error: function(up, err) { //上传出错的时候触发
+                alert(err.message);
+            }
+        }
+    });
+    uploader.init();
+
+    var uploader2 = new plupload.Uploader({ //创建实例的构造方法
+        runtimes: 'html5,flash,silverlight,html4', //上传插件初始化选用那种方式的优先级顺序
+        browse_button: 'btnup2', // 上传按钮
+        url: "{:url('Ajax/upflie')}", //远程上传地址
+        flash_swf_url: '/public/demoup/plupload/Moxie.swf', //flash文件地址
+        silverlight_xap_url: '/public/demoup/plupload/Moxie.xap', //silverlight文件地址
+        filters: {
+            max_file_size: '30mb', //最大上传文件大小（格式100b, 10kb, 10mb, 1gb）
+            mime_types: [ //允许文件上传类型
+                {
+                    title: "files",
+                    extensions: "jpg,png,gif,ico,jpeg"
+                }
+            ]
+        },
+        multi_selection: true, //true:ctrl多文件上传, false 单文件上传
+        init: {
+            FilesAdded: function(up, files) { //文件上传前
+                if ($("#ul_pics2").children("li").length > 100) {
+                    alert("您上传的图片太多了！");
+                    uploader.destroy();
+                } else {
+                    var li = '';
+                    plupload.each(files, function(file) { //遍历文件
+                        li += "<li id='" + file['id'] + "' onmouseover='menus(\""+file['id']+"\")' onmouseout='menusout(\""+file['id']+"\")'><div class='progress'><span class='bar'></span><span class='percent'>0%</span></div></li>";
+                    });
+                    $("#ul_pics2").append(li);
+                    uploader2.start();
+                }
+            },
+            UploadProgress: function(up, file) { //上传中，显示进度条
+                var percent = file.percent;
+                $("#" + file.id).find('.bar').css({
+                    "width": percent + "%"
+                });
+                $("#" + file.id).find(".percent").text(percent + "%");
+            },
+            FileUploaded: function(up, file, info) { //文件上传成功的时候触发
+                var data = eval("(" + info.response + ")");
+                $("#" + file.id).html("<div class='img'><img src='" + data.pic + "'/><input type='hidden' name='stage_img_2[]' value='" +data.pic+"'><p style='display: none;' onclick='delstageimg(\""+file['id']+"\",\""+ data.pic +"\")'><i class='fa fa-times-circle'></i></p></div>");
+            },
+            Error: function(up, err) { //上传出错的时候触发
+                alert(err.message);
+            }
+        }
+    });
+    uploader2.init();
+
+    var uploader3 = new plupload.Uploader({ //创建实例的构造方法
+        runtimes: 'html5,flash,silverlight,html4', //上传插件初始化选用那种方式的优先级顺序
+        browse_button: 'btnup3', // 上传按钮
+        url: "{:url('Ajax/upflie')}", //远程上传地址
+        flash_swf_url: '/public/demoup/plupload/Moxie.swf', //flash文件地址
+        silverlight_xap_url: '/public/demoup/plupload/Moxie.xap', //silverlight文件地址
+        filters: {
+            max_file_size: '30mb', //最大上传文件大小（格式100b, 10kb, 10mb, 1gb）
+            mime_types: [ //允许文件上传类型
+                {
+                    title: "files",
+                    extensions: "jpg,png,gif,ico,jpeg"
+                }
+            ]
+        },
+        multi_selection: true, //true:ctrl多文件上传, false 单文件上传
+        init: {
+            FilesAdded: function(up, files) { //文件上传前
+                if ($("#ul_pics3").children("li").length > 100) {
+                    alert("您上传的图片太多了！");
+                    uploader.destroy();
+                } else {
+                    var li = '';
+                    plupload.each(files, function(file) { //遍历文件
+                        li += "<li id='" + file['id'] + "' onmouseover='menus(\""+file['id']+"\")' onmouseout='menusout(\""+file['id']+"\")'><div class='progress'><span class='bar'></span><span class='percent'>0%</span></div></li>";
+                    });
+                    $("#ul_pics3").append(li);
+                    uploader3.start();
+                }
+            },
+            UploadProgress: function(up, file) { //上传中，显示进度条
+                var percent = file.percent;
+                $("#" + file.id).find('.bar').css({
+                    "width": percent + "%"
+                });
+                $("#" + file.id).find(".percent").text(percent + "%");
+            },
+            FileUploaded: function(up, file, info) { //文件上传成功的时候触发
+                var data = eval("(" + info.response + ")");
+                $("#" + file.id).html("<div class='img'><img src='" + data.pic + "'/><input type='hidden' name='stage_img_3[]' value='" +data.pic+"'><p style='display: none;' onclick='delstageimg(\""+file['id']+"\",\""+ data.pic +"\")'><i class='fa fa-times-circle'></i></p></div>");
+            },
+            Error: function(up, err) { //上传出错的时候触发
+                alert(err.message);
+            }
+        }
+    });
+    uploader3.init();
+
+    var uploader4 = new plupload.Uploader({ //创建实例的构造方法
+        runtimes: 'html5,flash,silverlight,html4', //上传插件初始化选用那种方式的优先级顺序
+        browse_button: 'btnup4', // 上传按钮
+        url: "{:url('Ajax/upflie')}", //远程上传地址
+        flash_swf_url: '/public/demoup/plupload/Moxie.swf', //flash文件地址
+        silverlight_xap_url: '/public/demoup/plupload/Moxie.xap', //silverlight文件地址
+        filters: {
+            max_file_size: '30mb', //最大上传文件大小（格式100b, 10kb, 10mb, 1gb）
+            mime_types: [ //允许文件上传类型
+                {
+                    title: "files",
+                    extensions: "jpg,png,gif,ico,jpeg"
+                }
+            ]
+        },
+        multi_selection: true, //true:ctrl多文件上传, false 单文件上传
+        init: {
+            FilesAdded: function(up, files) { //文件上传前
+                if ($("#ul_pics4").children("li").length > 100) {
+                    alert("您上传的图片太多了！");
+                    uploader.destroy();
+                } else {
+                    var li = '';
+                    plupload.each(files, function(file) { //遍历文件
+                        li += "<li id='" + file['id'] + "' onmouseover='menus(\""+file['id']+"\")' onmouseout='menusout(\""+file['id']+"\")'><div class='progress'><span class='bar'></span><span class='percent'>0%</span></div></li>";
+                    });
+                    $("#ul_pics4").append(li);
+                    uploader4.start();
+                }
+            },
+            UploadProgress: function(up, file) { //上传中，显示进度条
+                var percent = file.percent;
+                $("#" + file.id).find('.bar').css({
+                    "width": percent + "%"
+                });
+                $("#" + file.id).find(".percent").text(percent + "%");
+            },
+            FileUploaded: function(up, file, info) { //文件上传成功的时候触发
+                var data = eval("(" + info.response + ")");
+                $("#" + file.id).html("<div class='img'><img src='" + data.pic + "'/><input type='hidden' name='stage_img_4[]' value='" +data.pic+"'><p style='display: none;' onclick='delstageimg(\""+file['id']+"\",\""+ data.pic +"\")'><i class='fa fa-times-circle'></i></p></div>");
+            },
+            Error: function(up, err) { //上传出错的时候触发
+                alert(err.message);
+            }
+        }
+    });
+    uploader4.init();
+
+    var uploader5 = new plupload.Uploader({ //创建实例的构造方法
+        runtimes: 'html5,flash,silverlight,html4', //上传插件初始化选用那种方式的优先级顺序
+        browse_button: 'btnup5', // 上传按钮
+        url: "{:url('Ajax/upflie')}", //远程上传地址
+        flash_swf_url: '/public/demoup/plupload/Moxie.swf', //flash文件地址
+        silverlight_xap_url: '/public/demoup/plupload/Moxie.xap', //silverlight文件地址
+        filters: {
+            max_file_size: '30mb', //最大上传文件大小（格式100b, 10kb, 10mb, 1gb）
+            mime_types: [ //允许文件上传类型
+                {
+                    title: "files",
+                    extensions: "jpg,png,gif,ico,jpeg"
+                }
+            ]
+        },
+        multi_selection: true, //true:ctrl多文件上传, false 单文件上传
+        init: {
+            FilesAdded: function(up, files) { //文件上传前
+                if ($("#ul_pics5").children("li").length > 100) {
+                    alert("您上传的图片太多了！");
+                    uploader.destroy();
+                } else {
+                    var li = '';
+                    plupload.each(files, function(file) { //遍历文件
+                        li += "<li id='" + file['id'] + "' onmouseover='menus(\""+file['id']+"\")' onmouseout='menusout(\""+file['id']+"\")'><div class='progress'><span class='bar'></span><span class='percent'>0%</span></div></li>";
+                    });
+                    $("#ul_pics5").append(li);
+                    uploader5.start();
+                }
+            },
+            UploadProgress: function(up, file) { //上传中，显示进度条
+                var percent = file.percent;
+                $("#" + file.id).find('.bar').css({
+                    "width": percent + "%"
+                });
+                $("#" + file.id).find(".percent").text(percent + "%");
+            },
+            FileUploaded: function(up, file, info) { //文件上传成功的时候触发
+                var data = eval("(" + info.response + ")");
+                $("#" + file.id).html("<div class='img'><img src='" + data.pic + "'/><input type='hidden' name='stage_img_5[]' value='" +data.pic+"'><p style='display: none;' onclick='delstageimg(\""+file['id']+"\",\""+ data.pic +"\")'><i class='fa fa-times-circle'></i></p></div>");
+            },
+            Error: function(up, err) { //上传出错的时候触发
+                alert(err.message);
+            }
+        }
+    });
+    uploader5.init();
+
+    var uploader6 = new plupload.Uploader({ //创建实例的构造方法
+        runtimes: 'html5,flash,silverlight,html4', //上传插件初始化选用那种方式的优先级顺序
+        browse_button: 'btnup6', // 上传按钮
+        url: "{:url('Ajax/upflie')}", //远程上传地址
+        flash_swf_url: '/public/demoup/plupload/Moxie.swf', //flash文件地址
+        silverlight_xap_url: '/public/demoup/plupload/Moxie.xap', //silverlight文件地址
+        filters: {
+            max_file_size: '30mb', //最大上传文件大小（格式100b, 10kb, 10mb, 1gb）
+            mime_types: [ //允许文件上传类型
+                {
+                    title: "files",
+                    extensions: "jpg,png,gif,ico,jpeg"
+                }
+            ]
+        },
+        multi_selection: true, //true:ctrl多文件上传, false 单文件上传
+        init: {
+            FilesAdded: function(up, files) { //文件上传前
+                if ($("#ul_pics6").children("li").length > 100) {
+                    alert("您上传的图片太多了！");
+                    uploader.destroy();
+                } else {
+                    var li = '';
+                    plupload.each(files, function(file) { //遍历文件
+                        li += "<li id='" + file['id'] + "' onmouseover='menus(\""+file['id']+"\")' onmouseout='menusout(\""+file['id']+"\")'><div class='progress'><span class='bar'></span><span class='percent'>0%</span></div></li>";
+                    });
+                    $("#ul_pics6").append(li);
+                    uploader6.start();
+                }
+            },
+            UploadProgress: function(up, file) { //上传中，显示进度条
+                var percent = file.percent;
+                $("#" + file.id).find('.bar').css({
+                    "width": percent + "%"
+                });
+                $("#" + file.id).find(".percent").text(percent + "%");
+            },
+            FileUploaded: function(up, file, info) { //文件上传成功的时候触发
+                var data = eval("(" + info.response + ")");
+                $("#" + file.id).html("<div class='img'><img src='" + data.pic + "'/><input type='hidden' name='stage_img_6[]' value='" +data.pic+"'><p style='display: none;' onclick='delstageimg(\""+file['id']+"\",\""+ data.pic +"\")'><i class='fa fa-times-circle'></i></p></div>");
+            },
+            Error: function(up, err) { //上传出错的时候触发
+                alert(err.message);
+            }
+        }
+    });
+    uploader6.init();
+
+    var uploader7 = new plupload.Uploader({ //创建实例的构造方法
+        runtimes: 'html5,flash,silverlight,html4', //上传插件初始化选用那种方式的优先级顺序
+        browse_button: 'btnup7', // 上传按钮
+        url: "{:url('Ajax/upflie')}", //远程上传地址
+        flash_swf_url: '/public/demoup/plupload/Moxie.swf', //flash文件地址
+        silverlight_xap_url: '/public/demoup/plupload/Moxie.xap', //silverlight文件地址
+        filters: {
+            max_file_size: '30mb', //最大上传文件大小（格式100b, 10kb, 10mb, 1gb）
+            mime_types: [ //允许文件上传类型
+                {
+                    title: "files",
+                    extensions: "jpg,png,gif,ico,jpeg"
+                }
+            ]
+        },
+        multi_selection: true, //true:ctrl多文件上传, false 单文件上传
+        init: {
+            FilesAdded: function(up, files) { //文件上传前
+                if ($("#ul_pics7").children("li").length > 100) {
+                    alert("您上传的图片太多了！");
+                    uploader.destroy();
+                } else {
+                    var li = '';
+                    plupload.each(files, function(file) { //遍历文件
+                        li += "<li id='" + file['id'] + "' onmouseover='menus(\""+file['id']+"\")' onmouseout='menusout(\""+file['id']+"\")'><div class='progress'><span class='bar'></span><span class='percent'>0%</span></div></li>";
+                    });
+                    $("#ul_pics7").append(li);
+                    uploader7.start();
+                }
+            },
+            UploadProgress: function(up, file) { //上传中，显示进度条
+                var percent = file.percent;
+                $("#" + file.id).find('.bar').css({
+                    "width": percent + "%"
+                });
+                $("#" + file.id).find(".percent").text(percent + "%");
+            },
+            FileUploaded: function(up, file, info) { //文件上传成功的时候触发
+                var data = eval("(" + info.response + ")");
+                $("#" + file.id).html("<div class='img'><img src='" + data.pic + "'/><input type='hidden' name='stage_img_7[]' value='" +data.pic+"'><p style='display: none;' onclick='delstageimg(\""+file['id']+"\",\""+ data.pic +"\")'><i class='fa fa-times-circle'></i></p></div>");
+            },
+            Error: function(up, err) { //上传出错的时候触发
+                alert(err.message);
+            }
+        }
+    });
+    uploader7.init();
+
+</script>
+<script>
+    function menus(id){
+        $('#'+id+' p').removeAttr("style");
+    }
+    function menusout(id){
+        $("#"+id+" p").attr("style","display:none;");
+    }
+    function delstageimg(id,urls){
+        $("#"+id).remove();
+
+        $.ajax({
+            url: "{:url('Ajax/delstageimg')}",
+            data: {urls:urls},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+
+                }else{
+
+                }
+            }
+        });
+    }
+</script>

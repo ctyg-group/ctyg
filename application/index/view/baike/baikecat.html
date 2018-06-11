@@ -1,0 +1,250 @@
+{include file="public/header" /}
+<link rel="stylesheet" type="text/css" href="/public/index/style/cat.css">
+<script src="/public/index/static/js/jquery-2.2.4.min.js"></script>
+    <!-- 中间大图 -->
+    <div class="enped_banner" style="margin-top: 35px;margin-bottom: 28px;background: url(/public/index/static/images/bk_listtit.png)  no-repeat;">
+
+    </div>
+    <!--  -->
+    <div class="mbx">
+        <div class="layout">
+            <p>
+                <a href="{:url('Index/Index/index')}">首页</a>
+                <em>&gt;</em>
+                <a href="{:url('Index/Baike/index')}">久居百科</a>
+                <em>&gt;</em>
+                <span>{$cname1}</span>
+            </p>
+        </div>
+    </div>
+    <!-- 分类目录 -->
+    <div class="jump jump1">
+        <div class="layout">
+            <style>
+                .in a{
+                    color:#29b451!important;
+                }
+                .on a:hover{
+                    color:#FFFFFF!important;
+
+                }
+            </style>
+            <script>
+                // 列表滑动效果
+                function menus(id){
+                    $('#cat_'+id).parent().index();
+                    $('#cat_'+id).addClass("on");
+                    $('#cat_'+id).next().addClass('at');
+                    var ofright = $(".dfl .title").hasClass("on");
+                     if (ofright == true) {
+  
+                       $(".bklist_tit").stop().animate({"height":"153px"});
+                    } else {
+
+                      $(".bklist_tit").stop().animate({"height":"93px"});
+                    } 
+
+                }
+                function menusout(id){
+                    if( $('#cat_'+id).attr('def')!=1){
+                        $('#cat_'+id).next().removeClass('at');
+                        $('#cat_'+id).removeClass("on");
+                        var ofright = $(".dfl .title").hasClass("on");
+                        if (ofright == true) {
+
+                            $(".bklist_tit").stop().animate({"height":"153px"});
+                        } 
+                        else {
+                         
+                          $(".bklist_tit").stop().animate({"height":"93px"});
+                        } 
+                    }
+                    
+                } 
+               $(function(){
+                var div = $(".bklist_tit .title").hasClass("on");
+                if (div == false) {
+              
+                  $(".bklist_tit").stop().animate({"height":"93px"},50);
+                    } 
+                    else {
+           
+                      $(".bklist_tit").stop().animate({"height":"153px"});
+                    }   
+               })
+
+            </script>
+            <div class="bklist_tit">
+                {volist name="catlist" id="list1" key="kkk"}
+                <div class="dfl" onmouseout="menusout('{$list1.cat_id}')" onmouseover="menus('{$list1.cat_id}')">
+                    <div id="cat_{$list1.cat_id}" {if condition='$cid1 eq $list1.cat_id'}def="1"{/if} class="title {if condition='$cid1 eq $list1.cat_id'}on{/if}"  >
+                        <a href="{:url('Index/Baike/baikecat',array('cat_id'=>$list1.cat_id,'p'=>1))}">{$list1.cat_name}</a>
+                    </div>
+                    <div class="xfl {if condition='$cid1 eq $list1.cat_id'}at{/if}">
+                        {volist name="list1.cat" id="list2"}
+                        <div {if condition='$cid2 eq $list2.cat_id'}class="in"{/if}>
+                            <a href="{:url('Index/Baike/baikecat',array('cat_id'=>$list2.cat_id,'p'=>1))}">{$list2.cat_name}</a>
+                        </div>
+                        {/volist}
+                    </div>
+                    {if condition="$kkk neq 4"}
+                       <div class="fenge"></div>
+                    {/if}
+                </div>
+                {/volist}
+
+            </div>
+        </div>
+    </div>
+    <!-- 列表页面 -->
+    <div class="main main-zx">
+        <div class="layout fix">
+            <div class="newl fl">
+                <div class="nzx">
+                    {volist name="list" id="v" key=""}
+                    <ul>
+                        <li class="fix" style="border: none;margin-top: -16px;">
+                            <div class="img fl">
+                                <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$v.enped_id))}">
+                                    <img src="{$v.thumb}" width="214" height="149" alt="">
+                                </a>
+                            </div>
+                            <div class="zxcon fr" style="padding-right: 70px;margin-top: 10px;">
+                                <h4>
+                                    <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$v.enped_id))}">{$v.title}</a>
+                                </h4>
+                                <p class="sp">
+                                    <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$v.enped_id))}">
+                                        <font>{$v.author}</font>{$v.publish_time|date="Y-m-d",###}</a>
+                                </p>
+                                <p>
+                                    <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$v.enped_id))}">
+                                        {$v.explain|mb_substr=###,0,75,'utf-8'}...
+                                    </a>
+                                </p>
+                                <p class="tj fix">
+                                    <span class="fr">
+                                        <span class="du">{$v.radio_num}</span>
+                                        <span class="pin">{$v.comment}</span>
+                                    </span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    {/volist}
+                </div>
+               {$page}
+            </div>
+            <!-- 预约表格 -->
+            <div class="zxr qnr fr" style="margin-top: 0px;">
+                {include file="public/baojia" /}
+            </div>
+            <!-- 百科热门词条 -->
+            <div class="huo1 mab50" style="width: 302px;float: right;">
+                <div class="huoc">
+                    <h3 class="baike_h3">百科热门词条</h3>
+                </div>
+
+                <div class="baike_hot">
+                    {volist name="enped" id="enped"}
+                    <div>
+                        <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$enped.enped_id))}">{$enped.title}</a>
+                    </div>
+                    {/volist}
+                </div>
+                <div class="baike_hot"></div>
+                <div class="baike_hot"></div>
+                <div class="baike_hot"></div>
+                <div class="baike_hot"></div>
+                <div class="baike_hot"></div>
+                <div class="baike_hot"></div>
+            </div>
+            <!-- 热门设计师 -->
+            {include file="public/hotdes" /}
+            <!-- 热门文章 -->
+            {include file="public/hotnews" /}
+        </div>
+    </div>
+    <!-- 更多案例 -->
+    <div class="fw4">
+        <div class="layout">
+            <div class="bk_dhot">
+                <span class="tit1">更多案例</span>
+                <!--<span class="tit2">更多&gt;</span>-->
+            </div>
+
+            <div class="fw4b">
+                <ul class="fix">
+                    <li class="mal0">
+                        <a target="_blank" href="/zzal/anli/131.html">
+                            <div class="img" style="width:270px;height: 172px;">
+                                <img src="/public/index/static/images/f982be7d495d483bee8acba91da4484c.jpg" width="270px" height="172px" alt="">
+                            </div>
+
+                            <div class="bk_dtit">
+                                百合盛世93平米三居室装修效果图 </div>
+                            <div style="width: 40px;height: 2px;background-color: #f99c32;margin-left: 12px;margin-top: 10px; margin-bottom: 10px;"></div>
+                            <div class="bk_dinfo">
+                                颜色体现着中式的古朴，传统中透着现代，现代中揉着古典 </div>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="/zzal/anli/130.html">
+                            <div class="img" style="width:270px;height: 172px;">
+                                <img src="/public/index/static/images/82ad168b523a11b9240fd2da510ab697.jpg" width="270px" height="172px" alt="">
+                            </div>
+
+                            <div class="bk_dtit">
+                                华强花园95平米三居室装修效果图 </div>
+                            <div style="width: 40px;height: 2px;background-color: #f99c32;margin-left: 12px;margin-top: 10px; margin-bottom: 10px;"></div>
+                            <div class="bk_dinfo">
+                                白色，蓝色，绿色以及土黄色和红褐色，这些都是来自于大自然最纯朴的元素 </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="/zzal/anli/129.html">
+                            <div class="img" style="width:270px;height: 172px;">
+                                <img src="/public/index/static/images/3f7b2b99debccb70d9884f10492bff26.jpg" width="270px" height="172px" alt="">
+                            </div>
+                            <div class="bk_dtit">
+                                御府名筑95平米三居装修效果图 </div>
+                            <div style="width: 40px;height: 2px;background-color: #f99c32;margin-left: 12px;margin-top: 10px; margin-bottom: 10px;"></div>
+                            <div class="bk_dinfo">
+                                怀古的浪漫情怀与现代人对生活的需求相结合，兼容华贵典雅与时尚现代 </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="/zzal/anli/128.html">
+                            <div class="img" style="width:270px;height: 172px;">
+                                <img src="/public/index/static/images/51ac41714ab53e455ff1e2f5db9ac1fc.jpg" width="270px" height="172px" alt="">
+                            </div>
+                            <div class="bk_dtit">
+                                远洋新干线95平米装修效果图 </div>
+                            <div style="width: 40px;height: 2px;background-color: #f99c32;margin-left: 12px;margin-top: 10px; margin-bottom: 10px;"></div>
+                            <div class="bk_dinfo"> 配饰均以其优雅、唯美的姿态，描绘出居室主人高雅、贵族之身份 </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <!-- 底部 -->
+{include file="public/footer" /}
+
+<script>
+
+    function chose_cat(){
+        cat_id = "{$cat_id}";
+        p = arguments[0] ? arguments[0] : 1;
+        url = "{:url('Index/Baike/baikecat',array('cat_id'=>exid,'p'=>'pid'))}";
+        url = url.replace('exid',cat_id);
+        url = url.replace('pid',p);
+        location.href = url;
+    }
+
+    function jump_p(p){
+        chose_cat(p);
+    }
+</script>

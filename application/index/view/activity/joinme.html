@@ -1,0 +1,131 @@
+{include file="public/header" /}
+
+	<div class="banner">
+		<div><a href="#"><img src="__PUBLIC__/static/images/banner2.jpg" alt=""></a></div>
+	</div>
+
+	<div class="jump">
+		<div class="layout">
+			<ul class="fix">
+				<li><a href="{:U('Home/aboutme/index','','')}">公司简介</a></li>
+				<li><a href="{:U('Home/aboutme/callme','','')}">联系我们</a></li>
+				<li class="on"><a href="{:U('Home/aboutme/joinme','','')}">加入我们</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="main main-jion">
+		<div class="layout">
+			<div class="jion">
+				<img src="__PUBLIC__/static/images/jion1.jpg" alt="">
+
+				<div class="jiont">
+					<ul class="fix">
+						<li>
+							<h3>轻松的办公环境</h3>
+							<p>在久居，工作没有以前的单调沉闷，轻松活泼的办公环境和谐愉悦的工作氛围、丰富多样的团队活动为你的工作时光增添更多精彩。</p>
+							<img src="__PUBLIC__/static/images/jion2.png" alt="">
+						</li>
+
+						<li class="two">
+							<h3>精英团队协作</h3>
+							<p>在久居，工作不仅仅是自己在摸索，更有国内顶尖的人才培训系统，帮助你更加全面系统的学习。助你成长快人一步，加速成为行业精英。</p>
+							<img src="__PUBLIC__/static/images/jion3.png" alt="">
+						</li>
+
+						<li>
+							<h3>久居贴心福利</h3>
+							<p>在久居，美味下午茶已成为日常，定时为伙伴们补充能量。每月一次集体旅游，让你在领略大自然优美风光的同时，感受到团队的无限激情。</p>
+							<img src="__PUBLIC__/static/images/jion4.png" alt="">
+						</li>
+					</ul>
+				</div>
+				<div class="jionb">
+					<div class="title">
+						<img src="__PUBLIC__/static/images/jion-ti1.jpg" alt="">
+					</div>
+					<div class="jtcon">
+						<table>
+							<tr>
+								<th>职位名称</th>
+								<th>职位类别</th>
+								<th>招聘人数</th>
+								<th>工作地点</th>
+								<th>发布时间</th>
+								<th>查看详情</th>
+							</tr>
+							<tbody id="itemContainer">
+							{foreach name='list' item='v' key='k'}
+							<tr >
+								<td>{$v.job_name}</td>
+								<td>{$v.job_cat}</td>
+								<td>{$v.job_num}</td>
+								<td>{$v.job_city}</td>
+								<td>{$v.add_time|date="Y-m-d H:i:s",###}</td>
+								<td class="select_info"><a href="javascript:void(0);" info="{$v.job_info}" req="{$v.job_req}">查看</a></td>
+							</tr>
+							{/foreach}
+							</tbody>
+
+						</table>
+
+						<div class="holder" style="text-align: center;"></div>
+						<p class="rutns" style="display: none;">
+							<span>当前页面：1/1 共0条记录</span>
+							<a href="#" class="on">首页</a>
+							<a href="#">上一页</a>
+							<a href="#">下一页</a>
+							<a href="#">尾页</a>
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--分页插件-->
+<link rel="stylesheet" href="__PUBLIC__/static/css/animate.css">
+<link rel="stylesheet" href="__PUBLIC__/static/css/jPages.css">
+<script type="text/javascript" src="__PUBLIC__/static/js/jPages.js"></script>
+<!--分页插件-->
+
+<script>
+    //页面单独使用的js
+
+    $(function() {
+
+        $("div.holder").jPages({
+            containerID : "itemContainer",
+            first       : "首页",
+            previous    : "上一页",
+            next        : "下一页",
+            last        : "尾页",
+            perPage     : 6
+        });
+
+    });
+
+	$(".select_info a").click(function(){
+	    content="<div style='float:left;margin-left: 15px;margin-right: 15px;margin-top: 15px;font-size: 16px;line-height: 28px;'>";
+        content+="岗位职责<br/>";
+        content+=$(this).attr("info");
+        content+="</div>";
+        content+="<div style='float:left;margin-left: 15px;margin-right: 15px;margin-top: 20px;font-size: 16px;line-height: 28px;'>";
+        content+="任职要求<br/>";
+        content+=$(this).attr("req");
+        content+="</div>";
+
+
+        layer.open({
+            type: 1,
+            skin: 'layui-layer-molv', //样式类名
+            closeBtn: 0, //不显示关闭按钮
+            anim: 2,
+            area: ['500px', '500px'],
+            shadeClose: true, //开启遮罩关闭
+            content: content,
+        });
+	});
+</script>
+{include file="public/footer" /}

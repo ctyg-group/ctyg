@@ -1,0 +1,193 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="page-aside">
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">预约信息
+                                    <a href="Javascript:;" class="tooltip-success" data-toggle="tooltip" data-placement="right" title="" data-original-title="添加到快捷菜单"
+                                       onclick="addmenu('{$navurls}','预约信息')"
+                                    ><i class="fa fa-tag"></i></a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="scrollable">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="Javascript:;">
+                                        <span class="visible-xs">预约信息列表</span>
+                                        <span class="hidden-xs"> 预约信息列表</span>
+                                    </a>
+                                </li>
+                                <!--<li>-->
+                                    <!--<a href="JavaScript:;"  alt="default" data-toggle="modal" data-target="#modal1">-->
+                                        <!--<span class="visible-xs">添加管家监理</span>-->
+                                        <!--<span class="hidden-xs">添加管家监理</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                            </ul>
+                            <div class="table-responsive">
+                                <table class="table table-hover manage-u-table" >
+                                    <thead>
+                                    <tr>
+                                        <th style="width:200px;">姓名</th>
+                                        <th style="width:200px;">手机号</th>
+                                        <th style="width:200px;">提交时间</th>
+                                        <th>备注</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {if condition="empty($info)"}
+                                        <tr>
+                                            <td colspan="3" class="center middle" style="color:#ccc;">查询无数据</td>
+                                        </tr>
+                                    {/if}
+                                    {volist name="info" id="v"}
+                                    <tr>
+                                        <td class="middle">{$v.user_name}</td>
+                                        <td class="middle">{$v.mobile}</td>
+                                        <td class="middle">{$v.time|date="Y-m-d H:i:s",###}</td>
+                                        <td class="middle">{$v.remarks}</td>
+                                        <td class="middle">
+                                           <div>
+                                               <a class="btn btn-outline btn-xs cus-btn" Id="{$v.id}" Name="{$v.user_name}" Mobile="{$v.mobile}" Remark="{$v.remarks}" onclick="modifydata(this)">
+                                                   <i class="fa fa-pencil-square-o"></i> 修改
+                                               </a>
+                                               <a class="btn btn-outline btn-xs cus-btn" onclick="delinfo('{$v.id}')"><i class="fa fa-trash-o"></i> 删除</a>
+                                           </div>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="page">
+                                {$info->render()}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">预约信息修改</h4> </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="user_name" class="col-sm-3 control-label">姓名:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="user_name" id="user_name" placeholder="姓名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mobile" class="col-sm-3 control-label">姓名:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="mobile" id="mobile" placeholder="姓名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="remarks" class="col-sm-3 control-label">姓名:</label>
+                    <div class="col-sm-9">
+                        <textarea  class="form-control" name="remarks" id="remarks" style="height:120px;" placeholder="备注"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-outline cus-btn" data-dismiss="modal">取 消</a>
+                <a class="btn btn-info waves-effect cus-btn" id="moidfy">修 改</a>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script>
+    function modifydata(obj){
+        var Id     =$(obj).attr('Id');
+        var Name   =$(obj).attr('Name');
+        var Mobile   =$(obj).attr('Mobile');
+        var Remark    =$(obj).attr('Remark');
+        $("#user_name").val(Name);
+        $("#mobile").val(Mobile);
+        $("#remarks").val(Remark);
+        $("#moidfy").attr("onclick","modify("+Id+")");
+        $("#modal3").modal('show');
+
+
+    }
+    function modify(id){
+        user_name = $("#user_name").val();
+        mobile = $("#mobile").val();
+        remarks = $("#remarks").val();
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:url('Order/modifyinfo')}",
+            data: {user_name:user_name,mobile:mobile,remarks:remarks,id:id},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    $("#modal3").modal('hide');
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                }
+            }
+        });
+    }
+
+    function delinfo(id){
+        layer.msg('確定刪除?', {
+            icon: 3,
+            time: 0 //不自动关闭
+            ,shade: 0.2
+            ,btn: ['確定', '取消']
+            ,yes: function(index){
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: "{:url('Order/delinfo')}",
+                    data: {id:id},
+                    type: 'POST',
+                    dataType: "json",
+                    cache: false,
+                    success: function(data,state){
+                        if(state == 'success' && data.code == '0'){
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1000);
+                        }else{
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                        }
+                    }
+                });
+            }
+        });
+    }
+</script>

@@ -1,0 +1,133 @@
+{include file="public/header" /}
+    <style>
+        .beijin{
+            background: url(/public/static/mobile/hdall01.jpg) no-repeat;
+            background-size: 15rem 115.8rem;
+            height:115.8rem;
+            margin-top: 1.8rem;
+            position: relative;
+        }
+
+        input{ font-size: 0.48rem;}
+
+        .hd12_input1{
+            position: absolute;
+            height: 1.1rem;
+            width: 7.7rem;
+            top:31.4rem;
+            left: 1.1rem;
+            border: none;
+
+        }
+
+        .hd12_input2{
+            position: absolute;
+            height: 1.1rem;
+            width: 7.7rem;
+            top:33.39rem;
+            left: 1.2rem;
+            border: none;
+        }
+
+        #adduserinfoForm input{
+            border: none;
+            height: 100%;
+        }
+
+        .hd12_submit{
+            width: 8.34rem;
+            height: 1.38rem;
+            background-color: #DB4739;
+            position: absolute;
+            top:35.39rem;
+            left: 0.75rem;
+            border-radius: 0.1rem;
+            color: #ffffff;
+            font-size: 0.66rem;
+            line-height: 1.38rem;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing:0.08rem;
+        }
+
+        .bottom{width: 100%;height: 2.12rem;z-index: 999; background: url(__PUBLIC__/static/brand/brand_bo.png) no-repeat;background-size: 100% 2.12rem;position: fixed;  left: 0;  display: block;  bottom: 0;}
+        .free_price{display: none;}
+
+        .daojs{position: absolute;top:44.9rem;left: 2.2rem;width: 11.32rem;height: 1.84rem;font-size: 1.28rem;color: #333333;}
+        .daojs span:nth-child(1){letter-spacing:0.7rem;}
+        .daojs span:nth-child(2){margin-left: 0.42rem;}
+        .daojs span:nth-child(3){letter-spacing:0.7rem;margin-left: 1.1rem;}
+        .daojs span:nth-child(4){margin-left: 0.34rem;}
+
+        .hd01_ann{
+            background: url(/public/static/mobile/hd01_ann.png) no-repeat;
+            background-size: 5.48rem 1.32rem;
+            height:1.32rem;
+            width: 5.48rem;
+            position: absolute;
+            top:68.2rem;left: 7.2rem;
+        }
+    </style>
+
+<div class="beijin">
+    <form action="#" id="adduserinfoForm">
+        <div class="hd12_input1"><input type="text"  name="user_name" placeholder="姓名"></div>
+        <div class="hd12_input2"><input type="text"  name="mobile" placeholder="电话"></div>
+    </form>
+
+    <div class="hd12_submit">在线预约</div>
+
+    <div class="daojs"><span>{$tian}</span><span>天</span><span>{$shi}</span><span>时</span></div>
+
+    <a href="{:U("mobile/index/mfyy")}"><div class="hd01_ann"></div></a>
+
+</div>
+
+<a href="{:U("mobile/index/mfyy")}"><div class="bottom"></div></a>
+
+<script>
+    $(".hd12_submit").click(function(){
+        ajax_user_form_mob('adduserinfoForm','/Home/index/adduserinfo');
+    });
+
+    $(".hd11_back").click(function(){
+        $('html,body').animate({ scrollTop: 0 }, 500 ,function(){});
+    });
+
+
+    /**
+     * 前台预约功能 (class版)
+     * @param form_id
+     * @param submit_url
+     * @returns {boolean}
+     */
+    function ajax_user_form_mob(form_id,submit_url){
+
+        $.ajax({
+            type : "POST",
+            url  : submit_url,
+            data : $('#'+form_id).serialize(),// 你的formid
+            datatype : "json",
+            error: function(request) {
+
+                alert("服务器繁忙, 请联系管理员!");
+            },
+            success: function(v) {
+
+                var v =  eval('('+v+')');
+                // 验证成功提交表单
+
+                if(v.status == 1)
+                {
+                    mui.alert(v.msg, function(){});
+                }else{
+                    mui.alert(v.msg, function(){});
+                }
+
+            }
+        });
+
+    }
+</script>
+
+{include file="public/footer" /}

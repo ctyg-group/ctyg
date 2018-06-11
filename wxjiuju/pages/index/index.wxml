@@ -1,0 +1,41 @@
+<!--首页-->
+<view class="mcontainer">
+    <view class="banner">
+        <navigator url="#">
+            <image src="../../images/index/index_02.png" class="banner-image" width="100%" height="185"/>
+        </navigator>
+</view>
+<!--内容  -->
+<view class="nav">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <navigator url="../boutique/boutique">
+        <view class="flex-item">           
+            <text class="black">臻品之选\n<text class="gray">臻品之选 匠心筑家</text></text>
+            <view><image src="../../images/index/index_08.png"></image></view>
+        </view>
+    </navigator>
+    <navigator url="#">
+        <view class="flex-item">           
+            <text class="black">在线工地\n<text class="gray">施工进展 一键跟踪</text></text>
+            <view><image src="../../images/index/index_05.png"></image></view>
+        </view>
+    </navigator>
+    <navigator url="../free_quote/free_quote">
+        <view class="flex-item">           
+            <text class="black">免费报价\n<text class="gray">精准报价 装修有"数"</text></text>
+            <view><image src="../../images/index/index_16.png"></image></view>
+        </view>
+    </navigator>
+    <navigator url="../bk_list/bk_list">
+        <view class="flex-item">           
+            <text class="black">装修百科\n<text class="gray">装修百科 装修无忧</text></text>
+            <view><image src="../../images/index/index_13.png"></image></view>
+        </view>
+    </navigator>
+    <navigator url="#">
+        <view class="flex-item banner-item">广告位</view>
+    </navigator>
+  </view>
+</view>
+</view>
+

@@ -1,0 +1,157 @@
+{include file="public/header" /}
+<link rel="stylesheet" type="text/css" href="/public/index/style/gdzb.css">
+    <!-- 中间大图 -->
+    <div style="width: 100%;height: 300px;">
+        <img src="/public/index/static/images/worklive_banner.jpg" width="100%" height="300px" alt="">
+    </div>
+    <!-- 分类 -->
+    <div class="als" style="margin-top: 41px;">
+        <div class="layout">
+            <div class="als2" style="display: block;">
+                <div class="fw2" style="margin-top: 52px;">
+                    <div class="layout">
+                        <div class="fw2x">
+                            <p class="cat1">
+                                <span>施工阶段</span>
+                                <i>
+                                <a href="javascript:;" cat="0" style="display: none;" {if condition="$stage_id== 0"}class="on"{/if}>不限</a>
+                                {volist name="cat1" id="cat1"}
+                                <a href="javascript:;" cat="{$cat1.cat_id}" {if condition="$cat1.cat_id==$stage_id "}class="on"{/if}>{$cat1.cat_name}</a>
+                                {/volist}
+                                </i>
+
+                            </p>
+
+                            <p class="cat2" style="height: auto;">
+                                <span>热门小区</span>
+                                <i>
+                                <a href="javascript:;" cat="0" style="display: none;" {if condition="$hot_id== 0"}class="on"{/if}>不限</a>
+                                {volist name="cat2" id="cat2"}
+                                <a href="javascript:;" cat="{$cat2.cat_id}" {if condition="$cat2.cat_id==$hot_id "}class="on"{/if}>{$cat2.cat_name}</a>
+                                {/volist}
+                                </i>
+
+                            </p>
+
+                            <p class="cat3 bt">
+                                <span>户型</span>
+                                <i>
+                                <a href="javascript:;" cat="0" style="display: none;" {if condition="$apart_id== 0"}class="on"{/if}>不限</a>
+                                {volist name="cat3" id="cat3"}
+                                <a href="javascript:;" cat="{$cat3.cat_id}" {if condition="$cat3.cat_id==$apart_id "}class="on"{/if}>{$cat3.cat_name}</a>
+                                {/volist}
+                                </i>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {if condition="$stage_name || $hot_name || $apart_name"}
+                <div class="jj_chose">
+                    <span>已选择：</span>
+                    {if condition="$stage_name"}
+                    <div class="x" date_cat="cat1">{$stage_name}<span></span></div>
+                    {/if}
+                    {if condition="$hot_name"}
+                    <div class="x" date_cat="cat2">{$hot_name}<span></span></div>
+                    {/if}
+                    {if condition="$apart_name"}
+                    <div class="x" date_cat="cat3">{$apart_name}<span></span></div>
+                    {/if}
+
+                    <div class="a">撤销全部<span></span></div>
+                </div>
+                {/if}
+
+                <div class="alsb2" style="overflow: hidden;">
+                    <ul class="fix" style="float: left;margin:0;">
+                        {volist name="list" id="list"}
+                        <li class="fix">
+                            <div class="img fl" style="margin-top:30px;margin-left: 12px;">
+                                <img src="{$list.thumb}" width="266px"
+                                    height="187px" alt="">
+                            </div>
+                            <div class="alsdesc fr">
+                                <div style="overflow: hidden;margin-top: 15px;">
+                                    <h2>{$list.live_name}</h2>
+                                    <a href="{:url('Index/Worklive/worklive_info',array('id'=>$list.id))}" target="_blank" class="more">查看工地</a>
+                                </div>
+
+                                <div class="info">
+                                    <div class="live_span1">户型：</div>
+                                    <div class="live_span2">{$list.apart}</div>
+                                    <div class="live_jg"></div>
+                                    <div class="live_span1">面积：</div>
+                                    <div class="live_span2">{$list.area}㎡</div>
+                                    <div class="live_jg"></div>
+                                    <div class="live_span1">风格：</div>
+                                    <div class="live_span2">{$list.style}</div>
+                                </div>
+                                <div class="worklive_stage stage{$list.stage_id}"></div>
+                            </div>
+                        </li>
+                        {/volist}
+                        {$page}
+                    </ul>
+
+                    <!-- 预约输入框 -->
+                    <div class="zxr qnr fr" style="float:right;margin-top: 30px;margin-right: 3px;">
+                        {include file="public/baojia" /}
+                        <!-- 百科热门 -->
+                        {include file="public/hotbai" /}
+                        <!-- 热门设计师 -->
+                        {include file="public/hotdes" /}
+                        <!-- 热门文章 -->
+                        {include file="public/hotnews" /}
+                    </div>
+                </div>
+                <!-- 分页 -->
+
+            </div>
+        </div>
+    </div>
+    <!-- 底部 -->
+{include file="public/footer" /}
+<script>
+    $(".cat1 a").click(function(){
+        $(this).addClass('on').siblings().removeClass('on');
+        chose_cat();
+    })
+
+    $(".cat2 a").click(function(){
+        $(this).addClass('on').siblings().removeClass('on');
+        chose_cat();
+    })
+
+    $(".cat3 a").click(function(){
+        $(this).addClass('on').siblings().removeClass('on');
+        chose_cat();
+    })
+    $(".jj_chose .x").click(function(){
+        num = $(this).attr('date_cat');
+        $("."+num).find(".on").attr("cat",0);
+        chose_cat();
+    });
+    $(".jj_chose .a").click(function(){
+        $(".cat1").find(".on").attr("cat",0);
+        $(".cat2").find(".on").attr("cat",0);
+        $(".cat3").find(".on").attr("cat",0);
+        chose_cat();
+    });
+    function chose_cat(){
+        stage_id = $(".cat1").find(".on").attr("cat");
+        hot_id = $(".cat2").find(".on").attr("cat");
+        apart_id = $(".cat3").find(".on").attr("cat");
+        var p = arguments[0] ? arguments[0] : 1;
+        url = "{:url('Index/Worklive/index',array('stage_id'=>stageid,'hot_id'=>hotid,'apart_id'=>apartid,'p'=>pid))}";
+        url = url.replace('stageid',stage_id);
+        url = url.replace('hotid',hot_id);
+        url = url.replace('apartid',apart_id);
+        url = url.replace('pid',p);
+        /*console.log(url);*/
+        location.href = url;
+    }
+    function jump_p(p){
+        chose_cat(p);
+    }
+</script>

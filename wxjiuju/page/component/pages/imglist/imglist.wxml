@@ -1,0 +1,9 @@
+<!--page/component/pages/imglist/imglist.wxml-->
+<view class="imglist" style="padding:{{cardPadding}}">
+  <block  wx:for-items="{{imgData}}" wx:key="{{item.id}}">
+    <view class="imglist_card" style=" padding:0 {{cardImgPadding}} ;width:{{cardImgWidth}} ; ">
+      <image class="imglist_card_img" style="height:{{cardImgHeight}};  border-radius:{{cardborderRadius}}" src='{{item.url}}' />
+      <text class="imglist_card_text {{item.textClass}}">{{item.text}}</text>
+    </view>
+  </block>
+</view>

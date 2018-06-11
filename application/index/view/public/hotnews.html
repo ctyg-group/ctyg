@@ -1,0 +1,16 @@
+<div class="huo1 mab50" style="width:302px;float: right;">
+    <div class="huoc">
+        <h3>
+            热门文章
+            <em></em>
+        </h3>
+        <ul class="fix">
+            {volist name="article" id="article" key="key"}
+            <li title="{$article.title}">
+                <em {if condition="$key < 4"}class="colors"{/if} > {$key} </em>
+                <a target="_blank" href="{:url('Index/News/newsinfo',array('article_id'=>$article.article_id))}" >{$article.title|mb_substr=###,0,15,'utf-8'}...</a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>

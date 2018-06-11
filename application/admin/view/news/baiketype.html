@@ -1,0 +1,341 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav"}
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">百科分类
+                                    <a href="Javascript:;" class="tooltip-success" data-toggle="tooltip" data-placement="right" title="" data-original-title="添加到快捷菜单"
+                                       onclick="addmenu('{$navurls}','百科分类')"
+                                    ><i class="fa fa-tag"></i></a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="scrollable">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="Javascript:;">
+                                        <span class="visible-xs">百科类型列表</span>
+                                        <span class="hidden-xs"> 百科类型列表</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="JavaScript:;"  alt="default" data-toggle="modal" data-target="#modal1">
+                                        <span class="visible-xs">添加百科类型</span>
+                                        <span class="hidden-xs">添加百科类型</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="table-responsive">
+                                <table class="table table-hover manage-u-table" >
+                                    <thead>
+                                    <tr>
+                                        <th style="width:200px;"></th>
+                                        <th style="width:50px;">排序</th>
+                                        <th style="width:200px;">分类名称</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {if condition="$article_cat eq ''"}
+                                        <tr>
+                                            <td colspan="4" class="center middle" style="color:#ccc;">查询无数据</td>
+                                        </tr>
+                                    {/if}
+                                    <form action="{:url('News/baiketype')}" method="post">
+                                    {volist name="article_cat" id="v"}
+                                    <tr>
+                                        <td></td>
+                                        <td class="middle">
+                                            <input style="width:50px;" type="text" name="{$v.cat_id}" value="{$v.sort_order}">
+                                        </td>
+                                        <td class="middle">
+                                            {$v.cat_name}
+                                        </td>
+                                        <td class="middle">
+                                           <div>
+                                               <a class="btn btn-outline btn-xs cus-btn" onclick="openmodal('{$v.cat_id}')">
+                                                   <i class="fa fa-plus"></i> 添加二级分类
+                                               </a>
+                                               <a class="btn btn-outline btn-xs cus-btn" Catid="{$v.cat_id}" Catname="{$v.cat_name}" Catorder="{$v.sort_order}" onclick="modifydata(this)">
+                                                   <i class="fa fa-pencil-square-o"></i> 修改
+                                               </a>
+                                               <a class="btn btn-outline btn-xs cus-btn" onclick="delnewstype('{$v.cat_id}')"><i class="fa fa-trash-o"></i> 删除</a>
+                                           </div>
+                                        </td>
+                                    </tr>
+                                        {volist name="v.cat" id="ck"}
+                                            <tr>
+                                                <td></td>
+                                                <td class="middle">
+                                                    &emsp;├─ <input style="width:50px;" type="text" name="{$ck.cat_id}" value="{$ck.sort_order}">
+                                                </td>
+
+                                                <td class="middle">
+                                                    &emsp;├─ {$ck.cat_name}
+                                                </td>
+                                                <td class="middle">
+                                                    <div>
+
+                                                        <a class="btn btn-outline btn-xs cus-btn" Catid="{$ck.cat_id}" Catname="{$ck.cat_name}" Catorder="{$ck.sort_order}" onclick="modifydata(this)">
+                                                            <i class="fa fa-pencil-square-o"></i> 修改
+                                                        </a>
+                                                        <a class="btn btn-outline btn-xs cus-btn" onclick="delnewstype('{$ck.cat_id}')"><i class="fa fa-trash-o"></i> 删除</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {/volist}
+                                    {/volist}
+                                        <tr>
+                                            <td></td>
+                                            <td colspan="3" class="middle">
+                                                <input class="btn btn-outline cus-btn" type="submit" value="排序">
+                                            </td>
+                                        </tr>
+                                    </form>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">添加文章分类</h4> </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="cat_name" class="col-sm-3 control-label">分类名称:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="cat_name" placeholder="请输入分类名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sort_order" class="col-sm-3 control-label">分类排序:</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="sort_order" placeholder="请输入排序">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline cus-btn" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-info waves-effect cus-btn" onclick="add(0)">添 加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">添加文章二级分类</h4> </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="cat_name_two" class="col-sm-3 control-label">分类名称:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="cat_name_two" placeholder="请输入分类名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sort_order_two" class="col-sm-3 control-label">分类排序:</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" id="sort_order_two" placeholder="请输入排序">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline cus-btn" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-info waves-effect cus-btn" id="add_level">添 加</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">修改文章分类</h4> </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="cat_name_save" class="col-sm-3 control-label">分类名称:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="cat_name_save" placeholder="请输入分类名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sort_order_save" class="col-sm-3 control-label">分类排序:</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" id="sort_order_save" placeholder="请输入排序">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline cus-btn" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-info waves-effect cus-btn" id="save_type">修 改</button>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script>
+    function add(parent_id){
+        cat_name = $("#cat_name").val();
+        sort_order = $("#sort_order").val();
+        $.ajax({
+            url: "{:url('News/addbaiketype')}",
+            data: {cat_name:cat_name,sort_order:sort_order,parent_id:parent_id},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+    function add_level(parent_id){
+        cat_name = $("#cat_name_two").val();
+        sort_order = $("#sort_order_two").val();
+        $.ajax({
+            url: "{:url('News/addbaiketype')}",
+            data: {cat_name:cat_name,sort_order:sort_order,parent_id:parent_id},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+    function openmodal(id){
+        $("#add_level").attr("onclick","add_level("+id+")");
+        $("#modal2").modal('show');
+    }
+    function modifydata(obj){
+        var Catid=$(obj).attr('Catid');
+        var Catname=$(obj).attr('Catname');
+        var Catorder=$(obj).attr('Catorder');
+        $("#cat_name_save").val(Catname);
+        $("#sort_order_save").val(Catorder);
+        $("#save_type").attr("onclick","modify("+Catid+")");
+        $("#modal3").modal('show');
+    }
+    function modify(id){
+        cat_name = $("#cat_name_save").val();
+        sort_order = $("#sort_order_save").val();
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:url('News/modifybaiketype')}",
+            data: {cat_name:cat_name,sort_order:sort_order,cat_id:id},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    $("#modal3").modal('hide');
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+    function delnewstype(id){
+        layer.msg('確定刪除?', {
+            icon: 3,
+            time: 0 //不自动关闭
+            ,shade: 0.2
+            ,btn: ['確定', '取消']
+            ,yes: function(index){
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: "{:url('News/delbaiketype')}",
+                    data: {id:id},
+                    type: 'POST',
+                    dataType: "json",
+                    cache: false,
+                    success: function(data,state){
+                        if(state == 'success' && data.code == '0'){
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1000);
+                        }else{
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+
+
+
+
+
+    jQuery(document).ready(function() {
+        // Switchery
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        $('.js-switch').each(function() {
+            new Switchery($(this)[0], $(this).data());
+        });
+    });
+    lay('#version').html('-v'+ laydate.v);
+
+
+
+</script>

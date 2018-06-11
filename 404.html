@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>久居整装</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/public/index/images/favicon.ico" media="screen"/>
+    <link href="/public/index/static/css/style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/public/index/static/js/jquery.js"></script>
+    <style>
+        .foot404{
+            border-top: 1px solid #c3c3c3;
+            height:150px;
+            width:100%;
+            position: fixed;
+            bottom:0;
+
+        }
+
+        .foot404 div{
+            float: left;
+            margin-right: 122px;
+            margin-top: 10px;
+        }
+
+        .foot404 div a{
+            color: #b8b8b8;
+        }
+
+        .body404{
+            background: url(/public/index/static/images/body404.jpg) no-repeat;
+            width:1200px;
+            height: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .body404 div{
+            float: left;
+            margin-top: 500px;
+        }
+
+        .bi1{background:url(/public/index/static/images/bi1.png) no-repeat;}
+        .bi1:hover{background:url(/public/index/static/images/bi1_h.png) no-repeat;}
+        .bi2{background:url(/public/index/static/images/bi2.png) no-repeat;}
+        .bi2:hover{background:url(/public/index/static/images/bi2_h.png) no-repeat;}
+        .tz p{
+            font-size: 14px;
+            color: #888888;
+            width: 100%;
+            position: absolute;
+            left: 254px;
+            top: 388px;
+        }
+        .num{
+            color: #25A84A;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="layout fix" style="margin-top: 10px;">
+        <div class="logo fl">
+            <img src="/public/index/static/images/logo.png" alt="">
+        </div>
+
+    </div>
+</div>
+
+
+<div class="body404">
+    <div class="tz">
+        <p>页面将在<span class="num"> 10 </span>秒后跳转</p>
+    </div>
+    <a href="/"><div class="bi1" style="margin-left: 255px; width: 150px; height: 30px;"></div></a>
+    <a href="javascript:void(0);" onclick="shuaxin()"><div class="bi2" style="margin-left: 20px;  width: 150px; height: 30px;"></div></a>
+
+</div>
+
+
+<div class="foot404">
+    <div style="width: 20%;height: 100%;"></div>
+    <div><a href="/about">关于我们</a></div>
+    <div><a href="/join">加入我们</a></div>
+    <div><a href="/Home/school/news_center/cat_id/40">新闻中心</a></div>
+    <div><a href="/call">联系我们</a></div>
+    <div><a href="/Home/school/news/article_id/104">法律声明</a></div>
+    <div><a href="/Home/school/news/article_id/103">常见问题</a></div>
+
+</div>
+</body>
+</html>
+<script>
+    $('.body404 div').hover(
+        function(){
+            if($(this).hasClass('hover')){
+
+            }else{
+                $(this).addClass('hover').siblings().removeClass('hover');
+            }
+        }
+    );
+
+    function shuaxin(){
+        location.reload();
+    }
+
+   var time=setInterval (showTime, 1000);
+    var second=9;
+    function showTime()
+    { 
+    if(second==0)
+    {
+    window.location="/";
+    clearInterval(time);
+    }
+    $(".num").html(" "+second+" ");
+    second--;
+    }
+</script>

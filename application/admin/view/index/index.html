@@ -1,0 +1,59 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <div id="page-wrapper-old">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">后台主页</h4>
+                </div>
+            </div>
+            <div class="row casket">
+                <div class="text_headlines">
+                    快捷菜单
+                </div>
+                <div class="col-md-12 custom_menus">
+                    {volist name="ismenu" id="m"}
+                    <div class="menus_{$m.id}" onmouseover="menus('{$m.id}')" onmouseout="menusout('{$m.id}')">
+                        <i class="fa fa-trash-o" style="display:none;" onclick="delm('{$m.id}')"></i>
+                        <a href="{:url($m.navurl)}">{$m.navname}</a>
+                    </div>
+                    {/volist}
+                    <!--<div class="menus_2" onmouseover="menus('2')" onmouseout="menusout('2')">-->
+                        <!--<i class="fa fa-trash-o" style="display:none;"></i>-->
+                        <!--<a href="">新增案例</a>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script>
+    function menus(id){
+        $('.menus_'+id+' i').removeAttr("style");
+    }
+    function menusout(id){
+        $(".menus_"+id+" i").attr("style","display:none;");
+    }
+    function delm(id){
+        $.ajax({
+            url: "{:url('Ajax/delmenu')}",
+            data: {id:id},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+
+                    layer.msg(data.msg, {time: 500, icon:1,shade: 0.2});
+                    $('.menus_'+id).remove();
+                }else{
+
+                    layer.msg(data.msg, {time: 500, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+</script>

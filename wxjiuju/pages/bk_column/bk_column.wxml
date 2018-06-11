@@ -1,0 +1,67 @@
+<!-- 装修百科——栏目页 -->
+<view class="bk_column">
+    <view class="title">热门百科</view>
+      <navigator url="../bk_details/bk_details">
+        <image src="../../images/details/wanzhuanshenghuo4.png"/>
+      </navigator> 
+    <view class="shade">田园风格装修</view>
+    <view>
+        <navigator url="../case_column/case_column" class="see">
+           <text>查看更多</text> 
+           <image class="more" src="../../images/bk_column/bk_column_03.png" />
+        </navigator>        
+    </view>
+</view>
+
+<!-- 栏目列表 -->
+<view class="column_list">
+    <view class="title border_bottom">热门百科</view>
+    <view wx:for="{{array}}">
+        <view class="column_one border_bottom">
+            <image class="column_img" src="{{item.src}}"/>
+            <view class="column_text">
+                <text class="column_title">{{item.title}}</text>
+                <text class="column_content">{{item.content}}</text>
+            </view>
+        </view>
+    </view>
+    <view>
+        <navigator url="../bk_list/bk_list" class="see">
+           <text>查看更多</text> 
+           <image class="more" src="../../images/bk_column/bk_column_03.png" />
+        </navigator>        
+    </view>
+</view>
+
+<view class="column_list">
+    <view class="title border_bottom">设计百科</view>
+    <view wx:for="{{array}}">
+        <view class="column_one border_bottom">
+            <image class="column_img" src="{{item.src}}"/>
+            <view class="column_text">
+                <text class="column_title">{{item.title}}</text>
+                <text class="column_content">{{item.content}}</text>
+            </view>
+        </view>
+    </view>
+    <view>
+        <navigator url="../bk_list/bk_list" class="see">
+           <text>查看更多</text> 
+           <image class="more" src="../../images/bk_column/bk_column_03.png" />
+        </navigator>        
+    </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

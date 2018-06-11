@@ -1,0 +1,253 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <!-- 内容页面 -->
+    <div class="left-aside" >
+        {include file="common/leftnav" /}
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">权限控制 <i class="fa fa-angle-double-right"></i> 权限管理</h4>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> 系统参数</span></a></li>
+                                <li role="presentation" class=""><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">网站设置</span></a></li>
+
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="casket tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="home">
+                                    <div class="table-responsive">
+                                        <br>
+                                        <br>
+                                        <form action="" method="post" class="form-horizontal col-sm-6">
+                                            <div class="form-group">
+                                                <label  class="control-label col-sm-3">网站状态:</label>
+                                                <div class="col-sm-6">
+                                                    <div style="padding-top: 7px;">
+                                                        <input type="checkbox" <?php if(config('set.set_show')==1){ echo "checked"; }?> class="js-switch" id="set_show" name="set_show" data-color="#26b550" data-size="small" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="control-label col-sm-3">网站域名:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="set_url" name="set_url" placeholder="请输入网站域名" value="<?php echo config('set.set_url');?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="control-label col-sm-3">手机网站域名:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="set_murl" name="set_murl" placeholder="请输入手机网站域名" value="<?php echo config('set.set_murl');?>">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-3"></label>
+                                                <div class="col-sm-9">
+                                                    <button type="button" id="set" class="btn btn-outline cus-btn" >提 交</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="profile">
+                                    <div class="table-responsive">
+                                        <br>
+                                        <br>
+                                        <form action="" method="post" class="form-horizontal col-sm-6">
+
+                                            <div class="form-group">
+                                                <label  class="control-label col-sm-3">网站图标:</label>
+                                                <div class="col-sm-6">
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="control-label col-sm-3">网站标题:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="web_title" name="passnew" placeholder="请输入手网站标题" value="<?php echo config('web.web_title');?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="control-label col-sm-3">网站关键字:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="web_keyword"  name="passnew" placeholder="请输入网站关键字" value="<?php echo config('web.web_keyword');?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="control-label col-sm-3">网站描述:</label>
+                                                <div class="col-sm-6">
+                                                    <textarea class="form-control" id="web_msg" style="height:200px;" placeholder="请输入网站描述"><?php echo config('web.web_msg');?></textarea>
+
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-3"></label>
+                                                <div class="col-sm-9">
+                                                    <button type="button" id="web" class="btn btn-outline cus-btn" >提 交</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="common/footer" /}
+<script>
+    jQuery(document).ready(function() {
+        // Switchery
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        $('.js-switch').each(function() {
+            new Switchery($(this)[0], $(this).data());
+        });
+
+    });
+    function add(){
+        title = $("#auth_title").val();
+        name = $("#auth_name").val();
+        $.ajax({
+            url: "{:url('Setup/authadd')}",
+            data: {title:title,name:name},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+
+    function add_level(id){
+        title = $("#rule_title").val();
+        name = $("#rule_name").val();
+        $.ajax({
+            url: "{:url('Setup/authadd_level')}",
+            data: {pid:id,title:title,name:name},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+
+    function openmodal(id){
+        $("#add_level").attr("onclick","add_level("+id+")");
+        $("#modal2").modal('show');
+    }
+
+    function modifydata(obj){
+        var authId=$(obj).attr('authId');
+        var authName=$(obj).attr('authName');
+        var authTitle=$(obj).attr('authTitle');
+        $("#ruletitle").val(authTitle);
+        $("#rulename").val(authName);
+        $("#modifyauth").attr("onclick","modify("+authId+")");
+        $("#modal3").modal('show');
+    }
+
+    function modify(id){
+        title = $("#ruletitle").val();
+        name = $("#rulename").val();
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:url('Setup/authmodify')}",
+            data: {id:id,title:title,name:name},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    $("#modal3").modal('hide');
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+
+    function del(id){
+        layer.msg('確定刪除?', {
+            icon: 3,
+            time: 0 //不自动关闭
+            ,shade: 0.2
+            ,btn: ['確定', '取消']
+            ,yes: function(index){
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: "{:url('Setup/authdel')}",
+                    data: {id:id},
+                    type: 'POST',
+                    dataType: "json",
+                    cache: false,
+                    success: function(data,state){
+                        if(state == 'success' && data.code == '0'){
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1000);
+                        }else{
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                        }
+                    }
+                });
+            }
+        });
+    }
+</script>

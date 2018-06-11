@@ -1,0 +1,206 @@
+{include file="public/header" /}
+    <script src="/public/index/static/js/mui.min.js"></script>
+    <script src="/public/index/static/js/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <link href="/public/index/static/css/mui.min.css" rel="stylesheet"/>
+    <link href="/public/index/static/css/mobile.css" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="../../../../public/index/bootstarp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../../../public/index/style/m_special.css">
+    <script src="../../../../public/index/bootstarp/js/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        mui.init();
+        (function(){
+            var html=document.documentElement;
+            var width=html.getBoundingClientRect().width;
+            html.style.fontSize = width/15+'px';
+        })();
+    </script>
+	
+    <div class="container-fluid bgimg">
+    	<div class="banner"></div>
+        <!-- 活动名额 -->
+        <div class="huodong_top">
+	        <div class="huodong">
+	            <p class="text-center">活动名额仅剩<span class="yellow">21</span>个，快来预定吧！</p>
+	            <img id="reserve" class="img-responsive orderimg" src="../../../../public/index/zhuanti/yemian  (5).png" alt="">
+	        </div>
+	    </div>
+        <div class="sign_up_div">
+		</div>
+        <!-- 立即报名 -->
+		<div class="sign_up_top">
+			<div class="sign_up">
+	            <div id="form">
+	                <input type="text" name="" id="username" placeholder="请输入您的名字" >       
+	                <input type="text" name="" id="tel" placeholder="请输入您的电话号码">
+	                <div class="btn" id="btn">
+	                    <img class="sign_img" src="../../../../public/index/zhuanti/yemian  (1).png" alt="">
+	                </div>
+	            </div>
+	        </div> 
+		</div>
+		<div class="body_top">
+		</div>
+        <!-- 品质家装 -->
+        <div class="quality_top">
+	        <div class="quality">
+	            <!-- tab菜单 -->
+	            <div class="menu">
+	                <!-- 导航 -->
+	                <div class="q_nav" style="position: relative;">
+	                    <ul id="q_subnav">
+	                        <li class="circle">全屋环保</li>
+	                        <li>质量过硬</li>
+	                        <li>设计人性化</li>
+                           <div style="clear:both;"></div>
+	                    </ul>
+	                </div>
+	                <!-- 子菜单 -->
+	                <div class="submenu">
+	                    <div class="menu_one show">
+	                        <img class="img-responsive" src="../../../../public/index/zhuanti/yemian  (4).png" alt="">
+	                    </div>
+	
+	                    <div class="menu_one">
+	                        <img class="img-responsive" src="../../../../public/index/zhuanti/yemian  (3).png" alt="">
+	                    </div>
+	
+	                    <div class="menu_one">
+	                        <img class="img-responsive" src="../../../../public/index/zhuanti/yemian  (2).png" alt="">
+	                    </div>
+	                </div>
+                  <div style="clear:both;"></div>
+	
+	            </div>
+	            <!-- 主办方 -->
+	            <div class="sponsor">
+	                <p>主办方:各品牌商家联合主办</p>
+	                <p>协办方:新闻媒体、银行</p>
+	                <p>活动地点:深圳市龙岗区龙城大道29号花样年龙年广场13A02-07</p>
+	                <p>深圳市光明新区公明北环大道凯雷斯顿商务大夏3楼</p>
+	            </div>
+	        </div>
+		</div>
+    </div>
+     <!-- 弹窗 -->
+     <div class="pop_up">
+            <div class="inner_box">
+                <!-- 关闭按钮 -->
+                <div id="close">
+                    <img class="img-responsive" src="../../../../public/index/zhuanti/ydclose.png" alt="">
+                </div>
+                <!-- 弹窗内容 -->
+                <div class="pop_con">
+                   <div class="online">
+                        <form>
+                                <input type="text" name=""  id="username1" placeholder="请输入您的名字" >
+                                <input type="text" name="" id="tel1" placeholder="请输入您的电话号码">
+                                <p class="online_btn" id="btn1">
+                                    <img class="img-responsive" src="../../../../public/index/zhuanti/ydbtn.jpg" alt="">
+                                </p> 
+                            </form>
+                   </div>
+    
+                </div>
+            </div>
+        </div>
+     <!-- js脚本 -->
+	<script type="text/javascript" charset="utf-8" src="/public/layer/layer.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?dae324ed658ef99e08c6219b1f530c39";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script>
+    var lockScroll = function(lock){
+        $('html')[lock ? 'addClass' : 'removeClass']('lock-scroll');
+    };
+    //导航弹层
+    $(".category-trigger").click(function () {
+        $(".layer-nav").fadeIn(50).css({"height": "calc(100% + 50px)"});
+        lockScroll(true);
+    });
+
+    $(".layer-nav").click(function () {
+        $(this).fadeOut(50);
+        lockScroll(false);
+    });
+
+    $(".backtop").click(function(){
+        $('html,body').animate({ scrollTop: 0 }, 500 ,function(){});
+    });
+</script>
+
+     <script type="text/javascript">
+         //弹窗
+         $(function(){
+            $("#reserve").on("click",function () { 
+                $(".pop_up").css("display","block");
+
+             });
+             $("#close").on("click",function() {
+                $(".pop_up").hide();
+             });           
+        })
+         //立即报名表单验证
+        $(function(){
+            $("#btn").on("click",function () {
+                var username = $("#username").val();
+                var tel = $("#tel").val();
+              console.log(username);
+               console.log(tel);
+                var true_mobile = /^1[34578]{1}\d{9}$/;
+                 console.log("我的数据",username,tel);
+                if(username == ''){
+                    alert("请输入您的姓名");
+                    return false;
+                   }
+                if (tel == "" || !true_mobile.test(tel)){
+                    alert("请输入有效的电话号码")
+                    //  $(".phone").text(" ");        
+                     return false;
+                }
+                alert("成功")
+               // return true;
+                    
+            }); 
+
+            $("#btn1").on("click",function () {
+                var username = $("#username1").val();
+                console.log(username);
+                var tel = $("#tel1").val();
+                console.log(tel);
+                var true_mobile = /^1[34578]{1}\d{9}$/;
+                // console.log("我的数据",username,tel);
+                if(username == ''){
+                    alert("请输入您的姓名");
+                    return false
+                   }
+                if (tel == "" || !true_mobile.test(tel)){
+                    alert("请输入有效的电话号码");     
+                     return false
+                }
+                alert("成功");
+                // $("#username1").text(" ");
+                // $("#tel1").text(" ");
+                return true;
+                $("#username1").text("")
+             });
+        });
+        // tab切换
+        $(function (){ 
+            var arr = $("#q_subnav").children("li");
+            // console.log(arr)
+            $("#q_subnav").children("li").on("click",function(){
+                $(this).addClass("circle");
+                $(this).siblings().removeClass("circle");
+                $(".submenu>.menu_one").eq($(this).index()).addClass("show").siblings().removeClass("show");
+            })
+         });
+
+    </script>

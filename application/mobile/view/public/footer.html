@@ -1,0 +1,54 @@
+
+<div class='footer'>
+    <div><a href="{:url('Mobile/School/artinfo',array('article_id'=>104))}">法律声明</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:url('Mobile/School/artinfo',array('article_id'=>103))}">常见问题</a></div>
+    <div>@2017久居整装&nbsp;&nbsp;粤ICP备17065962号</div>
+
+</div>
+
+<div class="free_price">
+    <a href="{:url('mobile/index/mfyy')}"><div class="free1"></div></a>
+    <a href="{:url('mobile/index/lfbj')}"><div class="free2"></div></a>
+</div>
+
+<div class="backtop"></div>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?dae324ed658ef99e08c6219b1f530c39";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>
+<script type="text/javascript" charset="utf-8" src="__ROOT__/public/layer/layer.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?dae324ed658ef99e08c6219b1f530c39";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script>
+    var lockScroll = function(lock){
+        $('html')[lock ? 'addClass' : 'removeClass']('lock-scroll');
+    };
+    //导航弹层
+    $(".category-trigger").click(function () {
+        $(".layer-nav").fadeIn(50).css({"height": "calc(100% + 50px)"});
+        lockScroll(true);
+    });
+
+    $(".layer-nav").click(function () {
+        $(this).fadeOut(50);
+        lockScroll(false);
+    });
+
+    $(".backtop").click(function(){
+        $('html,body').animate({ scrollTop: 0 }, 500 ,function(){});
+    });
+</script>
+<?php if (substr_count($_SERVER[‘HTTP_ACCEPT_ENCODING’], ‘gzip’)) ob_start(“ob_gzhandler”); else ob_start(); ?>

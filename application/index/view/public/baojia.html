@@ -1,0 +1,74 @@
+<!-- 预约表格 -->
+<div class="nrt1">
+    <h4>做最贴心的完整品质整装</h4>
+    <div class="nrt1c">
+        <h3>预约装修服务</h3>
+        <p class="p1">
+            <a href="#">免费量房</a>
+            <em>|</em>
+            <a href="#">免费报价</a>
+        </p>
+        <form action="#" id="adduserinfoForm">
+            <p>
+                <span>您的姓名：</span>
+                <input type="text" name="user_name">
+            </p>
+            <p>
+                <span>您的电话：</span>
+                <input type="text" name="mobile" autocomplete="off">
+            </p>
+            <p class="npad">
+                <select id="city" name="city">
+                    <option value="深圳">深圳</option>
+                </select>
+                <select id="region" name="region">
+                    <option value="福田">福田</option>
+                    <option value="罗湖">罗湖</option>
+                    <option value="南山">南山</option>
+                    <option value="龙岗">龙岗</option>
+                    <option value="盐田">盐田</option>
+                    <option value="坪山">坪山</option>
+                    <option value="宝安">宝安</option>
+                    <option value="光明新区">光明新区</option>
+                    <option value="龙华">龙华</option>
+                </select>
+            </p>
+            <input type="button" onclick="user_info('adduserinfoForm');" value="立即预约">
+            <p class="npad last">已有<b>35004</b>业主预约久居装修</p>
+        </form>
+    </div>
+</div>
+<script>
+    function user_info(id){
+        username = $("#"+id+" input[name='user_name']").val();
+        mobile   = $("#"+id+" input[name='mobile']").val();
+        city     = $("#"+id+" select[name='city']").val();
+        region   = $("#"+id+" select[name='region']").val();
+        if(username==''){return layer.msg('请输入姓名', {time: 700, icon:2,shade: 0.2});}
+        if(mobile==''){return layer.msg('请输入手机号', {time: 700, icon:2,shade: 0.2});}
+        var mobReg=/^1[34578]\d{9}$/;  //手机号
+        if (!mobReg.test(mobile)) {
+            return layer.msg('请填写正确手机号', {time: 2000, icon:2,shade: 0.2});
+        };
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:url('Index/Ajax/user_info')}",
+            data: {username:username,mobile:mobile,city:city,region:region},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                }
+            }
+        });
+
+    }
+</script>

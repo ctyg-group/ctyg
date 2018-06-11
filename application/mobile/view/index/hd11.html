@@ -1,0 +1,188 @@
+{include file="public/header" /}
+    <style>
+        .beijin{
+            background: url(/public/static/mobile/hdall11.jpg) no-repeat;
+            background-size: 15rem 120.64rem;
+            height:120.64rem;
+        }
+
+
+
+        .beijin form input{
+            width: 4.1rem;
+            height: 0.84rem;
+            border-radius: 0.04rem;
+            font-size: 0.32rem;
+        }
+
+        .hd11_input1{
+            float: left;
+            margin-top: 83.55rem;
+            margin-left: 2rem;
+        }
+
+        .hd11_input2{
+            float: left;
+            margin-top: 83.55rem;
+            margin-left: 1.2rem;
+        }
+
+        .hd11_input3{
+            float: left;
+            margin-top: -0.2rem;
+            margin-left: 2rem;
+        }
+
+        .hd11_input4{
+            float: left;
+            margin-top: -0.2rem;
+            margin-left: 1.2rem;
+        }
+
+        .hd11_submit{
+            background: url(/public/static/mobile/hd11_submit.png) no-repeat;
+            background-size: 2.1rem 2.1rem;
+            width: 2.1rem;
+            height: 2.1rem;
+            float: left;
+            margin-top: -1.4rem;
+            margin-left: 0.4rem;
+            cursor: pointer;
+        }
+
+        .hd11_back{
+            background: url(/public/static/images/hd11_back.png) no-repeat;
+            background-size: 3.22rem 1.1rem;
+            width: 3.22rem;
+            height: 1.1rem;
+            float: left;
+            margin-top: 32.4rem;
+            margin-left: 6.4rem;
+            cursor: pointer;
+        }
+
+        .hd11_banner {
+            width: 12.84rem;
+            height: 7.78rem;
+            float: left;
+            margin-top: -18.2rem;
+            margin-left: 0.96rem;
+        }
+
+        .hd11_banner div img{
+            width: 12.84rem;
+            height: 7.78rem;
+
+        }
+
+
+
+    </style>
+
+<div class="beijin">
+
+
+        <form action="#" id="adduserinfoForm">
+            <div class="hd11_input1"><input type="text"  name="user_name" placeholder="姓名"></div>
+            <div class="hd11_input2"><input type="text"  name="mobile" placeholder="电话"></div>
+            <div class="hd11_input3"><input type="text"  name="estate" placeholder="楼盘名称"></div>
+            <div class="hd11_input4"><input type="text"  name="area" placeholder="套内面积"></div>
+        </form>
+
+        <div class="hd11_submit"></div>
+
+
+
+        <div id="slider" class="hd11_banner mui-slider" >
+            <div class="mui-slider-group mui-slider-loop">
+                <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a href="#">
+                        <img src="/public/static/mobile/hd11_banner3.jpg">
+                    </a>
+                </div>
+                <!-- 第一张 -->
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="/public/static/mobile/hd11_banner1.jpg">
+                    </a>
+                </div>
+                <!-- 第二张 -->
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="/public/static/mobile/hd11_banner2.jpg">
+                    </a>
+                </div>
+                <!-- 第三张 -->
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="/public/static/mobile/hd11_banner3.jpg">
+                    </a>
+                </div>
+
+                <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a href="#">
+                        <img src="/public/static/mobile/hd11_banner1.jpg">
+                    </a>
+                </div>
+            </div>
+            <div class="mui-slider-indicator">
+                <div class="mui-indicator mui-active"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+
+            </div>
+        </div>
+
+
+        <div class="hd11_back"></div>
+
+</div>
+
+<script>
+    $(".hd11_submit").click(function(){
+        ajax_user_form_mob('adduserinfoForm','/Home/index/adduserinfo');
+    });
+
+    $(".hd11_back").click(function(){
+        $('html,body').animate({ scrollTop: 0 }, 500 ,function(){});
+    });
+
+
+    /**
+     * 前台预约功能 (class版)
+     * @param form_id
+     * @param submit_url
+     * @returns {boolean}
+     */
+    function ajax_user_form_mob(form_id,submit_url){
+
+        $.ajax({
+            type : "POST",
+            url  : submit_url,
+            data : $('#'+form_id).serialize(),// 你的formid
+            datatype : "json",
+            error: function(request) {
+
+                alert("服务器繁忙, 请联系管理员!");
+            },
+            success: function(v) {
+
+                var v =  eval('('+v+')');
+                // 验证成功提交表单
+
+                if(v.status == 1)
+                {
+                    mui.alert(v.msg, function(){});
+                }else{
+                    mui.alert(v.msg, function(){});
+                }
+
+            }
+        });
+
+    }
+</script>
+
+{include file="public/footer" /}

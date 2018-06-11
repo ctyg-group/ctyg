@@ -1,0 +1,26 @@
+<view class="foot">
+  <view class="tab">
+   <navigator url="../index/index" open-type="switchTab">
+    <image src='../../images/tabBar/11.png' data-id='0'></image>
+    <text>首页</text>  
+   </navigator>
+  </view>
+  <view class="tab">
+   <navigator url="../bk_column/bk_column" open-type="switchTab">
+    <image src='../../images/tabBar/22.png' data-id='1'></image>
+    <text>图库</text>  
+   </navigator>
+  </view>
+  <view class="tab">
+   <navigator url="../case_column/case_column" open-type="switchTab">
+    <image src='../../images/tabBar/33.png' data-id='2'></image>
+    <text>在线客服</text>  
+   </navigator>
+  </view>
+  <view class="tab">
+   <navigator url="../personal_center/personal_center" open-type="switchTab">
+    <image src='../../images/tabBar/44.png' data-id='3'></image>
+    <text>我的</text>  
+   </navigator>
+  </view>
+</view>

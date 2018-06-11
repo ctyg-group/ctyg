@@ -1,0 +1,304 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <div class="left-aside">
+        {include file="common/leftnav" /}
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">职位招聘
+                                    <a href="Javascript:;" class="tooltip-success" data-toggle="tooltip" data-placement="right" title="" data-original-title="添加到快捷菜单"
+                                       onclick="addmenu('{$navurls}','职位招聘')"
+                                    ><i class="fa fa-tag"></i></a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="scrollable">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="Javascript:;">
+                                        <span class="visible-xs">职位招聘列表</span>
+                                        <span class="hidden-xs"> 职位招聘列表</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="JavaScript:;"  alt="default" data-toggle="modal" data-target="#modal1">
+                                        <span class="visible-xs">添加职位招聘</span>
+                                        <span class="hidden-xs">添加职位招聘</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="table-responsive">
+                                <table class="table table-hover manage-u-table" >
+                                    <thead>
+                                    <tr>
+                                        <th style="width:200px;">职位名称</th>
+                                        <th style="width:200px;">职位类型</th>
+                                        <th style="width:200px;">招聘数量</th>
+                                        <th style="width:300px;">工作地点</th>
+                                        <th style="width:200px;">添加时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {if condition="$job eq ''"}
+                                        <tr>
+                                            <td colspan="6" class="center middle" style="color:#ccc;">查询无数据</td>
+                                        </tr>
+                                    {/if}
+                                    {volist name="job" id="v"}
+                                    <tr>
+                                        <td class="middle">{$v.job_name}</td>
+                                        <td class="middle">{$v.job_cat}</td>
+                                        <td class="middle">{$v.job_num}</td>
+                                        <td class="middle">{$v.job_city}</td>
+                                        <td class="middle">{$v.add_time|date="Y-m-d H:i:s",###}</td>
+                                        <td class="middle">
+                                           <div>
+                                               <a class="btn btn-outline btn-xs cus-btn"
+                                                  job_name="{$v.job_name}" job_cat="{$v.job_cat}" job_num="{$v.job_num}"
+                                                  job_city="{$v.job_city}" job_id="{$v.id}" job_info="{$v.job_info}" job_req="{$v.job_req}"
+                                                  onclick="modifydata(this)">
+                                                   <i class="fa fa-pencil-square-o"></i> 修改
+                                               </a>
+                                               <a class="btn btn-outline btn-xs cus-btn" onclick="deljob('{$v.id}')"><i class="fa fa-trash-o"></i> 删除</a>
+                                           </div>
+                                        </td>
+                                    </tr>
+
+                                    {/volist}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">添加职位招聘</h4> </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="job_name" class="col-sm-3 control-label">职位名称:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="job_name" placeholder="请输入职位名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="job_cat" class="col-sm-3 control-label">职位类型:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="job_cat" placeholder="请输入职位类型">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="job_num" class="col-sm-3 control-label">招聘数量:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="job_num" placeholder="请输入招聘数量">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="job_city" class="col-sm-3 control-label">工作地点:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="job_city" placeholder="请输入工作地点">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="job_info" class="col-sm-3 control-label">岗位职责:</label>
+                        <div class="col-sm-9">
+                            <textarea name="job_info" id="job_info" class="form-control" style="height:180px;" placeholder="请输入岗位职责"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="job_req" class="col-sm-3 control-label">任职要求:</label>
+                        <div class="col-sm-9">
+                            <textarea name="job_req" id="job_req" class="form-control" style="height:180px;" placeholder="请输入任职要求"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline cus-btn" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-info waves-effect cus-btn" onclick="add(0)">发 布</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">修改职位招聘</h4> </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="job_name" class="col-sm-3 control-label">职位名称:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="job_names" placeholder="请输入职位名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="job_cat" class="col-sm-3 control-label">职位类型:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="job_cats" placeholder="请输入职位类型">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="job_num" class="col-sm-3 control-label">招聘数量:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="job_nums" placeholder="请输入招聘数量">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="job_city" class="col-sm-3 control-label">工作地点:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="job_citys" placeholder="请输入工作地点">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="job_info" class="col-sm-3 control-label">岗位职责:</label>
+                    <div class="col-sm-9">
+                        <textarea name="job_info" id="job_infos" class="form-control" style="height:180px;" placeholder="请输入岗位职责"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="job_req" class="col-sm-3 control-label">任职要求:</label>
+                    <div class="col-sm-9">
+                        <textarea name="job_req" id="job_reqs" class="form-control" style="height:180px;" placeholder="请输入任职要求"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline cus-btn" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-info waves-effect cus-btn" id="modify">修 改</button>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script>
+    function add(parent_id){
+        job_name    = $("#job_name").val();
+        job_cat     = $("#job_cat").val();
+        job_num     = $("#job_num").val();
+        job_city    = $("#job_city").val();
+        job_info    = $("#job_info").val();
+        job_req     = $("#job_req").val();
+        $.ajax({
+            url: "{:url('Order/addjob')}",
+            data: {job_name:job_name,job_cat:job_cat,job_num:job_num,job_city:job_city,job_info:job_info,job_req:job_req},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                }
+            }
+        });
+    }
+
+    function modifydata(obj){
+        var job_id  =   $(obj).attr('job_id');
+        var job_name=   $(obj).attr('job_name');
+        var job_cat =   $(obj).attr('job_cat');
+        var job_num =   $(obj).attr('job_num');
+        var job_city=   $(obj).attr('job_city');
+        var job_info=   $(obj).attr('job_info');
+        var job_req =   $(obj).attr('job_req');
+        $("#job_names").val(job_name);
+        $("#job_cats").val(job_cat);
+        $("#job_nums").val(job_num);
+        $("#job_citys").val(job_city);
+        $("#job_infos").val(job_info);
+        $("#job_reqs").val(job_req);
+        $("#modify").attr("onclick","modify("+job_id+")");
+        $("#modal3").modal('show');
+    }
+    function modify(id){
+        job_name    = $("#job_names").val();
+        job_cat     = $("#job_cats").val();
+        job_num     = $("#job_nums").val();
+        job_city    = $("#job_citys").val();
+        job_info    = $("#job_infos").val();
+        job_req     = $("#job_reqs").val();
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:url('Order/modifyjob')}",
+            data: {id:id,job_name:job_name,job_cat:job_cat,job_num:job_num,job_city:job_city,job_info:job_info,job_req:job_req},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    $("#modal3").modal('hide');
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 1000);
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+//                    layer.close(index);
+                }
+            }
+        });
+    }
+    function deljob(id){
+        layer.msg('確定刪除?', {
+            icon: 3,
+            time: 0 //不自动关闭
+            ,shade: 0.2
+            ,btn: ['確定', '取消']
+            ,yes: function(index){
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: "{:url('Order/deljob')}",
+                    data: {id:id},
+                    type: 'POST',
+                    dataType: "json",
+                    cache: false,
+                    success: function(data,state){
+                        if(state == 'success' && data.code == '0'){
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1000);
+                        }else{
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+</script>

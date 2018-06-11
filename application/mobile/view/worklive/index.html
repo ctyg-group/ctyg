@@ -1,0 +1,141 @@
+{include file="public/header" /}
+<script src="/public/index/static/js/mui.picker.min.js"></script>
+<link href="/public/index/static/css/mui.picker.min.css" rel="stylesheet"/>
+<style>
+    .worklist{width:100%;height: auto;background-color: #ffffff;float: left;}
+    .worklive{  height: 8.74rem;width: 96%;background-color: #ffffff;margin-left: 2%;box-shadow: 0 0.2rem 0.4rem #f2f2f2;margin-bottom: 0.72rem;}
+    .worklive .img{height: 7.02rem;width: 100%;}
+    .worklive .info{height: 1.72rem;width: 100%;}
+    .worklive .info .wl{float: left;margin-left: 0.24rem;}
+    .worklive .info .wl p:nth-child(1){font-size: 0.52rem;font-weight: 600;display: inline-block;border-bottom:1px solid #29b450; }
+    .worklive .info .wl p:nth-child(2){font-size: 0.48rem;}
+    .worklive .info .wr{float: right;width: 3.18rem;height: 0.7rem;background-color: #29b450;margin-top: 0.76rem;border-radius: 1rem 0 0 1rem ;font-size: 0.48rem;color: #ffffff;line-height: 0.7rem;text-align: center;}
+</style>
+
+<div class="shaixuan">
+    <div style="background: #000000 url(/public/static/mobile/lfbj_jt.png) no-repeat 3.9rem 0.5rem;background-size: 0.4rem 0.24rem;">施工阶段</div>
+    <div>户型</div>
+    <div style="background: #000000 url(/public/static/mobile/lfbj_jt.png) no-repeat 3.9rem 0.5rem;background-size: 0.4rem 0.24rem;">热门小区</div>
+</div>
+
+<div class='xuanx cat1' style="display: none;">
+    <a href="javascript:;" ><div cat="0" {if condition="$stage_id==0"}class="on"{/if}>不限</div></a>
+    {foreach name="cat1" item='cv1' key='ck1'}
+    <a href="javascript:void(0);"><div cat="{$cv1['cat_id']}" {if condition="$cv1['cat_id']==$stage_id"}class="on"{/if} >{$cv1['cat_name']}</div></a>
+    {/foreach}
+</div>
+
+
+
+<div class='xuanx cat3' style="display: none;">
+    <a href="javascript:;" ><div cat="0" {if condition="$apart_id==0"}class="on"{/if}>不限</div></a>
+    {foreach name="cat3" item='cv3' key='ck3'}
+    <a href="javascript:void(0);"><div cat="{$cv3['cat_id']}" {if condition="$cv3['cat_id']==$apart_id"}class="on"{/if}>{$cv3['cat_name']}</div></a>
+    {/foreach}
+</div>
+
+
+
+<div class='xuanx cat2' style="display: none;">
+    <a href="javascript:;" ><div cat="0" style="width: 26%;" {if condition="$hot_id==0"}class="on"{/if}>不限</div></a>
+    {foreach name="cat2" item='cv2' key='ck2'}
+    <a href="javascript:void(0);"><div cat="{$cv2['cat_id']}" style="width: 26%;" {if condition="$cv2['cat_id']==$hot_id"}class="on"{/if}>{$cv2['cat_name']}</div></a>
+    {/foreach}
+</div>
+
+
+
+<div class="worklist">
+    {foreach name='list' item='lv' key='lk'}
+    <div class="worklive">
+        <a href="{:url('Mobile/worklive/workinfo',array('id'=>$lv.id)),'.html'}">
+        <div class="img">
+            <img src="{$lv['thumb']}" style="width: 100%;height: 7.02rem;" alt="">
+        </div>
+        </a>
+        <div class="info">
+            <div class="wl">
+                <p>{$lv['live_name']}</p>
+                <p>{$lv['style']}&nbsp;|&nbsp;{$lv['apart']}&nbsp;|&nbsp;{$lv['area']}㎡</p>
+            </div>
+            <div class="wr">{$lv['stage']}</div>
+        </div>
+    </div>
+    {/foreach}
+</div>
+
+
+
+<div class="mobpage">
+    {if condition="$p == 1"}
+    <a href="{:url('Mobile/worklive/index',array('stage_id'=>$stage_id,'hot_id'=>$hot_id,'apart_id'=>$apart_id,'p'=>1))}"><div class="upp">上一页</div></a>
+    {else}
+    <a href="{:url('Mobile/worklive/index',array('stage_id'=>$stage_id,'hot_id'=>$hot_id,'apart_id'=>$apart_id,'p'=>$p*1-1))}"><div class="upp">上一页</div></a>
+    {/if}
+    <div class="chosep" data-options='{$page}' onclick="chose_page()">{$p} / {$count}</div>
+    {if condition="$p == $count"}
+    <a href="{:url('Mobile/worklive/index',array('stage_id'=>$stage_id,'hot_id'=>$hot_id,'apart_id'=>$apart_id,'p'=>$p))}"><div class="downp">下一页</div></a>
+    {else}
+    <a href="{:url('Mobile/worklive/index',array('stage_id'=>$stage_id,'hot_id'=>$hot_id,'apart_id'=>$apart_id,'p'=>$p*1+1))}"><div class="downp">下一页</div></a>
+    {/if}
+</div>
+
+<script>
+    $('.shaixuan>div').click(function(){
+        if($(this).hasClass('on')){
+            $(this).removeClass('on');
+            $(this).parent().parent().find('.xuanx').hide();
+        }else{
+            var i = $(this).index();
+            $(this).addClass('on').siblings().removeClass('on');
+            $(this).parent().parent().find('.xuanx').hide();
+            $(this).parent().parent().find('.xuanx').eq(i).fadeIn();
+        }
+
+    });
+
+    $(".cat1 a").click(function(){
+        $(this).children().addClass('on').parent().siblings().children().removeClass('on');
+        chose_cat();
+    })
+
+    $(".cat2 a").click(function(){
+        $(this).children().addClass('on').parent().siblings().children().removeClass('on');
+        chose_cat();
+    })
+
+    $(".cat3 a").click(function(){
+        $(this).children().addClass('on').parent().siblings().children().removeClass('on');
+        chose_cat();
+    })
+
+    function chose_cat(){
+        stage_id = $(".cat1").find(".on").attr("cat");
+        hot_id = $(".cat2").find(".on").attr("cat");
+        apart_id = $(".cat3").find(".on").attr("cat");
+
+        var p = arguments[0] ? arguments[0] : 1;
+
+        url = "{:url("Mobile/worklive/index",array('stage_id'=>stageid,'hot_id'=>hotid,'apart_id'=>apartid,'p'=>pid))}";
+        url = url.replace('stageid',stage_id);
+        url = url.replace('hotid',hot_id);
+        url = url.replace('apartid',apart_id);
+        url = url.replace('pid',p);
+
+        location.href = url;
+
+    }
+
+    function chose_page(){
+        var picker = new mui.PopPicker();
+        var optionsJson = $(".chosep").attr('data-options');
+        var options = JSON.parse(optionsJson);
+        picker.setData(options);
+        picker.show(function(SelectedItem) {
+            url = "{:url('Mobile/worklive/index',array('stage_id'=>$stage_id,'hot_id'=>$hot_id,'apart_id'=>$apart_id,'p'=>pid))}";
+            url = url.replace('pid',SelectedItem[0].value);
+            location.href = url;
+        })
+    }
+</script>
+{include file="public/footer" /}

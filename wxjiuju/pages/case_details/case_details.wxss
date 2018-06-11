@@ -1,0 +1,85 @@
+
+
+/* 轮播 */
+.details{
+    width: 92%;
+    height: 439px;
+    background: #fff;
+    margin-top: 0.68rem;
+    margin-left: 4%;
+}
+.details .details_box{
+    width: 99%;
+    height: 357px;
+    margin-bottom: 20px;
+    border: solid 1px rgb(224,224,224);
+    border-radius: 3px;
+    background: rgb(223,223,223);
+}
+.details .details_box .details_img{
+    width: 100%;
+    height: 357px;
+    border-radius: 3px;
+}
+
+.details_text{
+    font-size:34rpx;
+    margin-left: 0.8rem;
+    line-height: 20px;
+    color: rgb(0,0,0);
+}
+
+.style{
+    font-size: 0.81rem;
+    font-family: "﻿AdobeHeitiStd-Regular";
+    margin-left: 0.8rem;
+    line-height: 20px;
+}
+
+/* 设计 */
+.design{
+    width: 100%;
+
+    margin-top: 34px;
+}
+.design .designer{
+    width: 55%;
+    height: 48px;
+    float: left;
+    background: rgb(240,248,250);
+    border: solid 1px rgb(223,223,224);
+}
+
+.design .designer .head_image{
+    width: 2rem;
+    height: 2rem;
+    border: solid 1px rgb(180,180,180);
+    margin-left: 1rem;
+    border-radius: 50%;
+    margin-top: 0.2rem;
+    float: left;
+}
+
+.design .designer .head_image image{
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: 0.35rem;
+    margin-top: 0.35rem;
+}
+.design .designer .design_text{
+    float: left;
+    line-height: 48px;
+    font-size: 0.76rem;
+    margin-left: 1.4rem;
+}
+.design .order{
+    width: 43%;
+    height: 48px;
+    float: left;
+    text-align: center;
+    background: rgb(9,187,7);
+    border: solid 1px rgb(2,148,0);
+    color: rgb(255,255,255);
+    font-size: 0.96rem;
+    line-height: 48px;
+}

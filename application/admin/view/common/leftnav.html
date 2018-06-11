@@ -1,0 +1,23 @@
+<div class="left_nav">
+    <ul class="list-style-none">
+        <!--<li class="divider"></li>-->
+        <!--{if condition="$controller eq 'Setup'"}-->
+        <!--{volist name="menu.Setup.nextnav" id="left_nav"}-->
+        <!--<li {if condition="$action eq $left_nav['view']"}class="art_active"{/if}><a href="{:url($left_nav.url)}">{$left_nav.name}</a></li>-->
+        <!--{/volist}-->
+        <!--{/if}-->
+        <?php foreach($menu[$controller]['nextnav'] as $keynav=>$valuenav){?>
+        <li {if condition="$action eq $valuenav['view']"}class="art_active"{/if}>
+        <a href="{:url($valuenav.url)}">
+            {$valuenav.name}
+            <span class="fa fa-angle-right"></span>
+        </a>
+
+        </li>
+        <?php }?>
+    </ul>
+</div>
+
+<style>
+
+</style>

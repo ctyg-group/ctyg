@@ -1,0 +1,795 @@
+{include file="public/header" /}
+
+<link rel="stylesheet" type="text/css" href="/public/index/style/zxbk.css">
+
+<link rel="stylesheet" href="/public/index/plugins/swiper-4.2.0/swiper.min.css">
+
+    <div class="main main-zxs">
+
+
+
+        <!-- Test Banner Swiper -->
+
+        <div class="enped_banner">
+
+            <div class="enped_banner-wrapper">
+
+                <div class="enped_banner-content">
+
+                    {volist name="array" id="array" key="k"}
+
+                    <div class="swiper-container banner{$k}" {if condition="$k eq 1"}style="display:block;"{/if}>
+
+                        <div class="swiper-wrapper">
+
+                            {volist name="array.list" id="list"}
+
+                            <div class="swiper-slide sk1">
+
+                                <div class="sk_img">
+
+                                    <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$list.enped_id))}" tabindex="-1">
+
+                                        <img src="{$list.thumb}" alt="">
+
+                                    </a>
+
+                                </div>
+
+                                <div class="sk_wz">
+
+                                    <p style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                                        <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$list.enped_id))}" tabindex="-1">{$list.title}</a>
+                                    </p>
+
+                                    <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$list.enped_id))}" tabindex="-1" title="{$list.explain}">{$list.explain|mb_substr=###,0,20,'utf-8'}...</a>
+
+                                </div>
+
+                            </div>
+
+                            {/volist}
+
+                        </div>
+
+                    </div>
+
+                    {/volist}
+
+                    <!-- 如果需要导航按钮 -->
+
+                    <div class="swiper-button-prev"></div>
+
+                    <div class="swiper-button-next"></div>
+
+                    <!-- 如果需要分页器 -->
+
+                    <div class="swiper-pagination"></div>
+
+                </div>
+
+                <div class="enped_banner-process">
+
+                    <div class="ml">
+
+                        <div class="wz on">装修百科</div>
+
+                        <div class="wz">设计百科</div>
+
+                        <div class="wz">生活百科</div>
+
+                        <div class="wz">家居百科</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- swiper end -->
+
+
+
+        <!-- 内容分类 -->
+
+        <div class="layout fix">
+
+            <div class="zxsl fl" style="margin-bottom: 95px;">
+
+                <!-- 热搜词条 -->
+
+                <div class="enped_public">
+
+                    <div class="enped_pubtitle">
+
+                        <a href="/zxbk/cat_0_1">
+
+                            <span class="bk_span1">热搜词条</span>
+
+                        </a>
+
+                        <!--<embed src="" allowFullScreen="true" quality="high" width="480" height="350" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>-->
+
+                    </div>
+
+                    <div class="enped_pubcontent">
+
+                        {volist name="hot" id="hot" key="kk"}
+
+                        <?php if($kk%2==0){?>
+
+                            <div class="pubcontent">
+
+                                <div class="pubcontent2" style="position:relative;">
+
+                                    <p class="tit">
+
+                                        <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$hot.enped_id))}">{$hot.title}</a>
+
+                                    </p>
+
+                                    <p class="exp">
+
+                                        <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$hot.enped_id))}">{$hot.explain|mb_substr=###,0,15,'utf-8'}...</a>
+
+                                    </p>
+
+                                    <div style="position:absolute;top: 117px;left: 76px;">
+
+                                        <img src="/public/index/static/images/sanjdown.png" width="15px" height="15px" alt="">
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="pubcontent1">
+
+                                    <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$hot.enped_id))}">
+
+                                        <img src="{$hot.thumb}" width="173px" height="120px" alt="">
+
+                                    </a>
+
+                                </div>
+
+                             </div>
+
+                        <?php }else{?>
+
+                            <div class="pubcontent">
+
+                                <div class="pubcontent1">
+
+                                    <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$hot.enped_id))}">
+
+                                        <img src="{$hot.thumb}" width="173px" height="120px" alt="">
+
+                                    </a>
+
+                                </div>
+
+                                <div class="pubcontent2">
+
+                                    <div style="margin-top: -12px;">
+
+                                        <img src="/public/index/static/images/sanjup.png" width="15px" height="15px" alt="">
+
+                                    </div>
+
+                                    <p class="tit">
+
+                                        <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$hot.enped_id))}">{$hot.title}</a>
+
+                                    </p>
+
+                                    <p class="exp">
+
+                                        <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$hot.enped_id))}">{$hot.explain|mb_substr=###,0,15,'utf-8'}...</a>
+
+                                    </p>
+
+                                </div>
+
+
+
+                            </div>
+
+                        <?php }?>
+
+                        {/volist}
+
+                    </div>
+
+                </div>
+
+                <!--装修百科  -->
+
+                {volist name="arr" id="arr" key="n"}
+
+                <div class="enped_public">
+
+                    <div class="enped_pubtitle">
+
+                        <a href="{:url('Index/Baike/baikecat',array('cat_id'=>$arr.cat_id,'p'=>1))}">
+
+                            <span class="bk_span1">{$arr.cat_name}</span>
+
+                        </a>
+
+                        <div class="bk_span2">
+
+                            {volist name="arr.endlist" id="endname" key="key"}
+
+                            <div class="
+
+                            {if condition='$n eq 1'}bk_span2_cen{/if}
+
+                            {if condition='$n eq 2'}bk_span3{/if}
+
+                            {if condition='$n eq 3'}bk_span5{/if}
+
+                            {if condition='$n eq 4'}bk_span6{/if}
+
+                            {if condition='$key eq 1'} on{/if}">{$endname.cat_name}</div>
+
+                            {/volist}
+
+                        </div>
+
+                    </div>
+
+                    {volist name="arr.endlist" id="endlist" key="k"}
+
+                    <div class="{if condition='$n eq 1'}enped_baicontent {if condition='$k eq 1'}selected{/if}{/if}
+
+                    {if condition='$n eq 2'}baicontent {if condition='$k eq 1'}nav{/if}{/if}
+
+                    {if condition='$n eq 3'}enped {if condition='$k eq 1'}main{/if}{/if}
+
+                    {if condition='$n eq 4'}baicontent3 {if condition='$k eq 1'}active{/if}{/if}">
+
+                        <div class="baicontent1 img">
+
+                            <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$endlist.list.0.enped_id))}">
+
+                                <img src="{$endlist.list.0.thumb}" width="425px" height="295px" alt="">
+
+                                <div class="baike_wz">
+
+                                    <p>{$endlist.list.0.title}</p>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                        <div class="baicontent2">
+
+                            <div class="baicontent2_info img">
+
+                                <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$endlist.list.1.enped_id))}">
+
+                                    <img src="{$endlist.list.1.thumb}" width="212px" height="146px" alt="">
+
+                                    <div class="baike_wz">
+
+                                        <p>{$endlist.list.1.title} </p>
+
+                                    </div>
+
+                                </a>
+
+                            </div>
+
+                            <div class="baicontent2_info img" style="margin-top: 3px;">
+
+                                <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$endlist.list.2.enped_id))}">
+
+                                    <img src="{$endlist.list.2.thumb}" width="212px" height="146px" alt="">
+
+                                    <div class="baike_wz">
+
+                                        <p>{$endlist.list.2.title} </p>
+
+                                    </div>
+
+                                </a>
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                        <div class="baicontent2">
+
+                            <div class="baicontent2_info img">
+
+                                <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$endlist.list.3.enped_id))}">
+
+                                    <img src="{$endlist.list.3.thumb}" width="212px" height="146px" alt="">
+
+                                    <div class="baike_wz">
+
+                                        <p>{$endlist.list.3.title} </p>
+
+                                    </div>
+
+                                </a>
+
+                            </div>
+
+                            <div class="baicontent2_info img" style="margin-top: 3px;">
+
+                                <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$endlist.list.4.enped_id))}">
+
+                                    <img src="{$endlist.list.4.thumb}" width="212px" height="146px" alt="">
+
+                                    <div class="baike_wz">
+
+                                        <p>{$endlist.list.4.title} </p>
+
+                                    </div>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    {/volist}
+
+
+
+
+
+
+
+
+
+                    <!--<div class="enped_bq">
+
+                        <span style="padding-left: 0px;color: #222222;">相关标签</span>
+
+                        <span>相关标签</span>
+
+                        <span>相关标签</span>
+
+                    </div>-->
+
+
+
+                </div>
+
+                {/volist}
+
+            </div>
+
+            <!-- 预约表格 -->
+
+            <div class="zxr qnr fr" style="margin-top: 100px;">
+
+                {include file="public/baojia" /}
+
+            </div>
+
+            <!-- 百科热门词条 -->
+
+            <div class="huo1 mab50" style="width: 302px;float: right;">
+
+                <div class="huoc">
+
+                    <h3 class="baike_h3">百科热门词条</h3>
+
+                </div>
+
+
+
+                <div class="baike_hot">
+
+                    {volist name="enped" id="enped"}
+
+                    <div>
+
+                        <a target="_blank" href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$enped.enped_id))}">{$enped.title}</a>
+
+                    </div>
+
+                    {/volist}
+
+                </div>
+
+                <div class="baike_hot"></div>
+
+                <div class="baike_hot"></div>
+
+                <div class="baike_hot"></div>
+
+                <div class="baike_hot"></div>
+
+                <div class="baike_hot"></div>
+
+                <div class="baike_hot"></div>
+
+            </div>
+
+
+
+            <!-- 热门设计师 -->
+
+            <div class="huo1 mab50" style="width: 302px;float: right;">
+
+                <div class="huoc">
+
+                    <h3 class="baike_h3">热门设计师</h3>
+
+                </div>
+
+                <div>
+
+                    <div class="hotdes_b  slick-initialized slick-slider" style="padding:0!important;">
+
+                        <div aria-live="polite" class="slick-list draggable">
+
+                            <div class="slick-track" role="listbox">
+
+                                <div class="swiper-container hotBanner">
+
+                                    <div class="swiper-wrapper">
+
+                                        {volist name="hotdes" id="hotd" key="k"}
+
+                                        <div class="swiper-slide">
+
+                                            <a target="_blank" href="{:url('Index/Designer/desdata',array('id'=>$hotd.id,'p'=>1))}" tabindex="-1">
+
+                                                <div class="desmn_hot"></div>
+
+                                                <img src="{$hotd.img}" width="291" alt="">
+
+                                            </a>
+
+                                        </div>
+
+                                        {/volist}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hotdes_s slick-initialized slick-slider">
+
+                        <div aria-live="polite" class="slick-list">
+
+                            <div class="slick-tracks" style="width:100%">
+
+                                <div class="swiper-container hotBanner2">
+
+                                    <div class="swiper-wrapper">
+
+                                        {volist name="hotdes" id="hotd" key="key"}
+
+                                        <div class="swiper-slide {if condition='$key eq 1'}on{/if}">
+
+                                            <div class="slick-slide">
+
+                                                <img src="{$hotd.sm_img}">
+
+                                            </div>
+
+                                        </div>
+
+                                        {/volist}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- 如果需要导航按钮 -->
+
+                        <!-- <div class="swiper-button-prev bannerhot-prev"></div>
+
+                        <div class="swiper-button-next bannerhot-next"></div> -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 热门文章 -->
+
+            <div class="huo1 mab50" style="width: 302px;float: right;">
+
+                <div class="huoc">
+
+                    <h3>热门文章
+
+                        <em></em>
+
+                    </h3>
+
+                    <ul class="fix">
+
+                        {volist name="article" id="article" key="key"}
+
+                        <li title="{$article.title}">
+
+                            <em {if condition="$key < 4"}class="colors"{/if} >{$key}</em>
+
+                            <a target="_blank" href="{:url('Index/News/newsinfo',array('article_id'=>$article.article_id))}" >{$article.title|mb_substr=###,0,15,'utf-8'}...</a>
+
+                        </li>
+
+                        {/volist}
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 底部 -->
+
+{include file="public/footer" /}
+
+<script src="/public/index/plugins/swiper-4.2.0/swiper.min.js"></script>
+
+<script>
+
+    // swiper 初始化
+
+    var mySwiper = new Swiper('.banner1', {
+
+        loop: true,
+
+        slidesPerView: 3,
+
+        spaceBetween: 45,
+
+        // 如果需要分页器
+
+        pagination: {
+
+            el: '.swiper-pagination',
+
+        },
+
+
+
+        // 如果需要前进后退按钮
+
+        navigation: {
+
+            nextEl: '.swiper-button-next',
+
+            prevEl: '.swiper-button-prev',
+
+        },
+
+    })
+
+    // 热门设计师滚动
+
+    var hotBanner = new Swiper('.hotBanner');
+
+    var hotBanner2 = new Swiper('.hotBanner2', {
+
+        slidesPerView: 4,
+
+        spaceBetween: 5,
+
+        // 如果需要前进后退按钮
+
+        navigation: {
+
+            nextEl: '.bannerhot-next',
+
+            prevEl: '.bannerhot-prev',
+
+        },
+
+    });
+
+
+
+    // 点击滚动tab
+
+    $(".enped_banner-process .wz").on("click", function () {
+
+        var index = $(this).index();
+
+        $(this).addClass("on").siblings().removeClass("on");
+
+        $(".swiper-container").hide().eq(index).show();
+
+        mySwiper = new Swiper('.banner' + (index + 1), {
+
+            loop: true,
+
+            slidesPerView: 3,
+
+            spaceBetween: 45,
+
+            // 如果需要分页器
+
+            pagination: {
+
+                el: '.swiper-pagination',
+
+            },
+
+
+
+            // 如果需要前进后退按钮
+
+            navigation: {
+
+                nextEl: '.swiper-button-next',
+
+                prevEl: '.swiper-button-prev',
+
+            },
+
+        })
+
+    })
+
+    // 点击热点
+
+    $(".hotdes_s .swiper-slide").on("click", function () {
+
+        $(this).addClass("on").siblings().removeClass("on");
+
+        var index = $(this).index();
+
+        hotBanner.slideTo(index);
+
+    })
+
+
+
+    // 底部弹框
+
+    $(".box02").click(function () {
+
+        $(".box02").animate({
+
+            "left": "-200px"
+
+        })
+
+        $(".box01").animate({
+
+            "left": "-0%"
+
+        })
+
+    })
+
+
+
+
+
+    $(".close_zl").click(function () {
+
+        $(".box02").animate({
+
+            "left": "0px"
+
+        })
+
+        $(".box01").animate({
+
+            "left": "-100%"
+
+        })
+
+    })
+
+
+
+
+
+    $(function () {
+
+        $(".bk_span2_cen").click(function () {
+
+
+
+            $(this).addClass("on").siblings("div").removeClass("on");
+
+            var index = $(this).index();
+
+
+
+            $(".enped_baicontent ").eq(index).addClass("selected").siblings("div").removeClass(
+
+                "selected");
+
+
+
+        });
+
+        // 设计百科
+
+        $(".bk_span3").click(function () {
+
+            $(this).addClass("on").siblings("div").removeClass("on");
+
+
+
+            var index = $(this).index();
+
+
+
+            $(".baicontent").eq(index).addClass("nav").siblings("div").removeClass("nav");
+
+
+
+        });
+
+        // 生活百科
+
+        $(".bk_span5").click(function () {
+
+            $(this).addClass("on").siblings("div").removeClass("on");
+
+
+
+            var index = $(this).index();
+
+
+
+            $(".enped").eq(index).addClass("main").siblings("div").removeClass("main");
+
+
+
+        });
+
+        // 家具百科
+
+        $(".bk_span6").click(function () {
+
+            $(this).addClass("on").siblings("div").removeClass("on");
+
+
+
+            var index = $(this).index();
+
+
+
+            $(".baicontent3").eq(index).addClass("active").siblings("div").removeClass("active");
+
+
+
+        });
+
+    })
+
+</script>

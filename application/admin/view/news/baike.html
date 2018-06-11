@@ -1,0 +1,276 @@
+{include file="common/header" /}
+<div id="wrapper">
+    {include file="common/nav" /}
+    <div class="left-aside">
+        <div class="left_nav">
+            <br>
+            <ul class="list-style-none">
+                <li class='box-label {if condition="$catid eq null"}art_active{/if}'><a href="{:url('News/baike')}">全部数据 </a></li>
+                <li class="divider"></li>
+            </ul>
+            {volist name="article_cat" id="v"}
+            <ul class="list-style-none">
+                <li class="box-label"><a href="javascript:void(0)">{$v.cat_name} </a></li>
+                <li class="divider"></li>
+                {volist name="v.cat" id="ck"}
+                <li {if condition="$catid eq $ck.cat_id"}class="art_active" {/if}><a href="{:url('News/baike',array('catid'=>$ck.cat_id))}">　　{$ck.cat_name} <span class="fa fa-angle-right"></span></a></li>
+                {/volist}
+            </ul>
+            {/volist}
+        </div>
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="page-aside">
+
+                    <div class="right-aside casket">
+                        <div class="row bg-title">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h4 class="page-title">装修百科
+                                    <a href="Javascript:;" class="tooltip-success" data-toggle="tooltip" data-placement="right" title="" data-original-title="添加到快捷菜单"
+                                       onclick="addmenu('{$navurls}','装修百科')"
+                                    ><i class="fa fa-tag"></i></a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="right-page-header">
+                            <div  class="form-horizontal" style="float:left;">
+                                <input type="text" style="width:180px;display: inline" class="form-control" id="starttime" name="starttime" placeholder="时间筛选：选择开始时间" value="{$starttime}">
+                                <input type="text" style="width:180px;display: inline" class="form-control" id="endtime" name="endtime" placeholder="时间筛选：选择结束时间" value="{$endtime}">&nbsp;
+                                <input type="text" style="width:240px;display: inline" class="form-control" id="keyword" name="keyword" placeholder="标题" value="{$keyword}">&nbsp;
+                                <input type="text" style="width:240px;display: inline" class="form-control" id="author" name="author" placeholder="作者" value="{$keyword}">&nbsp;
+                                <button type="button" class="btn btn-outline btn-default soso-but" onclick="soso()">搜
+                                    索</button>
+                                <button type="button" class="btn btn-outline btn-default soso-but" onclick="reset()">重置 </button>
+                            </div>
+                            <div style="float:right">
+                                <a href="{:url('News/addbaike',array('catid'=>$catid))}" class="fcbtn btn btn-success btn-outline btn-1e"> <i class="fa fa-plus"></i> 新增百科</a>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="clearfix"></div>
+                        <div class="scrollable">
+                            <div class="table-responsive">
+                                <table class="table table-hover manage-u-table" >
+                                    <thead>
+                                    <tr>
+                                        <th style="width:120px;">封面图</th>
+                                        <th style="width:320px;">标题</th>
+                                        <th style="width:320px;">链接</th>
+                                        <th style="width:80px;">所属分类</th>
+                                        <th style="width:72px;text-align: center;">显示</th>
+                                        <th style="width:72px;text-align: center;">热门</th>
+                                        <th style="width:72px;text-align: center;">最新</th>
+                                        <th style="width:72px;text-align: center;">作者</th>
+                                        <th>发布时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {if condition="$article eq ''"}
+                                        <tr>
+                                            <td colspan="10" class="center middle" style="color:#ccc;">查询无数据</td>
+                                        </tr>
+                                    {/if}
+                                    {volist name="article" id="news"}
+                                    <tr>
+                                        <td style="width: 120px;">
+                                            <img style="width: 100px;" src="__ROOT__{$news.thumb}"  />
+                                        </td>
+                                        <td class="middle">
+                                            {$news.title}
+                                        </td>
+                                        <td class="middle">
+                                            http://www.jiujusz.com/zxbk/baike/{$news.enped_id}
+                                        </td>
+                                        <td class="middle">
+                                            {volist name="article_cat" id="v1"}
+                                            <!--{if condition="$v1.cat_id eq $news.cat_id"} {$v1.cat_name}{/if}-->
+                                                {volist name="v1.cat" id="ck1"}
+                                                    {if condition="$ck1.cat_id eq $news.cat_id_2"} {$ck1.cat_name}{/if}
+                                                {/volist}
+                                            {/volist}
+                                        </td>
+                                        <td class="center middle">
+                                            <div onclick="newsshow('{$news.enped_id}','is_open','show{$news.enped_id}')">
+                                                <input id="show{$news.enped_id}" type="checkbox" {if condition='$news.is_open eq 1'}checked{/if} class="js-switch" data-color="#26b550" data-size="small" />
+                                            </div>
+                                        </td>
+                                        <td class="center middle" style="width:72px;">
+                                            <div onclick="newsshow('{$news.enped_id}','is_hot','hot{$news.enped_id}')">
+                                                <input id="hot{$news.enped_id}" type="checkbox" {if condition='$news.is_hot eq 1'}checked{/if} class="js-switch" data-color="#26b550" data-size="small" />
+                                            </div>
+                                        </td>
+                                        <td class="center middle" style="width:72px;">
+                                            <div onclick="newsshow('{$news.enped_id}','is_new','new{$news.enped_id}')">
+                                                <input id="new{$news.enped_id}" type="checkbox" {if condition='$news.is_new eq 1'}checked{/if} class="js-switch" data-color="#26b550" data-size="small" />
+                                            </div>
+                                        </td>
+                                        <td class="center middle">
+                                            {$news.author}
+                                        </td>
+                                        <td class="middle">
+                                            {$news.add_time|date="Y/m/d H:i:s",###}
+                                        </td>
+                                        <td class="middle">
+                                           <div>
+                                               <a href="http://www.jiujusz.com/zxbk/baike/{$news.enped_id}" target="_blank" class="btn btn-outline btn-xs cus-btn"><i class="fa fa-mail-forward"></i> 查看</a>
+                                               <a href="{:url('News/modifybaike',array('baikeid'=>$news.enped_id,'pageid'=>$pageid))}" class="btn btn-outline btn-xs cus-btn"><i class="fa fa-pencil-square-o"></i> 修改</a>
+                                               <button class="btn btn-outline btn-xs cus-btn" onclick="delnews('{$news.enped_id}')"><i class="fa fa-trash-o"></i> 删除</button>
+                                           </div>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+                                    </tbody>
+                                    <!--<thead>-->
+                                    <!--<tr>-->
+                                        <!--<th style="width:120px;">文章图片</th>-->
+                                        <!--<th style="width:320px;">标题</th>-->
+                                        <!--<th style="width:320px;">链接</th>-->
+                                        <!--<th style="width:80px;">所属分类</th>-->
+                                        <!--<th style="width:72px;text-align: center;">显示</th>-->
+                                        <!--<th style="width:72px;text-align: center;">热门</th>-->
+                                        <!--<th style="width:72px;text-align: center;">最新</th>-->
+                                        <!--<th style="width:72px;text-align: center;">首页</th>-->
+                                        <!--<th>发布时间</th>-->
+                                        <!--<th>操作</th>-->
+                                    <!--</tr>-->
+                                    <!--</thead>-->
+                                </table>
+                            </div>
+                            <div class="page">
+                                {$article->render()}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script>
+    function newsshow(id,type,isid){
+        $.ajax({
+            url: "{:url('News/baikeshow')}",
+            data: {id:id,type:type},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    if(data.state==1){
+                       $("#"+isid).prop('checked', true);
+                    }else{
+                        $("#"+isid).prop('checked', false);
+                    }
+//                    layer.msg(data.msg, {time: 500, icon:1,shade: 0.2});
+                }else{
+
+                    layer.msg(data.msg, {time: 500, icon:2,shade: 0.2});
+                }
+            }
+        });
+    }
+    function delnews(id){
+        layer.msg('確定刪除?', {
+            icon: 3,
+            time: 0 //不自动关闭
+            ,shade: 0.2
+            ,btn: ['確定', '取消']
+            ,yes: function(index){
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: "{:url('News/delbaike')}",
+                    data: {id:id},
+                    type: 'POST',
+                    dataType: "json",
+                    cache: false,
+                    success: function(data,state){
+                        if(state == 'success' && data.code == '0'){
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1000);
+                        }else{
+                            layer.close(index);
+                            layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    jQuery(document).ready(function() {
+        // Switchery
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        $('.js-switch').each(function() {
+            new Switchery($(this)[0], $(this).data());
+        });
+    });
+    lay('#version').html('-v'+ laydate.v);
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#starttime' //指定元素
+        ,type:'datetime'
+    });
+    laydate.render({
+        elem: '#endtime' //指定元素
+        ,type:'datetime'
+    });
+    //搜索
+    function soso(){
+        var catid = "{$catid}";
+        var starttime = $("#starttime").val();
+        var endtime =  $("#endtime").val();
+        var keyword =  $("#keyword").val();
+        var author  =  $("#author").val();
+        if(starttime){
+            if(endtime==''){
+                return layer.msg("请选择结束时间", {time: 900, icon:2,shade: 0.2});
+            }
+            starttime = new Date(Date.parse(starttime.replace(/-/g, "/")));
+            starttime = Math.round(starttime.getTime()/1000).toString();
+            endtime = new Date(Date.parse(endtime.replace(/-/g, "/")));
+            endtime = Math.round(endtime.getTime()/1000).toString();
+            if(starttime>endtime){
+                return layer.msg("开始时间不能大于结束时间", {time: 900, icon:2,shade: 0.2});
+            }
+        }
+        if(catid!=''){
+            cat = "/catid/"+catid;
+        }else{
+            cat = "";
+        }
+        if(starttime!=''){
+            start = "/starttime/"+starttime;
+        }else{
+            start = "";
+        }
+        if(endtime!=''){
+            end = "/endtime/"+endtime;
+        }else{
+            end = "";
+        }
+        if(keyword!=''){
+            key = "/keyword/"+keyword;
+        }else{
+            key = "";
+        }
+        if (author!=''){
+            author = '/author/'+author;
+        }else {
+            author = "";
+        }
+        window.location.href="{:url('News/baike')}"+cat+start+end+key+author;
+    }
+    function reset(){
+        window.location.href="{:url('News/baike')}"
+    }
+</script>

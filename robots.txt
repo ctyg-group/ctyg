@@ -1,0 +1,8 @@
+User-agent:*
+Disallow:/application/admin/
+Disallow:/extend/
+Disallow:/vendor/
+Disallow:/.gitgnore
+Disallow:/index.php
+
+Sitemap: http://www.jiujusz.com/sitemap.txt
