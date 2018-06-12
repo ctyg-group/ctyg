@@ -61,38 +61,46 @@
 			<h2>免费预约 |</h2>			
 			<span class="places"> 目前已有<i class="cfa9a33"> 879996 </i> 人获取装修报价</span>
 		</div>
-        <input class="name" type="text" id="userName" placeholder="请输入您的称呼">
+        <input class="name" type="text" id="username" placeholder="请输入您的称呼">
         <input class="tel" type="text" id="mobile" placeholder="填写手机号码，稍后会有客服联系您">
         <input class="button" type="button" id="submitBtn" value="立即预约">
         <script type="text/javascript">
-            $(function () {
-                $.post('/getplaces', {}, function (data) {
-                	//console.log("获取的人数",data);
-                    $(".places").text("目前已有" + data + "人获取装修报价");
-                })
-                $('#submitBtn').click(function () {
-                	var msg = $.reservation($('#userName').val(), $('#mobile').val(), function () {
-                        _paq.push(['trackEvent', 'Clicked', '首页BANNER预约按钮点击量统计', '首页BANNER预约按钮点击量统计']);
-                    });
-                	
-                	if(msg.indexOf("领取成功") >= 0){
-                		setTimeout(function () {
-                    		ga('send', 'event', '浮层预约成功', 'Click');
-                    		aboutOk();
-                    	}, 1000);
-                	} else {
-                		alert(msg);
-                	}
-                })
-                
-                /**设置质保服务是否能够点击*/
-                /**现在只有北京能点击*/
-                // var city = $(".headCity span").text() || "";
-                // $("#qas").attr("href","");
-                // if(city.indexOf("北京")>-1){
-	       		// 	 $("#qas").attr("href","/aftermarket/index");
-	       		// }
-            });
+           $(function () { 
+			   $("#submitBtn").on("click",function () { 
+				var username = $("#username").val();
+				if(username == ''){    
+					return layer.msg('请填写您的姓名', {time: 800, icon:2,shade: 0.2});   
+				}  
+			
+				var mobile = $("#mobile").val();
+				true_mobile = /^1[34578]{1}\d{9}$/;   
+				if(mobile == ''){   
+					return layer.msg('请输入手机号', {time: 800, icon:2,shade: 0.2});   
+				}  
+				if(!true_mobile.test(mobile)){   
+					return layer.msg('请填写正确手机号', {time: 800, icon:2,shade: 0.2}); 
+				}
+				var index = layer.load(1, {
+					shade: [0.1,'#fff'] //0.1透明度的白色背景
+				});
+				$.ajax({
+					url: "{:url('Index/Ajax/user_info')}",
+					data: {username:username,mobile:mobile},
+					type: 'POST',
+					dataType: "json",
+					cache: false,
+					success: function(data,state){
+						if(state == 'success' && data.code == '0'){
+							layer.close(index);
+							layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+						}else{
+							layer.close(index);
+							layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2}); 
+						}
+					}
+				});
+			    })
+		    })
         </script>
     </div>
 </div>
@@ -195,19 +203,19 @@
 					<div class="bjform">
 						<p> 
 							<span class="c333333">小区地址 : </span><br/>
-							<input type="text" name="adress" id="" placeholder="输入小区地址">
+							<input type="text" name="adress" id="adress1" placeholder="输入小区地址">
 						</p>
 						<p> 
 							<span class="c333333">房屋面积 :<i class="cfa9a33"> * </i> </span><br/>
-							<input type="text" name="mianji" id="" placeholder="输入房屋面积">
+							<input type="text" name="area" id="area1" placeholder="输入房屋面积">
 						</p>
 						<p> 
 							<span class="c333333">您的名字 : </span><br/>
-							<input type="text" name="username" id="" placeholder="输入您的名字">
+							<input type="text" name="username" id="username1" placeholder="输入您的名字">
 						</p>
 						<p> 
 							<span class="c333333">您的号码 :<i class="cfa9a33"> * </i></span><br/>
-							<input type="text" name="phone" id="" placeholder="输入您的号码">
+							<input type="text" name="mobile" id="mobile1" placeholder="输入您的号码">
 						</p>
 						<div class="cl"></div>
 						<p id="Huxing">
@@ -225,7 +233,7 @@
 	
 							</select>
 	
-							<select name="code" id="code">
+							<select name="code" id="ting">
 	
 								<option value="1" selected>1厅</option>
 	
@@ -249,7 +257,7 @@
 	
 							</select>
 						</p>
-						<input type="button" class="bj_btn" onclick="jisuan()" value="立即报价">
+						<input type="button" class="bj_btn" onclick="baojia()" value="立即报价">
 					</div>
 					<!-- 预算估价 -->
 					<div class="ysgj">
@@ -266,19 +274,19 @@
 					<div class="lfform">
 							<p class="short"> 
 								<span class="c333333">房屋面积 :<i class="cfa9a33"> * </i> </span>
-								<input type="text" name="area1" id="area" placeholder="输入房屋面积">
+								<input type="text" name="area" id="area2" placeholder="输入房屋面积">
 							</p>
 							<p class="long"> 
 								<span class="c333333">小区地址 :<i class="cfa9a33"> * </i> </span>
-								<input type="text" name="adress1" id="adress" placeholder="输入小区地址">
+								<input type="text" name="adress" id="adress2" placeholder="输入小区地址">
 							</p>
 							<p class="short"> 
 								<span class="c333333">您的名字 : </span>
-								<input type="text" name="username1" id="username" placeholder="输入您的名字">
+								<input type="text" name="username" id="username2" placeholder="输入您的名字">
 							</p>
 							<p class="long"> 
 								<span class="c333333">您的号码 :<i class="cfa9a33"> * </i></span>
-								<input type="text" name="phone1" id="phone" placeholder="输入您的号码">
+								<input type="text" name="mobile" id="mobile2" placeholder="输入您的号码">
 							</p>
 							<div class="cl"></div>
 							<input type="button" class="lf_btn" onclick="yuyue()" value="立即预约">
@@ -297,22 +305,22 @@
 					<div class="fqform">
 						<p> 
 							<span class="c333333">房屋面积 :<i class="cfa9a33"> * </i> </span>
-							<input type="text" name="area2" id="area2" placeholder="输入房屋面积">
+							<input type="text" name="area" id="area3" placeholder="输入房屋面积">
 						</p>
 						<p> 
 							<span class="c333333">小区地址 :<i class="cfa9a33"> * </i> </span>
-							<input type="text" name="adress2" id="adress2" placeholder="输入小区地址">
+							<input type="text" name="adress" id="adress3" placeholder="输入小区地址">
 						</p>
 						<p> 
 							<span class="c333333">您的名字 : </span>
-							<input type="text" name="username2" id="username2" placeholder="输入您的名字">
+							<input type="text" name="username" id="username3" placeholder="输入您的名字">
 						</p>
 						<p> 
 							<span class="c333333">您的号码 :<i class="cfa9a33"> * </i></span>
-							<input type="text" name="phone2" id="phone2" placeholder="输入您的号码">
+							<input type="text" name="mobile" id="mobile3" placeholder="输入您的号码">
 						</p>
 						<div class="cl"></div>
-						<input type="button" onclick="yuyue1()" class="fq_btn" value="立即预约">
+						<input type="button" onclick="fenqi()" class="fq_btn" value="立即预约">
 					</div>
 					<div class="fqmx">
 						<div class="fqmx_title">
@@ -765,6 +773,7 @@
 			$(".live_sg").children(".livetwo").addClass("hide");
 			$(this).children(".liveone").addClass("hide");
 			$(this).children(".livetwo").removeClass("hide");
+
 		})
 	});	
 </script>
@@ -1367,10 +1376,10 @@
 		<!-- 标题 -->
 		<div class="index_title">
 			<h2>
-				<span class="bgcolor">装修学堂</span>
+				<span class="bgcolor">家居大事件</span>
 				<hr>
 			</h2>
-			<p class="cfff">家装小窍门 生活大智慧</p>
+			<p class="cfff">你关心的 就是大事</p>
 		</div>
 	
 		<div class="fl">
@@ -1509,12 +1518,12 @@
     }
 
 
+	// 免费报价验证
+    function baojia(){
 
-    function jisuan(){
+        area = $("#area1").val();
 
-        area = $("input[name = mianji]").val();
-
-        code = $('input[name="code"]').val();
+        ting = $('#ting').val();
 
 		shi = $("#shi").val();
 		
@@ -1527,7 +1536,7 @@
 //        console.log(price);
 
 //        return;
-        if($("input[name=adress]").val() == ''){
+        if($("#adress1").val() == ''){
             return layer.msg('请填写您的小区地址', {time: 800, icon:2,shade: 0.2});
         }
        
@@ -1540,7 +1549,7 @@
 
         }
 
-		 if($("input[name=username]").val() == ''){
+		 if($("#username1").val() == ''){
 
 			return layer.msg('请填写您的姓名', {time: 800, icon:2,shade: 0.2});
 
@@ -1548,13 +1557,13 @@
 
         true_mobile = /^1[34578]{1}\d{9}$/;
 
-        if($("input[name=phone]").val() == ''){
+        if($("#mobile1").val() == ''){
 
             return layer.msg('请输入手机号', {time: 800, icon:2,shade: 0.2});
 
         }
 
-        if(!true_mobile.test($("input[name=phone]").val())){
+        if(!true_mobile.test($("#mobile1").val())){
 
             return layer.msg('请填写正确手机号', {time: 800, icon:2,shade: 0.2});
 
@@ -1586,7 +1595,7 @@
 
         username = $("input[name = username]").val();
 
-        mobile   = $("input[name = phone]").val();
+        mobile   = $("input[name = mobile]").val();
 
         if(username==''){return layer.msg('请输入姓名', {time: 700, icon:2,shade: 0.2});}
 
@@ -1640,26 +1649,27 @@
 
     }
 
+	// 免费量房
     function yuyue(){
-        var area = $("#area").val();
+        var area = $("#area2").val();
         true_area=/[0-9]{2,3}/;  
         if(area == '' || !true_area.test(area)){ 
             return layer.msg('请填写正确的房屋面积', {time: 800, icon:2,shade: 0.2});  
 		}
-		var adress=$("#adress").val();
+		var adress=$("#adress2").val();
         if(adress == ''){
             return layer.msg('请填写您的小区地址', {time: 800, icon:2,shade: 0.2});
 		}   
-		var username=$("#username").val();
+		var username=$("#username2").val();
          if(username == ''){    
             return layer.msg('请填写您的姓名', {time: 800, icon:2,shade: 0.2});   
 		}   
-		var phone=$("#phone").val();
+		var mobile=$("#mobile2").val();
         true_mobile = /^1[34578]{1}\d{9}$/;   
-        if(phone == ''){   
+        if(mobile == ''){   
             return layer.msg('请输入手机号', {time: 800, icon:2,shade: 0.2});   
         }  
-        if(!true_mobile.test(phone)){   
+        if(!true_mobile.test(mobile)){   
             return layer.msg('请填写正确手机号', {time: 800, icon:2,shade: 0.2}); 
         }
         var index = layer.load(1, {
@@ -1667,7 +1677,7 @@
         });
         $.ajax({
             url: "{:url('Index/Ajax/user_info')}",
-            data: {area:area,username:username,phone:phone},
+            data: {area:area,username:username,mobile:mobile},
             type: 'POST',
             dataType: "json",
             cache: false,
@@ -1682,30 +1692,31 @@
             }
         });
     }
-	$.post('/getplaces', {}, function (data) {
+	$.post('Index/Ajax/user_info', {}, function (data) {
                 	//console.log("获取的人数",data);
                     $("#fenqi").text("目前已有" + data + "人获取分期信息");
-    });
-	 function yuyue1(){
-        var area = $("#area2").val();
+	});
+	// 装修分期
+	 function fenqi(){
+        var area = $("#area3").val();
         true_area=/[0-9]{2,3}/;  
         if(area == '' || !true_area.test(area)){ 
             return layer.msg('请填写正确的房屋面积', {time: 800, icon:2,shade: 0.2});  
 		}
-		var adress=$("#adress2").val();
+		var adress=$("#adress3").val();
         if(adress == ''){
             return layer.msg('请填写您的小区地址', {time: 800, icon:2,shade: 0.2});
 		}   
-		var username=$("#username2").val();
+		var username=$("#username3").val();
          if(username == ''){    
             return layer.msg('请填写您的姓名', {time: 800, icon:2,shade: 0.2});   
 		}   
-		var phone=$("#phone2").val();
+		var mobile=$("#mobile3").val();
         true_mobile = /^1[34578]{1}\d{9}$/;   
         if(phone == ''){   
             return layer.msg('请输入手机号', {time: 800, icon:2,shade: 0.2});   
         }  
-        if(!true_mobile.test(phone)){   
+        if(!true_mobile.test(mobile)){   
             return layer.msg('请填写正确手机号', {time: 800, icon:2,shade: 0.2}); 
         }
         var index = layer.load(1, {
@@ -1713,7 +1724,7 @@
         });
         $.ajax({
             url: "{:url('Index/Ajax/user_info')}",
-            data: {area:area,username:username,phone:phone},
+            data: {area:area,username:username,mobile:mobile},
             type: 'POST',
             dataType: "json",
             cache: false,
