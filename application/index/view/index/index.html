@@ -599,18 +599,18 @@
 						</div>
 						<div class="speed">
 							<ul>
-								<li>拆改阶段</li>
-								<li>开工大吉</li>
-								<li>水电阶段</li>
-								<li class="on">瓦泥阶段</li>
-								<li>木工阶段</li>
-								<li>油漆阶段</li>
-								<li>验房阶段</li>
-								<li>竣工阶段</li>
+								<li {if condition="$work.stage_id == 2"}class="on"{/if}>拆改阶段</li>
+								<li	{if condition="$work.stage_id == 1"}class="on"{/if}>开工大吉</li>
+								<li {if condition="$work.stage_id == 3"}class="on"{/if}>水电阶段</li>
+								<li {if condition="$work.stage_id == 4"}class="on"{/if}>瓦泥阶段</li>
+								<li {if condition="$work.stage_id == 5"}class="on"{/if}>木工阶段</li>
+								<li {if condition="$work.stage_id == 6"}class="on"{/if}>油漆阶段</li>
+								<li {if condition="$work.stage_id == 2"}class="on"{/if}>验房阶段</li>
+								<li {if condition="$work.stage_id == 8"}class="on"{/if}>竣工阶段</li>
 							</ul>
 							<!-- 进度条 -->
 							<div class="jdt">
-								<div class="jdt1 t4"></div>
+								<div class="jdt1 t{$work.stage_id}"></div>
 							</div>
 							
 						</div>
