@@ -32,6 +32,12 @@ class Index extends Common
             "article3"  =>$article3,
             "enped"  =>$enped,
         );
+        $res = DB::name("worklive")->field("id,live_name,style,thumb,stage_id")->order("add_time desc")->limit(3)->select();
+        foreach ($res as $k=>$v){
+
+        }
+//        dump($worklive);exit();
+
         $this->assign($data);
         return $this->fetch();
     }
@@ -62,6 +68,9 @@ class Index extends Common
     //获取 工地直播
     public function get_worklive(){
         $res = DB::name("worklive")->field("id,live_name,style,thumb")->order("add_time desc")->limit(3)->select();
+        foreach ($res as $k=>$v){
+
+        }
         return $res;
     }
     //获取设计师
