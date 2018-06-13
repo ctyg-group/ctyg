@@ -22,6 +22,17 @@ class Index extends Common
         $article2   = $this->get_article2();//获取文章三篇
         $article3   = $this->get_article3();//获取公司动态
         $enped      = $this->get_enped();//获取百科
+        $work = Db::name('worklive')
+            ->alias("w")
+            ->field("w.id,w.live_name,w.stage_id,w.hot_id,w.apart_id,
+            w.apart,w.area,w.style,w.thumb,w.sort,w.is_show,w.is_hot,
+            w.is_new,w.add_time,w.worker1_id,w.worker2_id,d.sm_img,
+            d.designer_name")
+            ->join("jiuju_designer d","w.designer_id = d.id","LEFT")
+//            ->join("jiuju_worker wo","w.worker1_id = wo.id","LEFT")
+            ->order('sort asc,id desc')->limit(3)->select();
+        $cat = DB::name('worklive_cat')->field("cat_id,cat_name")->select();
+        $worker = DB::name('worker')->field("id,worker_name,image")->select();
         $data = array(
             "banner"    =>$banner,
             "worklive"  =>$worklive,
@@ -31,12 +42,20 @@ class Index extends Common
             "article2"  =>$article2,
             "article3"  =>$article3,
             "enped"  =>$enped,
+            "work" =>$work,
+            "cat" =>$cat,
+            "worker" =>$worker
         );
-        $res = DB::name("worklive")->field("id,live_name,style,thumb,stage_id")->order("add_time desc")->limit(3)->select();
-        foreach ($res as $k=>$v){
 
-        }
-//        dump($worklive);exit();
+//        $res = DB::name("worklive")->field("id,live_name,style,thumb,stage_id")->order("add_time desc")->limit(3)->select();
+//        foreach ($res as $k=>$v){
+//
+//        }
+//        header("Content-type:text/html;charset=utf-8");
+//        dump($work);
+//        dump($cat);
+//        dump($worker);
+//        exit();
 
         $this->assign($data);
         return $this->fetch();

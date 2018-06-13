@@ -522,61 +522,79 @@
 			</h2>
 			<p class="cfff">直播施工 足不出户看工地</p>
 		</div>
+		{volist name="work" id = "work"}
 		<div class="live">
 			<div class="live_sg">
 				<ul class="liveone hide">
 					<li>
 						<img src="/public/index/static/images/index2.0/shouye-icon (2).png" alt="">
-						<span>宏源尚峰小区</span>
+						{volist name="cat" id="c"}
+						{if condition="$work.hot_id eq $c.cat_id"}<span>{$c.cat_name}</span>{/if}
+						{/volist}
+						<!--<span>宏源尚峰小区</span>-->
+
 					</li>
-					<li>张先生的爱家</li>
-					<li>四室两厅一卫一厨</li>
-					<li>90㎡</li>
-					<li>现代简约</li>
+					<li>{$work.live_name}</li>
+					<li>{$work.apart}</li>
+					<li>{$work.area}㎡</li>
+					<li>{$work.style}</li>
 					<li>
 						进度：
-						<i class="cfa9a33">水电阶段</i>
+							{volist name="cat" id="c"}
+							{if condition="$work.stage_id eq $c.cat_id"}<i class="cfa9a33">{$c.cat_name}</i>{/if}
+							{/volist}
 					</li>
 				</ul>
 				<div class="livetwo live_list">
 					<div class="list_img">
 						<a href="#">
-							<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
+							<img src="{$work.thumb}" alt="">
 						</a>				
 					</div>
 					<div class="list_details">
 						<div>
-							<h2>绿景虹湾</h2>
-							<a href="#">
+							<!--<h2>绿景虹湾</h2>-->
+							{volist name="cat" id="c"}
+							{if condition="$work.hot_id eq $c.cat_id"}<h2>{$c.cat_name}</h2>{/if}
+							{/volist}
+							<a href="{:url('Index/Worklive/worklive_info',array('id'=>$work.id))}">
 								<i><img src="/public/index/static/images/index2.0/shouye-icon (17).png" alt=""></i>查看工地
 							</a>
 							<div class="cl"></div>
 						</div>
 						<p class="list_subtitle">
-							四房两厅一厨房两卫
-							<em>|</em><span> 120㎡ </sapn><em>|</em>
+							{$work.apart}
+							<em>|</em><span> {$work.area}㎡ </sapn><em>|</em>
 						</p>
 						<div class="team">
 							<div class="design">
-								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
+								<img src="{$work.sm_img}" alt="">
 								<p>
 									<span class="cfa9a33">设计师</span><br/>
-									<span>王大大</span>
+									<span>{$work.designer_name}</span>
 								</p>
 							</div>
 							<div class="design">
-								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
-								<p>
-									<span class="cfa9a33">项目管家</span><br/>
-									<span>王大大</span>
-								</p>
+								{volist name = "worker" id = "w"}
+								{if condition="$work.worker1_id eq $w.id"}
+									<img src="{$w.image}" alt="">
+									<p>
+										<span class="cfa9a33">项目管家</span><br/>
+										<span>{$w.worker_name}</span>
+									</p>
+								{/if}
+								{/volist}
 							</div>
 							<div class="design">
-									<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
+									{volist name = "worker" id = "w" }
+									{if condition="$work.worker2_id eq $w.id"}
+									<img src="{$w.image}" alt="">
 									<p>
 										<span class="cfa9a33">工程监理</span><br/>
-										<span>王大大</span>
+										<span>{$w.worker_name}</span>
 									</p>
+									{/if}
+									{/volist}
 								</div>
 						</div>
 						<div class="speed">
@@ -599,168 +617,11 @@
 					</div>
 				</div>
 			</div>
+			{/volist}
 
-			<div class="live_sg">
-				<ul class="liveone">
-					<li>
-						<img src="/public/index/static/images/index2.0/shouye-icon (2).png" alt="">
-						<span>宏源尚峰小区</span>
-					</li>
-					<li>张先生的爱家</li>
-					<li>四室两厅一卫一厨</li>
-					<li>90㎡</li>
-					<li>现代简约</li>
-					<li>
-						进度：
-						<i class="cfa9a33">水电阶段</i>
-					</li>
-				</ul>
-				<div class="livetwo live_list hide">
-					<div class="list_img">
-						<a href="#">
-							<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
-						</a>				
-					</div>
-					<div class="list_details">
-						<div>
-							<h2>绿景虹湾</h2>
-							<a href="#">
-								<i><img src="/public/index/static/images/index2.0/shouye-icon (17).png" alt=""></i>查看工地
-							</a>
-							<div class="cl"></div>
-						</div>
-						<p class="list_subtitle">
-							四房两厅一厨房两卫
-							<em>|</em><span> 120㎡ </sapn><em>|</em>
-						</p>
-						<div class="team">
-							<div class="design">
-								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
-								<p>
-									<span class="cfa9a33">设计师</span><br/>
-									<span>王大大</span>
-								</p>
-							</div>
-							<div class="design">
-								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
-								<p>
-									<span class="cfa9a33">项目管家</span><br/>
-									<span>王大大</span>
-								</p>
-							</div>
-							<div class="design">
-								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
-								<p>
-									<span class="cfa9a33">工程监理</span><br/>
-									<span>王大大</span>
-								</p>
-							</div>
-						</div>
-						<div class="speed">
-							<ul>
-								<li>拆改阶段</li>
-								<li>开工大吉</li>
-								<li>水电阶段</li>
-								<li class="on">瓦泥阶段</li>
-								<li>木工阶段</li>
-								<li>油漆阶段</li>
-								<li>验房阶段</li>
-								<li>竣工阶段</li>
-							</ul>
-					
-							<div class="jdt">
-								<div class="jdt1 t4">						
-								</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			
-			</div>
-			
-			<div class="live_sg">
-				<ul class="liveone">
-					<li>
-						<img src="/public/index/static/images/index2.0/shouye-icon (2).png" alt="">
-						<span>宏源尚峰小区</span>
-					</li>
-					<li>张先生的爱家</li>
-					<li>四室两厅一卫一厨</li>
-					<li>90㎡</li>
-					<li>现代简约</li>
-					<li>
-						进度：
-						<i class="cfa9a33">水电阶段</i>
-					</li>
-				</ul>
-				<div class="livetwo live_list hide">
-					<div class="list_img">
-						<a href="#">
-							<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
-						</a>				
-					</div>
-					<div class="list_details">
-						<div>
-							<h2>绿景虹湾</h2>
-							<a href="#">
-								<i><img src="/public/index/static/images/index2.0/shouye-icon (17).png" alt=""></i>查看工地
-							</a>
-							<div class="cl"></div>
-						</div>
-						<p class="list_subtitle">
-							四房两厅一厨房两卫
-							<em>|</em>
-							<span> 120㎡ </sapn>
-							<em>|</em>
-						</p>
-						<div class="team">
-							<div class="design">
-								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
-								<p>
-									<span class="cfa9a33">设计师</span><br/>
-									<span>王大大</span>
-								</p>
-							</div>
-							<div class="design">
-								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
-								<p>
-									<span class="cfa9a33">项目管家</span><br/>
-									<span>王大大</span>
-								</p>
-							</div>
-							<div class="design">
-								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
-								<p>
-									<span class="cfa9a33">工程监理</span><br/>
-									<span>王大大</span>
-								</p>
-							</div>
-						</div>
-						<div class="speed">
-							<ul>
-								<li>拆改阶段</li>
-								<li>开工大吉</li>
-								<li>水电阶段</li>
-								<li class="on">瓦泥阶段</li>
-								<li>木工阶段</li>
-								<li>油漆阶段</li>
-								<li>验房阶段</li>
-								<li>竣工阶段</li>
-							</ul>
-							<!-- 进度条 -->
-							<div class="jdt">
-								<div class="jdt1 t4">						
-								</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 		<div class="more">
-			<a href="#">查看更多工地></a>
+			<a href="/gdzb">查看更多工地></a>
 		</div>
 	</div>
 </div>
