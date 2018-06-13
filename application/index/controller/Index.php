@@ -22,6 +22,7 @@ class Index extends Common
         $article2   = $this->get_article2();//获取文章三篇
         $article3   = $this->get_article3();//获取公司动态
         $enped      = $this->get_enped();//获取百科
+        //工地直播
         $work = Db::name('worklive')
             ->alias("w")
             ->field("w.id,w.live_name,w.stage_id,w.hot_id,w.apart_id,
@@ -33,6 +34,24 @@ class Index extends Common
             ->order('sort asc,id desc')->limit(3)->select();
         $cat = DB::name('worklive_cat')->field("cat_id,cat_name")->select();
         $worker = DB::name('worker')->field("id,worker_name,image")->select();
+        $num=0;
+        foreach($designer as $k=>$v){
+//            $level = DB::name("designer_cat")->field("cat_name")->where(array("cat_id"=>$v['level_id']))->find();
+//            $style = DB::name("designer_cat")->field("cat_name")->where(array("cat_id"=>$v['style_id']))->find();
+//            $designer[$k]['level'] = $level['cat_name'];
+//            $designer[$k]['style'] = $style['cat_name'];
+            $designer[$k]['case'] = DB::name("case")->field("case_id,case_name")->where(array("designer_id"=>$v['id']))->limit(3)->select();
+            $n=0;
+            foreach($designer[$k]['case'] as $kv=>$vv){
+                $case = DB::name("case_images")->where(array("caseid"=>$vv['case_id']))->find();
+                $designer[$k]['case'][$n]['img'] =$case['image_url'];
+                $n++;
+            }
+            $num++;
+        }
+        header("Content-type:text/html;charset=utf-8");
+//        dump($designer);
+//        exit();
         $data = array(
             "banner"    =>$banner,
             "worklive"  =>$worklive,
@@ -51,10 +70,8 @@ class Index extends Common
 //        foreach ($res as $k=>$v){
 //
 //        }
-//        header("Content-type:text/html;charset=utf-8");
-//        dump($work);
-//        dump($cat);
-//        dump($worker);
+        header("Content-type:text/html;charset=utf-8");
+//        dump($designer);
 //        exit();
 
         $this->assign($data);
@@ -94,8 +111,8 @@ class Index extends Common
     }
     //获取设计师
     public function get_designer(){
-        $designer = DB::name("designer")->field("id,designer_name,designer_num,designer_ex,style_id,level_id,sm_img as img")
-            ->where("is_new = 1")->limit(5)->select();
+        $designer = DB::name("designer")->field("id,designer_name,score,designer_prize,designer_case,designer_num,designer_ex,style_id,level_id,sm_img as img")
+            ->where("is_new = 1")->limit(4)->select();
         $num=0;
         foreach($designer as $k=>$v){
             $case = DB::name("case")->alias("c")
