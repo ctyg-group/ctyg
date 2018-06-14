@@ -49,9 +49,9 @@
 	  <span class="sr-only">Previous</span>
 	</a>
 	<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-	  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
-		<img src="/public/index/static/images/index2.0/next.png" alt="">
-	  </span>
+	  	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+			<img src="/public/index/static/images/index2.0/next.png" alt="">
+	  	</span>
 	  <span class="sr-only">Next</span>
 	</a>
 
@@ -62,8 +62,16 @@
 			<span class="places"> 目前已有<i class="cfa9a33"> 879996 </i> 人获取装修报价</span>
 		</div>
         <input class="name" type="text" id="username" placeholder="请输入您的称呼">
-        <input class="tel" type="text" id="mobile" placeholder="填写手机号码，稍后会有客服联系您">
-        <input class="button" type="button" id="submitBtn" value="立即预约">
+		<input class="tel" type="text" id="mobile" placeholder="填写手机号码，稍后会有客服联系您">
+		<div class="index-main">
+			    <div class="section section2 calc-height transition">
+			        <div class="align-wrapper">
+			            <div class="btn-wrapper" style="margin-top: 0;">
+			                <a href="#" class="btn" target="_blank"><span>立即预约</span></a>
+			            </div>
+			        </div>
+				</div>
+		</div>
         <script type="text/javascript">
            $(function () { 
 			   $("#submitBtn").on("click",function () { 
@@ -119,28 +127,31 @@
 	<!-- 品质图片 -->
    <div class="qr_banner">
 		<a href="/zpzx/">
-			<!-- <div class="qr_banner_top"> -->
+
 				<div class="fl qr_big">
 					<img src="/public/index/static/images/index2.0/qr_01.jpg" alt="">
 				</div>
+
 				<div class="fl qr_right">
 						<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
 				</div>
-			<!-- </div> -->
-			<!-- <div class="qr_banner_b"> -->
+
 				<div class="fl qr_b_left">
 					<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
 				</div>
+
 				<div class="fl qr_list">
 					<img src="/public/index/static/images/index2.0/qr_04.jpg" alt="">
 				</div>
+
 				<div class="fl qr_list">
 						<img src="/public/index/static/images/index2.0/qr_05.jpg" alt="">
 				</div>
+
 				<div class="fl qr_list">
 						<img src="/public/index/static/images/index2.0/qr_06.jpg" alt="">
 				</div>
-			<!-- </div> -->
+		
 		</a>
 
    </div>
@@ -165,28 +176,30 @@
 			<div class="is_nav fl">
 				<!-- 免费报价 -->
 				<div class="free_bj on bg01">
-					<div class="bgsize bgimg">
+					<!-- <div class="bgsize bgimg">
 						<div class="bgimg01"></div>
-					</div>					
+					</div>					 -->
+					<img src="/public/index/static/images/index2.0/is_01.png" alt="">
 					<span>免费报价</span>
 					<div class="xsj"></div>
 				</div>
 				
 				<div class="free_bj bg02">
-					<div class="bgsize">
+					<!-- <div class="bgsize">
 						<div class="bgimg02"></div>
-					</div>					
+					</div>					 -->
+					<img src="/public/index/static/images/index2.0/is_01.png" alt="">
 					<span>免费量房</span>
 					<div class="xsj" style="display:none;"></div>
 				</div>
 
-				<!--<div class="free_bj bg03">
+				<!-- <div class="free_bj bg03">
 					<div class="bgsize">
 						<div class="bgimg03"></div>
 					</div>
 					<span>装修分期</span>
 					<div class="xsj" style="display:none;"></div>
-				</div>-->
+				</div> -->
 
 			</div>
 			<!-- 栏目区 -->
@@ -257,7 +270,18 @@
 	
 							</select>
 						</p>
-						<input type="button" class="bj_btn" onclick="baojia()" value="立即报价">
+						<!-- <input type="button" class="bj_btn" onclick="baojia()" value="立即报价"> -->
+						<div class="index-main">
+								<div class="section section2 calc-height transition">
+									<div class="align-wrapper">
+										<div class="btn-wrapper"style="margin-top: 0;">
+											<a href="#" class="btn bj_btn"  onclick="baojia()" target="_blank">
+												<span class="ljbj_btn">立即报价</span>
+											</a>
+										</div>
+									</div>
+								</div>
+						</div>
 					</div>
 					<!-- 预算估价 -->
 					<div class="ysgj">
@@ -289,7 +313,18 @@
 								<input type="text" name="mobile" id="mobile2" placeholder="输入您的号码">
 							</p>
 							<div class="cl"></div>
-							<input type="button" class="lf_btn" onclick="yuyue()" value="立即预约">
+							<!-- <input type="button" class="lf_btn" onclick="yuyue()" value="立即预约"> -->
+							<div class="index-main">
+								<div class="section section2 calc-height transition">
+									<div class="align-wrapper">
+										<div class="btn-wrapper" style="margin-top: 0;">
+											<a href="#" class="btn lf_btn" onclick="yuyue()" target="_blank">
+												<span>立即预约</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
 					</div>
 					<div class="lf_img">
 						<img src="/public/index/static/images/index2.0/txfw_lf.jpg" alt="">
@@ -629,8 +664,6 @@
 <script> 
 	$(function () { 
 		//	工地live
-        $(".live_sg").children(".liveone").removeClass("hide");
-        $(".live_sg").children(".livetwo").addClass("hide");
 		$(".live_sg").bind("mouseenter",function(){
 			$(".live_sg").children(".liveone").removeClass("hide");
 			$(".live_sg").children(".livetwo").addClass("hide");
@@ -660,24 +693,22 @@
 				<div class="ed_sj">
 					<!-- 正面 -->
 					<div href="/" class="one list flip out">
-						<div class="ed_pic" style="background: url('/public/upload/goods/2017/07-21/7be4f7b2f83b130a247ecbc00950b575.jpg') no-repeat center; ">
+						<div class="ed_pic">
 							<div class="head_portrait">
-								<img src="{$designer[0]['img']}" alt="">
+								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
 							</div>
 						</div>
-						<p class="ed_person">{$designer[0]['designer_name']}</p>
+						<p class="ed_person">王大大</p>
 						<div class="ed_zp">
 							<p>口碑：
-								<i><img src='/public/index/static/images/desxingj{$designer[0]["score"]}.png' alt=""></i>
-								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>-->
-								<i></i>
-							<!--<div class="xingj" style="background: url('/public/index/static/images/desxingj{$designer[0]["score"]}.png') no-repeat;"></div>-->
+								<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>
 							</p>
-							<p>作品：{$designer[0]['designer_num']}个</p>
-							<p>风格：{$designer[0]['style']}</p>
+							<p>作品： 64个</p>
+							<p>风格：地中海式</p>
 						</div>
 						<a class="ed_arrow" href="#">
 							<img src="/public/index/static/images/index2.0/zs_02.png" alt="">
@@ -687,18 +718,19 @@
 					<div href="/" class="two list flip in">
 						<div class="ed_sname">
 							<a href="#">
-								<img class="head" src="{$designer[0]['img']}" alt="">
-								<span >{$designer[0]['designer_name']}</span>
-								<a href="{:url('Index/designer/desdata',array('id'=>$designer[0]['id'],'p'=>1))}"><img src="/public/index/static/images/index2.0/zs_06.png" alt=""></a>
+								<img class="head" src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+								<span >王小二</span>
+								<img src="/public/index/static/images/index2.0/zs_06.png" alt="">
 							</a>
 						</div>
 						<div class="designation">
 							<h3>
 								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
-								<span class="fs18">{$designer[0]['level']}</span>
+								<span class="fs18">高级设计师</span>
 							</h3>
 							<p class="fs14">
-								{$designer[0]['designer_prize']|mb_substr=###,0,30,'utf-8'}{if condition="$designer[0]['designer_prize'].length gt 30"}...{/if}
+								设计源于生活，根据业主的需求，融合文化，设计，生活等
+								相关因素，让空间更加的有活力。
 							</p>
 						</div>
 						<div class="jdanli">
@@ -707,38 +739,51 @@
 								<span class="fs18">经典案例</span>
 							</h3>
 							<p class="fs14">
-								{$designer[0]['designer_case']}
+								鸿源尚峰、领航城、远洋新干线，星河国际
 							</p>
 							<div class="anli_tp">
-								<img src="{$designer[0]['case'][0]['img']}" alt="">
-								<img src="{$designer[0]['case'][1]['img']}" alt="">
-								<img src="{$designer[0]['case'][2]['img']}" alt="">
+								<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+								<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+								<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
 							</div>
-							<a class="lookme" href="{:url('Index/designer/desdata',array('id'=>$designer[0]['id'],'p'=>1))}">
+							<!-- <a class="lookme" href="#">
 								找我设计
-							</a>
+							</a> -->
+
+							<div class="index-main">
+								<div class="section section2 calc-height transition">
+									<div class="align-wrapper">
+										<div class="btn-wrapper" style="margin-top: 0;">
+											<a href="#" class="btn lookme" target="_blank">
+												<span>找我设计</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
-				<div class="ed_sj ed_sj1">
+				<div class="ed_sj ed_sj1">	
 					<!-- 正面 -->
 					<div href="/" class="one list1 flip">
-						<div class="ed_pic" style="background:url('/public/upload/goods/2017/07-25/010964d356b8083a5da898aaab450312.jpg')">
+						<div class="ed_pic">
 							<div class="head_portrait">
-								<img src="{$designer[1]['img']}" alt="">
+								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
 							</div>
 						</div>
-						<p class="ed_person">{$designer[1]['designer_name']}</p>
+						<p class="ed_person">王大大</p>
 						<div class="ed_zp">
 							<p>口碑：
-								<i><img src='/public/index/static/images/desxingj{$designer[1]["score"]}.png' alt=""></i>
-								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>-->
+								<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>
 							</p>
-							<p>作品：{$designer[1]['designer_num']}个</p>
-							<p>风格：{$designer[1]['style']}</p>
+							<p>作品： 64个</p>
+							<p>风格：地中海式</p>
 						</div>
 						<a class="ed_arrow" href="#">
 							<img src="/public/index/static/images/index2.0/zs_02.png" alt="">
@@ -748,18 +793,19 @@
 					<div href="/" class="two list1 flip out">
 						<div class="ed_sname">
 							<a href="#">
-								<img class="head" src="{$designer[1]['img']}" alt="">
-								<span >{$designer[1]['designer_name']}</span>
-								<a href="{:url('Index/designer/desdata',array('id'=>$designer[1]['id'],'p'=>1))}"><img src="/public/index/static/images/index2.0/zs_06.png" alt=""></a>
+								<img class="head" src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+								<span >王小二</span>
+								<img src="/public/index/static/images/index2.0/zs_06.png" alt="">
 							</a>
 						</div>
 						<div class="designation">
 							<h3>
 								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
-								<span class="fs18">{$designer[1]['level']}</span>
+								<span class="fs18">高级设计师</span>
 							</h3>
 							<p class="fs14">
-								{$designer[1]['designer_prize']|mb_substr=###,0,30,'utf-8'}{if condition="$designer[1]['designer_prize'].length gt 30"}...{/if}
+								设计源于生活，根据业主的需求，融合文化，设计，生活等
+								相关因素，让空间更加的有活力。
 							</p>
 						</div>
 						<div class="jdanli">
@@ -768,39 +814,52 @@
 								<span class="fs18">经典案例</span>
 							</h3>
 							<p class="fs14">
-								{$designer[1]['designer_case']}
+								鸿源尚峰、领航城、远洋新干线，星河国际
 							</p>
 							<div class="anli_tp">
-								<img src="{$designer[1]['case'][0]['img']}" alt="">
-								<img src="{$designer[1]['case'][1]['img']}" alt="">
-								<img src="{$designer[1]['case'][2]['img']}" alt="">
+								<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+								<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+								<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
 							</div>
-							<a class="lookme" href="{:url('Index/designer/desdata',array('id'=>$designer[1]['id'],'p'=>1))}">
+							<!-- <a class="lookme" href="#">
 								找我设计
-							</a>
+							</a> -->
+
+							<div class="index-main">
+								<div class="section section2 calc-height transition">
+									<div class="align-wrapper">
+										<div class="btn-wrapper" style="margin-top: 0;">
+											<a href="#" class="btn lookme" target="_blank">
+												<span>找我设计</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
-				<div class="ed_sj ed_sj2">
+				<div class="ed_sj ed_sj2">	
 					<!-- 正面 -->
 					<div href="/" class="one list1 flip">
-						<div class="ed_pic" style="background:url('/public/upload/goods/2017/07-21/9ed01a75d56217aa71f2582b29023e6d.jpg')">
-							<div class="head_portrait">
-								<img src="{$designer[2]['img']}" alt="">
+						<div class="ed_pic">
+								<div class="head_portrait">
+									<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
+								</div>
 							</div>
-						</div>
-							<p class="ed_person">{$designer[1]['designer_name']}</p>
-						<div class="ed_zp">
-							<p>口碑：
-								<i><img src='/public/index/static/images/desxingj{$designer[2]["score"]}.png' alt=""></i>
-								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>-->
-							</p>
-							<p>作品：{$designer[2]['designer_num']}个</p>
-							<p>风格：{$designer[2]['style']}</p>
-						</div>
+							<p class="ed_person">王大大</p>
+							<div class="ed_zp">
+								<p>口碑：
+									<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+									<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+									<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+									<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>
+									<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>
+								</p>
+								<p>作品： 64个</p>
+								<p>风格：地中海式</p>
+							</div>
 							<a class="ed_arrow" href="#">
 								<img src="/public/index/static/images/index2.0/zs_02.png" alt="">
 							</a>
@@ -808,61 +867,73 @@
 					<!-- 背面 -->
 					<div href="/" class="two list1 flip out">
 						<div class="ed_sname">
-							<a href="#">
-								<img class="head" src="{$designer[2]['img']}" alt="">
-								<span >{$designer[2]['designer_name']}</span>
-								<a href="{:url('Index/designer/desdata',array('id'=>$designer[2]['id'],'p'=>1))}"><img src="/public/index/static/images/index2.0/zs_06.png" alt=""></a>
-							</a>
-						</div>
-						<div class="designation">
-							<h3>
-								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
-								<span class="fs18">{$designer[2]['level']}</span>
-							</h3>
-							<p class="fs14">
-								{$designer[2]['designer_prize']|mb_substr=###,0,50,'utf-8'}...
-							</p>
-						</div>
-						<div class="jdanli">
-							<h3>
-								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
-								<span class="fs18">经典案例</span>
-							</h3>
-							<p class="fs14">
-								{$designer[2]['designer_case']|mb_substr=###,0,30,'utf-8'}
-							</p>
-							<div class="anli_tp">
-								<img src="{$designer[2]['case'][0]['img']}" alt="">
-								<img src="{$designer[2]['case'][1]['img']}" alt="">
-								<img src="{$designer[2]['case'][2]['img']}" alt="">
+								<a href="#">
+									<img class="head" src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+									<span >王小二</span>
+									<img src="/public/index/static/images/index2.0/zs_06.png" alt="">
+								</a>
 							</div>
-							<a class="lookme" href="{:url('Index/designer/desdata',array('id'=>$designer[2]['id'],'p'=>1))}">
-								找我设计
-							</a>
-						</div>
+							<div class="designation">
+								<h3>
+									<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+									<span class="fs18">高级设计师</span>
+								</h3>
+								<p class="fs14">
+									设计源于生活，根据业主的需求，融合文化，设计，生活等
+									相关因素，让空间更加的有活力。
+								</p>
+							</div>
+							<div class="jdanli">
+								<h3>
+									<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+									<span class="fs18">经典案例</span>
+								</h3>
+								<p class="fs14">
+									鸿源尚峰、领航城、远洋新干线，星河国际
+								</p>
+								<div class="anli_tp">
+									<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+									<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+									<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+								</div>
+								<!-- <a class="lookme" href="#">
+									找我设计
+								</a> -->
+
+								<div class="index-main">
+									<div class="section section2 calc-height transition">
+										<div class="align-wrapper">
+											<div class="btn-wrapper" style="margin-top: 0;">
+												<a href="#" class="btn lookme" target="_blank">
+													<span>找我设计</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
 					</div>
 				</div>
-				<div class="ed_sj ed_sj3">
+				<div class="ed_sj ed_sj3">			
 					<!-- 正面	 -->
 					<div href="/" class="one list1 flip">
-						<div class="ed_pic" style="background: url('/public/upload/goods/2017/07-21/7be4f7b2f83b130a247ecbc00950b575.jpg') no-repeat center; ">
+						<div class="ed_pic">
 							<div class="head_portrait">
-								<img src="{$designer[3]['img']}" alt="">
+								<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
 							</div>
 						</div>
-						<p class="ed_person">{$designer[3]['designer_name']}</p>
+						<p class="ed_person">王大大</p>
 						<div class="ed_zp">
 							<p>口碑：
-								<i><img src='/public/index/static/images/desxingj{$designer[3]["score"]}.png' alt=""></i>
-								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>-->
-								<!--<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>-->
-								<i></i>
-								<!--<div class="xingj" style="background: url('/public/index/static/images/desxingj{$designer[0]["score"]}.png') no-repeat;"></div>-->
+								<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>
+								<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>
 							</p>
-							<p>作品：{$designer[3]['designer_num']}个</p>
-							<p>风格：{$designer[3]['style']}</p>
+							<p>作品： 64个</p>
+							<p>风格：地中海式</p>
 						</div>
 						<a class="ed_arrow" href="#">
 							<img src="/public/index/static/images/index2.0/zs_02.png" alt="">
@@ -871,44 +942,58 @@
 					<!-- 背面 -->
 					<div href="/" class="two list1 flip out">
 						<div class="ed_sname">
-							<a href="#">
-								<img class="head" src="{$designer[3]['img']}" alt="">
-								<span >{$designer[3]['designer_name']}</span>
-								<img src="/public/index/static/images/index2.0/zs_06.png" alt="">
-							</a>
-						</div>
-						<div class="designation">
-							<h3>
-								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
-								<span class="fs18">{$designer[3]['level']}</span>
-							</h3>
-							<p class="fs14">
-								{$designer[3]['designer_prize']|mb_substr=###,0,30,'utf-8'}{if condition="$designer[3]['designer_prize'].length gt 30"}...{/if}
-							</p>
-						</div>
-						<div class="jdanli">
-							<h3>
-								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
-								<span class="fs18">经典案例</span>
-							</h3>
-							<p class="fs14">
-								{$designer[3]['designer_case']}
-							</p>
-							<div class="anli_tp">
-								<img src="{$designer[3]['case'][0]['img']}" alt="">
-								<img src="{$designer[3]['case'][1]['img']}" alt="">
-								<img src="{$designer[3]['case'][2]['img']}" alt="">
+								<a href="#">
+									<img class="head" src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+									<span >王小二</span>
+									<img src="/public/index/static/images/index2.0/zs_06.png" alt="">
+								</a>
 							</div>
-							<a class="lookme" href="{:url('Index/designer/desdata',array('id'=>$designer[3]['id'],'p'=>1))}">
-								找我设计
-							</a>
-						</div>
+							<div class="designation">
+								<h3>
+									<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+									<span class="fs18">高级设计师</span>
+								</h3>
+								<p class="fs14">
+									设计源于生活，根据业主的需求，融合文化，设计，生活等
+									相关因素，让空间更加的有活力。
+								</p>
+							</div>
+							<div class="jdanli">
+								<h3>
+									<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+									<span class="fs18">经典案例</span>
+								</h3>
+								<p class="fs14">
+									鸿源尚峰、领航城、远洋新干线，星河国际
+								</p>
+								<div class="anli_tp">
+									<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+									<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+									<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+								</div>
+								<!-- <a class="lookme" href="#">
+									找我设计
+								</a> -->
+
+								<div class="index-main">
+									<div class="section section2 calc-height transition">
+										<div class="align-wrapper">
+											<div class="btn-wrapper" style="margin-top: 0;">
+												<a href="#" class="btn lookme" target="_blank">
+													<span>找我设计</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
 					</div>
 				</div>
 				<div class="cl"></div>
 			</div>
 			<div class="more">
-				<a href="/fwzx">查看更多设计师></a>
+				<a href="#">查看更多设计师></a>
 			</div>
 		</div>
 		
@@ -1315,70 +1400,71 @@
 {include file="public/footer" /}
 
 <script src="/public/login/js/Treatment.js" type="text/javascript"></script>
+<script src="/public/index/style/index_index.bundle.js"></script>
 
 <script>
 
-	$(".index1c ul li").mouseover(function(){
+	// $(".index1c ul li").mouseover(function(){
 
-        classname = $(this).attr('class')
+    //     classname = $(this).attr('class')
 
-		$("."+classname+" i").addClass(classname+"s");
+	// 	$("."+classname+" i").addClass(classname+"s");
 
-	});
+	// });
 
-    $(".index1c ul li").mouseout(function(){
+    // $(".index1c ul li").mouseout(function(){
 
-        classname = $(this).attr('class');
+    //     classname = $(this).attr('class');
 
-        $("."+classname+" i").removeClass(classname+"s");
+    //     $("."+classname+" i").removeClass(classname+"s");
 
-    });
+    // });
 
-    var canGetCookie = 0;//是否支持存储Cookie 0 不支持 1 支持
+    // var canGetCookie = 0;//是否支持存储Cookie 0 不支持 1 支持
 
-    var ajaxmockjax = 1;//是否启用虚拟Ajax的请求响 0 不启用  1 启用
+    // var ajaxmockjax = 1;//是否启用虚拟Ajax的请求响 0 不启用  1 启用
 
 
 
-    var CodeVal = 0;
+    // var CodeVal = 0;
 
-    Code();
+    // Code();
 
-    function Code() {
+    // function Code() {
 
-        if(canGetCookie == 1){
+    //     if(canGetCookie == 1){
 
-            createCode("AdminCode");
+    //         createCode("AdminCode");
 
-            var AdminCode = getCookieValue("AdminCode");
+    //         var AdminCode = getCookieValue("AdminCode");
 
-            showCheck(AdminCode);
+    //         showCheck(AdminCode);
 
-        }else{
+    //     }else{
 
-            showCheck(createCode(""));
+    //         showCheck(createCode(""));
 
-        }
+    //     }
 
-    }
+    // }
 
-    function showCheck(a) {
+    // function showCheck(a) {
 
-        CodeVal = a;
+    //     CodeVal = a;
 
-        var c = document.getElementById("myCanvas");
+    //     var c = document.getElementById("myCanvas");
 
-        var ctx = c.getContext("2d");
+    //     var ctx = c.getContext("2d");
 
-        ctx.clearRect(0, 0, 1000, 1000);
+    //     ctx.clearRect(0, 0, 1000, 1000);
 
-        ctx.font = "80px 'Hiragino Sans GB'";
+    //     ctx.font = "80px 'Hiragino Sans GB'";
 
-        ctx.fillStyle = "#989898";
+    //     ctx.fillStyle = "#989898";
 
-        ctx.fillText(a, 0, 100);
+    //     ctx.fillText(a, 0, 100);
 
-    }
+    // }
 
 
 	// 免费报价验证
