@@ -36,10 +36,6 @@ class Index extends Common
         $worker = DB::name('worker')->field("id,worker_name,image")->select();
         $num=0;
         foreach($designer as $k=>$v){
-//            $level = DB::name("designer_cat")->field("cat_name")->where(array("cat_id"=>$v['level_id']))->find();
-//            $style = DB::name("designer_cat")->field("cat_name")->where(array("cat_id"=>$v['style_id']))->find();
-//            $designer[$k]['level'] = $level['cat_name'];
-//            $designer[$k]['style'] = $style['cat_name'];
             $designer[$k]['case'] = DB::name("case")->field("case_id,case_name")->where(array("designer_id"=>$v['id']))->limit(3)->select();
             $n=0;
             foreach($designer[$k]['case'] as $kv=>$vv){
@@ -50,8 +46,8 @@ class Index extends Common
             $num++;
         }
         header("Content-type:text/html;charset=utf-8");
-//        dump($designer);
-//        exit();
+        dump($caselist);
+        exit();
         $data = array(
             "banner"    =>$banner,
             "worklive"  =>$worklive,
@@ -137,7 +133,7 @@ class Index extends Common
         for($i=10;$i<=14;$i++){
             $case[$num]['img'] = $Case->alias("ca")->field("ca.case_id,ca.case_name,ci.image_url,ci.img_info")
                 ->join("case_images ci","ca.case_id=ci.caseid","LEFT")
-                ->where(array("style_id"=>$i))->order("add_time asc")->limit(3)->select();
+                ->where(array("style_id"=>$i))->order("add_time asc")->limit(6)->select();
             $num++;
         }
         return $case;
