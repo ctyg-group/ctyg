@@ -46,8 +46,8 @@ class Index extends Common
             $num++;
         }
         header("Content-type:text/html;charset=utf-8");
-        dump($caselist);
-        exit();
+//        dump($caselist);
+//        exit();
         $data = array(
             "banner"    =>$banner,
             "worklive"  =>$worklive,

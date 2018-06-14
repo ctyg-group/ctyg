@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {include file="public/header" /}
 
 <link rel="stylesheet" href="/public/index/style/index.css">
@@ -1603,4 +1604,1611 @@
         });
     }
 
+=======
+{include file="public/header" /}
+
+<link rel="stylesheet" href="/public/index/style/index.css">
+<script src="/public/index/js/jquery-1.10.2.min.js"></script>
+<script src="/public/index/bootstarp/js/bootstrap.min.js"></script>
+
+
+
+<!-- 轮播图 -->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	<!-- Indicators -->
+	<ol class="carousel-indicators Indicators">
+	  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	</ol>
+  
+	<!-- Wrapper for slides -->
+	<div class="carousel-inner" role="listbox">
+	  	<div class="item active">
+			<a href="/jiuju04">
+				<img class="img-responsive" src="/public/desimg/20180508/c6afa2838b0054b4955f005cc09655ae.jpg" alt="...">
+			</a>
+			<div class="carousel-caption">		  
+			</div>
+		</div>
+	  	<div class="item">
+		  	<a href="/zpzx">
+				<img class="img-responsive" src="/public/upload/slide/2017/11-29/fa6ca16ff360639c7df76068ae1d53e0.jpg" alt="...">
+			</a>
+			<div class="carousel-caption">		  
+			</div>
+	  	</div>
+	  	<div class="item">
+			<a href="/"> 
+				<img class="img-responsive" src="/public/upload/slide/2017/08-01/a644cb44e2377fe81e220a7093f02e88.jpg" alt="...">
+			</a>
+			<div class="carousel-caption">		  
+			</div>
+	  </div>
+	 
+	</div>
+  
+	<!-- Controls -->
+	<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+	  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
+		  <img src="/public/index/static/images/index2.0/previous.png" alt="">
+	  </span>
+	  <span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+	  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+		<img src="/public/index/static/images/index2.0/next.png" alt="">
+	  </span>
+	  <span class="sr-only">Next</span>
+	</a>
+
+	<!-- 广告免费报价 -->
+	<div class="homeBanneraAbout">
+        <div>
+			<h2>免费预约 |</h2>			
+			<span class="places"> 目前已有<i class="cfa9a33"> 879996 </i> 人获取装修报价</span>
+		</div>
+        <input class="name" type="text" id="username" placeholder="请输入您的称呼">
+        <input class="tel" type="text" id="mobile" placeholder="填写手机号码，稍后会有客服联系您">
+        <input class="button" type="button" id="submitBtn" value="立即预约">
+        <script type="text/javascript">
+           $(function () { 
+			   $("#submitBtn").on("click",function () { 
+				var username = $("#username").val();
+				if(username == ''){    
+					return layer.msg('请填写您的姓名', {time: 800, icon:2,shade: 0.2});   
+				}  
+			
+				var mobile = $("#mobile").val();
+				true_mobile = /^1[34578]{1}\d{9}$/;   
+				if(mobile == ''){   
+					return layer.msg('请输入手机号', {time: 800, icon:2,shade: 0.2});   
+				}  
+				if(!true_mobile.test(mobile)){   
+					return layer.msg('请填写正确手机号', {time: 800, icon:2,shade: 0.2}); 
+				}
+				var index = layer.load(1, {
+					shade: [0.1,'#fff'] //0.1透明度的白色背景
+				});
+				$.ajax({
+					url: "{:url('Index/Ajax/user_info')}",
+					data: {username:username,mobile:mobile},
+					type: 'POST',
+					dataType: "json",
+					cache: false,
+					success: function(data,state){
+						if(state == 'success' && data.code == '0'){
+							layer.close(index);
+							layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+						}else{
+							layer.close(index);
+							layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2}); 
+						}
+					}
+				});
+			    })
+		    })
+        </script>
+    </div>
+</div>
+
+
+<!-- 品质整装 -->
+<div class="quality_rectification layout">
+    <div class="index_title">
+        <h2>
+			<span>品质整装</span>
+            <hr>
+        </h2>
+        <p>尖端工艺、极致服务、一线品牌 铸就品质整装！</p>
+	</div>
+	
+	<!-- 品质图片 -->
+   <div class="qr_banner">
+		<a href="/zpzx/">
+			<!-- <div class="qr_banner_top"> -->
+				<div class="fl qr_big">
+					<img src="/public/index/static/images/index2.0/qr_01.jpg" alt="">
+				</div>
+				<div class="fl qr_right">
+						<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+				</div>
+			<!-- </div> -->
+			<!-- <div class="qr_banner_b"> -->
+				<div class="fl qr_b_left">
+					<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">
+				</div>
+				<div class="fl qr_list">
+					<img src="/public/index/static/images/index2.0/qr_04.jpg" alt="">
+				</div>
+				<div class="fl qr_list">
+						<img src="/public/index/static/images/index2.0/qr_05.jpg" alt="">
+				</div>
+				<div class="fl qr_list">
+						<img src="/public/index/static/images/index2.0/qr_06.jpg" alt="">
+				</div>
+			<!-- </div> -->
+		</a>
+
+   </div>
+</div>
+
+
+<!-- 贴心服务 -->
+<div class="intimate_service">
+	<div class="layout">
+		<!-- 标题 -->
+		<div class="index_title">
+			<h2>
+				<span class="bgf8">贴心服务</span>
+				<hr>
+			</h2>
+			<p>一键预约 量房报价两不误</p>
+		</div>
+
+		<!-- 报价预算 -->
+		<div class="quot">
+			<!-- 导航栏 -->
+			<div class="is_nav fl">
+				<!-- 免费报价 -->
+				<div class="free_bj on bg01">
+					<div class="bgsize bgimg">
+						<div class="bgimg01"></div>
+					</div>					
+					<span>免费报价</span>
+					<div class="xsj"></div>
+				</div>
+				
+				<div class="free_bj bg02">
+					<div class="bgsize">
+						<div class="bgimg02"></div>
+					</div>					
+					<span>免费量房</span>
+					<div class="xsj" style="display:none;"></div>
+				</div>
+
+				<!--<div class="free_bj bg03">
+					<div class="bgsize">
+						<div class="bgimg03"></div>
+					</div>
+					<span>装修分期</span>
+					<div class="xsj" style="display:none;"></div>
+				</div>-->
+
+			</div>
+			<!-- 栏目区 -->
+			<div class="is_lm fl">
+				<!-- 免费报价 -->
+				<div class="bjlm show">
+					<p>
+						<span class="c333333 fs24">装修要花多少钱？</span>
+						<i>
+							<img src="/public/index/static/images/index2.0/is_04.png" alt="">
+						</i>
+						<span class="cfa9a33 fs14">10分钟前123****1241李先生报价成功</span>
+					</p>
+					<div class="bjform">
+						<p> 
+							<span class="c333333">小区地址 : </span><br/>
+							<input type="text" name="adress" id="adress1" placeholder="输入小区地址">
+						</p>
+						<p> 
+							<span class="c333333">房屋面积 :<i class="cfa9a33"> * </i> </span><br/>
+							<input type="text" name="area" id="area1" placeholder="输入房屋面积">
+						</p>
+						<p> 
+							<span class="c333333">您的名字 : </span><br/>
+							<input type="text" name="username" id="username1" placeholder="输入您的名字">
+						</p>
+						<p> 
+							<span class="c333333">您的号码 :<i class="cfa9a33"> * </i></span><br/>
+							<input type="text" name="mobile" id="mobile1" placeholder="输入您的号码">
+						</p>
+						<div class="cl"></div>
+						<p id="Huxing">
+							<select name="shi" id="shi">
+	
+								<option value="1" selected>1室</option>
+	
+								<option value="2">2室</option>
+	
+								<option value="3">3室</option>
+	
+								<option value="4">4室</option>
+	
+								<option value="5">5室</option>
+	
+							</select>
+	
+							<select name="code" id="ting">
+	
+								<option value="1" selected>1厅</option>
+	
+								<option value="2">2厅</option>
+	
+							</select>
+	
+							<select name="chu" id="chu">
+	
+								<option value="1" selected>1厨</option>
+	
+							</select>
+	
+							<select name="wei" id="wei">
+	
+								<option value="1" selected>1卫</option>
+	
+								<option value="2">2卫</option>
+	
+								<option value="3">3卫</option>
+	
+							</select>
+						</p>
+						<input type="button" class="bj_btn" onclick="baojia()" value="立即报价">
+					</div>
+					<!-- 预算估价 -->
+					<div class="ysgj">
+						<p class="c333333">
+							您的整装预算估价为：<br/>
+							<span class="fs28"><i id="yusuan" class="cfa9a33">886999</i> 元</span>
+						</p>
+					</div>
+					<div class="cl"></div>
+				</div>
+				<!-- 免费量房 -->
+				<div class="bjlm">
+					<p class="cfa9a33 fs24">1分钟发布申请，坐等装修公司免费上门量房</p>
+					<div class="lfform">
+							<p class="short"> 
+								<span class="c333333">房屋面积 :<i class="cfa9a33"> * </i> </span>
+								<input type="text" name="area" id="area2" placeholder="输入房屋面积">
+							</p>
+							<p class="long"> 
+								<span class="c333333">小区地址 :<i class="cfa9a33"> * </i> </span>
+								<input type="text" name="adress" id="adress2" placeholder="输入小区地址">
+							</p>
+							<p class="short"> 
+								<span class="c333333">您的名字 : </span>
+								<input type="text" name="username" id="username2" placeholder="输入您的名字">
+							</p>
+							<p class="long"> 
+								<span class="c333333">您的号码 :<i class="cfa9a33"> * </i></span>
+								<input type="text" name="mobile" id="mobile2" placeholder="输入您的号码">
+							</p>
+							<div class="cl"></div>
+							<input type="button" class="lf_btn" onclick="yuyue()" value="立即预约">
+					</div>
+					<div class="lf_img">
+						<img src="/public/index/static/images/index2.0/txfw_lf.jpg" alt="">
+					</div>
+				</div>
+				<!-- 装修分期 -->
+				<div class="bjlm">
+					<p class="fqtitle">
+						<span class="cfa9a33 fs24">10秒计算分期额度</span>
+						<span></span>
+						<span class="c333333 fs14">目前已有<em class="cfa9a33" id="fenqi">324538</em>人获取分期信息</span>
+					</p>
+					<div class="fqform">
+						<p> 
+							<span class="c333333">房屋面积 :<i class="cfa9a33"> * </i> </span>
+							<input type="text" name="area" id="area3" placeholder="输入房屋面积">
+						</p>
+						<p> 
+							<span class="c333333">小区地址 :<i class="cfa9a33"> * </i> </span>
+							<input type="text" name="adress" id="adress3" placeholder="输入小区地址">
+						</p>
+						<p> 
+							<span class="c333333">您的名字 : </span>
+							<input type="text" name="username" id="username3" placeholder="输入您的名字">
+						</p>
+						<p> 
+							<span class="c333333">您的号码 :<i class="cfa9a33"> * </i></span>
+							<input type="text" name="mobile" id="mobile3" placeholder="输入您的号码">
+						</p>
+						<div class="cl"></div>
+						<input type="button" onclick="fenqi()" class="fq_btn" value="立即预约">
+					</div>
+					<div class="fqmx">
+						<div class="fqmx_title">
+						</div>
+						<div class="fqmx_pro">
+							<p class="c333333">
+								预估装修金额 <br/>
+								<span class="cfa9a33">358953 元</span>
+							</p>
+							<p class="c333333">
+									预估贷款金额<br/>
+								<span class="cfa9a33">358953 元</span>
+							</p>
+							<p class="c333333">
+									分期数<br/>
+								<span class="cfa9a33">12 期</span>
+							</p>
+							<p class="c333333">
+									每月应还<br/>
+								<span class="cfa9a33">4566 元</span>
+							</p>
+						</div>
+						<div class="fqzj">
+							<p class="c333333">
+								<span class="fs16">每天还款 <i class="cfa9a33 fs30"> 0.00 </i>   元</span><br/>
+								<span >(以上计算信息仅供参考)</span>
+							</p>
+						</div>
+						<div class="cl"></div>
+					</div>
+				</div>
+			</div>
+			<div class="cl"></div>
+		</div>
+	</div>
+	<!-- js脚本 -->
+	<script type="text/javascript">
+		$(function () { 
+			$(".free_bj").on("click",function () { 
+				$(this).children(".xsj").css("display","block");
+				$(this).siblings().children(".xsj").css("display","none");
+				$(this).addClass("on").siblings().removeClass("on");
+				$(this).children(".bgsize").addClass("bgimg");
+				$(this).siblings().children(".bgsize").removeClass("bgimg");
+				
+				var idx=$(this).index();
+				$(".bjlm").eq(idx).addClass("show").siblings().removeClass("show");
+			 });
+			 
+		 });
+	</script>
+</div>
+
+
+<!-- 装修流程 -->
+<div class="decoration_process">
+	<div class="layout">
+		<!-- 标题 -->
+		<div class="index_title">
+			<h2>
+				<span class="bgcolor">装修流程</span>
+				<hr>
+			</h2>
+			<p class="cfff">装修六步走 新家不用愁</p>
+		</div>
+		<!-- 流程 -->
+		<div class="dp_flow">
+			<!-- 1 -->
+			<div class="flowxj">
+				<div class="flow_box">
+					<div class="flowxj_bgimg dp_img01">	
+						<img src="/public/index/static/images/index2.0/lc_h01.png" alt="">	
+						<p>在线咨询</p>	
+						<p></p>
+						<img src="/public/index/static/images/index2.0/lc_01.png" alt="">	
+						<p>
+								客服一对一服务<br/>
+								了解客户需求
+							</p>		
+					</div>
+				</div>
+							
+				
+			</div>
+			<div class="dp_arrow">
+				<img src="/public/index/static/images/index2.0/lcicon_01.png" alt="">
+			</div>
+			<!-- 2 -->
+			<div class="flowxj">
+					<div class="flow_box">
+						<div class="flowxj_bgimg dp_img01">	
+							<img src="/public/index/static/images/index2.0/lc_h02.png" alt="">	
+							<p>量房报价</p>
+							<p></p>
+							<img src="/public/index/static/images/index2.0/lc_02.png" alt="">	
+							<p>
+								免费上门量房<br/>
+								作出精准报价
+							</p>			
+						</div>
+					</div>				
+				
+			</div>
+			<div class="dp_arrow">
+				<img src="/public/index/static/images/index2.0/lcicon_01.png" alt="">
+			</div>
+			<!-- 3 -->
+			<div class="flowxj">
+					<div class="flow_box">
+						<div class="flowxj_bgimg dp_img01">	
+							<img src="/public/index/static/images/index2.0/lc_h03.png" alt="">	
+							<p>
+								签订合约
+							</p>
+							<p></p>
+							<img src="/public/index/static/images/index2.0/lc_03.png" alt="">	
+							<p>
+								签订装修合同<br/>
+								环保协议
+							</p>		
+						</div>
+					</div>				
+				
+			</div>
+			<div class="dp_arrow">
+				<img src="/public/index/static/images/index2.0/lcicon_01.png" alt="">
+			</div>
+			<!-- 4 -->
+			<div class="flowxj">
+					<div class="flow_box">
+						<div class="flowxj_bgimg dp_img01">	
+							<img src="/public/index/static/images/index2.0/lc_h04.png" alt="">	
+							<p>
+								施工阶段
+							</p>
+							<p></p>
+							<img src="/public/index/static/images/index2.0/lc_04.png" alt="">		
+							<p>
+								严格按照工程交付管理手册标准化施工
+							</p>		
+						</div>
+					</div>				
+				
+			</div>
+			<div class="dp_arrow">
+				<img src="/public/index/static/images/index2.0/lcicon_01.png" alt="">
+			</div>
+			<!-- 5 -->
+			<div class="flowxj">
+					<div class="flow_box">
+						<div class="flowxj_bgimg dp_img01">	
+							<img src="/public/index/static/images/index2.0/lc_h05.png" alt="">	
+							<p>
+									竣工完成
+							</p>
+							<p></p>
+							<img src="/public/index/static/images/index2.0/lc_05.png" alt="">	
+							<p>
+								工程验收并交齐尾款，提供保修卡
+							</p>			
+						</div>
+					</div>			
+				
+			</div>
+			<div class="dp_arrow">
+				<img src="/public/index/static/images/index2.0/lcicon_01.png" alt="">
+			</div>
+			<!-- 6 -->
+			<div class="flowxj">
+				<div class="flow_box">
+					<div class="flowxj_bgimg dp_img01">	
+						<img src="/public/index/static/images/index2.0/lc_h06.png" alt="">	
+						<p>
+							售后维护
+						</p>
+						<p></p>
+						<img src="/public/index/static/images/index2.0/lc_06.png" alt="">		
+						<p>
+							享受超长售后服务，体验6S家居生活
+						</p>		
+					</div>
+				</div>			
+				
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+<!-- 工地Live -->
+<div class="live_site">
+	<div class="layout">
+		<!-- 标题 -->
+		<div class="index_title">
+			<h2>
+				<span class="bgcolor">工地live</span>
+				<hr>
+			</h2>
+			<p class="cfff">直播施工 足不出户看工地</p>
+		</div>
+		{volist name="work" id = "work"}
+		<div class="live">
+			<div class="live_sg">
+				<ul class="liveone hide">
+					<li>
+						<img src="/public/index/static/images/index2.0/shouye-icon (2).png" alt="">
+						{volist name="cat" id="c"}
+						{if condition="$work.hot_id eq $c.cat_id"}<span>{$c.cat_name}</span>{/if}
+						{/volist}
+						<!--<span>宏源尚峰小区</span>-->
+
+					</li>
+					<li>{$work.live_name}</li>
+					<li>{$work.apart}</li>
+					<li>{$work.area}㎡</li>
+					<li>{$work.style}</li>
+					<li>
+						进度：
+							{volist name="cat" id="c"}
+							{if condition="$work.stage_id eq $c.cat_id"}<i class="cfa9a33">{$c.cat_name}</i>{/if}
+							{/volist}
+					</li>
+				</ul>
+				<div class="livetwo live_list">
+					<div class="list_img">
+						<a href="#">
+							<img src="{$work.thumb}" alt="">
+						</a>				
+					</div>
+					<div class="list_details">
+						<div>
+							<!--<h2>绿景虹湾</h2>-->
+							{volist name="cat" id="c"}
+							{if condition="$work.hot_id eq $c.cat_id"}<h2>{$c.cat_name}</h2>{/if}
+							{/volist}
+							<a href="{:url('Index/Worklive/worklive_info',array('id'=>$work.id))}">
+								<i><img src="/public/index/static/images/index2.0/shouye-icon (17).png" alt=""></i>查看工地
+							</a>
+							<div class="cl"></div>
+						</div>
+						<p class="list_subtitle">
+							{$work.apart}
+							<em>|</em><span> {$work.area}㎡ </sapn><em>|</em>
+						</p>
+						<div class="team">
+							<div class="design">
+								<img src="{$work.sm_img}" alt="">
+								<p>
+									<span class="cfa9a33">设计师</span><br/>
+									<span>{$work.designer_name}</span>
+								</p>
+							</div>
+							<div class="design">
+								{volist name = "worker" id = "w"}
+								{if condition="$work.worker1_id eq $w.id"}
+									<img src="{$w.image}" alt="">
+									<p>
+										<span class="cfa9a33">项目管家</span><br/>
+										<span>{$w.worker_name}</span>
+									</p>
+								{/if}
+								{/volist}
+							</div>
+							<div class="design">
+									{volist name = "worker" id = "w" }
+									{if condition="$work.worker2_id eq $w.id"}
+									<img src="{$w.image}" alt="">
+									<p>
+										<span class="cfa9a33">工程监理</span><br/>
+										<span>{$w.worker_name}</span>
+									</p>
+									{/if}
+									{/volist}
+								</div>
+						</div>
+						<div class="speed">
+							<ul>
+								<li {if condition="$work.stage_id == 2"}class="on"{/if}>拆改阶段</li>
+								<li	{if condition="$work.stage_id == 1"}class="on"{/if}>开工大吉</li>
+								<li {if condition="$work.stage_id == 3"}class="on"{/if}>水电阶段</li>
+								<li {if condition="$work.stage_id == 4"}class="on"{/if}>瓦泥阶段</li>
+								<li {if condition="$work.stage_id == 5"}class="on"{/if}>木工阶段</li>
+								<li {if condition="$work.stage_id == 6"}class="on"{/if}>油漆阶段</li>
+								<li {if condition="$work.stage_id == 2"}class="on"{/if}>验房阶段</li>
+								<li {if condition="$work.stage_id == 8"}class="on"{/if}>竣工阶段</li>
+							</ul>
+							<!-- 进度条 -->
+							<div class="jdt">
+								<div class="jdt1 t{$work.stage_id}"></div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			{/volist}
+
+		</div>
+		<div class="more">
+			<a href="/gdzb">查看更多工地></a>
+		</div>
+	</div>
+</div>
+
+<script> 
+	$(function () { 
+		//	工地live
+        $(".live_sg").children(".liveone").removeClass("hide");
+        $(".live_sg").children(".livetwo").addClass("hide");
+		$(".live_sg").bind("mouseenter",function(){
+			$(".live_sg").children(".liveone").removeClass("hide");
+			$(".live_sg").children(".livetwo").addClass("hide");
+			$(this).children(".liveone").addClass("hide");
+			$(this).children(".livetwo").removeClass("hide");
+
+		})
+	});	
+</script>
+
+<!-- 专属设计 -->
+<div class="exclusive_design">
+	<div class="layout">
+		<!-- 标题 -->
+		<div class="index_title">
+			<h2>
+				<span class="bgcolor">专属设计</span>
+				<hr>
+			</h2>
+			<p class="cfff">设计不将就 生活更讲究</p>
+		</div>
+	</div>
+	<!-- 设计师 -->
+	<div class="ed_design">
+		<div class="layout">
+			<div class="viewport_flip">
+				<div class="ed_sj">
+					<!-- 正面 -->
+					<div href="/" class="one list flip out">
+						<div class="ed_pic" style="background: url('/public/upload/goods/2017/07-21/7be4f7b2f83b130a247ecbc00950b575.jpg') no-repeat center; ">
+							<div class="head_portrait">
+								<img src="{$designer[0]['img']}" alt="">
+							</div>
+						</div>
+						<p class="ed_person">{$designer[0]['designer_name']}</p>
+						<div class="ed_zp">
+							<p>口碑：
+								<i><img src='/public/index/static/images/desxingj{$designer[0]["score"]}.png' alt=""></i>
+								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>-->
+								<i></i>
+							<!--<div class="xingj" style="background: url('/public/index/static/images/desxingj{$designer[0]["score"]}.png') no-repeat;"></div>-->
+							</p>
+							<p>作品：{$designer[0]['designer_num']}个</p>
+							<p>风格：{$designer[0]['style']}</p>
+						</div>
+						<a class="ed_arrow" href="#">
+							<img src="/public/index/static/images/index2.0/zs_02.png" alt="">
+						</a>
+					</div>
+					<!-- 背面 -->
+					<div href="/" class="two list flip in">
+						<div class="ed_sname">
+							<a href="#">
+								<img class="head" src="{$designer[0]['img']}" alt="">
+								<span >{$designer[0]['designer_name']}</span>
+								<a href="{:url('Index/designer/desdata',array('id'=>$designer[0]['id'],'p'=>1))}"><img src="/public/index/static/images/index2.0/zs_06.png" alt=""></a>
+							</a>
+						</div>
+						<div class="designation">
+							<h3>
+								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+								<span class="fs18">{$designer[0]['level']}</span>
+							</h3>
+							<p class="fs14">
+								{$designer[0]['designer_prize']|mb_substr=###,0,30,'utf-8'}{if condition="$designer[0]['designer_prize'].length gt 30"}...{/if}
+							</p>
+						</div>
+						<div class="jdanli">
+							<h3>
+								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+								<span class="fs18">经典案例</span>
+							</h3>
+							<p class="fs14">
+								{$designer[0]['designer_case']}
+							</p>
+							<div class="anli_tp">
+								<img src="{$designer[0]['case'][0]['img']}" alt="">
+								<img src="{$designer[0]['case'][1]['img']}" alt="">
+								<img src="{$designer[0]['case'][2]['img']}" alt="">
+							</div>
+							<a class="lookme" href="{:url('Index/designer/desdata',array('id'=>$designer[0]['id'],'p'=>1))}">
+								找我设计
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="ed_sj ed_sj1">
+					<!-- 正面 -->
+					<div href="/" class="one list1 flip">
+						<div class="ed_pic" style="background:url('/public/upload/goods/2017/07-25/010964d356b8083a5da898aaab450312.jpg')">
+							<div class="head_portrait">
+								<img src="{$designer[1]['img']}" alt="">
+							</div>
+						</div>
+						<p class="ed_person">{$designer[1]['designer_name']}</p>
+						<div class="ed_zp">
+							<p>口碑：
+								<i><img src='/public/index/static/images/desxingj{$designer[1]["score"]}.png' alt=""></i>
+								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>-->
+							</p>
+							<p>作品：{$designer[1]['designer_num']}个</p>
+							<p>风格：{$designer[1]['style']}</p>
+						</div>
+						<a class="ed_arrow" href="#">
+							<img src="/public/index/static/images/index2.0/zs_02.png" alt="">
+						</a>
+					</div>
+					<!-- 背面 -->
+					<div href="/" class="two list1 flip out">
+						<div class="ed_sname">
+							<a href="#">
+								<img class="head" src="{$designer[1]['img']}" alt="">
+								<span >{$designer[1]['designer_name']}</span>
+								<a href="{:url('Index/designer/desdata',array('id'=>$designer[1]['id'],'p'=>1))}"><img src="/public/index/static/images/index2.0/zs_06.png" alt=""></a>
+							</a>
+						</div>
+						<div class="designation">
+							<h3>
+								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+								<span class="fs18">{$designer[1]['level']}</span>
+							</h3>
+							<p class="fs14">
+								{$designer[1]['designer_prize']|mb_substr=###,0,30,'utf-8'}{if condition="$designer[1]['designer_prize'].length gt 30"}...{/if}
+							</p>
+						</div>
+						<div class="jdanli">
+							<h3>
+								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+								<span class="fs18">经典案例</span>
+							</h3>
+							<p class="fs14">
+								{$designer[1]['designer_case']}
+							</p>
+							<div class="anli_tp">
+								<img src="{$designer[1]['case'][0]['img']}" alt="">
+								<img src="{$designer[1]['case'][1]['img']}" alt="">
+								<img src="{$designer[1]['case'][2]['img']}" alt="">
+							</div>
+							<a class="lookme" href="{:url('Index/designer/desdata',array('id'=>$designer[1]['id'],'p'=>1))}">
+								找我设计
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="ed_sj ed_sj2">
+					<!-- 正面 -->
+					<div href="/" class="one list1 flip">
+						<div class="ed_pic" style="background:url('/public/upload/goods/2017/07-21/9ed01a75d56217aa71f2582b29023e6d.jpg')">
+							<div class="head_portrait">
+								<img src="{$designer[2]['img']}" alt="">
+							</div>
+						</div>
+							<p class="ed_person">{$designer[1]['designer_name']}</p>
+						<div class="ed_zp">
+							<p>口碑：
+								<i><img src='/public/index/static/images/desxingj{$designer[2]["score"]}.png' alt=""></i>
+								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>-->
+							</p>
+							<p>作品：{$designer[2]['designer_num']}个</p>
+							<p>风格：{$designer[2]['style']}</p>
+						</div>
+							<a class="ed_arrow" href="#">
+								<img src="/public/index/static/images/index2.0/zs_02.png" alt="">
+							</a>
+					</div>
+					<!-- 背面 -->
+					<div href="/" class="two list1 flip out">
+						<div class="ed_sname">
+							<a href="#">
+								<img class="head" src="{$designer[2]['img']}" alt="">
+								<span >{$designer[2]['designer_name']}</span>
+								<a href="{:url('Index/designer/desdata',array('id'=>$designer[2]['id'],'p'=>1))}"><img src="/public/index/static/images/index2.0/zs_06.png" alt=""></a>
+							</a>
+						</div>
+						<div class="designation">
+							<h3>
+								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+								<span class="fs18">{$designer[2]['level']}</span>
+							</h3>
+							<p class="fs14">
+								{$designer[2]['designer_prize']|mb_substr=###,0,50,'utf-8'}...
+							</p>
+						</div>
+						<div class="jdanli">
+							<h3>
+								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+								<span class="fs18">经典案例</span>
+							</h3>
+							<p class="fs14">
+								{$designer[2]['designer_case']|mb_substr=###,0,30,'utf-8'}
+							</p>
+							<div class="anli_tp">
+								<img src="{$designer[2]['case'][0]['img']}" alt="">
+								<img src="{$designer[2]['case'][1]['img']}" alt="">
+								<img src="{$designer[2]['case'][2]['img']}" alt="">
+							</div>
+							<a class="lookme" href="{:url('Index/designer/desdata',array('id'=>$designer[2]['id'],'p'=>1))}">
+								找我设计
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="ed_sj ed_sj3">
+					<!-- 正面	 -->
+					<div href="/" class="one list1 flip">
+						<div class="ed_pic" style="background: url('/public/upload/goods/2017/07-21/7be4f7b2f83b130a247ecbc00950b575.jpg') no-repeat center; ">
+							<div class="head_portrait">
+								<img src="{$designer[3]['img']}" alt="">
+							</div>
+						</div>
+						<p class="ed_person">{$designer[3]['designer_name']}</p>
+						<div class="ed_zp">
+							<p>口碑：
+								<i><img src='/public/index/static/images/desxingj{$designer[3]["score"]}.png' alt=""></i>
+								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_03.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_04.png" alt=""></i>-->
+								<!--<i><img src="/public/index/static/images/index2.0/zs_05.png" alt=""></i>-->
+								<i></i>
+								<!--<div class="xingj" style="background: url('/public/index/static/images/desxingj{$designer[0]["score"]}.png') no-repeat;"></div>-->
+							</p>
+							<p>作品：{$designer[3]['designer_num']}个</p>
+							<p>风格：{$designer[3]['style']}</p>
+						</div>
+						<a class="ed_arrow" href="#">
+							<img src="/public/index/static/images/index2.0/zs_02.png" alt="">
+						</a>
+					</div>
+					<!-- 背面 -->
+					<div href="/" class="two list1 flip out">
+						<div class="ed_sname">
+							<a href="#">
+								<img class="head" src="{$designer[3]['img']}" alt="">
+								<span >{$designer[3]['designer_name']}</span>
+								<img src="/public/index/static/images/index2.0/zs_06.png" alt="">
+							</a>
+						</div>
+						<div class="designation">
+							<h3>
+								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+								<span class="fs18">{$designer[3]['level']}</span>
+							</h3>
+							<p class="fs14">
+								{$designer[3]['designer_prize']|mb_substr=###,0,30,'utf-8'}{if condition="$designer[3]['designer_prize'].length gt 30"}...{/if}
+							</p>
+						</div>
+						<div class="jdanli">
+							<h3>
+								<img src="/public/index/static/images/index2.0/zs_07.png" alt="">
+								<span class="fs18">经典案例</span>
+							</h3>
+							<p class="fs14">
+								{$designer[3]['designer_case']}
+							</p>
+							<div class="anli_tp">
+								<img src="{$designer[3]['case'][0]['img']}" alt="">
+								<img src="{$designer[3]['case'][1]['img']}" alt="">
+								<img src="{$designer[3]['case'][2]['img']}" alt="">
+							</div>
+							<a class="lookme" href="{:url('Index/designer/desdata',array('id'=>$designer[3]['id'],'p'=>1))}">
+								找我设计
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="cl"></div>
+			</div>
+			<div class="more">
+				<a href="/fwzx">查看更多设计师></a>
+			</div>
+		</div>
+		
+	</div>
+	
+</div>
+
+<script type="text/javascript">
+//	翻牌-专属设计
+	$(".ed_sj").bind("mouseenter",function(){
+		$(this).children(".two").addClass("in").removeClass("out");
+		$(this).children(".one").addClass("out").removeClass("in");
+		$(".viewport_flip").children(".ed_sj").first().children(".two").addClass("out").removeClass("in");
+		$(".viewport_flip").children(".ed_sj").first().children(".one").addClass("in").removeClass("out");
+	})
+	$(".ed_sj").bind("mouseleave",function(){
+		$(this).children(".one").addClass("in").removeClass("out");
+		$(this).children(".two").addClass("out").removeClass("in");
+		$(".viewport_flip").children(".ed_sj").first().children(".two").addClass("out").removeClass("in");
+		$(".viewport_flip").children(".ed_sj").first().children(".one").addClass("in").removeClass("out");
+		setTimeout(function(){
+			if($(".two").hasClass("in")){
+
+			}else{
+				$(".viewport_flip").children(".ed_sj").first().children(".two").addClass("in").removeClass("out");
+				$(".viewport_flip").children(".ed_sj").first().children(".one").addClass("out").removeClass("in");
+			}
+		}, 100);
+	})
+
+</script>
+
+<!-- 整装案例 -->
+<div class="complete_case">
+	<div class="layout">
+		<!-- 标题 -->
+		<div class="index_title">
+			<h2>
+				<span class="bgcolor">整装案例</span>
+				<hr>
+			</h2>
+			<p class="cfff">百变风格 千样人生</p>
+		</div>
+		<p class="c000 cc_style">
+			<a href="#" class="c2eae47">时尚简约</a><em> / </em>
+			<a href="#">欧式</a><em> / </em>
+			<a href="#">美式</a><em> / </em>
+			<a href="#">中式</a><em> / </em>
+			<a href="#">地中海</a>			
+		</p>
+	</div>
+	<div class="cc_atlas">
+		<div class="left cc_box">
+			<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+			<div class="mask">
+				<div class="atlas">
+					<p class="fs24 fwbold">精选图册</p>
+					<p class="fs18">恒裕嘉城四居室72㎡装修效果图</p>
+					<p>
+						<i>
+							<img src="/public/index/static/images/index2.0/al_01.png" alt="">
+						</i>
+						<span class="fs16"> 1日前 </span>
+					</p>
+				</div>
+				<div class="cc_arrow">
+					<a href="#">
+						<img src="/public/index/static/images/index2.0/al_02.png" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="right">
+			<div class="top cc_box">
+				<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+				<div class="mask">
+					<div class="atlas atlas_top">
+						<p class="fs24 fwbold">精选图册</p>
+						<p class="fs18">恒裕嘉城四居室72㎡装修效果图</p>
+						<p>
+							<i>
+								<img src="/public/index/static/images/index2.0/al_01.png" alt="">
+							</i>
+							<span class="fs16"> 1日前 </span>
+						</p>
+					</div>
+					<div class="cc_arrow">
+						<a href="#">
+							<img src="/public/index/static/images/index2.0/al_02.png" alt="">
+						</a>
+					</div>
+				</div>
+
+			</div>
+			<div class="top cc_box">
+				<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+				<div class="mask">
+					<div class="atlas atlas_top">
+						<p class="fs24 fwbold">精选图册</p>
+						<p class="fs18">恒裕嘉城四居室72㎡装修效果图</p>
+						<p>
+							<i>
+								<img src="/public/index/static/images/index2.0/al_01.png" alt="">
+							</i>
+							<span class="fs16"> 1日前 </span>
+						</p>
+					</div>
+					<div class="cc_arrow">
+						<a href="#">
+							<img src="/public/index/static/images/index2.0/al_02.png" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="bottom cc_box">
+				<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+				<div class="mask">
+					<div class="atlas atlas_bottom">
+						<p class="fs24 fwbold">精选图册</p>
+						<p class="fs18">恒裕嘉城四居室72㎡装修效果图</p>
+						<p>
+							<i>
+								<img src="/public/index/static/images/index2.0/al_01.png" alt="">
+							</i>
+							<span class="fs16"> 1日前 </span>
+						</p>
+					</div>
+					<div class="cc_arrow">
+						<a href="#">
+							<img src="/public/index/static/images/index2.0/al_02.png" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="bottom cc_box">
+				<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+
+				<div class="mask">
+					<div class="atlas atlas_bottom">
+						<p class="fs24 fwbold">精选图册</p>
+						<p class="fs18">恒裕嘉城四居室72㎡装修效果图</p>
+						<p>
+							<i>
+								<img src="/public/index/static/images/index2.0/al_01.png" alt="">
+							</i>
+							<span class="fs16"> 1日前 </span>
+						</p>
+					</div>
+					<div class="cc_arrow">
+						<a href="#">
+							<img src="/public/index/static/images/index2.0/al_02.png" alt="">
+						</a>
+					</div>
+				</div>
+
+			</div>
+			<div class="bottom cc_box">
+				<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+
+				<div class="mask">
+					<div class="atlas atlas_bottom">
+						<p class="fs24 fwbold">精选图册</p>
+						<p class="fs18">恒裕嘉城四居室72㎡装修效果图</p>
+						<p>
+							<i>
+								<img src="/public/index/static/images/index2.0/al_01.png" alt="">
+							</i>
+							<span class="fs16"> 1日前 </span>
+						</p>
+					</div>
+					<div class="cc_arrow">
+						<a href="#">
+							<img src="/public/index/static/images/index2.0/al_02.png" alt="">
+						</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- 装修学堂 -->
+<div class="decoration_school">
+	<div class="layout">
+		<!-- 标题 -->
+		<div class="index_title">
+			<h2>
+				<span class="bgcolor">装修学堂</span>
+				<hr>
+			</h2>
+			<p class="cfff">家装小窍门 生活大智慧</p>
+		</div>
+	</div>
+	<div class="ds_details">
+		<div class="layout">
+			<div class="ds_study">
+				<div class="study_title">
+					<a href="#">
+						<img class="head" src="/public/index/static/images/index2.0/zxxt_01.png" alt="">
+						<span>学装修</span>
+						<img src="/public/index/static/images/index2.0/zxxt_04.png" alt="">
+					</a>
+				</div>
+				<div class="article_list">
+					<ul>
+						<li class="fwbold lsnone fs18">
+							<a href="#">不知道自己喜欢什么风格的衣柜？</a>
+							
+						</li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+					</ul>
+					<ul>
+						<li class="fwbold lsnone fs18">
+							<a href="#">不知道自己喜欢什么风格的衣柜？</a>
+						</li>
+						<li>
+							<a href="#">不知道自己喜欢什么风格的衣柜？</a>
+						</li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="ds_study">
+				<div class="study_title">
+					<a href="#">
+						<img class="head" src="/public/index/static/images/index2.0/zxxt_02.png" alt="">
+						<span>家居动态</span>
+						<img src="/public/index/static/images/index2.0/zxxt_04.png" alt="">
+					</a>
+				</div>
+				<div class="article_list">
+					<ul class="image_text">
+						<li>
+							<a href="#">
+								<div class="it_img">
+									<img src="/public/index/static/images/index2.0/xuetang.jpg" alt="">
+								</div>
+								
+								<div class="it_text">
+									<h2>帝王洁具怎么样？</h2>
+									<p class="c333333">
+										<span class="cfa9a33">【2018-05-09】</span>
+										东南亚风格果图优雅装优装修...
+									</p>
+								</div>	
+							</a>
+						</li>
+
+						<li>
+							<a href="#">
+								<div class="it_img">
+									<img src="/public/index/static/images/index2.0/xuetang.jpg" alt="">
+								</div>
+								
+								<div class="it_text">
+									<h2>帝王洁具怎么样？</h2>
+									<p class="c333333">
+										<span class="cfa9a33">【2018-05-09】</span>
+										东南亚风格果图优雅装优装修...
+									</p>
+								</div>	
+							</a>
+						</li>
+						
+					</ul>
+					<ul>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="ds_study">
+				<div class="study_title">
+					<a href="#">
+						<img class="head" src="/public/index/static/images/index2.0/zxxt_03.png" alt="">
+						<span>装修百科</span>
+						<img src="/public/index/static/images/index2.0/zxxt_04.png" alt="">
+					</a>
+				</div>
+				<div class="article_list">
+						<ul class="image_text">
+								<li>
+									<a href="#">
+										<div class="it_img">
+											<img src="/public/index/static/images/index2.0/xuetang.jpg" alt="">
+										</div>
+										
+										<div class="it_text">
+											<h2>帝王洁具怎么样？</h2>
+											<p class="c333333">
+												<span class="cfa9a33">【2018-05-09】</span>
+												东南亚风格果图优雅装优装修...
+											</p>
+										</div>	
+									</a>
+								</li>
+							</ul>
+					<ul>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+						<li><a href="#">不知道自己喜欢什么风格的衣柜？</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- 家居大事件 -->
+<div class="homeNamic active hover" data-offset="1100">
+	<div class="layout">
+		<!-- 标题 -->
+		<div class="index_title">
+			<h2>
+				<span class="bgcolor">家居大事件</span>
+				<hr>
+			</h2>
+			<p class="cfff">你关心的 就是大事</p>
+		</div>
+	
+		<div class="fl">
+			<a>
+				<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+				<img class="click" src="/public/index/static/images/index2.0/bofang.png" alt="播放">
+			</a>
+			<p>腾讯、新浪、网易……五大媒体争相报道的家装公司！</p>
+		</div>
+		<div class="fr">
+			
+				<a href="#">
+					<div class="it_img">
+						<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+					</div>					
+					<div class="it_text">
+						<h3>帝王洁具怎么样？</h3>
+						<p class="c333333">
+							<span class="cfa9a33">【2018-05-09】</span>
+							东南亚风格客厅装修效果图优雅大气果图优雅大
+							气绚彩东南亚风格客厅装修效果图优雅装优装修...
+						</p>
+					</div>	
+					<div class="cl"></div>
+				</a>
+
+
+				<a href="#">
+					<div class="it_img">
+						<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+					</div>					
+					<div class="it_text">
+						<h3>帝王洁具怎么样？</h3>
+						<p class="c333333">
+							<span class="cfa9a33">【2018-05-09】</span>
+							东南亚风格客厅装修效果图优雅大气果图优雅大
+							气绚彩东南亚风格客厅装修效果图优雅装优装修...
+						</p>
+					</div>	
+					<div class="cl"></div>
+				</a>
+
+				<a href="#">
+					<div class="it_img">
+						<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">
+					</div>					
+					<div class="it_text">
+						<h3>帝王洁具怎么样？</h3>
+						<p class="c333333">
+							<span class="cfa9a33">【2018-05-09】</span>
+							东南亚风格客厅装修效果图优雅大气果图优雅大
+							气绚彩东南亚风格客厅装修效果图优雅装优装修...
+						</p>
+					</div>	
+					<div class="cl"></div>
+				</a>
+				<div class="more">
+					<a href="#">查看更多动态 ></a>
+				</div>
+
+
+
+		</div>
+	</div>
+</div>
+
+
+<!-- 底部 -->
+
+{include file="public/footer" /}
+
+<script src="/public/login/js/Treatment.js" type="text/javascript"></script>
+
+<script>
+
+	$(".index1c ul li").mouseover(function(){
+
+        classname = $(this).attr('class')
+
+		$("."+classname+" i").addClass(classname+"s");
+
+	});
+
+    $(".index1c ul li").mouseout(function(){
+
+        classname = $(this).attr('class');
+
+        $("."+classname+" i").removeClass(classname+"s");
+
+    });
+
+    var canGetCookie = 0;//是否支持存储Cookie 0 不支持 1 支持
+
+    var ajaxmockjax = 1;//是否启用虚拟Ajax的请求响 0 不启用  1 启用
+
+
+
+    var CodeVal = 0;
+
+    Code();
+
+    function Code() {
+
+        if(canGetCookie == 1){
+
+            createCode("AdminCode");
+
+            var AdminCode = getCookieValue("AdminCode");
+
+            showCheck(AdminCode);
+
+        }else{
+
+            showCheck(createCode(""));
+
+        }
+
+    }
+
+    function showCheck(a) {
+
+        CodeVal = a;
+
+        var c = document.getElementById("myCanvas");
+
+        var ctx = c.getContext("2d");
+
+        ctx.clearRect(0, 0, 1000, 1000);
+
+        ctx.font = "80px 'Hiragino Sans GB'";
+
+        ctx.fillStyle = "#989898";
+
+        ctx.fillText(a, 0, 100);
+
+    }
+
+
+	// 免费报价验证
+    function baojia(){
+
+        area = $("#area1").val();
+
+        ting = $('#ting').val();
+
+		shi = $("#shi").val();
+		
+		chu = $("#chu").val();
+
+        wei = $("#wei").val();
+
+        price = 99999*1+(area*1-75)*790+(wei*1-1)*9999+(shi*1-3)*1680+(chu*1)*800;
+
+//        console.log(price);
+
+//        return;
+        if($("#adress1").val() == ''){
+            return layer.msg('请填写您的小区地址', {time: 800, icon:2,shade: 0.2});
+        }
+       
+
+        true_area=/[0-9]{2,3}/;
+
+        if(area == '' || !true_area.test(area)){
+
+            return layer.msg('请填写正确的房屋面积', {time: 800, icon:2,shade: 0.2});
+
+        }
+
+		 if($("#username1").val() == ''){
+
+			return layer.msg('请填写您的姓名', {time: 800, icon:2,shade: 0.2});
+
+		}
+
+        true_mobile = /^1[34578]{1}\d{9}$/;
+
+        if($("#mobile1").val() == ''){
+
+            return layer.msg('请输入手机号', {time: 800, icon:2,shade: 0.2});
+
+        }
+
+        if(!true_mobile.test($("#mobile1").val())){
+
+            return layer.msg('请填写正确手机号', {time: 800, icon:2,shade: 0.2});
+
+        }
+
+        // if (code == '' || code.length != 4) {
+
+        //     return layer.msg('请输入验证码', {time: 800, icon:2,shade: 0.2});
+
+        // }
+
+        // if (code.toUpperCase() != CodeVal.toUpperCase()) {
+
+        //     return layer.msg('验证码错误', {time: 800, icon:2,shade: 0.2});
+
+        // }
+
+        ajax_getprice(price);
+
+        $("#yusuan").html(price);
+
+
+
+
+
+	}
+
+    function ajax_getprice(price){
+
+        username = $("input[name = username]").val();
+
+        mobile   = $("input[name = mobile]").val();
+
+        if(username==''){return layer.msg('请输入姓名', {time: 700, icon:2,shade: 0.2});}
+
+        if(mobile==''){return layer.msg('请输入手机号', {time: 700, icon:2,shade: 0.2});}
+
+        var mobReg=/^1[34578]\d{9}$/;  //手机号
+
+        if (!mobReg.test(mobile)) {
+
+            return layer.msg('请填写正确手机号', {time: 2000, icon:2,shade: 0.2});
+
+        };
+
+        var index = layer.load(1, {
+
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+
+        });
+
+        $.ajax({
+
+            url: "{:url('Index/Ajax/user_info_us')}",
+
+            data: {username:username,mobile:mobile,price:price},
+
+            type: 'POST',
+
+            dataType: "json",
+
+            cache: false,
+
+            success: function(data,state){
+
+                if(state == 'success' && data.code == '0'){
+
+                    layer.close(index);
+
+                    layer.msg(data.msg, {time: 800, icon:1,shade: 0.2});
+
+                }else{
+
+                    layer.close(index);
+
+                    layer.msg(data.msg, {time: 800, icon:2,shade: 0.2});
+
+                }
+
+            }
+
+        });
+
+    }
+
+	// 免费量房
+    function yuyue(){
+        var area = $("#area2").val();
+        true_area=/[0-9]{2,3}/;  
+        if(area == '' || !true_area.test(area)){ 
+            return layer.msg('请填写正确的房屋面积', {time: 800, icon:2,shade: 0.2});  
+		}
+		var adress=$("#adress2").val();
+        if(adress == ''){
+            return layer.msg('请填写您的小区地址', {time: 800, icon:2,shade: 0.2});
+		}   
+		var username=$("#username2").val();
+         if(username == ''){    
+            return layer.msg('请填写您的姓名', {time: 800, icon:2,shade: 0.2});   
+		}   
+		var mobile=$("#mobile2").val();
+        true_mobile = /^1[34578]{1}\d{9}$/;   
+        if(mobile == ''){   
+            return layer.msg('请输入手机号', {time: 800, icon:2,shade: 0.2});   
+        }  
+        if(!true_mobile.test(mobile)){   
+            return layer.msg('请填写正确手机号', {time: 800, icon:2,shade: 0.2}); 
+        }
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:url('Index/Ajax/user_info')}",
+            data: {area:area,username:username,mobile:mobile},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2});
+                }
+            }
+        });
+    }
+	$.post('Index/Ajax/user_info', {}, function (data) {
+                	//console.log("获取的人数",data);
+                    $("#fenqi").text("目前已有" + data + "人获取分期信息");
+	});
+	// 装修分期
+	 function fenqi(){
+        var area = $("#area3").val();
+        true_area=/[0-9]{2,3}/;  
+        if(area == '' || !true_area.test(area)){ 
+            return layer.msg('请填写正确的房屋面积', {time: 800, icon:2,shade: 0.2});  
+		}
+		var adress=$("#adress3").val();
+        if(adress == ''){
+            return layer.msg('请填写您的小区地址', {time: 800, icon:2,shade: 0.2});
+		}   
+		var username=$("#username3").val();
+         if(username == ''){    
+            return layer.msg('请填写您的姓名', {time: 800, icon:2,shade: 0.2});   
+		}   
+		var mobile=$("#mobile3").val();
+        true_mobile = /^1[34578]{1}\d{9}$/;   
+        if(phone == ''){   
+            return layer.msg('请输入手机号', {time: 800, icon:2,shade: 0.2});   
+        }  
+        if(!true_mobile.test(mobile)){   
+            return layer.msg('请填写正确手机号', {time: 800, icon:2,shade: 0.2}); 
+        }
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            url: "{:url('Index/Ajax/user_info')}",
+            data: {area:area,username:username,mobile:mobile},
+            type: 'POST',
+            dataType: "json",
+            cache: false,
+            success: function(data,state){
+                if(state == 'success' && data.code == '0'){
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:1,shade: 0.2});
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg, {time: 2000, icon:2,shade: 0.2}); 
+                }
+            }
+        });
+    }
+
+>>>>>>> 212c237303b5c3aea5798e2a01d5f7036b5ee3be
 </script>
