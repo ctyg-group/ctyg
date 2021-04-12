@@ -1,0 +1,196 @@
+{include file="public/header" /}
+<link rel="stylesheet" href="/public/index/style/zxxt.css">
+<script type="text/javascript" src="/public/index/static/js/jquery.js"></script>
+<script type="text/javascript" src="/public/index/static/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/public/index/static/js/layer/layer.js"></script>
+<!-- 弹窗js 参考文档 http://layer.layui.com/-->
+<script type="text/javascript" src="/public/index/static/js/ie6orie7.js"></script>
+<script type="text/javascript" src="/public/index/static/js/slick.js"></script>
+<script type="text/javascript" src="/public/index/static/js/js.js"></script>
+
+<!-- <link href="css/slick.css" type="text/css" rel="stylesheet" /> -->
+<!--<link rel="stylesheet" type="text/css" href="/public/static/css/selectordie.css">-->
+<link href="/public/index/static/css/style.css" type="text/css" rel="stylesheet" />
+<link href="/public/index/static/css/reset.css" type="text/css" rel="stylesheet" />
+<!--[if IE 8]>
+<script type="text/javascript" src="/public/static/js/html5shiv.js"></script>
+<![endif]-->
+<script src="/public/index/js/myFormValidate.js"></script>
+<div class="main main-zxs">
+    <div class="layout fix">
+        <div class="zxsl fl">
+            <div class="slides">
+
+                {volist name="artnew" id="artnew"}
+                <div>
+                    <a target="_blank" href="https://www.jiujusz.com{:url('Index/News/newsinfo',array('article_id'=>$artnew.article_id))}">
+                        <div class="adimg">
+                            <img src="https://www.jiujusz.com{$artnew.thumb}" width="865" height="400" alt="">
+                            <div class="adcover">
+                                <p>{$artnew.title}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {/volist}
+
+            </div>
+            <div class="zxslb">
+                <ul class="fix">
+                    <li class="fix">
+                        <div class="zlit1r fr">
+                            <div class="qiet">
+                                <ul class="fix">
+                                    <div class="title">
+                                        <em></em>
+                                        装修流程
+                                    </div>
+                                    <?php $num1=0;?>
+                                    {foreach name="art1" item="art_1" key="k"}
+                                    <li {if condition="$num1 eq 0"}class="on"{/if}>
+                                    <a href="javascript:;">{$k}</a>
+                                    </li>
+                                    <?php $num1++;?>
+                                    {/foreach}
+
+                                </ul>
+                            </div>
+
+                            <div class="qieb">
+                                <?php $num2=0; foreach($art1 as $k=>$v){?>
+                                <ul {if condition="$num2 eq 0"}style="display: block;"{else /}style="display: none;"{/if}>
+                                <?php foreach($art1[$k] as $key=>$value){ ?>
+                    <li {if condition="$key eq 0 or $key eq 3"}class="mal0"{/if}>
+                    <a target="_blank" href="https://www.jiujusz.com{:url('Index/News/newsinfo',array('article_id'=>$value.article_id))}">
+                        <div class="img">
+                            <img src="{$value.thumb}" width="100%" height="195px" alt="">
+                            <div class="zxdesc">
+                                <p>{$value.title}</p>
+                            </div>
+                        </div>
+                    </a>
+                    </li>
+                    <?php }?>
+                </ul>
+                <?php $num2++;}?>
+            </div>
+        </div>
+        </li>
+
+        <li class="fix">
+            <div class="zlit1r fr">
+                <div class="qiet">
+                    <ul class="fix">
+                        <div class="title">
+                            <em></em>
+                            装饰搭配
+                        </div>
+                        <?php $num1=0;?>
+                        {foreach name="art2" item="art_2" key="k"}
+                        <li {if condition="$num1 eq 0"}class="on"{/if}>
+                        <a href="javascript:;">{$k}</a>
+                        </li>
+                        <?php $num1++;?>
+                        {/foreach}
+
+                    </ul>
+                </div>
+
+                <div class="qieb">
+                    <?php $num2=0; foreach($art2 as $k=>$v){?>
+                    <ul {if condition="$num2 eq 0"}style="display: block;"{else /}style="display: none;"{/if}>
+                    <?php foreach($art2[$k] as $key=>$value){ ?>
+        <li {if condition="$key eq 0 or $key eq 3"}class="mal0"{/if}>
+        <a target="_blank" href="https://www.jiujusz.com{:url('Index/News/newsinfo',array('article_id'=>$value.article_id))}">
+            <div class="img">
+                <img src="{$value.thumb}" width="100%" height="195px" alt="">
+                <div class="zxdesc">
+                    <p>{$value.title}</p>
+                </div>
+            </div>
+        </a>
+        </li>
+        <?php }?>
+        </ul>
+        <?php $num2++;}?>
+    </div>
+</div>
+</li>
+
+<li class="fix">
+    <div class="zlit1r fr">
+        <div class="qiet">
+            <ul class="fix">
+                <div class="title">
+                    <em></em>
+                    风水知识
+                </div>
+                <?php $num1=0;?>
+                {foreach name="art3" item="art_3" key="k"}
+                <li {if condition="$num1 eq 0"}class="on"{/if}>
+                <a href="javascript:;">{$k}</a>
+                </li>
+                <?php $num1++;?>
+                {/foreach}
+            </ul>
+        </div>
+
+        <div class="qieb">
+            <?php $num2=0; foreach($art3 as $k=>$v){?>
+            <ul {if condition="$num2 eq 0"}style="display: block;"{else /}style="display: none;"{/if}>
+            <?php foreach($art3[$k] as $key=>$value){ ?>
+<li {if condition="$key eq 0 or $key eq 3"}class="mal0"{/if}>
+<a target="_blank" href="https://www.jiujusz.com{:url('Index/News/newsinfo',array('article_id'=>$value.article_id))}">
+    <div class="img">
+        <img src="{$value.thumb}" width="100%" height="195px" alt="">
+        <div class="zxdesc">
+            <p>{$value.title}</p>
+        </div>
+    </div>
+</a>
+</li>
+<?php }?>
+</ul>
+<?php $num2++;}?>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="zxr qnr fr" style="margin-top: 10px;">
+    <!-- 报价 -->
+    {include file="public/baojia" /}
+    <!-- 整装案例 -->
+    {include file="public/hotcase" /}
+    <!-- 热门文章 -->
+    {include file="public/hotnews" /}
+</div>
+
+</div>
+</div>
+
+<script>
+    //页面单独使用的js
+    $('.qiet li').click(function () {
+        var i = $(this).index();
+        $(this).addClass('on').siblings().removeClass('on');
+        $(this).parent().parent().parent().find('.qieb>ul').hide();
+        $(this).parent().parent().parent().find('.qieb>ul').eq(i).fadeIn();
+    })
+
+    $('.slides').slick({
+        autoplay: true,
+        autoplaySpeed: 5000,
+        slidesToShow: 1,
+        arrows: false,
+        infinite: true,
+    });
+
+    tab('.huoq a', '.huoa>ul')
+
+    $('select').selectOrDie();
+</script>
+<!-- 底部 -->
+{include file="public/footer" /}

@@ -14,13 +14,13 @@ class Common extends Controller
 {
     public function _initialize(){
 
-        if(is_mobile()){
-            //$this->redirect('Mobile/Index/index');exit;
-           $str=$_SERVER["QUERY_STRING"];
-            $newUrl=$this->insertToStr($str, 1, "m");
-            $this->redirect($newUrl);exit;
-          
-        }
+//        if(is_mobile()){
+//            //$this->redirect('Mobile/Index/index');exit;
+//           $str=$_SERVER["QUERY_STRING"];
+//            $newUrl=$this->insertToStr($str, 1, "m");
+//            $this->redirect($newUrl);exit;
+//
+//        }
 
         $frlink = DB::name("frlink")->field("name,url")->order("sort asc")->select();
         $data = array(

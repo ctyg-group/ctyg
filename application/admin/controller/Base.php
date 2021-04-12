@@ -72,76 +72,76 @@ class Base extends Controller
                 "nextnav"=>"",
             ),
             'News'=>array(
-                "name"=>"文章资讯",
+                "name"=>"文章管理",
                 "url"=>"Admin/News",
                 "icon"=>"mdi mdi-newspaper fa-fw",
                 "nextnav"=>array(
                     "0"=>array(
-                        "name"=>"文章管理",
+                        "name"=>"新闻管理",
                         "url"=>"Admin/News/index",
                         "view"=>"index",
                     ),
                     "2"=>array(
-                        "name"=>"文章类型",
+                        "name"=>"新闻类型",
                         "url"=>"Admin/News/newstype",
                         "view"=>"newstype",
                     ),
                     "3"=>array(
-                        "name"=>"百科列表",
+                        "name"=>"行业文章",
                         "url"=>"Admin/News/baike",
                         "view"=>"baike",
                     ),
                     "4"=>array(
-                        "name"=>"百科类型",
+                        "name"=>"文章类型",
                         "url"=>"Admin/News/baiketype",
                         "view"=>"baiketype",
                     ),
                 ),
             ),
             'Designer'=>array(
-                "name"=>"设计师&案例",
+                "name"=>"集团动态",
                 "url"=>"Admin/Designer",
                 "icon"=>"mdi mdi-account-box fa-fw",
                 "nextnav"=>array(
                     "0"=>array(
-                        "name"=>"设计师管理",
+                        "name"=>"管理",
                         "url"=>"Admin/Designer/index",
                         "view"=>"index",
                     ),
                     "1"=>array(
-                        "name"=>"设计师分类",
+                        "name"=>"分类",
                         "url"=>"Admin/Designer/destypes",
                         "view"=>"destypes",
                     ),
                     "2"=>array(
-                        "name"=>"案例管理",
+                        "name"=>"动态管理",
                         "url"=>"Admin/Designer/caselist",
                         "view"=>"caselist",
                     ),
                     "3"=>array(
-                        "name"=>"案例分类",
+                        "name"=>"动态分类",
                         "url"=>"Admin/Designer/casetype",
                         "view"=>"casetype",
                     ),
                 ),
             ),
             'Worklive'=>array(
-                "name"=>"工地直播",
+                "name"=>"旗下品牌",
                 "url"=>"Admin/Worklive",
                 "icon"=>"mdi mdi-camcorder fa-fw",
                 "nextnav"=>array(
                     "0"=>array(
-                        "name"=>"工地直播列表",
+                        "name"=>"品牌列表",
                         "url"=>"Admin/Worklive/index",
                         "view"=>"index",
                     ),
                     "1"=>array(
-                        "name"=>"工地直播分类",
+                        "name"=>"品牌分类",
                         "url"=>"Admin/Worklive/worktype",
                         "view"=>"worktype",
                     ),
                     "2"=>array(
-                        "name"=>"项目管家&工程监理",
+                        "name"=>"品牌管理",
                         "url"=>"Admin/Worklive/worker",
                         "view"=>"worker",
                     ),

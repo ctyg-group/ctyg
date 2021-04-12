@@ -1,0 +1,788 @@
+{include file="public/header" /}
+<link rel="stylesheet" href="/public/index/style/index.css">
+<link rel="stylesheet" href="/public/index/css/jquery.bxslider.css">
+<script src="/public/index/js/jquery-1.10.2.min.js"></script>
+<script src="/public/index/bootstarp/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/public/layer/layer.js"></script>
+<script src="/public/index/js/jquery.bxslider.js"></script>
+<!-- 轮播图 -->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators Indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      	<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <!--<div class="item active">-->
+            <!--<a href="/">-->
+                <!--<img class="img-responsive" src="/public/index/static/huodong/banner.jpg" alt="...">-->
+            <!--</a>-->
+            <!--<div class="carousel-caption">-->
+            <!--</div>-->
+        <!--</div>-->
+        {volist name = 'banner' id = 'ba' key = 'key'}
+        <div class="{if condition='$key eq 1 ' }item active{else}item {/if}">
+            <a href="{$ba.url} ">
+                <img class="img-responsive" src="{$ba.image}" alt="...">
+            </a>
+            <div class="carousel-caption">
+            </div>
+        </div>
+        {/volist}
+    </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
+          <img src="/public/index/static/images/index2.0/previous.png" alt="">
+      </span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+            <img src="/public/index/static/images/index2.0/next.png" alt="">
+        </span>
+        <span class="sr-only">Next</span>
+    </a>
+    <!-- 广告免费报价 -->
+    
+</div>
+<!-- 品质整装 -->
+<div class="quality_rectification layout">
+    <div class="index_title">
+        <h2>
+            <span>奢享轻生活</span>
+            <hr>
+        </h2>
+        <p>对品质的追求，是一种生活态度！</p>
+    </div>
+    <!-- 品质图片 -->
+    <div class="qr_banner">
+            <div class="fl qr_big">
+              <a href="{:url('Index/index/zpzx')}"><button style="width: 137px;
+	height: 40px;
+	border: 0px;
+	background-color: #5dbe6f;
+	border-radius: 18px;
+    margin-left: 6%;
+    margin-top: 35.5%;
+    position: absolute">
+                    <p style="width: 80px;
+	height: 21px;
+	font-size: 20px;
+	line-height: 36px;
+	color: #ffffff;
+    margin-left: 18%;
+    margin-top: -13%;">
+                        立即查看
+                    </p>
+                </button></a>
+                <img src="/public/index/static/images/index3.0/qssh.png" alt="">
+            </div>
+            <!--<div class="fl qr_right">-->
+                <!--<img src="/public/index/static/images/index2.0/qr_02.jpg" alt="">-->
+            <!--</div>-->
+            <!--<div class="fl qr_b_left">-->
+                <!--<img src="/public/index/static/images/index2.0/qr_03.jpg" alt="">-->
+            <!--</div>-->
+            <!--<div class="fl qr_list">-->
+                <!--<img src="/public/index/static/images/index2.0/qr_04.jpg" alt="">-->
+            <!--</div>-->
+            <!--<div class="fl qr_list">-->
+                <!--<img src="/public/index/static/images/index2.0/qr_05.jpg" alt="">-->
+            <!--</div>-->
+            <!--<div class="fl qr_list">-->
+                <!--<img src="/public/index/static/images/index2.0/qr_06.jpg" alt="">-->
+            <!--</div>-->
+    </div>
+</div>
+
+<!-- 贴心服务 -->
+<div class="intimate_service">
+    <div class="layout">
+        <!-- 标题 -->
+        <div class="index_title">
+            <h2>
+                <span class="bgf8">贴心服务</span>
+                <hr>
+            </h2>
+            <p>一键预约 量房报价两不误</p>
+        </div>
+        <!-- 报价预算 -->
+        <div class="quot">
+            <!-- 导航栏 -->
+            <div class="is_nav fl">
+                <!-- 免费报价 -->
+                <div class="free_bj on bg01">
+                    <img src="/public/index/static/images/index2.0/is_01.png" alt="">
+                    <span>免费报价</span>
+                    <div class="xsj"></div>
+                </div>
+                <div class="free_bj bg02">
+                    <img src="/public/index/static/images/index2.0/is_02.png" alt="">
+                    <span>免费量房</span>
+                    <div class="xsj" style="display:none;"></div>
+                </div>
+            </div>
+            <!-- 栏目区 -->
+            <div class="is_lm fl">
+                <!-- 免费报价 -->
+                <div class="bjlm show">
+                    <p>
+                        <span class="c333333 fs24">装修要花多少钱？</span>
+                        <i>
+                            <img src="/public/index/static/images/index2.0/is_04.png" alt="">
+                        </i>
+                        <ul class="cfa9a33 fs14" id="floatLi">
+                            <li>10分钟前135****1254李先生报价成功</li>
+                            <li>5分钟前168****4561王先生报价成功</li>
+                            <li>7分钟前135****1451赵小姐报价成功</li>
+                            <li>8分钟前186****1997韦先生报价成功</li>
+                            <li>10分钟前177****9781赵先生报价成功</li>
+                            <li>15分钟前176****1983王先生报价成功</li>
+                        </ul>
+                    </p>
+                    <div class="bjform">
+                        <p>
+                            <span class="c333333">小区地址 : </span>
+                            <br/>
+                            <input type="text" name="adress" id="adress1" placeholder="输入小区地址">
+                        </p>
+                        <p>
+                            <span class="c333333">房屋面积 :<i class="cfa9a33"> * </i> </span>
+                            <br/>
+                            <input type="text" name="area" id="area1" placeholder="输入房屋面积">
+                        </p>
+                        <p>
+                            <span class="c333333">您的名字 : </span>
+                            <br/>
+                            <input type="text" name="username" id="username1" placeholder="输入您的名字">
+                        </p>
+                        <p>
+                            <span class="c333333">您的号码 :<i class="cfa9a33"> * </i></span>
+                            <br/>
+                            <input type="text" name="mobile" id="mobile1" placeholder="输入您的号码">
+                        </p>
+                        <div class="cl"></div>
+                        <p id="Huxing">
+                            <select name="shi" id="shi">
+                                <option value="1">1室</option>
+                                <option value="2">2室</option>
+                                <option value="3" selected>3室</option>
+                                <option value="4">4室</option>
+                                <option value="5">5室</option>
+                            </select>
+                            <select name="code" id="ting">
+                                <option value="1" selected>1厅</option>
+                                <option value="2">2厅</option>
+                            </select>
+                            <select name="chu" id="chu">
+                                <option value="1" selected>1厨</option>
+                            </select>
+                            <select name="wei" id="wei">
+                                <option value="1" selected>1卫</option>
+                                <option value="2">2卫</option>
+                                <option value="3">3卫</option>
+                            </select>
+                        </p>
+                        <div class="index-main">
+                            <div class="section section2 calc-height transition">
+                                <div class="align-wrapper">
+                                    <div class="btn-wrapper" style="margin-top: 0;">
+                                        <a class="btn bj_btn" onclick="baojia()">
+                                            <span class="ljbj_btn">立即报价</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 预算估价 -->
+                    <div class="ysgj">
+                        <p class="c333333">
+                            您的整装预算估价为：
+                            <br/>
+                            <span class="fs28"><i id="yusuan" class="cfa9a33"></i> 元</span>
+                        </p>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- 免费量房 -->
+                <div class="bjlm">
+                    <p class="cfa9a33 fs24">1分钟发布申请，坐等装修公司免费上门量房</p>
+                    <div class="lfform">
+                        <p class="short">
+                            <span class="c333333">房屋面积 :<i class="cfa9a33"> * </i> </span>
+                            <input type="text" name="area" id="area2" placeholder="输入房屋面积">
+                        </p>
+                        <p class="long">
+                            <span class="c333333">小区地址 :<i class="cfa9a33"> * </i> </span>
+                            <input type="text" name="adress" id="adress2" placeholder="输入小区地址">
+                        </p>
+                        <p class="short">
+                            <span class="c333333">您的名字 : </span>
+                            <input type="text" name="username" id="username2" placeholder="输入您的名字">
+                        </p>
+                        <p class="long">
+                            <span class="c333333">您的号码 :<i class="cfa9a33"> * </i></span>
+                            <input type="text" name="mobile" id="mobile2" placeholder="输入您的号码">
+                        </p>
+                        <div class="cl"></div>
+                        <div class="index-main">
+                            <div class="section section2 calc-height transition">
+                                <div class="align-wrapper">
+                                    <div class="btn-wrapper" style="margin-top: 0;">
+                                        <a class="btn lf_btn" onclick="yuyue()">
+                                            <span>立即预约</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lf_img">
+                        <img src="/public/index/static/images/index2.0/txfw_lf.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="cl"></div>
+        </div>
+    </div>
+</div>
+<!-- 装修流程 -->
+<div class="decoration_process">
+    <div class="layout">
+        <!-- 标题 -->
+        <div class="index_title">
+            <h2>
+                <span class="bgcolor">装修流程</span>
+                <hr>
+            </h2>
+            <p class="cfff">装修六步走 新家不用愁</p>
+        </div>
+        <!-- 流程 -->
+        <div class="dp_flow">
+            <!-- 1 -->
+            <div class="flowxj">
+                <div class="flow_box">
+                    <div class="flowxj_bgimg dp_img01">
+                        <img src="/public/index/static/images/index2.0/lc_h01.png" alt="">
+                        <p>在线咨询</p>
+                        <p></p>
+                        <img src="/public/index/static/images/index2.0/lc_01.png" alt="">
+                        <p>
+                            客服一对一服务
+                            <br/> 了解客户需求
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="dp_arrow">
+                <img src="/public/index/static/images/index2.0/lcicon_01.png" alt="">
+            </div>
+            <!-- 2 -->
+            <div class="flowxj">
+                <div class="flow_box">
+                    <div class="flowxj_bgimg dp_img01">
+                        <img src="/public/index/static/images/index2.0/lc_h02.png" alt="">
+                        <p>量房报价</p>
+                        <p></p>
+                        <img src="/public/index/static/images/index2.0/lc_02.png" alt="">
+                        <p>
+                            免费上门量房
+                            <br/> 作出精准报价
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="dp_arrow">
+                <img src="/public/index/static/images/index2.0/lcicon_01.png" alt="">
+            </div>
+            <!-- 3 -->
+            <div class="flowxj">
+                <div class="flow_box">
+                    <div class="flowxj_bgimg dp_img01">
+                        <img src="/public/index/static/images/index2.0/lc_h03.png" alt="">
+                        <p>
+                            签订合约
+                        </p>
+                        <p></p>
+                        <img src="/public/index/static/images/index2.0/lc_03.png" alt="">
+                        <p>
+                            签订装修合同
+                            <br/> 环保协议
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="dp_arrow">
+                <img src="/public/index/static/images/index2.0/lcicon_01.png" alt="">
+            </div>
+            <!-- 4 -->
+            <div class="flowxj">
+                <div class="flow_box">
+                    <div class="flowxj_bgimg dp_img01">
+                        <img src="/public/index/static/images/index2.0/lc_h04.png" alt="">
+                        <p>
+                            施工阶段
+                        </p>
+                        <p></p>
+                        <img src="/public/index/static/images/index2.0/lc_04.png" alt="">
+                        <p>
+                            严格按照工程交付管理手册标准化施工
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="dp_arrow">
+                <img src="/public/index/static/images/index2.0/lcicon_01.png" alt="">
+            </div>
+            <!-- 5 -->
+            <div class="flowxj">
+                <div class="flow_box">
+                    <div class="flowxj_bgimg dp_img01">
+                        <img src="/public/index/static/images/index2.0/lc_h05.png" alt="">
+                        <p>
+                            竣工完成
+                        </p>
+                        <p></p>
+                        <img src="/public/index/static/images/index2.0/lc_05.png" alt="">
+                        <p>
+                            工程验收并交齐尾款，提供保修卡
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="dp_arrow">
+                <img src="/public/index/static/images/index2.0/lcicon_01.png" alt="">
+            </div>
+            <!-- 6 -->
+            <div class="flowxj">
+                <div class="flow_box">
+                    <div class="flowxj_bgimg dp_img01">
+                        <img src="/public/index/static/images/index2.0/lc_h06.png" alt="">
+                        <p>
+                            售后维护
+                        </p>
+                        <p></p>
+                        <img src="/public/index/static/images/index2.0/lc_06.png" alt="">
+                        <p>
+                            享受超长售后服务，体验6S家居生活
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 工地Live -->
+<div class="live_site">
+    <div class="layout">
+        <!-- 标题 -->
+        <div class="index_title">
+            <h2>
+                <span class="bgcolor">工地live</span>
+                <hr>
+            </h2>
+            <p class="cfff">直播施工 足不出户看工地</p>
+        </div>
+
+        <div class="live">
+            <div class="live_sg">
+                <!--<ul class="liveone hide">-->
+                    <!--<li>-->
+                        <!--<img src="/public/index/static/images/index2.0/shouye-icon (2).png" alt=""> {volist name="cat" id="c"} {if condition="$work.hot_id eq $c.cat_id"}<span>{$c.cat_name}</span>{/if} {/volist}-->
+                        <!--&lt;!&ndash;<span>宏源尚峰小区</span>&ndash;&gt;-->
+                    <!--</li>-->
+                    <!--<li>{$work.live_name}</li>-->
+                    <!--<li>{$work.apart}</li>-->
+                    <!--<li>{$work.area}㎡</li>-->
+                    <!--<li>{$work.style}</li>-->
+                    <!--<li>-->
+                        <!--进度： {volist name="cat" id="c"} {if condition="$work.stage_id eq $c.cat_id"}<i class="cfa9a33">{$c.cat_name}</i>{/if} {/volist}-->
+                    <!--</li>-->
+                <!--</ul>-->
+                <ul>
+                {volist name="work" id = "work"}
+                    <li>
+                <!--<div class="livetwo live_list" style="">-->
+                    <div class="list_img">
+                        <a href="{:url('Index/Worklive/worklive_info',array('id'=>$work.id))}">
+                            <img style="width: 384px;height: 249px;" src="{$work.thumb}" alt="">
+                            <div class="" style="height: 106px;text-align: center;color: #333;font-size: 18px;">
+                                <h3 style="margin: 25px 0 5px;font-weight: normal;font-size: 24px;">{$work.live_name}</h3>
+                                <p style="display: block;">{$work.apart}</p>
+                            </div>
+                        </a>
+                    </div>
+                <!--</div>-->
+                    </li>
+                    {/volist}
+                </ul>
+                    <!--<div class="list_details">-->
+                        <!--<div>-->
+                            <!--&lt;!&ndash;<h2>绿景虹湾</h2>&ndash;&gt;-->
+                            <!--{volist name="cat" id="c"} {if condition="$work.hot_id eq $c.cat_id"}-->
+                            <!--<h2>{$c.cat_name}</h2>{/if} {/volist}-->
+                            <!--<a href="{:url('Index/Worklive/worklive_info',array('id'=>$work.id))}">-->
+                                <!--<i><img src="/public/index/static/images/index2.0/shouye-icon (17).png" alt=""></i>查看工地-->
+                            <!--</a>-->
+                            <!--<div class="cl"></div>-->
+                        <!--</div>-->
+                        <!--<p class="list_subtitle">-->
+                            <!--{$work.apart}-->
+                            <!--<em>|</em><span> {$work.area}㎡ </sapn><em>|</em>{$work.style}-->
+                        <!--</p>-->
+                        <!--<div class="team">-->
+                            <!--<div class="design">-->
+                                <!--<img src="{$work.sm_img}" alt="">-->
+                                <!--<p>-->
+                                    <!--<span class="cfa9a33">设计师</span>-->
+                            <!--<br/>-->
+                            <!--<span>{$work.designer_name}</span>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                    <!--<div class="design">-->
+                        <!--{volist name = "worker" id = "w"} {if condition="$work.worker1_id eq $w.id"}-->
+                        <!--<img src="{$w.image}" alt="">-->
+                        <!--<p>-->
+                            <!--<span class="cfa9a33">项目管家</span>-->
+                            <!--<br/>-->
+                            <!--<span>{$w.worker_name}</span>-->
+                        <!--</p>-->
+                        <!--{/if} {/volist}-->
+                    <!--</div>-->
+                    <!--<div class="design">-->
+                        <!--{volist name = "worker" id = "w" } {if condition="$work.worker2_id eq $w.id"}-->
+                        <!--<img src="{$w.image}" alt="">-->
+                        <!--<p>-->
+                            <!--<span class="cfa9a33">质检专员</span>-->
+                            <!--<br/>-->
+                            <!--<span>{$w.worker_name}</span>-->
+                        <!--</p>-->
+                        <!--{/if} {/volist}-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="speed">-->
+                    <!--<ul>-->
+                        <!--<li {if condition="$work.stage_id == 1" }class="on" {/if}>开工大吉</li>-->
+                        <!--<li {if condition="$work.stage_id == 2" }class="on" {/if}>拆改阶段</li>-->
+                        <!--<li {if condition="$work.stage_id == 3" }class="on" {/if}>水电阶段</li>-->
+                        <!--<li {if condition="$work.stage_id == 4" }class="on" {/if}>瓦泥阶段</li>-->
+                        <!--<li {if condition="$work.stage_id == 5" }class="on" {/if}>木工阶段</li>-->
+                        <!--<li {if condition="$work.stage_id == 6" }class="on" {/if}>油漆阶段</li>-->
+                        <!--<li {if condition="$work.stage_id == 2" }class="on" {/if}>验房阶段</li>-->
+                        <!--<li {if condition="$work.stage_id == 8" }class="on" {/if}>竣工阶段</li>-->
+                    <!--</ul>-->
+                    <!--&lt;!&ndash; 进度条 &ndash;&gt;-->
+                    <!--<div class="jdt">-->
+                        <!--<div class="jdt1 t{$work.stage_id}"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+    </div>
+    <!--{/volist}-->
+            <div class="more">
+                <a style="margin-top: -31px;margin-right: -10px;" href="/gdzb">查看更多工地></a>
+            </div>
+</div>
+        <!--<div class="house">-->
+            <!--<a href="/liveOffice/35777.html">-->
+                <!--<img src="http://img.ikongjian.com//www/liveOffice/indexImg/1532675559039/a7/92/1e/a7921ea22e084f4c3f660b30749325c3.jpg" alt="">-->
+                <!--<div class="text">-->
+                    <!--<h3>国创光谷上城(东南门)</h3>-->
+                    <!--<p>一居室【75.00㎡】</p>-->
+                <!--</div>-->
+            <!--</a>-->
+            <!--<span></span>-->
+            <!--<span class="status over">-->
+
+
+                                        <!--完工-->
+
+
+
+                            <!--</span>-->
+        <!--</div>-->
+
+</div>
+</div>
+
+<!-- 整装案例 -->
+<div class="complete_case">
+    <div class="layout">
+        <!-- 标题 -->
+        <div class="index_title">
+            <h2>
+                <span class="bgcolor">整装案例</span>
+                <hr>
+            </h2>
+            <p class="cfff">百变风格 千样人生</p>
+        </div>
+        <p class="c000 cc_style">
+            <a class="on teb">时尚简约</a> &nbsp;&nbsp; / &nbsp;&nbsp;
+            <a class="teb">欧式</a>&nbsp;&nbsp; / &nbsp;&nbsp;
+            <a class="teb">美式</a>&nbsp;&nbsp; / &nbsp;&nbsp;
+            <a class="teb">中式</a>&nbsp;&nbsp; / &nbsp;&nbsp;
+            <a class="teb">地中海</a>
+        </p>
+    </div>
+    <div class="i6b">
+        <!-- 时尚简约 -->
+        {volist name="caselist" id="caselist" key="k"}
+        <div class="cc_atlas {if condition='$k eq 1'}active{/if}">
+            {volist name="caselist.img" id="img" key="key"} {if condition="$key eq 1"}
+            <div class="left cc_box">
+                <img src="{$img.image_url}" alt="">
+                <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                    <div class="mask">
+                        <div class="atlas">
+                            <p class="fs24 fwbold"></p>
+                            <p class="fs18">{$img.case_name}</p>
+                        </div>
+                        <div class="cc_arrow">
+                            <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                        </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {elseif condition="$key eq 2 "}
+            <div class="right">
+                <div class="top cc_box">
+                    <img src="{$img.image_url}" alt="">
+                    <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                        <div class="mask">
+                            <div class="atlas atlas_top">
+                                <p class="fs24 fwbold"></p>
+                                <p class="fs18">{$img.case_name}</p>
+                            </div>
+                            <div class="cc_arrow">
+                                <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                            </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {elseif condition="$key eq 3"}
+                <div class="top cc_box">
+                    <img src="{$img.image_url}" alt="">
+                    <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                        <div class="mask">
+                            <div class="atlas atlas_top">
+                                <p class="fs24 fwbold"></p>
+                                <p class="fs18">{$img.case_name}</p>
+                            </div>
+                            <div class="cc_arrow">
+                                <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                            </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {elseif condition="$key eq 4"}
+                <div class="bottom cc_box">
+                    <img src="{$img.image_url}" alt="">
+                    <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                        <div class="mask">
+                            <div class="atlas atlas_bottom">
+                                <p class="fs24 fwbold"></p>
+                                <p class="fs18">{$img.case_name}</p>
+                            </div>
+                            <div class="cc_arrow">
+                                <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                            </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {elseif condition="$key eq 5"}
+                <div class="bottom cc_box">
+                    <img src="{$img.image_url}" alt="">
+                    <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                        <div class="mask">
+                            <div class="atlas atlas_bottom">
+                                <p class="fs24 fwbold"></p>
+                                <p class="fs18">{$img.case_name}</p>
+                            </div>
+                            <div class="cc_arrow">
+                                <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                            </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {elseif condition="$key eq 6"}
+                <div class="bottom cc_box">
+                    <img src="{$img.image_url}" alt="">
+                    <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                        <div class="mask">
+                            <div class="atlas atlas_bottom">
+                                <p class="fs24 fwbold"></p>
+                                <p class="fs18">{$img.case_name}</p>
+                            </div>
+                            <div class="cc_arrow">
+                                <a href="{:url('Index/Cases/caseinfo',array('case_id'=>$img.case_id))}">
+                            </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {/if} {/volist}
+        </div>
+        {/volist}
+        <!-- 欧式 -->
+    </div>
+</div>
+<!-- 装修学堂 -->
+<div class="decoration_school">
+    <div class="layout">
+        <!-- 标题 -->
+        <div class="index_title">
+            <h2>
+                <span class="bgcolor">装修学堂</span>
+                <hr>
+            </h2>
+            <p class="cfff">家装小窍门 生活大智慧</p>
+        </div>
+    </div>
+    <div class="ds_details">
+        <div class="layout">
+            <div class="ds_study">
+                <div class="study_title">
+                    <a href="/zxxt/">
+                        <img class="head" src="/public/index/static/images/index2.0/zxxt_01.png" alt="">
+                        <span>学装修</span>
+                        <img src="/public/index/static/images/index2.0/zxxt_04.png" class="changeImg" alt="">
+                    </a>
+                </div>
+                <div class="article_list">
+                    <ul>
+                        {volist name="article1" id="article1" key="key"}
+                        <li>
+                            <a target="_blank" href="{:url('Index/News/newsinfo',array('article_id'=>$article1.article_id))}" {if condition="$key eq 1 or $key eq 5" }class="fwbold lsnone fs18" {/if} title="{$article1.title}">{$article1.title|mb_substr=###,0,15,'utf-8'}</a>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+            <div class="ds_study">
+                <div class="study_title">
+                    <a href="/zxxt/">
+                        <img class="head" src="/public/index/static/images/index2.0/zxxt_02.png" alt="">
+                        <span>家居动态</span>
+                        <img src="/public/index/static/images/index2.0/zxxt_04.png" class="changeImg" alt="">
+                    </a>
+                </div>
+                <div class="article_list">
+                    {volist name="article2" id="article2" key="key"}
+                    {if condition="$key eq 1 or $key eq 2"}
+                    <ul class="image_text">
+                        <li>
+                            <a target="_blank" href="{:url('Index/News/newsinfo',array('article_id'=>$article2.article_id))}">
+                                <div class="it_img">
+                                    <img src="{$article2.thumb}" alt="">
+                                </div>
+                                <div class="it_text">
+                                    <h2>{$article2.title | mb_substr=###,0,7,'utf-8'}</h2>
+                                    <p class="c333333" style="color: #727272;font-size:12px;height: 37px;line-height: 20px;margin-top: 8px;">
+                                        <!-- <span class="cfa9a33">{$article2.add_time|date="Y/m/d ",###}</span> -->
+                                        {$article2.explain}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    {else /}
+                    <ul>
+                        <li>
+                            <a href="{:url('Index/News/newsinfo',array('article_id'=>$article2.article_id))}" target="_blank">{$article2.title}</a>
+                        </li>
+                    </ul>
+                    {/if} {/volist}
+                </div>
+            </div>
+            <div class="ds_study">
+                <div class="study_title">
+                    <a href="/zxbk/">
+                        <img class="head" src="/public/index/static/images/index2.0/zxxt_03.png" alt="">
+                        <span>装修百科</span>
+                        <img src="/public/index/static/images/index2.0/zxxt_04.png" class="changeImg" alt="">
+                    </a>
+                </div>
+                <div class="article_list" id="last_list">
+                    {volist name="enped" id="enped" key="key"}
+                    <ul class="image_text">
+                        <li>
+                            <a href="{:url('Index/Baike/baikeinfo',array('enped_id'=>$enped.enped_id))}">
+                                <div class="it_img">
+                                    <img src="{$enped.thumb}" alt="">
+                                </div>
+                                <div class="it_text">
+                                    <h2>{$enped.title}</h2>
+                                    <p class="c333333" style="color: #727272;">
+                                        <!-- <span class="cfa9a33">{$enped.add_time|date="Y/m/d ",###}</span> -->
+                                        {$enped.explain}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- 家居大事件 -->
+<div class="homeNamic active hover" data-offset="1100">
+    <div class="layout">
+        <!-- 标题 -->
+        <div class="index_title">
+            <h2>
+                <span class="bgcolor">家居大事件</span>
+                <hr>
+            </h2>
+            <p class="cfff">你关心的 就是大事</p>
+        </div>
+        <div class="fl">
+            <!--<a>
+                <img src="/public/index/static/images/index2.0/video.jpg" alt="">
+
+                <img class="click" src="/public/index/static/images/index2.0/bofang.png" alt="播放">
+            </a>-->
+          <video style="margin-left: 5px;margin-top: -1px;/* position: absolute; *//* border-radius: 19px; */width: 575px;height: 347px;" width="850" height="480" controls="" poster="">
+                <source src="/public/index/static/images/index2.0/jiuju03.mp4" type="video/mp4">
+                <!--<source src="movie.ogg" type="video/ogg">-->
+               
+            </video>
+            <p style="margin-top:-1px">腾讯、新浪、网易……五大媒体争相报道的家装公司！</p>
+        </div>
+        <div class="fr">
+            {volist name="article3" id="article3"}
+            <a href="{:url('Index/News/newsinfo',array('article_id'=>$article3.article_id))}">
+                <div class="it_img">
+                    <img src="{$article3.thumb}" alt="">
+                </div>
+                <div class="it_text">
+                    <p style="font-size:166% " class="fwbold lsnone fs18">{$article3.title | mb_substr=###,0,19,'utf-8'}</p>
+                    <p class="c333333">
+                        {$article3.explain | mb_substr=###,0,35,'utf-8'}...
+                    </p>
+                </div>
+                <div class="cl"></div>
+            </a>
+            {/volist}
+            <div class="more">
+                <a href="http://www.jiujusz.com/xwzx/cat_40_1">查看更多动态 ></a>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script src="/public/login/js/Treatment.js" type="text/javascript"></script>
+<script src="/public/index/style/index_index.bundle.js"></script>

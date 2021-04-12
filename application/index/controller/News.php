@@ -27,25 +27,44 @@ class News extends Common
             }
         }
         //获取文章
-        $article = $artDB->field("article_id,title")->where(array("is_hot"=>1))->order("article_id desc")->limit(8)->select();
-        $artnew  = $artDB->field("article_id,title,thumb")->where(array("is_new"=>1))->order("article_id desc")->limit(3)->select();
+
+        $size = 2;
+        $article1 = $artDB->where("cat_id_2 = 40")->field("thumb,explain,article_id,title,add_time,cat_id,cat_id_2")->order("article_id desc")->select();//公司动态
+        $article2 = $artDB->where("cat_id_2 = 42")->field("thumb,explain,article_id,title,add_time,cat_id,cat_id_2")->order("article_id desc")->select();//行业新闻
+        foreach ($article1 as $a=>$c){
+            $cat1 = $art_catDB->where("cat_id= $c[cat_id]")->field("cat_name")->find();
+            $cat2 = $art_catDB->where("cat_id= $c[cat_id_2]")->field("cat_name")->find();
+            $article[$a]['cat1'] = $cat1['cat_name'];
+            $article[$a]['cat2'] = $cat2['cat_name'];
+        }
+        $count =$artDB->count();
+        $pager = new Page($count,$size);// 实例化分页类 传入总记录数和每页显示的记录数
+        $page = $pager->show_goods();//分页显示输出
+        $artnew  = $artDB->field("article_id,title,thumb")->where(array("is_home"=>1))->order("article_id desc")->limit(3)->select();
         //案例
-        $case = DB::name("case")->field("case_id")->order("sort asc")->limit(3)->select();
+        $case = DB::name("case")->field("case_id,case_name")->order("sort desc")->limit(3)->select();
         foreach($case as $k=>$v){
             $img=DB::name("case_images")->where("caseid = $v[case_id]")->field("image_url,img_info")->find();
             $case[$k]['img']=$img['image_url'];
             $case[$k]['img_info']=$img['img_info'];
         }
+//        $data['art'] =  '装修流程';
         $arr = array(
-            "art1"=>$data['装修流程'],
-            "art2"=>$data['装饰搭配'],
-            "art3"=>$data['风水知识'],
-            "article"=>$article,
+//            "art1"=>$data['装修流程'],
+//            "art2"=>$data['装饰搭配'],
+//            "art3"=>$data['风水知识'],
+            "article"=>$article1,
+            "article2"=>$article2,
             "artnew"=>$artnew,
             "case"=>$case,
+            "page"=>$page,
         );
         $this->assign($arr);
+//        dump($art_list);exit();
         $this->tdk(1);
+//      	if(strstr($_SERVER['REDIRECT_URL'],'.')!='.html'&& substr($_SERVER['REDIRECT_URL'],-4)!='html') {
+//                $this->redirect('index/news/index');
+//        }
         return $this->fetch();
     }
     //详情
@@ -59,15 +78,15 @@ class News extends Common
         $catname1 = $artcatDB->field('cat_id,cat_name')->where("cat_id = $artinfo[cat_id]")->find();
         $catname2 = $artcatDB->field('cat_id,cat_name')->where("cat_id = $artinfo[cat_id_2]")->find();
 
-        $artnew  = $artDB->field("article_id,title,thumb")->where(array("is_new"=>1,"is_open"=>1))->order("article_id desc")->limit(8)->select();
-        $arthot  = $artDB->field("article_id,title,thumb")->where(array("is_hot"=>1,"is_open"=>1,"cat_id_2"=>$artinfo['cat_id_2']))->order("article_id desc")->limit(3)->select();
+        $artnew  = $artDB->field("article_id,title,thumb")->where(array("is_new"=>1,"is_open"=>1))->order("article_id desc")->limit(4)->select();
+        $arthot  = $artDB->field("article_id,title,thumb")->where(array("is_hot"=>1,"is_open"=>1,"cat_id_2"=>$artinfo['cat_id_2']))->order("article_id desc")->limit(7)->select();
 
         $next = $this->piece_art($article_id);
         $data = array(
             "artinfo"=>$artinfo,
             "next"=>$next,
             "artnew"=>$artnew,
-            "arthot"=>$arthot,
+            "article"=>$arthot,
             "catname1"=>$catname1,
             "catname2"=>$catname2,
         );
@@ -77,7 +96,11 @@ class News extends Common
             "keywords"=>$artinfo['keywords'],
             "description"=>$artinfo['explain'],
         );
+//        dump($data);exit();
         $this->assign($datas);
+//      	if(strstr($_SERVER['REDIRECT_URL'],'.')!='.html'&& substr($_SERVER['REDIRECT_URL'],-4)!='html') {
+//                $this->redirect('index/news/newsinfo', ['article_id' => $article_id]);
+//        }
         return $this->fetch();
     }
     public function piece_art($article_id){
@@ -131,7 +154,7 @@ class News extends Common
         $pager = new Page($count,$size);// 实例化分页类 传入总记录数和每页显示的记录数
         $page = $pager->show_goods();//分页显示输出
         $article = $artDB->field("article_id,title,thumb,radio_num,comment,author,publish_time,explain")
-                    ->where($where)->where(array("is_open"=>1))->order("publish_time desc")->page("$p,$size")->select();
+            ->where($where)->where(array("is_open"=>1))->order("publish_time desc")->page("$p,$size")->select();
         //获取文章
         $hotart = $artDB->field("article_id,title")->where(array("is_hot"=>1))->order("article_id desc")->limit(8)->select();
         //案例
@@ -237,6 +260,9 @@ class News extends Common
             "description"=>$artinfo['explain'],
         );
         $this->assign($datas);
+        if(strstr($_SERVER['REDIRECT_URL'],'.')!='.html'&& substr($_SERVER['REDIRECT_URL'],-4)!='html') {
+            $this->redirect('index/news/newsid', ['article_id' => $article_id]);
+        }
         return $this->fetch();
     }
 

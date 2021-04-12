@@ -4,5 +4,5 @@ RewriteEngine on
 
 #RewriteCond %{HTTP_HOST} !^m.jiujusz.com$ [NC]
 #RewriteRule ^(.*)$ http://www.jiujusz.com/$1 [R=301,L]
-  
+
 </IfModule>

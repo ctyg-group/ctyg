@@ -18,10 +18,14 @@ class Index extends Common
         $worklive   = $this->get_worklive();//获取工地直播
         $designer   = $this->get_designer();//获取设计师
         $caselist   = $this->get_caselist();//获取案例
-        $article1   = $this->get_article1();//获取学装修资讯
-        $article2   = $this->get_article2();//获取文章三篇
+        $article1   = $this->article1();//公司动态
+        $article2   = $this->article2();//行业动态
         $article3   = $this->get_article3();//获取公司动态
         $enped      = $this->get_enped();//获取百科
+//        print_r($article1);
+//        var_dump($article2);
+//        var_dump($enped);
+//        exit();
         //工地直播
         $work = Db::name('worklive')
             ->alias("w")
@@ -66,12 +70,22 @@ class Index extends Common
 //        foreach ($res as $k=>$v){
 //
 //        }
-        header("Content-type:text/html;charset=utf-8");
+        //header("Content-type:text/html;charset=utf-8");
 //        dump($designer);
 //        exit();
 
         $this->assign($data);
         return $this->fetch();
+    }
+    public function article1(){
+        $artDB = DB::name("article");
+        $article1 = $artDB->where("cat_id_2 = 40")->field("thumb,explain,article_id,title,add_time,cat_id,cat_id_2")->order("article_id desc")->limit(2)->select();//公司动态
+        return $article1;
+    }
+    public function article2(){
+        $artDB = DB::name("article");
+        $article2 = $artDB->where("cat_id_2 = 42")->field("thumb,explain,article_id,title,add_time,cat_id,cat_id_2")->order("article_id desc")->limit(2)->select();//行业新闻
+        return $article2;
     }
     public function verify()
     {
@@ -90,6 +104,42 @@ class Index extends Common
             "description"=>"久居整装臻品之选家装整装套餐，做最贴心的完整品质整装，为您打造最贴心的完美家装。",
         );
         $this->assign($datas);
+        return $this->fetch();
+    }
+    public function about(){
+//        $datas = array(
+//            "web_title"=>"整装套餐_家装套餐-久居整装",
+//            "keywords"=>"整装套餐,家装套餐",
+//            "description"=>"久居整装臻品之选家装整装套餐，做最贴心的完整品质整装，为您打造最贴心的完美家装。",
+//        );
+//        $this->assign($datas);
+        return $this->fetch();
+    }
+    public function hexin(){
+        return $this->fetch();
+    }
+//    public function news(){
+//        return $this->fetch();
+//    }
+    public function service(){
+        return $this->fetch();
+    }
+    public function recruitment(){
+        $job = DB::name("job")->order("id desc")->select();
+        $data = array(
+            "job"=>$job,
+        );
+        $this->assign($data);
+//        $datas = array(
+//            "web_title"=>"创通易购集团",
+//            "keywords"=>"创通易购集团",
+//            "description"=>"创通易购集团",
+//        );
+//        $this->assign($datas);
+//        return $this->fetch();
+        return $this->fetch();
+    }
+    public function contantus(){
         return $this->fetch();
     }
     //获取banner图片
@@ -151,7 +201,7 @@ class Index extends Common
 
     //获取学装修
     public function get_article2(){
-        $res =  DB::name("article")->field("article_id,title,thumb,explain")->where(array("is_home"=>1))->order("add_time desc")->limit(3)->select();
+        $res =  DB::name("article")->field("article_id,title,thumb,explain")->where(array("is_home"=>1))->order("add_time desc")->limit(10)->select();
         return $res;
     }
     //获取公司动态

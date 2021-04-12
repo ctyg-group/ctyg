@@ -31,14 +31,14 @@ class Cases extends Common
         if($measure_id != 0){foreach($cat3 as $stk=>$stv){if($measure_id==$stv['cat_id']){$this->assign("measure_name",$stv['cat_name']);$measure_name = $stv['cat_name'];}}}
 
         //获取TDK
-        if($style_id || $apart_id || $measure_id){
-            $style_name = $style_name??'';
-            $apart_name = $apart_name??'';
-            $measure_name = $measure_name??'';
-            $this->tdk($style_name,$apart_name,$measure_name);
-        }else {
-            $this->tdk('', '', '');
-        }
+//        if($style_id || $apart_id || $measure_id){
+//            $style_name = $style_name??'';
+//            $apart_name = $apart_name??'';
+//            $measure_name = $measure_name??'';
+//            $this->tdk($style_name,$apart_name,$measure_name);
+//        }else {
+//            $this->tdk('', '', '');
+//        }
 
         //获取案例
         $caseDB = DB::name("case");
@@ -101,57 +101,57 @@ class Cases extends Common
         return $this->fetch();
     }
 
-    public function tdk($name1,$name2,$name3){
-        $type = 0;
-        if($name1){ $type+=1; }
-        if($name2){ $type+=3; }
-        if($name3){ $type+=5; }
-
-        switch ($type){
-            case 0:
-                $title="装修案例_家装装修效果图_装修效果图大全-久居整装";
-                $keywords="装修案例,家装效果图,装修效果图大全";
-                $description="久居整装整装案例栏目，精选最新最清晰装修案例、假家装效果图，包含丰富时尚的客厅、卧室、厨房卫生间等最新装修效果图大全";
-                break;
-            case 1:
-                $title=$name1."装修效果图_".$name1."家装案例-久居整装";
-                $keywords=$name1."装修效果图,".$name1."家装案例";
-                $description="久居整装为您提供优质的".$name1."装修效果图、".$name1."家装案例，各种".$name1."风格装修图片尽在久居整装整装案例栏目。";
-                break;
-            case 3:
-                $title=$name2."装修效果图-久居整装";
-                $keywords=$name2."装修效果图";
-                $description="久居整装为您提供优质的".$name2."装修效果图案例，为您提供最好最全面的设计方案参考案例。";
-                break;
-            case 5:
-                $title=$name3."装修效果图-久居整装";
-                $keywords=$name3."装修效果图";
-                $description="久居整装为您提供优质的".$name3."装修效果图案例，为您提供最好最全面的设计方案参考案例。";
-                break;
-            case 4:
-                $title=$name1."装修效果图_".$name2."装修效果图-久居整装";
-                $keywords=$name1."装修效果图,".$name2."装修效果图";
-                $description="久居整装为您提供优质的".$name1."风格".$name2."装修效果图案例，为您提供最好最全面的设计方案参考案例。";
-                break;
-            case 6:
-                $title=$name1."装修效果图_".$name3."装修效果图-久居整装";
-                $keywords=$name1."装修效果图,".$name3."装修效果图";
-                $description="久居整装为您提供优质的".$name3.$name1."风格装修效果图案例，为您提供最好最全面的设计方案参考案例。";
-                break;
-            case 8:
-                $title=$name2."装修效果图_".$name3."装修效果图-久居整装";
-                $keywords=$name2."装修效果图,".$name3."装修效果图";
-                $description="久居整装为您提供优质的".$name3.$name2."装修效果图案例，为您提供最好最全面的设计方案参考案例。";
-                break;
-            case 9:
-                $title=$name3."_".$name1."风格_".$name2."装修效果图-久居整装";
-                $keywords=$name1."风格装修";
-                $description="久居整装为您提供优质的".$name3.$name1."风格".$name2."装修效果图案例，为您提供最好最全面的设计方案参考案例。";
-                break;
-        }
-
-        $this->assign('web_title',$title);
-        $this->assign('keywords',$keywords);
-        $this->assign('description',$description);
-    }
+//    public function tdk($name1,$name2,$name3){
+//        $type = 0;
+//        if($name1){ $type+=1; }
+//        if($name2){ $type+=3; }
+//        if($name3){ $type+=5; }
+//
+//        switch ($type){
+//            case 0:
+//                $title="装修案例_家装装修效果图_装修效果图大全-久居整装";
+//                $keywords="装修案例,家装效果图,装修效果图大全";
+//                $description="久居整装整装案例栏目，精选最新最清晰装修案例、假家装效果图，包含丰富时尚的客厅、卧室、厨房卫生间等最新装修效果图大全";
+//                break;
+//            case 1:
+//                $title=$name1."装修效果图_".$name1."家装案例-久居整装";
+//                $keywords=$name1."装修效果图,".$name1."家装案例";
+//                $description="久居整装为您提供优质的".$name1."装修效果图、".$name1."家装案例，各种".$name1."风格装修图片尽在久居整装整装案例栏目。";
+//                break;
+//            case 3:
+//                $title=$name2."装修效果图-久居整装";
+//                $keywords=$name2."装修效果图";
+//                $description="久居整装为您提供优质的".$name2."装修效果图案例，为您提供最好最全面的设计方案参考案例。";
+//                break;
+//            case 5:
+//                $title=$name3."装修效果图-久居整装";
+//                $keywords=$name3."装修效果图";
+//                $description="久居整装为您提供优质的".$name3."装修效果图案例，为您提供最好最全面的设计方案参考案例。";
+//                break;
+//            case 4:
+//                $title=$name1."装修效果图_".$name2."装修效果图-久居整装";
+//                $keywords=$name1."装修效果图,".$name2."装修效果图";
+//                $description="久居整装为您提供优质的".$name1."风格".$name2."装修效果图案例，为您提供最好最全面的设计方案参考案例。";
+//                break;
+//            case 6:
+//                $title=$name1."装修效果图_".$name3."装修效果图-久居整装";
+//                $keywords=$name1."装修效果图,".$name3."装修效果图";
+//                $description="久居整装为您提供优质的".$name3.$name1."风格装修效果图案例，为您提供最好最全面的设计方案参考案例。";
+//                break;
+//            case 8:
+//                $title=$name2."装修效果图_".$name3."装修效果图-久居整装";
+//                $keywords=$name2."装修效果图,".$name3."装修效果图";
+//                $description="久居整装为您提供优质的".$name3.$name2."装修效果图案例，为您提供最好最全面的设计方案参考案例。";
+//                break;
+//            case 9:
+//                $title=$name3."_".$name1."风格_".$name2."装修效果图-久居整装";
+//                $keywords=$name1."风格装修";
+//                $description="久居整装为您提供优质的".$name3.$name1."风格".$name2."装修效果图案例，为您提供最好最全面的设计方案参考案例。";
+//                break;
+//        }
+//
+//        $this->assign('web_title',$title);
+//        $this->assign('keywords',$keywords);
+//        $this->assign('description',$description);
+//    }
 }
